@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="./frontEndPackage/owlcarousel/owl.carousel.min.css" />
+        <link rel="stylesheet" href="./frontEndPackage/owlcarousel/owl.theme.default.min.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+            integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+            crossorigin="anonymous"
+        />
+        <link rel="stylesheet" href="./frontEndPackage/bootstrap-icons/bootstrap-icons.css" />
+
+        <link rel="stylesheet" href="./frontEndPackage/style/all.css" />
+        <title>Shimadzu</title>
+    </head>
+    <body>
+        <div id="app">
+            <!-- <section class="nav-container">
+                <nav class="container-lg navbar p-0 p-lg-3 navbar-expand-lg">
+                    <div class="brand-name d-flex align-items-center pt-3 pb-2 pl-3 p-lg-0">
+                        <h1 class="mb-0">
+                            <a class="logo" href="/" style="background-image: url('./frontEndPackage/images/logo.png')"
+                                >Shimadzu
+                            </a>
+                        </h1>
+                        <h2 class="fs-12 ml-5 mb-0 d-none d-sm-block">
+                            <a href="/"
+                                >台灣島津科學儀器股份有限公司<br /><span>Analytical and Measuring Instruments</span></a
+                            >
+                        </h2>
+                    </div>
+
+                    <button
+                        class="navbar-toggler py-3 pr-3 p-lg-0"
+                        type="button"
+                        data-toggle="collapse"
+                        data-target="#mobile-menu"
+                        aria-controls="mobile-menu"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
+                    >
+                        <i class="bi bi-list text-nav menu-icon"></i>
+                        <i class="bi bi-x text-nav close-icon d-none"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse mobile-menu" id="mobile-menu">
+                        <ul class="navbar-nav ml-auto align-items-center">
+                            <li class="nav-item mr-lg-2 position-relative mb-1 mb-lg-0">
+                                <a class="nav-link text-nav text-center" id="nav-service" href="###">儀器列表</a>
+                            </li>
+                            <li class="nav-item mr-lg-2 position-relative mb-1 mb-lg-0">
+                                <a class="nav-link text-nav text-center" id="nav-project" href="###">續約</a>
+                            </li>
+                            <li class="nav-item mr-lg-2 position-relative mb-1 mb-lg-0">
+                                <a class="nav-link text-nav text-center" id="nav-entrepreneur" href="###">詢價</a>
+                            </li>
+                            <li class="nav-item mr-lg-2 position-relative mb-1 mb-lg-0">
+                                <a class="nav-link text-nav text-center" id="nav-boss" href="###">線上叫修/其他</a>
+                            </li>
+                            <li class="nav-item mr-lg-2 position-relative mb-1 mb-lg-0">
+                                <a v-if="!isLogin" class="nav-link text-nav text-center" id="nav-member" href="###">註冊/登入</a>
+                                <a v-else class="nav-link text-nav text-center" href="###"><i class="bi bi-person-circle fs-24"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <div class="container d-sm-none mb-brand">
+                    <h2 class="fs-12 pb-1 mt-5">
+                        <a href="/"
+                            >台灣島津科學儀器股份有限公司<br /><span>Analytical and Measuring Instruments</span></a
+                        >
+                    </h2>
+                </div>
+            </section> -->
+            <Navv :login="isLogin"></Navv>
+            <section class="container-lg banner-container">
+                <div class="banner-carousel owl-carousel owl-theme">
+                    <a v-for="item in bannerCarousel" class="item" :href="item.path">
+                        <img :src="item.imgUrl" alt:="item.alt" />
+                    </a>
+                </div>
+            </section>
+
+            <section class="container-lg service-container">
+                <div class="row">
+                    <div v-for="item in service" :key="item.title" class="col-6 col-lg-3">
+                        <div class="item d-flex flex-column align-items-center justify-content-center">
+                            <img :src="item.imgSrc" :alt="item.alt" class="mb-3" />
+                            <h3 class="fs-18 text-lightBlack mb-0">{{item.title}}</h3>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+      
+            <Chat></Chat>
+            <Foooter></Foooter>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
+            integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
+            crossorigin="anonymous"
+        ></script>
+        <script src="./frontEndPackage/owlcarousel/owl.carousel.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+        <script src="./frontEndPackage/js/all.js"></script>
+        <script type="module">
+          import Foooter from "./components/footer.js"
+          import Navv from "./components/nav.js"
+          import Chat from "./components/chatWindow.js"
+            const app = new Vue({
+                el: "#app",
+                data() {
+                    return {
+                        // isModalnActive: false,
+                        // chatActive: true,
+                        isLogin:false,
+                        service: [
+                            {
+                                imgSrc: "./frontEndPackage/images/home-icon1.png",
+                                title: "我的儀器清單",
+                                alt: "list",
+                            },
+                            {
+                                imgSrc: "./frontEndPackage/images/home-icon2.png",
+                                title: "續約",
+                                alt: "contract",
+                            },
+                            {
+                                imgSrc: "./frontEndPackage/images/home-icon3.png",
+                                title: "詢價",
+                                alt: "inquire",
+                            },
+                            {
+                                imgSrc: "./frontEndPackage/images/home-icon4.png",
+                                title: "我的帳號",
+                                alt: "account",
+                            },
+                        ],
+                        bannerCarousel: [
+                            {
+                                id: 1,
+                                imgUrl: "./frontEndPackage/images/home-banner1.png",
+                                alt: "i-seris",
+                                path: "###",
+                            },
+                            {
+                                id: 2,
+                                imgUrl: "./frontEndPackage/images/home-banner2.png",
+                                alt: "anniversary",
+                                path: "###",
+                            },
+                        ],
+                        // chatService: [
+                        //     {
+                        //         id: 1,
+                        //         title: "儀器叫修",
+                        //         imgUrl: "./frontEndPackage/images/dialog-icon1.png",
+                        //         alt: "fix",
+                        //         path: "###",
+                        //     },
+                        //     {
+                        //         id: 2,
+                        //         title: "現有儀器操作實驗問題",
+                        //         imgUrl: "./frontEndPackage/images/dialog-icon2.png",
+                        //         alt: "clipboard",
+                        //         path: "###",
+                        //     },
+                        //     {
+                        //         id: 3,
+                        //         title: "產品/分析技術諮詢",
+                        //         imgUrl: "./frontEndPackage/images/dialog-icon3.png",
+                        //         alt: "clipboard",
+                        //         path: "###",
+                        //     },
+                        //     {
+                        //         id: 4,
+                        //         title: "其他需求",
+                        //         imgUrl: "./frontEndPackage/images/dialog-icon4.png",
+                        //         alt: "clipboard",
+                        //         path: "###",
+                        //         detail: "營業時間為週一到週五(9:00am-5:30pm)",
+                        //     },
+                        // ],
+                    };
+                },
+                // methods: {
+                //     startChat(){
+                //         this.chatActive = !this.chatActive
+                //     }
+                // },
+                components:{
+                    Foooter,
+                    Navv,
+                    Chat
+                },
+                mounted() {
+                    // $("#dialogModal").on("show.bs.modal", () => {
+                    //     this.isModalnActive = true;
+                    // });
+
+                    // $("#dialogModal").on("hide.bs.modal", () => {
+                    //     this.isModalnActive = false;
+                    // });
+                    this.$nextTick(() => {
+                        $(".banner-carousel").owlCarousel({
+                            loop: true,
+                            autoplay: true,
+                            items: 1,
+                            autoplayTimeout: 2000,
+                            autoplayHoverPause: true,
+                            dots: true,
+                            nav: false,
+                        });
+                    });
+                },
+            });
+        </script>
+    </body>
+</html>

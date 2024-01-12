@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="./frontEndPackage/owlcarousel/owl.carousel.min.css" />
+        <link rel="stylesheet" href="./frontEndPackage/owlcarousel/owl.theme.default.min.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+            integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+            crossorigin="anonymous"
+        />
+        <link rel="stylesheet" href="./frontEndPackage/css/material-icons.css" />
+        <link rel="stylesheet" href="./frontEndPackage/bootstrap-icons/bootstrap-icons.css" />
+        <link rel="stylesheet" href="./frontEndPackage/lightbox/lightbox.min.css" />
+        <link rel="stylesheet" href="./frontEndPackage/style/all.css" />
+        <title>我的儀器</title>
+    </head>
+    <body>
+        <div id="app">
+            <Navv :login="isLogin"></Navv>
+            <section class="breadcrumb-container mb-5">
+                <ol class="d-flex list-unstyled breadcrumb-list">
+                    <li><a href="/">首頁</a></li>
+                    <li class="active"><a href="###">我的儀器清單</a></li>
+                </ol>
+            </section>
+            <main class="container-lg instrument-container">
+                <ul class="tab-container d-flex list-unstyled">
+                    <li><a href="/" class="active">我的儀器清單</a></li>
+                    <li><a href="###">全機種/耗材一覽</a></li>
+                </ul>
+                <div class="table-title d-none d-sm-flex">
+                    <span style="width: 8%">編號</span>
+                    <span style="width: 12%">圖片</span>
+                    <span style="width: 17%">主設備序號</span>
+                    <span style="width: 20%">機型</span>
+                    <span style="width: 38%">合約日期</span>
+                </div>
+                <div class="accordion-container">
+                    <div class="accordion" id="accordionExample">
+                        <div class="item">
+                          <img src="./frontEndPackage/images/product-lg.jpg" alt="" class="d-sm-none"/>
+                            <div class="item-btn" id="headingOne">
+                                <div data-title="編號"><span>01</span></div>
+                                <a data-title="圖片" class="d-none d-sm-table-cell" href="./frontEndPackage/images/product-lg.jpg" data-lightbox="pic-1">
+                                    <img src="./frontEndPackage/images/product-sm.jpg" alt="" />
+                                </a>
+                                <div data-title="主設備序號"><span>06UPLC L22135800614</span></div>
+                                <div data-title="機型"><span>紫外/可見光-近紅外光分光光譜儀</span></div>
+                                <div data-title="合約日期"
+                                    ><div class="d-flex flex-wrap justify-content-between"><div><span>2023/03/16-2023/12/25</span><span class="expire-hint ml-2">合約即將到期</span></div>
+                                    <button type="button" class="ask-btn d-none d-sm-inline-block">加入詢價<i class="bi bi-plus"></i></button></div>
+
+                            
+                                  </div>
+                                  <button
+                                  class="accordion-switch"
+                                  type="button"
+                                  data-toggle="collapse"
+                                  data-target="#collapseOne"
+                                  aria-expanded="true"
+                                  aria-controls="collapseOne"
+                              >
+                                  <i class="bi bi-chevron-down"></i>
+                              </button>
+                            </div>
+
+                            <div
+                                id="collapseOne"
+                                class="collapse show"
+                                aria-labelledby="headingOne"
+                                data-parent="#accordionExample"
+                            >
+                                <div class="card-body">
+                                    Some placeholder content for the first accordion panel. This panel is shown by
+                                    default, thanks to the <code>.show</code> class.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingTwo">
+                                <h2 class="mb-0">
+                                    <button
+                                        class="btn btn-link btn-block text-left collapsed"
+                                        type="button"
+                                        data-toggle="collapse"
+                                        data-target="#collapseTwo"
+                                        aria-expanded="false"
+                                        aria-controls="collapseTwo"
+                                    >
+                                        Collapsible Group Item #2
+                                    </button>
+                                </h2>
+                            </div>
+                            <div
+                                id="collapseTwo"
+                                class="collapse"
+                                aria-labelledby="headingTwo"
+                                data-parent="#accordionExample"
+                            >
+                                <div class="card-body">
+                                    Some placeholder content for the second accordion panel. This panel is hidden by
+                                    default.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingThree">
+                                <h2 class="mb-0">
+                                    <button
+                                        class="btn btn-link btn-block text-left collapsed"
+                                        type="button"
+                                        data-toggle="collapse"
+                                        data-target="#collapseThree"
+                                        aria-expanded="false"
+                                        aria-controls="collapseThree"
+                                    >
+                                        Collapsible Group Item #3
+                                    </button>
+                                </h2>
+                            </div>
+                            <div
+                                id="collapseThree"
+                                class="collapse"
+                                aria-labelledby="headingThree"
+                                data-parent="#accordionExample"
+                            >
+                                <div class="card-body">
+                                    And lastly, the placeholder content for the third and final accordion panel. This
+                                    panel is hidden by default.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <Foooter></Foooter>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
+            integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
+            crossorigin="anonymous"
+        ></script>
+        <script src="./frontEndPackage/lightbox/lightbox.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+        <script src="./frontEndPackage/js/all.js"></script>
+        <script type="module">
+            import Foooter from "./components/footer.js";
+            import Navv from "./components/nav.js";
+            const app = new Vue({
+                el: "#app",
+                data() {
+                    return {
+                        isLogin: true,
+                    };
+                },
+                methods: {},
+                components: {
+                    Foooter,
+                    Navv,
+                },
+                mounted() {},
+            });
+        </script>
+    </body>
+</html>

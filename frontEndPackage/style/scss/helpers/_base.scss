@@ -1,0 +1,29 @@
+html{
+    scroll-behavior: smooth;
+}
+body{
+    font-family: 'Noto Sans TC', sans-serif;
+    color:$dark-text;
+    ::selection{
+        background-color:rgba(110, 110, 110, 0.5);
+    }
+}
+
+img {
+    object-fit: cover;
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+}
+
+a,
+span, i{
+    display: inline-block;
+}
+
+a,
+a:hover {
+    text-decoration: none;
+}
+
+

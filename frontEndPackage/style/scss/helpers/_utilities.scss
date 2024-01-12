@@ -1,0 +1,123 @@
+//字體
+
+
+.bg-main{
+    background-color: $main;
+}
+
+.text-main{
+    color: $main;
+}
+
+.text-lightBlack{
+    color: $light-text;
+}
+.text-darkBlack{
+    color: $dark-text;
+}
+
+.grey-text{
+    color:$grey-text;
+}
+
+.text-white{
+    color: $white;
+}
+
+.text-black{
+    color: #000000;
+}
+
+.text-nav{
+    color:$light-text;
+    &:hover{
+        color:$main;
+        transition:all 0.3s ease-in-out;
+    }
+}
+// 文字大小
+.fs-12{
+    font-size: 12px;
+}
+
+.fs-14{
+    font-size: 14px;
+}
+
+.fs-16{
+    font-size: 16px;
+}
+
+.fs-18{
+    font-size: 18px;
+}
+
+.fs-20{
+    font-size: 20px;
+}
+
+.fs-22{
+    font-size: 22px;
+}
+
+
+.fs-24{
+    font-size: 24px;
+}
+
+
+.fs-32{
+    font-size: 32px;
+}
+
+.fs-48{
+    font-size: 48px;
+}
+
+.mb-18{
+    margin-bottom: 18px;
+}
+
+.mb-20{
+    margin-bottom: 20px;
+}
+
+.mb-30{
+    margin-bottom: 30px;
+}
+
+.mb-32{
+    margin-bottom: 32px;
+}
+
+.mb-40{
+    margin-bottom: 40px;
+}
+
+.mb-60{
+    margin-bottom: 60px;
+}
+
+.mb-64{
+    margin-bottom: 64px;
+}
+
+.mb-80{
+    margin-bottom: 80px;
+}
+
+
+.py-60{
+    padding: 60px 0;
+}
+
+
+.pb-32{
+    padding-bottom: 32px;
+}
+
+
+.w-1920{
+    max-width: 1920px;
+    margin: 0 auto;
+}

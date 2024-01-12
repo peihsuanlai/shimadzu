@@ -1,0 +1,896 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap");
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Noto Sans TC", sans-serif;
+  color: #333333;
+}
+body ::-moz-selection {
+  background-color: rgba(110, 110, 110, 0.5);
+}
+body ::selection {
+  background-color: rgba(110, 110, 110, 0.5);
+}
+
+img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+a,
+span, i {
+  display: inline-block;
+}
+
+a,
+a:hover {
+  text-decoration: none;
+}
+
+.bg-main {
+  background-color: #DD0000;
+}
+
+.text-main {
+  color: #DD0000;
+}
+
+.text-lightBlack {
+  color: #626262;
+}
+
+.text-darkBlack {
+  color: #333333;
+}
+
+.grey-text {
+  color: #A4A4A4;
+}
+
+.text-white {
+  color: #ffffff;
+}
+
+.text-black {
+  color: #000000;
+}
+
+.text-nav {
+  color: #626262;
+}
+.text-nav:hover {
+  color: #DD0000;
+  transition: all 0.3s ease-in-out;
+}
+
+.fs-12 {
+  font-size: 12px;
+}
+
+.fs-14 {
+  font-size: 14px;
+}
+
+.fs-16 {
+  font-size: 16px;
+}
+
+.fs-18 {
+  font-size: 18px;
+}
+
+.fs-20 {
+  font-size: 20px;
+}
+
+.fs-22 {
+  font-size: 22px;
+}
+
+.fs-24 {
+  font-size: 24px;
+}
+
+.fs-32 {
+  font-size: 32px;
+}
+
+.fs-48 {
+  font-size: 48px;
+}
+
+.mb-18 {
+  margin-bottom: 18px;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+.mb-30 {
+  margin-bottom: 30px;
+}
+
+.mb-32 {
+  margin-bottom: 32px;
+}
+
+.mb-40 {
+  margin-bottom: 40px;
+}
+
+.mb-60 {
+  margin-bottom: 60px;
+}
+
+.mb-64 {
+  margin-bottom: 64px;
+}
+
+.mb-80 {
+  margin-bottom: 80px;
+}
+
+.py-60 {
+  padding: 60px 0;
+}
+
+.pb-32 {
+  padding-bottom: 32px;
+}
+
+.w-1920 {
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+@media (min-width: 992px) {
+  .nav-container {
+    background-color: #ffffff;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2;
+  }
+}
+.nav-container nav {
+  background-color: #ffffff;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0%;
+  z-index: 2;
+}
+@media (min-width: 992px) {
+  .nav-container nav {
+    position: static;
+  }
+}
+.nav-container h2 a {
+  color: #af282f;
+}
+.nav-container h2 a span {
+  color: #000000;
+}
+.nav-container .brand-name h1 {
+  font-size: 1.3rem;
+}
+@media (min-width: 576px) {
+  .nav-container .brand-name h1 {
+    font-size: 2rem;
+  }
+}
+.nav-container .brand-name .logo {
+  text-indent: 101%;
+  overflow: hidden;
+  white-space: nowrap;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 120%;
+}
+.nav-container .navbar-toggler {
+  font-size: 1.5rem;
+  padding: 0;
+}
+.nav-container .mb-brand {
+  background-color: #ffffff;
+  position: fixed;
+  width: 100%;
+  top: 12px;
+  left: 0;
+  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+  z-index: 1;
+}
+.nav-container .navbar-collapse.show {
+  height: calc(100vh - 48px);
+  background-color: #ffffff;
+}
+.nav-container .mobile-menu {
+  flex-grow: 0;
+}
+.nav-container .mobile-menu a {
+  transition: all ease-in-out 0.3s;
+}
+.nav-container .mobile-menu a:hover {
+  color: #DD0000;
+  transition: all ease-in-out 0.3s;
+}
+
+.banner-container {
+  padding-top: 126px;
+}
+@media (min-width: 576px) {
+  .banner-container {
+    padding-top: 100px;
+  }
+}
+.banner-container .owl-dots {
+  position: relative;
+  z-index: 1;
+  top: -38px;
+}
+.banner-container .owl-dots span {
+  width: 8px !important;
+  height: 8px !important;
+  margin: 5px !important;
+}
+.banner-container .owl-dots .owl-dot.active span {
+  background-color: #DD0000 !important;
+}
+
+.service-container {
+  margin-top: 70px;
+  min-height: 50vh;
+}
+.service-container .row {
+  row-gap: 36px;
+}
+.service-container .item {
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  background-color: rgb(255, 255, 255);
+  position: relative;
+  padding: 40px 0;
+}
+.service-container .item::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: 8px solid;
+  top: -8px;
+  left: -8px;
+  border-color: transparent transparent transparent #000000;
+  transform: rotate(225deg);
+}
+.service-container .item::after {
+  content: "";
+  position: absolute;
+  border-radius: 0 0 5px 5px;
+  width: 100%;
+  height: 4px;
+  background-color: #000000;
+  bottom: 0;
+  left: 0;
+}
+.service-container .item h3 {
+  letter-spacing: 2px;
+}
+.service-container .item:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  transform: translateY(-8px);
+  transition: all 0.3s ease-in-out;
+}
+
+.dialog-btn {
+  width: 65px;
+  height: 65px;
+  line-height: 65px;
+  text-align: center;
+  border-radius: 50%;
+  border: 1px solid #DD0000;
+  position: fixed;
+  z-index: 4;
+  right: 16px;
+  bottom: 100px;
+  background-color: #ffffff;
+}
+.dialog-btn .headset-icon {
+  color: #DD0000;
+  font-size: 32px;
+}
+.dialog-btn.active {
+  background-color: #DD0000;
+  border: none;
+}
+.dialog-btn.active .headset-icon {
+  color: #ffffff;
+}
+
+#dialogModal {
+  top: 28%;
+}
+@media (min-width: 576px) {
+  #dialogModal {
+    left: -5%;
+  }
+}
+@media (min-width: 768px) {
+  #dialogModal {
+    left: -40%;
+    width: 200%;
+  }
+}
+@media (min-width: 992px) {
+  #dialogModal {
+    left: -32%;
+  }
+}
+@media (min-width: 1200px) {
+  #dialogModal {
+    left: -25%;
+  }
+}
+#dialogModal .modal-header {
+  align-items: center;
+}
+#dialogModal .dialog-icon-container {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 50%;
+  background-color: #DD0000;
+}
+#dialogModal .dialog-icon-container .headset-icon {
+  color: #ffffff;
+  font-size: 22px;
+}
+#dialogModal .modal-body {
+  background-color: #F5F5F5;
+  padding: 1rem 2.5rem;
+}
+#dialogModal ul li:not(:last-child) {
+  margin-bottom: 10px;
+}
+#dialogModal ul li {
+  padding: 6px 16px;
+  background-color: #ffffff;
+  border: 1px solid #CCCCCC;
+  border-radius: 10px;
+}
+#dialogModal ul li a:hover {
+  color: #000000;
+}
+#dialogModal .modal-footer {
+  justify-content: space-between;
+  padding: 0.25rem 0.75rem;
+}
+#dialogModal .modal-footer button {
+  border: none;
+  background-color: transparent;
+}
+#dialogModal .modal-footer .attatch-btn, #dialogModal .modal-footer .send-btn {
+  font-size: 24px;
+}
+#dialogModal .modal-footer .send-btn {
+  transform: rotate(45deg);
+}
+#dialogModal .modal-footer textarea {
+  width: 70%;
+  padding: 6px 10px;
+  border-radius: 50px;
+  outline: 1px solid #cccccc;
+  border: none;
+}
+#dialogModal .modal-footer textarea:focus-visible {
+  outline-color: #DD0000;
+}
+
+.modal-backdrop {
+  background-color: #ffffff;
+  z-index: 3;
+}
+
+.modal-backdrop.show {
+  opacity: 80%;
+}
+
+footer {
+  background-color: #F7F7F7;
+}
+footer a:hover {
+  color: #A4A4A4;
+}
+footer .photonic {
+  opacity: 0.3;
+}
+
+.breadcrumb-container {
+  padding-top: 126px;
+}
+@media (min-width: 576px) {
+  .breadcrumb-container {
+    padding-top: 100px;
+  }
+}
+
+.breadcrumb-list {
+  background-color: #f5f5f5;
+  border: 1px solid #d9d9d9;
+  border-left: none;
+}
+.breadcrumb-list li {
+  width: 40%;
+  /* flex-shrink:0; */
+  position: relative;
+  background-color: #d9d9d9;
+}
+@media (min-width: 768px) {
+  .breadcrumb-list li {
+    width: 30%;
+  }
+}
+@media (min-width: 992px) {
+  .breadcrumb-list li {
+    width: 20%;
+  }
+}
+.breadcrumb-list li a {
+  display: inline-block;
+  padding: 5px 0;
+  color: #b8b8b8;
+  width: 100%;
+  text-align: center;
+}
+.breadcrumb-list li::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 99.5%;
+  height: 100%;
+  background-color: #f5f5f5;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.breadcrumb-list li.active a {
+  color: #464646;
+}
+.breadcrumb-list li:first-child {
+  -webkit-clip-path: polygon(0% 0%, 95% 0%, 100% 50%, 95% 100%, 0% 100%);
+          clip-path: polygon(0% 0%, 95% 0%, 100% 50%, 95% 100%, 0% 100%);
+}
+.breadcrumb-list li:first-child::before {
+  -webkit-clip-path: polygon(0% 0%, 95% 0%, 100% 50%, 95% 100%, 0% 100%);
+          clip-path: polygon(0% 0%, 95% 0%, 100% 50%, 95% 100%, 0% 100%);
+}
+.breadcrumb-list li:not(:first-child) {
+  margin-left: -2%;
+}
+.breadcrumb-list li:nth-child(2) {
+  -webkit-clip-path: polygon(95% 0, 100% 50%, 95% 100%, 0% 100%, 5% 50%, 0% 0%);
+          clip-path: polygon(95% 0, 100% 50%, 95% 100%, 0% 100%, 5% 50%, 0% 0%);
+}
+.breadcrumb-list li:nth-child(2)::before {
+  -webkit-clip-path: polygon(95% 0, 100% 50%, 95% 100%, 0% 100%, 5% 50%, 0% 0%);
+          clip-path: polygon(95% 0, 100% 50%, 95% 100%, 0% 100%, 5% 50%, 0% 0%);
+}
+
+.tab-container a {
+  padding: 0.5rem 1.5rem;
+  color: #b8b8b8;
+  border: 1px solid #d9d9d9;
+  background-color: #f5f5f5;
+  position: relative;
+}
+.tab-container a.active {
+  background-color: transparent;
+  color: #333333;
+}
+.tab-container a.active::before {
+  content: "";
+  position: absolute;
+  background-color: #DD0000;
+  width: 100%;
+  height: 4px;
+  left: 0;
+  bottom: 0;
+}
+
+.table-title {
+  background-color: #626262;
+  color: #ffffff;
+  padding: 8px 4px;
+}
+
+.accordion-container .item {
+  display: block;
+  margin-bottom: 1em;
+  border: 1px solid #d9d9d9;
+}
+@media (min-width: 576px) {
+  .accordion-container .item {
+    border: none;
+    width: 100%;
+  }
+}
+.accordion-container .item [data-title=編號],
+.accordion-container .item [data-title=圖片],
+.accordion-container .item [data-title=主設備序號],
+.accordion-container .item [data-title=機型],
+.accordion-container .item [data-title=合約日期] {
+  display: flex;
+  background-color: #626262;
+  border-bottom: 1px solid #d9d9d9;
+}
+.accordion-container .item [data-title=編號]::before,
+.accordion-container .item [data-title=圖片]::before,
+.accordion-container .item [data-title=主設備序號]::before,
+.accordion-container .item [data-title=機型]::before,
+.accordion-container .item [data-title=合約日期]::before {
+  content: attr(data-title);
+  display: inline-block;
+  height: 100%;
+  background-color: #626262;
+  min-width: 30%;
+  color: #ffffff;
+  padding: 8px 4px;
+}
+@media (min-width: 576px) {
+  .accordion-container .item [data-title=編號]::before,
+  .accordion-container .item [data-title=圖片]::before,
+  .accordion-container .item [data-title=主設備序號]::before,
+  .accordion-container .item [data-title=機型]::before,
+  .accordion-container .item [data-title=合約日期]::before {
+    display: none;
+  }
+}
+.accordion-container .item [data-title=編號] > span, .accordion-container .item [data-title=編號] > div,
+.accordion-container .item [data-title=圖片] > span,
+.accordion-container .item [data-title=圖片] > div,
+.accordion-container .item [data-title=主設備序號] > span,
+.accordion-container .item [data-title=主設備序號] > div,
+.accordion-container .item [data-title=機型] > span,
+.accordion-container .item [data-title=機型] > div,
+.accordion-container .item [data-title=合約日期] > span,
+.accordion-container .item [data-title=合約日期] > div {
+  padding: 8px 4px;
+  background-color: #ffffff;
+  word-break: break-all;
+  min-width: 70%;
+}
+@media (min-width: 576px) {
+  .accordion-container .item [data-title=編號] > span, .accordion-container .item [data-title=編號] > div,
+  .accordion-container .item [data-title=圖片] > span,
+  .accordion-container .item [data-title=圖片] > div,
+  .accordion-container .item [data-title=主設備序號] > span,
+  .accordion-container .item [data-title=主設備序號] > div,
+  .accordion-container .item [data-title=機型] > span,
+  .accordion-container .item [data-title=機型] > div,
+  .accordion-container .item [data-title=合約日期] > span,
+  .accordion-container .item [data-title=合約日期] > div {
+    min-width: auto;
+  }
+}
+@media (min-width: 576px) {
+  .accordion-container .item [data-title=編號],
+  .accordion-container .item [data-title=圖片],
+  .accordion-container .item [data-title=主設備序號],
+  .accordion-container .item [data-title=機型],
+  .accordion-container .item [data-title=合約日期] {
+    display: table-cell;
+    background-color: transparent;
+    border: none;
+  }
+}
+@media (min-width: 576px) {
+  .accordion-container .item [data-title=編號] {
+    width: 8%;
+  }
+}
+@media (min-width: 576px) {
+  .accordion-container .item [data-title=圖片] {
+    width: 12%;
+  }
+}
+@media (min-width: 576px) {
+  .accordion-container .item [data-title=主設備序號] {
+    width: 17%;
+  }
+}
+@media (min-width: 576px) {
+  .accordion-container .item [data-title=機型] {
+    width: 20%;
+  }
+}
+@media (min-width: 576px) {
+  .accordion-container .item [data-title=合約日期] {
+    width: 38%;
+  }
+}
+@media (min-width: 576px) {
+  .accordion-container .item-btn {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    border: 1px solid #d9d9d9;
+  }
+}
+.accordion-container .expire-hint {
+  color: #ffffff;
+  background-color: #DD0000;
+  font-size: 10px;
+  border-radius: 60px;
+  padding: 2px 6px;
+}
+@media (min-width: 576px) {
+  .accordion-container .expire-hint {
+    font-size: 12px;
+  }
+}
+.accordion-container .accordion-switch {
+  width: 100%;
+  border: none;
+  background-color: transparent;
+}
+.accordion-container .accordion-switch:not(.collapsed) i {
+  transform: scaleY(-1);
+}
+@media (min-width: 576px) {
+  .accordion-container .accordion-switch {
+    width: 5%;
+    text-align: right;
+  }
+}
+.accordion-container .ask-btn {
+  border: 1px solid #333333;
+  background-color: transparent;
+  border-radius: 60px;
+  font-size: 10px;
+  padding: 2px 6px;
+}
+@media (min-width: 576px) {
+  .accordion-container .ask-btn {
+    font-size: 12px;
+  }
+}
+
+.inquiry-main .title {
+  border-bottom: 1px solid #DD0000;
+}
+.inquiry-main h3 {
+  font-size: 20px;
+}
+@media (min-width: 768px) {
+  .inquiry-main h3 {
+    font-size: 24px;
+  }
+}
+.inquiry-main .select-btn {
+  color: #ffffff;
+  background-color: #DD0000;
+  border-radius: 40px;
+  font-size: 14px;
+  padding: 6px 12px;
+}
+.inquiry-main .select-btn:hover {
+  outline: 1px solid #DD0000;
+  background-color: transparent;
+  color: #DD0000;
+}
+@media (min-width: 768px) {
+  .inquiry-main .select-btn {
+    font-size: 16px;
+  }
+}
+.inquiry-main table {
+  margin: 0;
+  padding: 0;
+  table-layout: fixed;
+}
+.inquiry-main table thead {
+  display: none;
+  background-color: #626262;
+  color: #ffffff;
+}
+.inquiry-main table thead th {
+  padding: 8px 4px;
+  font-weight: 500;
+}
+.inquiry-main table thead th:first-child {
+  padding-left: 8px;
+}
+@media (min-width: 576px) {
+  .inquiry-main table thead {
+    display: table-header-group;
+  }
+}
+.inquiry-main table tr {
+  display: block;
+  margin-bottom: 1em;
+  border: 1px solid #d9d9d9;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+@media (min-width: 576px) {
+  .inquiry-main table tr {
+    display: table-row;
+    box-shadow: none;
+    border: none;
+  }
+}
+@media (min-width: 576px) {
+  .inquiry-main table tbody tr {
+    border: 1px solid #d9d9d9;
+  }
+}
+.inquiry-main table tbody td {
+  padding: 8px 4px;
+  display: block;
+}
+.inquiry-main table tbody td::before {
+  content: attr(data-title);
+  display: inline-block;
+  width: auto;
+  min-width: 30%;
+  padding-left: 4px;
+}
+@media (min-width: 576px) {
+  .inquiry-main table tbody td::before {
+    display: none;
+  }
+}
+.inquiry-main table tbody td:nth-child(odd) {
+  background-color: #f5f5f5;
+}
+@media (min-width: 576px) {
+  .inquiry-main table tbody td:nth-child(odd) {
+    background-color: transparent;
+  }
+}
+@media (min-width: 576px) {
+  .inquiry-main table tbody td {
+    display: table-cell;
+  }
+}
+.inquiry-main table tbody .delete-btn {
+  font-size: 20px;
+  background-color: transparent;
+  border: none;
+}
+.inquiry-main table tbody .delete-btn:hover {
+  color: #DD0000;
+}
+@media (min-width: 576px) {
+  .inquiry-main table input {
+    width: 75%;
+  }
+}
+.inquiry-main table input:focus-visible {
+  outline-color: #DD0000;
+}
+.inquiry-main .message .message-title {
+  background-color: #626262;
+  color: #ffffff;
+  font-weight: 500;
+  padding: 8px 8px;
+}
+@media (min-width: 576px) {
+  .inquiry-main .message .message-title {
+    padding: 8px 16px;
+  }
+}
+.inquiry-main .message .item {
+  border: 1px solid #d9d9d9;
+}
+.inquiry-main .message .item div {
+  padding: 8px 8px;
+}
+@media (min-width: 576px) {
+  .inquiry-main .message .item div {
+    padding: 8px 16px;
+  }
+}
+.inquiry-main .message .item > div:first-child {
+  background-color: #f5f5f5;
+}
+@media (min-width: 576px) {
+  .inquiry-main .message .item > div:first-child {
+    width: 20%;
+  }
+}
+.inquiry-main .message .item textarea {
+  border: 1px solid #d9d9d9;
+}
+.inquiry-main .message .item textarea:focus-visible {
+  outline-color: #DD0000;
+}
+.inquiry-main .message .item .attachment {
+  width: 100%;
+  font-size: 13px;
+}
+@media (min-width: 375px) {
+  .inquiry-main .message .item .attachment {
+    font-size: 14px;
+  }
+}
+@media (min-width: 576px) {
+  .inquiry-main .message .item .attachment {
+    font-size: 16px;
+    width: 80%;
+  }
+}
+@media (min-width: 768px) {
+  .inquiry-main .message .item .attachment {
+    width: 70%;
+  }
+}
+.inquiry-main .message .item .attachment label {
+  cursor: pointer;
+}
+.inquiry-main .message .item .attachment label .select {
+  padding: 8px 8px;
+  color: #ffffff;
+  background-color: #626262;
+}
+@media (min-width: 576px) {
+  .inquiry-main .message .item .attachment label .select {
+    padding: 8px 16px;
+  }
+}
+.inquiry-main .message .item .attachment .file {
+  border: 1px solid #d9d9d9;
+  border-right: none;
+  width: 70%;
+  padding: 6px 8px;
+}
+@media (min-width: 576px) {
+  .inquiry-main .message .item .attachment .file {
+    width: 60%;
+    padding: 6px 16px;
+  }
+}
+@media (min-width: 768px) {
+  .inquiry-main .message .item .attachment .file {
+    width: 40%;
+  }
+}
+.inquiry-main .message .item .attachment button {
+  border: 1px solid #d9d9d9;
+  border-left: none;
+  background-color: transparent;
+}
+.inquiry-main .send-btn {
+  color: #ffffff;
+  background-color: #000000;
+  border: none;
+  width: 100%;
+  padding: 8px 0;
+  transition: all 0.3s ease-in-out;
+}
+.inquiry-main .send-btn:hover {
+  outline: 1px solid #000000;
+  background-color: transparent;
+  color: #000000;
+  transition: all 0.3s ease-in-out;
+}
+
+.lightbox {
+  display: flex;
+  flex-direction: column;
+}
+
+.lb-dataContainer {
+  order: 1;
+}
+
+.lb-outerContainer {
+  order: 2;
+}/*# sourceMappingURL=all.css.map */
