@@ -93,7 +93,7 @@
 }
 
 .service-container{
-    margin-top:70px;
+    @include padding(60px,15px);
     min-height:50vh;
     .row{
         row-gap: 36px;
@@ -103,6 +103,7 @@
        border-radius:5px;
        background-color:rgba(255,255,255,1);
        position:relative;
+       transition:all 0.3s ease-in-out;
        @include padding(40px,0);
         &::before{
             content:"";
@@ -165,7 +166,8 @@
 
 
 #dialogModal{
-top:28%;
+// top:28%;
+top:11%;
     @include small{
         left:-5%;
     }

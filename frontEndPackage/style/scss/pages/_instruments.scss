@@ -1,213 +1,353 @@
 .breadcrumb-container {
-    padding-top: 126px;
-    @include small {
-        padding-top: 100px;
-    }
+  padding-top: 126px;
+  @include small {
+    padding-top: 100px;
+  }
 }
 
 .breadcrumb-list {
-    background-color: #f5f5f5;
-    border: 1px solid #d9d9d9;
-    border-left: none;
-    li {
-        width: 40%;
-        /* flex-shrink:0; */
-        position: relative;
-        background-color: #d9d9d9;
-        @include medium {
-            width: 30%;
-        }
-        @include large {
-            width: 20%;
-        }
-        a {
-            display: inline-block;
-            padding: 5px 0;
-            color: #b8b8b8;
-            width: 100%;
-            text-align: center;
-        }
-        &::before {
-            content: "";
-            position: absolute;
-            z-index: -1;
-            width: 99.5%;
-            height: 100%;
-            background-color: #f5f5f5;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-        &.active {
-            a {
-                color: #464646;
-            }
-        }
+  background-color: #f5f5f5;
+  border: 1px solid #d9d9d9;
+  border-left: none;
+  li {
+    width: 40%;
+    /* flex-shrink:0; */
+    position: relative;
+    background-color: #d9d9d9;
+    @include medium {
+      width: 30%;
     }
-    li:first-child {
-        clip-path: polygon(0% 0%, 95% 0%, 100% 50%, 95% 100%, 0% 100%);
-        &::before {
-            clip-path: polygon(0% 0%, 95% 0%, 100% 50%, 95% 100%, 0% 100%);
-        }
+    @include large {
+      width: 20%;
     }
-    li:not(:first-child) {
-        margin-left: -2%;
+    a {
+      display: inline-block;
+      padding: 5px 0;
+      color: #b8b8b8;
+      width: 100%;
+      text-align: center;
     }
-    li:nth-child(2) {
-        clip-path: polygon(95% 0, 100% 50%, 95% 100%, 0% 100%, 5% 50%, 0% 0%);
-        &::before {
-            clip-path: polygon(95% 0, 100% 50%, 95% 100%, 0% 100%, 5% 50%, 0% 0%);
-        }
+    &::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      width: 99.5%;
+      height: 100%;
+      background-color: #f5f5f5;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
+    &.active {
+      a {
+        color: #464646;
+      }
+    }
+  }
+  li:first-child {
+    clip-path: polygon(0% 0%, 95% 0%, 100% 50%, 95% 100%, 0% 100%);
+    &::before {
+      clip-path: polygon(0% 0%, 95% 0%, 100% 50%, 95% 100%, 0% 100%);
+    }
+  }
+  li:not(:first-child) {
+    margin-left: -2%;
+  }
+  li:nth-child(2) {
+    clip-path: polygon(95% 0, 100% 50%, 95% 100%, 0% 100%, 5% 50%, 0% 0%);
+    &::before {
+      clip-path: polygon(95% 0, 100% 50%, 95% 100%, 0% 100%, 5% 50%, 0% 0%);
+    }
+  }
+}
+
+.instrument-container,.all-container {
+  position: relative;
+  min-height:calc(100vh - 135px);
 }
 
 .tab-container {
-    a {
-        @include padding(0.5rem, 1.5rem);
-        color: #b8b8b8;
-        border: 1px solid #d9d9d9;
-        background-color: #f5f5f5;
-        position: relative;
-        &.active {
-            background-color: transparent;
-            color: $dark-text;
-            &::before {
-                content: "";
-                position: absolute;
-                background-color: $main;
-                width: 100%;
-                height: 4px;
-                left: 0;
-                bottom: 0;
-            }
-        }
+  li{
+    width:50%;
+    @include small{
+      width:auto
+    }
+  }
+  a {
+    @include padding(0.5rem, 1.5rem);
+    color: #b8b8b8;
+    border: 1px solid #d9d9d9;
+    border-bottom:none;
+    background-color: #f5f5f5;
+    position: relative;
+    width:100%;
+    text-align:center;
+    @include small{
+      width:auto;
+      text-align:left;
+    }
+    &.active {
+      background-color: transparent;
+      color: $dark-text;
+      &::before {
+        content: "";
+        position: absolute;
+        background-color: $main;
+        width: 100%;
+        height: 4px;
+        left: 0;
+        bottom: 0;
+      }
+    }
+  }
+}
+
+.right-btns {
+  position:fixed;
+  z-index: 2;
+  bottom:0;
+  right:0;
+  background-color:$white;
+  width:100%;
+  justify-content: center;
+  box-shadow: 0px -2px 2px 0px rgba(0, 0, 0, 0.25);
+  @include padding(8px,0);
+  @include small{
+    position: absolute;
+    z-index: auto;
+    right: 15px;
+    top: -4px;
+    bottom:auto;
+    background-color:transparent;
+    width:auto;
+    justify-content: flex-start;
+    box-shadow:none;
+  }
+  a,
+  button {
+    border: none;
+    color: $dark-text;
+    background-color: transparent;
+    outline: 1px solid $light-text;
+    @include padding(4px, 30px);
+    border-radius: 30px;
+  }
+  span {
+    @include padding(0px, 7px);
+    background-color: $white;
+    color: $main;
+    border-radius: 50%;
+    margin-left: -2px;
+  }
+  .btnActive {
+      color: $white;
+      background-color: $main;
+      outline: none; 
     }
 }
 
 .table-title {
-    background-color: $light-text;
-    color: $white;
-    @include padding(8px, 4px);
+  background-color: $light-text;
+  color: $white;
+  @include padding(8px, 4px);
+  span:first-child {
+    padding-left: 8px;
+  }
 }
 
 .accordion-container {
-    .item {
-        display: block;
-        margin-bottom: 1em;
-        border: 1px solid #d9d9d9;
-        //box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  .item {
+    display: block;
+   
+    @include small {
+      border: 1px solid #d9d9d9;
+      border-top: none;
+      width: 100%;
+    }
+    [data-title="編號"],
+    [data-title="圖片"],
+    [data-title="主設備序號"],
+    [data-title="機型"],
+    [data-title="合約日期"] {
+      display: flex;
+      background-color: $light-text;
+      //border-bottom: 1px solid #d9d9d9;
+      &::before {
+        content: attr(data-title);
+        display: inline-block;
+        height: 100%;
+        background-color: $light-text;
+        min-width: 30%;
+        color: $white;
+        @include padding(8px, 4px);
         @include small {
-            //box-shadow: none;
-            border: none;
-            width:100%;
+          display: none;
         }
-
-        [data-title="編號"],
-        [data-title="圖片"],
-        [data-title="主設備序號"],
-        [data-title="機型"],
-        [data-title="合約日期"] {
-            display: flex;
-            background-color: $light-text;
-            border-bottom: 1px solid #d9d9d9;
-            &::before {
-                content: attr(data-title);
-                display: inline-block;
-
-                height: 100%;
-                background-color: $light-text;
-                min-width: 30%;
-                color: $white;
-                @include padding(8px, 4px);
-                @include small {
-                    display: none;
-                }
-            }
-            & > span, & > div {
-                @include padding(8px, 4px);
-                background-color: $white;
-                word-break: break-all;
-                min-width: 70%;
-                @include small {
-                    min-width: auto;
-                }
-            }
-
-            @include small {
-                display: table-cell;
-                background-color: transparent;
-                border:none;
-            }
+      }
+      & > span,
+      & > div {
+        @include padding(8px, 4px);
+        background-color: $white;
+        word-break: break-all;
+        min-width: 70%;
+        @include small {
+          min-width: auto;
         }
-        [data-title="編號"] {
-            @include small {
-                width: 8%;
-            }
-        }
-        [data-title="圖片"] {
-            @include small {
-                width: 12%;
-            }
-        }
-        [data-title="主設備序號"] {
-            @include small {
-                width: 17%;
-            }
-        }
-        [data-title="機型"] {
-            @include small {
-                width: 20%;
-            }
-        }
-        [data-title="合約日期"] {
-            @include small {
-            // display:flex;
-                width:38%;
-            }
-        }
+      }
+      @include small {
+        display: table-cell;
+        background-color: transparent;
+        border: none;
+      }
     }
-   .item-btn{
-
-    @include small{
-        display:flex;
-        align-items:center;
-        font-size:14px;
-        border:1px solid #d9d9d9;
+    [data-title="編號"] {
+      @include small {
+        width: 8%;
+        padding-left: 8px;
+      }
     }
-   }
-   .expire-hint{
-    color:$white;
-    background-color:$main;
-    font-size:10px;
-    @include small{
-        font-size:12px;
+    [data-title="圖片"] {
+      @include small {
+        width: 12%;
+      }
     }
-    border-radius:60px;
-    @include padding (2px,6px);
-
-   }
-   .accordion-switch{
-   width:100%;
-    border:none;
-    background-color:transparent;
+    [data-title="主設備序號"] {
+      @include small {
+        width: 17%;
+      }
+    }
+    [data-title="機型"] {
+      @include small {
+        width: 20%;
+      }
+    }
+    [data-title="合約日期"] {
+      @include small {
+        // display:flex;
+        width: 38%;
+      }
+    }
+  }
+  .item-btn {
+    @include small {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      // border: 1px solid #d9d9d9;
+      // border-bottom: none;
+    }
+    @include xlarge {
+      font-size: 16px;
+    }
+  }
+  .expire-hint {
+    color: $white;
+    background-color: $main;
+    font-size: 10px;
+    @include small {
+      font-size: 12px;
+    }
+    border-radius: 60px;
+    @include padding(2px, 6px);
+  }
+  .accordion-switch {
+    width: 100%;
+    border: none;
+    background-color: transparent;
     &:not(.collapsed) i {
-        transform: scaleY(-1);
+      transform: scaleY(-1);
     }
-    @include small{
-        width:5%;
-        text-align:right;
+    @include small {
+      padding-right: 8px;
+      width: 5%;
+      text-align: right;
     }
-   }
-   .ask-btn{
-    border:1px solid $dark-text;
-    background-color:transparent;
-    border-radius:60px;
-    font-size:10px;
-    @include small{
-        font-size:12px;
+  }
+
+  .ask-btn {
+    border: 1px solid $dark-text;
+    background-color: transparent;
+    border-radius: 60px;
+    font-size: 10px;
+    @include small {
+      font-size: 12px;
     }
-    @include padding (2px,6px);
-   }
+    @include padding(2px, 6px);
+  }
+  .mb-ask{
+    position:relative;
+    .ask-btn{
+      position:absolute;
+      top:15px;
+      right:15px;;
+    }
+  }
+  .item-content {
+    row-gap: 12px;
+    @include padding(8px, 0px);
+    @include small {
+      // border: 1px solid #d9d9d9;
+      // border-top: none;
+      padding-left: 8px;
+      padding-right: 5%;
+    }
+    & > div {
+      width: 50%;
+      @include small {
+        @include padding(0, 6px);
+      }
+      @include medium {
+        width: 25%;
+      }
+      &:nth-child(odd) {
+        padding-right: 12px;
+        @include small {
+          padding-right: 6px;
+        }
+      }
+    }
+    a {
+      color: $light-text;
+      border-radius: 5px;
+      background-color: rgba(255, 255, 255, 1);
+      border: 1px solid #d9d9d9;
+      height: 100%;
+      position: relative;
+      @include padding(20px, 0px);
+      &::before {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 0;
+        border: 8px solid;
+        top: -8px;
+        left: -8px;
+        border-color: transparent transparent transparent #000000;
+        transform: rotate(225deg);
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        border-radius: 0 0 5px 5px;
+        width: 100%;
+        height: 4px;
+        background-color: #000000;
+        bottom: 0;
+        left: 0;
+      }
+      &:hover{
+        color:$main;
+        transition:all 0.3s ease-in-out;
+        h3{
+          font-weight:bold;
+        }
+    }
+    }
+    h3 {
+      font-size: 14px;
+      @include large {
+        font-size: 16px;
+      }
+    }
+  }
 }
-
-
