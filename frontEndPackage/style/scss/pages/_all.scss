@@ -1,192 +1,244 @@
 .right-btn {
-  position: fixed;
-  z-index: 2;
-  bottom: 0;
-  right: 0;
-  background-color: $white;
-  width: 100%;
-  text-align: center;
-  box-shadow: 0px -2px 2px 0px rgba(0, 0, 0, 0.25);
-  @include padding(8px, 0);
-  @include small {
-    position: absolute;
-    z-index: auto;
-    right: 15px;
-    top: -4px;
-    bottom: auto;
-    background-color: transparent;
-    width: auto;
-    box-shadow: none;
-  }
-  button {
-    border: none;
-    color: $dark-text;
-    background-color: transparent;
-    outline: 1px solid $light-text;
-    @include padding(4px, 30px);
-    border-radius: 30px;
-    span {
-      @include padding(0px, 7px);
-      background-color: $white;
-      color: $main;
-      border-radius: 50%;
-      margin-left: -2px;
+    position: fixed;
+    z-index: 2;
+    bottom: 0;
+    right: 0;
+    background-color: $white;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0px -2px 2px 0px rgba(0, 0, 0, 0.25);
+    @include padding(8px, 0);
+    @include small {
+        position: absolute;
+        z-index: auto;
+        right: 15px;
+        top: -4px;
+        bottom: auto;
+        background-color: transparent;
+        width: auto;
+        box-shadow: none;
     }
-  }
-  .btnActive {
-    color: $white;
-    background-color: $main;
-    outline: none;
-  }
+    button {
+        border: none;
+        color: $dark-text;
+        background-color: transparent;
+        outline: 1px solid $light-text;
+        @include padding(4px, 30px);
+        border-radius: 30px;
+        span {
+            @include padding(0px, 7px);
+            background-color: $white;
+            color: $main;
+            border-radius: 50%;
+            margin-left: -2px;
+        }
+    }
+    .btnActive {
+        color: $white;
+        background-color: $main;
+        outline: none;
+    }
 }
 
-a.common-material{
+a.common-material {
     border: 1px solid #d9d9d9;
-    color:$light-text;
-    background-color:#f5f5f5;;
-    border-radius:5px;
-    text-align:right;
-    @include padding(4px,8px);
-    @include small{
-        width:95%;
-        text-align:center;
-        font-size:20px;
+    color: $light-text;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    text-align: right;
+    @include padding(4px, 8px);
+    @include small {
+        width: 95%;
+        text-align: center;
+        font-size: 20px;
     }
 }
 
 .item-container {
-   
-  .item {
-    border: 1px solid #d9d9d9;
-    border-top: none;
-    @include small {
-      display: flex;
-      align-items: center;
-      font-size: 14px;
-      @include padding(6px,8px);
+    .item {
+        box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.20);
+        @include padding(10px, 10px);
+
+        &:not(:last-child) {
+            margin-bottom: 10px;
+            @include small {
+                margin-bottom: 0px;
+            }
+        }
+        @include small {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+             border: 1px solid #d9d9d9;
+             border-top:none;
+            @include padding(6px, 8px);
+            box-shadow:none;
+        }
+        @include xlarge {
+            font-size: 16px;
+        }
     }
-    @include xlarge {
-      font-size: 16px;
+    [data-title="編號"],
+    [data-title="圖片"],
+    [data-title="機型"] {
+        display: flex;
+        background-color: $light-text;
+        border: 1px solid #d9d9d9;
+        @include small {
+            display: table-cell;
+            background-color: transparent;
+            border: none;
+        }
+        &::before {
+            content: attr(data-title);
+            display: inline-block;
+            height: 100%;
+            background-color: $light-text;
+            min-width: 30%;
+            color: $white;
+            @include padding(8px, 4px);
+            @include small {
+                display: none;
+            }
+        }
+        & > span,
+        & > div {
+            @include padding(8px, 4px);
+            background-color: $white;
+            word-break: break-all;
+            min-width: 70%;
+            @include small {
+                min-width: auto;
+            }
+        }
     }
-  }
-  [data-title="編號"],
-  [data-title="圖片"],
-  [data-title="機型"] {
-    display: flex;
-    background-color: $light-text;
-    @include small {
-      display: table-cell;
-      background-color: transparent;
-      border: none;
+    [data-title="編號"] {
+        @include small {
+            width: 8%;
+        }
     }
-    &::before {
-      content: attr(data-title);
-      display: inline-block;
-      height: 100%;
-      background-color: $light-text;
-      min-width: 30%;
-      color: $white;
-      @include padding(8px, 4px);
-      @include small {
-        display: none;
+    [data-title="圖片"] {
+        @include small {
+            width: 12%;
+        }
+    }
+    [data-title="機型"] {
+      border-top:none;
+        @include small {
+            width: 25%;
+        }
+    }
+    a.material-list {
+        color: $light-text;
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 1);
+        border: 1px solid #d9d9d9;
+        position: relative;
+        margin:8px auto;
+        margin-bottom:0;
+        @include padding(12px, 16px);
+        width: 90%;
+        @include small {
+            width: auto;
+            margin:0;
+             @include padding(6px, 16px);
+        }
+        &::before {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 0;
+            border: 8px solid;
+            top: -8px;
+            left: -8px;
+            border-color: transparent transparent transparent #000000;
+            transform: rotate(225deg);
+            transition: all 0.3s ease-in-out;
+        }
+        &::after {
+            content: "";
+            position: absolute;
+            border-radius: 0 0 5px 5px;
+            width: 100%;
+            height: 4px;
+            background-color: #000000;
+            bottom: 0;
+            left: 0;
+            transition: all 0.3s ease-in-out;
+        }
+        &:hover {
+            &::before {
+                border-color: transparent transparent transparent $main;
+                transition: all 0.3s ease-in-out;
+            }
+            &::after {
+                background-color: $main;
+                transition: all 0.3s ease-in-out;
+            }
+        }
+        span{
+          font-size:18px;
+          @include small{
+              font-size:20px;
+          }
+          
+          
       }
-    }
-    & > span,
-    & > div {
-      @include padding(8px, 4px);
-      background-color: $white;
-      word-break: break-all;
-      min-width: 70%;
-      @include small {
-        min-width: auto;
-      }
-    }
-  }
-  [data-title="編號"] {
-    @include small {
-      width: 8%;
-    }
-  }
-  [data-title="圖片"] {
-    @include small {
-      width: 12%;
-    }
-  }
-  [data-title="機型"] {
-    @include small {
-      width: 25%;
-    }
-  }
-  a.material-list {
-    color: $light-text;
-    border-radius: 5px;
-    background-color: rgba(255, 255, 255, 1);
-    border: 1px solid #d9d9d9;
-    position: relative;
-    @include padding(6px, 16px);
-    &::before {
-      content: "";
-      position: absolute;
-      width: 0;
-      height: 0;
-      border: 8px solid;
-      top: -8px;
-      left: -8px;
-      border-color: transparent transparent transparent #000000;
-      transform: rotate(225deg);
-    }
-    &::after {
-      content: "";
-      position: absolute;
-      border-radius: 0 0 5px 5px;
-      width: 100%;
-      height: 4px;
-      background-color: #000000;
-      bottom: 0;
-      left: 0;
-    }
-    // &:hover{
-    //   color:$main;
-    //   transition:all 0.3s ease-in-out;
-    //   span{
-    //     font-weight:bold;
-    //   }
-    span {
-      font-size: 14px;
+      span:last-child{
+        font-size: 14px;
       @include large {
         font-size: 16px;
       }
-    }
-  }
-  .ask-btn {
-    border: 1px solid $dark-text;
-    background-color: transparent;
-    border-radius: 60px;
-    font-size: 10px;
-    @include small {
-      font-size: 12px;
-    }
-    @include padding(4px, 6px);
-  }
-  .mb-ask {
-    position: relative;
-    .ask-btn {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-    }
-    a {
-      color: $light-text;
-      border: 1px solid $dark-text;
-      background-color: transparent;
-      border-radius: 60px;
-      @include padding(4px, 6px);
-      position: absolute;
-      top: 15px;
-      left: 15px;
-      span {
-        font-size: 10px;
       }
     }
-  }
+    .ask-btn {
+        border: 1px solid $dark-text;
+        background-color: transparent;
+        border-radius: 60px;
+        font-size: 10px;
+        @include small {
+            font-size: 12px;
+        }
+        @include padding(4px, 6px);
+    }
+    .mb-ask {
+        position: relative;
+        .ask-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+        }
+        // a {
+        //   color: $light-text;
+        //   border: 1px solid $dark-text;
+        //   background-color: transparent;
+        //   border-radius: 60px;
+        //   @include padding(4px, 6px);
+        //   position: absolute;
+        //   top: 15px;
+        //   left: 15px;
+        //   span {
+        //     font-size: 10px;
+        //   }
+        // }
+    }
+}
+
+#addToListModal {
+    font-size: 16px;
+    .modal-body {
+        .add-icon {
+            font-size: 48px;
+            color: #d9d9d9;
+        }
+    }
+    .modal-footer {
+        border-top: none;
+        justify-content: center;
+        button {
+            border-radius: 0;
+            width: 100%;
+            background-color: #000000;
+        }
+    }
 }

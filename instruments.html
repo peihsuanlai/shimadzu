@@ -108,8 +108,10 @@
                   :data-target="'#collapse'+index"
                   aria-expanded="true"
                   :aria-controls="'collapse'+index"
+                  @click="showDetail"
                 >
-                  <i class="bi bi-chevron-down"></i>
+                <span class="mr-1 d-sm-none fs-14" v-if="!accordionCollapse">收起</span>  
+                <span class="mr-1 d-sm-none fs-14" v-else>詳細資料</span><i class="bi bi-chevron-down align-middle"></i>
                 </button>
               </div>
               <div
@@ -124,11 +126,9 @@
                       href="###"
                       class="d-flex align-items-center justify-content-center"
                     >
-                      <img
-                        src="./frontEndPackage/images/equip-icon1.png"
-                        alt=""
-                        class="mr-1"
-                      />
+                    <span class="material-icons mr-1">
+                      pending_actions
+                      </span>
                       <h3 class="mb-0">歷史維修紀錄</h3>
                     </a>
                   </div>
@@ -137,11 +137,9 @@
                       href="###"
                       class="d-flex align-items-center justify-content-center"
                     >
-                      <img
-                        src="./frontEndPackage/images/equip-icon2.png"
-                        alt=""
-                        class="mr-1"
-                      />
+                    <span class="material-icons mr-1">
+                      receipt_long
+                      </span>
                       <h3 class="mb-0">耗材清單</h3>
                     </a>
                   </div>
@@ -150,11 +148,9 @@
                       href="###"
                       class="d-flex align-items-center justify-content-center"
                     >
-                      <img
-                        src="./frontEndPackage/images/equip-icon3.png"
-                        alt=""
-                        class="mr-1"
-                      />
+                    <span class="material-icons-outlined mr-1">
+                      drive_file_rename_outline
+                      </span>
                       <h3 class="mb-0">我要簽新合約</h3>
                     </a>
                   </div>
@@ -163,11 +159,9 @@
                       href="###"
                       class="d-flex align-items-center justify-content-center"
                     >
-                      <img
-                        src="./frontEndPackage/images/equip-icon4.png"
-                        alt=""
-                        class="mr-1"
-                      />
+                    <span class="material-icons mr-1">
+                      list
+                      </span>
                       <h3 class="mb-0">查看附件序號</h3>
                     </a>
                   </div>
@@ -176,11 +170,9 @@
                       href="###"
                       class="d-flex align-items-center justify-content-center"
                     >
-                      <img
-                        src="./frontEndPackage/images/equip-icon5.png"
-                        alt=""
-                        class="mr-1"
-                      />
+                    <span class="material-icons mr-1">
+                      construction
+                      </span>
                       <h3 class="mb-0">線上叫修</h3>
                     </a>
                   </div>
@@ -189,11 +181,9 @@
                       href="###"
                       class="d-flex align-items-center justify-content-center"
                     >
-                      <img
-                        src="./frontEndPackage/images/equip-icon6.png"
-                        alt=""
-                        class="mr-1"
-                      />
+                    <span class="material-icons mr-1">
+                      engineering
+                      </span>
                       <h3 class="mb-0">預約保養</h3>
                     </a>
                   </div>
@@ -202,11 +192,9 @@
                       href="###"
                       class="d-flex align-items-center justify-content-center"
                     >
-                      <img
-                        src="./frontEndPackage/images/equip-icon7.png"
-                        alt=""
-                        class="mr-1"
-                      />
+                    <span class="material-icons mr-1">
+                      help
+                      </span>
                       <h3 class="mb-0">技術詢問</h3>
                     </a>
                   </div>
@@ -215,11 +203,9 @@
                       href="###"
                       class="d-flex align-items-center justify-content-center"
                     >
-                      <img
-                        src="./frontEndPackage/images/equip-icon8.png"
-                        alt=""
-                        class="mr-1"
-                      />
+                    <span class="material-icons mr-1">
+                      psychology
+                      </span>
                       <h3 class="mb-0">教育訓練</h3>
                     </a>
                   </div>
@@ -335,12 +321,16 @@
                 date: "2023/03/16-2023/12/25",
               },
             ],
+            accordionCollapse:false,
           };
         },
         methods: {
           addInquiry() {
             this.inquiryNum++;
           },
+          showDetail(){
+            this.accordionCollapse=!this.accordionCollapse;
+          }
         },
         components: {
           Foooter,

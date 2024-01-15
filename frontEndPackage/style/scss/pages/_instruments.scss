@@ -64,6 +64,7 @@
 .instrument-container,.all-container {
   position: relative;
   min-height:calc(100vh - 135px);
+  padding-bottom:80px;
 }
 
 .tab-container {
@@ -98,6 +99,9 @@
         left: 0;
         bottom: 0;
       }
+    }
+    span{
+        white-space:nowrap;
     }
   }
 }
@@ -158,12 +162,34 @@
 .accordion-container {
   .item {
     display: block;
-   
+    border-top: 1px solid #d9d9d9;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.20);
+    @include padding(0, 10px);
+    padding-top:10px;
+    &:not(:last-child){
+        margin-bottom:10px;
+        @include small{
+            margin-bottom:0px;
+        }
+    }
     @include small {
       border: 1px solid #d9d9d9;
       border-top: none;
       width: 100%;
+      box-shadow:none;
     }
+    .item-btn {
+        border-top: 1px solid #d9d9d9;
+        @include small {
+          display: flex;
+          align-items: center;
+          font-size: 14px;
+          border: none;
+        }
+        @include xlarge {
+          font-size: 16px;
+        }
+      }
     [data-title="編號"],
     [data-title="圖片"],
     [data-title="主設備序號"],
@@ -171,7 +197,8 @@
     [data-title="合約日期"] {
       display: flex;
       background-color: $light-text;
-      //border-bottom: 1px solid #d9d9d9;
+      border-bottom: 1px solid #d9d9d9;
+      border-right: 1px solid #d9d9d9;
       &::before {
         content: attr(data-title);
         display: inline-block;
@@ -228,18 +255,7 @@
       }
     }
   }
-  .item-btn {
-    @include small {
-      display: flex;
-      align-items: center;
-      font-size: 14px;
-      // border: 1px solid #d9d9d9;
-      // border-bottom: none;
-    }
-    @include xlarge {
-      font-size: 16px;
-    }
-  }
+
   .expire-hint {
     color: $white;
     background-color: $main;
@@ -254,13 +270,23 @@
     width: 100%;
     border: none;
     background-color: transparent;
+    @include padding(8px,0);
     &:not(.collapsed) i {
       transform: scaleY(-1);
     }
     @include small {
+      padding-top: 0px;
+      padding-bottom: 0px;
       padding-right: 8px;
       width: 5%;
       text-align: right;
+    }
+    i{
+        font-size:14px;
+            @include small{
+                font-size:16px;
+            }
+        }
     }
   }
 
@@ -336,10 +362,13 @@
         left: 0;
       }
       &:hover{
-        color:$main;
-        transition:all 0.3s ease-in-out;
-        h3{
-          font-weight:bold;
+        &::before{
+            border-color: transparent transparent transparent $main;
+            transition:all 0.3s ease-in-out;
+        }
+        &::after{
+            background-color:$main;
+            transition:all 0.3s ease-in-out;
         }
     }
     }
@@ -349,5 +378,12 @@
         font-size: 16px;
       }
     }
+    span{
+        font-size:18px;
+        @include small{
+            font-size:20px;
+        }
+        
+    }
   }
-}
+
