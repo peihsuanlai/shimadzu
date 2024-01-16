@@ -1,5 +1,35 @@
 export default{
     props:['login'],
+    data(){
+        return{
+            navItem:[
+                {   id:"instrument",
+                    name:"儀器列表",
+                    path:"/instruments.html"
+                },
+                {
+                    id:"renew",
+                    name:"續約",
+                    path:"###"
+                },
+                {
+                    id:"inquire",
+                    name:"詢價",
+                    path:"/inquiry.html"
+                },
+                {
+                    id:"other",
+                    name:"線上叫修/其他",
+                    path:"###"
+                },
+            ],
+        }
+    },
+    methods:{
+        isActive(path) {
+            return window.location.pathname === path;
+          },
+    },
     template:` <section class="nav-container">
     <nav class="container-lg navbar p-0 p-lg-3 navbar-expand-lg justify-content-lg-between">
         <div class="brand-name d-flex align-items-center pt-3 pb-2 pl-3 p-lg-0">
@@ -30,21 +60,14 @@ export default{
 
         <div class="collapse navbar-collapse mobile-menu" id="mobile-menu">
             <ul class="navbar-nav ml-auto align-items-center">
-                <li class="nav-item mr-lg-2 position-relative mb-1 mb-lg-0">
-                    <a class="nav-link text-nav text-center" id="nav-service" href="###">儀器列表</a>
+                <li v-for="item in navItem" :key="item.id" class="nav-item mr-lg-2 position-relative mb-1 mb-lg-0">
+                    <a class="nav-link text-nav text-center" :id="item.id" :href="item.path" :class="{ 'active': isActive('item.path') }">{{item.name}}</a>
                 </li>
-                <li class="nav-item mr-lg-2 position-relative mb-1 mb-lg-0">
-                    <a class="nav-link text-nav text-center" id="nav-project" href="###">續約</a>
+                <li v-if="!login" class="nav-item mr-lg-2 position-relative mb-1 mb-lg-0">
+                    <a class="nav-link text-nav text-center" id="nav-member" href="###">註冊/登入</a>
                 </li>
-                <li class="nav-item mr-lg-2 position-relative mb-1 mb-lg-0">
-                    <a class="nav-link text-nav text-center" id="nav-entrepreneur" href="###">詢價</a>
-                </li>
-                <li class="nav-item mr-lg-2 position-relative mb-1 mb-lg-0">
-                    <a class="nav-link text-nav text-center" id="nav-boss" href="###">線上叫修/其他</a>
-                </li>
-                <li class="nav-item mr-lg-2 position-relative mb-1 mb-lg-0">
-                    <a v-if="!login" class="nav-link text-nav text-center" id="nav-member" href="###">註冊/登入</a>
-                    <a v-else class="nav-link text-nav text-center" href="###"><i class="bi bi-person-circle fs-22"></i></a>
+                <li v-else class="nav-item mr-lg-2 position-relative mb-1 mb-lg-0">
+                    <a class="nav-link text-nav text-center" href="###"><i class="bi bi-person-circle fs-22"></i></a>
                 </li>
             </ul>
         </div>
@@ -56,5 +79,6 @@ export default{
             >
         </h2>
     </div>
-</section>`
+    </section>`,
+   
 }

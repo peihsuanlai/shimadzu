@@ -137,7 +137,8 @@
     border-radius: 30px;
   }
   span {
-    @include padding(0px, 7px);
+    width:24px;
+    height:24px;
     background-color: $white;
     color: $main;
     border-radius: 50%;
@@ -148,7 +149,31 @@
       background-color: $main;
       outline: none; 
     }
+    .swing{
+        animation: swingAnimation 1s ease-in-out;
+    }
 }
+
+@keyframes swingAnimation {
+    0% {
+      transform: rotate(0deg);
+    }
+    20% {
+      transform: rotate(5deg);
+    }
+    40% {
+      transform: rotate(-5deg);
+    }
+    60% {
+      transform: rotate(5deg);
+    }
+    80% {
+      transform: rotate(-5deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
 
 .table-title {
   background-color: $light-text;
@@ -379,11 +404,7 @@
       }
     }
     span{
-        font-size:18px;
-        @include small{
-            font-size:20px;
-        }
-        
+        font-size:22px;    
     }
   }
 

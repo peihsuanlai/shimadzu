@@ -26,7 +26,8 @@
         @include padding(4px, 30px);
         border-radius: 30px;
         span {
-            @include padding(0px, 7px);
+          width:24px;
+          height:24px;
             background-color: $white;
             color: $main;
             border-radius: 50%;
@@ -38,7 +39,10 @@
         background-color: $main;
         outline: none;
     }
-}
+    .swing{
+      animation: swingAnimation 1s ease-in-out;
+  }
+  
 
 a.common-material {
     border: 1px solid #d9d9d9;
@@ -241,4 +245,5 @@ a.common-material {
             background-color: #000000;
         }
     }
+}
 }
