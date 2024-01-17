@@ -116,17 +116,8 @@
             import Foooter from "./components/footer.js";
             import Navv from "./components/nav.js";
             import Chat from "./components/chatWindow.js";
-            const router = new VueRouter({
-                routes: [
-                    { path: "/intruments.html"},
-                    { path: "/procedure"},
-                    { path: "/service" },
-                    // Add more routes for other pages
-                ],
-            });
             const app = new Vue({
                 el: "#app",
-                router,
                 data() {
                     return {
                         isLogin: false,

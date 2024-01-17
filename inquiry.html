@@ -131,7 +131,7 @@
                                     id="attachment"
                                     class="d-none"
                                     @change="uploadFile"
-                                    ref="imageUploads"
+                                    ref="imageUpload"
                                 />
                             </label>
                             <span class="file" v-if="!selectedFile">未選擇任何檔案</span>
@@ -239,7 +239,7 @@
                         targetArray.splice(index, 1);
                     },
                     uploadFile() {
-                        const input = this.$refs.imageUploads;
+                        const input = this.$refs.imageUpload;
                         this.selectedFile = input.files.length > 0 ? input.files[0] : null;
                     },
                     removeFile(){

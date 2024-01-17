@@ -38,6 +38,8 @@ export default {
             messageTopic: "",
             messages: [],
             newMessage: "",
+            attatchedFile: null,
+            imagePreview: null,
         };
     },
     methods:{
@@ -86,6 +88,13 @@ export default {
                 this.newMessage = "";
             }
         },
+        attatchFile(){
+            const input = this.$refs.fileUpload;
+            this.attatchedFile = input.files.length > 0 ? input.files[0] : null;
+            if(input.files.length > 0){
+                this.imagePreview=window.URL.createObjectURL(input.files[0]);
+            }
+        }
         
     },
     template: `<div>
@@ -192,18 +201,6 @@ export default {
                             </div>
                         </div>
 
-                        <!--  <div class=" user-message mt-4">
-                            <div class="mr-2">
-                                <img src="./frontEndPackage/images/avatar.png"  alt="" />
-                            </div>
-                            
-                            <div class="d-flex flex-column">
-                                <span class="fs-14">島津線上客服</span> 
-                                <span class="text-darkBlack content">您好，請問需要什麼服務？</span>
-                                <span class="grey-text fs-12">{{ getTimeStamp() }}</span>
-                            </div>
-                        </div>-->
-
                         <div
                             v-for="message in messages"
                             :key="message.id" class="mt-2"
@@ -217,14 +214,31 @@ export default {
                                 <span class="grey-text fs-12">{{ message.timestamp }}</span>
                             </div>
                         </div>
+
+                        <div v-if="attatchedFile" class="user-message">
+                            <div class="d-flex flex-column">
+                                <img :src="imagePreview" width="150"/> 
+                                <span class="grey-text fs-12">{{ getTimeStamp() }}</span>
+                            </div>
+                        </div>
                     </div>
                 </template>
             </div>
             <template v-if="modalContent==='D'">
                 <div class="modal-footer">
-                    <button type="button" class="attatch-btn">
-                        <i class="bi bi-paperclip"></i>
-                    </button>
+                  
+                    <div class="attatch-btn">
+                            <label for="file-attatch" class="mb-0">
+                            <i class="bi bi-paperclip"></i>
+                                <input
+                                    type="file"
+                                    id="file-attatch"
+                                    class="d-none" @change="attatchFile"
+                                    ref="fileUpload" accept=".jpg, .jpeg, .png"
+                                />
+                            </label>
+                           
+                        </div>
                     <textarea
                         name="message"
                         id=""

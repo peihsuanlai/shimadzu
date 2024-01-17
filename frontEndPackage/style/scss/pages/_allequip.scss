@@ -42,9 +42,9 @@
     .swing{
       animation: swingAnimation 1s ease-in-out;
   }
-  
+}
 
-a.common-material {
+button.common-material {
     border: 1px solid #d9d9d9;
     color: $light-text;
     background-color: #f5f5f5;
@@ -55,6 +55,12 @@ a.common-material {
         width: 95%;
         text-align: center;
         font-size: 20px;
+    }
+    span{
+        vertical-align:text-top;
+        @include small{
+            margin-top:0.2rem;
+        }
     }
 }
 
@@ -228,8 +234,12 @@ a.common-material {
     }
 }
 
-#addToListModal {
+#addToListModal, #saveSuccessModal {
     font-size: 16px;
+    .modal-content{
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+        border:none;
+    }
     .modal-body {
         .add-icon {
             font-size: 48px;
@@ -243,7 +253,98 @@ a.common-material {
             border-radius: 0;
             width: 100%;
             background-color: #000000;
+            color:$white;
         }
     }
 }
+
+
+#commomMaterialModal{
+    h5{
+        color:$dark-text;
+        font-size: 20px;
+        @include medium {
+            font-size: 24px;
+        }
+    }
+    table {
+        // border-collapse: collapse;
+        margin: 0;
+        padding: 0;
+        table-layout: fixed;
+        thead {
+            display: none;
+            background-color: $light-text;
+            color: $white;
+            th {
+                @include padding(8px, 4px);
+                font-weight: 500;
+            }
+            th:first-child {
+                padding-left: 8px;
+            }
+            @include small {
+                display: table-header-group;
+            }
+        }
+        tr {
+            display: block;
+            margin-bottom: 1em;
+            border: 1px solid #d9d9d9;
+            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+            @include small {
+                display: table-row;
+                box-shadow: none;
+                border:none;
+            }
+        }
+        tbody {
+            //box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+            // @include small{
+            //     box-shadow:none;
+            // }
+            tr {
+                @include small {
+                    border: 1px solid #d9d9d9;
+                    //border-bottom: 3px solid #D9D9D9;
+                }
+            }
+            td {
+                @include padding(8px, 4px);
+                display: flex;
+                @include small {
+                    display: table-cell;
+                }
+                &::before {
+                    content: attr(data-title);
+                    display: inline-block;
+                    width: 30%;
+                    max-width: 30%;
+                    padding-left: 4px;
+                    word-wrap:break-word;
+                    //background-color:$light-text;
+                    // font-variant: small-caps;
+                    @include small {
+                        display: none;
+                    }
+                }
+                &:nth-child(odd) {
+                    background-color: #f5f5f5;
+                    @include small {
+                        background-color: transparent;
+                    }
+                }
+     
+            }
+            .delete-btn{
+                font-size: 20px;
+                background-color:transparent;
+                border:none;
+                &:hover {
+                    color: $main;
+                }
+            }
+        }
+    }
 }

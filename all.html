@@ -27,7 +27,9 @@
                 </ol>
             </section>
             <div class="px-2 d-sm-none mb-3 d-flex justify-content-center">
-                <a href="###" class="common-material">通用耗材清單</a>
+                <button type="button" class="common-material" data-toggle="modal" data-target="#commomMaterialModal"><span class="material-icons-outlined mr-1">
+                    settings_suggest
+                    </span>通用耗材清單</ㄖ>
             </div>
 
             <main class="container-lg all-container">
@@ -55,7 +57,9 @@
                 </div>
                 <div class="item-container">
                     <div class="item d-none d-sm-flex justify-content-sm-center">
-                        <a href="###" class="common-material">通用耗材清單</a>
+                        <button type="button" class="common-material" data-toggle="modal" data-target="#commomMaterialModal"><span class="material-icons-outlined mr-1">
+                            settings_suggest
+                            </span>通用耗材清單</button>
                     </div>
                     <div class="item" v-for="(item,index) in allData" :key="item.id">
                         <div class="d-sm-none mb-ask">
@@ -93,6 +97,7 @@
                             加入詢價<i class="bi bi-plus"></i>
                         </button>
                     </div>
+                    <div class="text-right fs-14">1-20列 (共5項)<i class="bi bi-chevron-left ml-4 mr-2"></i><i class="bi bi-chevron-right"></i></div>
                 </div>
                 <!-- added modal start -->
                 <div
@@ -111,7 +116,7 @@
                             <div class="modal-footer">
                                 <button
                                     type="button"
-                                    class="btn btn-secondary"
+                                    class="btn"
                                     data-dismiss="modal"
                                     @click="addInquiry"
                                 >
@@ -123,6 +128,60 @@
                 </div>
 
                 <!-- added modal end -->
+
+                <!-- 通用耗材清單 modal start -->
+             <div class="modal fade" id="commomMaterialModal" tabindex="-1" aria-labelledby="commomMaterialModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="commomMaterialModalLabel">通用耗材清單</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                            <table class="w-100">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 5%"><input type="checkbox"></th>
+                                        <th style="width: 15%">圖片</th>
+                                        <th style="width: 8%">編號</th>
+                                        <th style="width: 25%">器材名稱</th>
+                                        <th style="width: 27%">耗材編號 / 耗材名稱</th>
+                                        <th style="width: 20%"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td data-title="選取"><input type="checkbox"></td>
+                                        <td data-title="圖片">
+                                            <a href="./frontEndPackage/images/product-lg.jpg" data-lightbox="pic-1">
+                                                <img src="./frontEndPackage/images/product-sm.jpg" alt="" />
+                                            </a>
+                                        </td>
+                                        <td data-title="編號">01</td>
+                                        <td data-title="器材名稱">液相層析質譜儀 LCMS-8060NX</td>
+                                        <td data-title="耗材編號 / 耗材名稱">
+                                            01361 / Simple method creation and batch creation  
+                                        </td>
+                                        <td>
+                                            <button type="button" class="ask-btn" data-toggle="modal" data-target="#addToListModal">
+                                                加入詢價<i class="bi bi-plus"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">批次加入清單</button>
+                
+                        </div>
+                      </div>
+                    </div>
+                  </div> 
+                <!-- 通用耗材清單 modal end -->
+
             </main>
             <Chat></Chat>
             <Foooter></Foooter>
@@ -152,6 +211,7 @@
                     return {
                         isLogin: true,
                         inquiryNum: 0,
+                        isInquiryNumChanging: false,
                         allData: [
                             {
                                 id: "01",
