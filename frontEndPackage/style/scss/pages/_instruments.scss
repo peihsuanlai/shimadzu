@@ -61,31 +61,32 @@
   }
 }
 
-.instrument-container,.all-container {
+.instrument-container,
+.all-container {
   position: relative;
-  min-height:calc(100vh - 135px);
-  padding-bottom:80px;
+  min-height: calc(100vh - 135px);
+  padding-bottom: 80px;
 }
 
 .tab-container {
-  li{
-    width:50%;
-    @include small{
-      width:auto
+  li {
+    width: 50%;
+    @include small {
+      width: auto;
     }
   }
   a {
     @include padding(0.5rem, 1.5rem);
     color: #b8b8b8;
     border: 1px solid #d9d9d9;
-    border-bottom:none;
+    border-bottom: none;
     background-color: #f5f5f5;
     position: relative;
-    width:100%;
-    text-align:center;
-    @include small{
-      width:auto;
-      text-align:left;
+    width: 100%;
+    text-align: center;
+    @include small {
+      width: auto;
+      text-align: left;
     }
     &.active {
       background-color: transparent;
@@ -100,36 +101,36 @@
         bottom: 0;
       }
     }
-    span{
-        white-space:nowrap;
+    span {
+      white-space: nowrap;
     }
-    select{
-      border-radius:5px;
-      border-color:#d9d9d9;
+    select {
+      border-radius: 5px;
+      border-color: #d9d9d9;
     }
   }
 }
 
 .right-btns {
-  position:fixed;
+  position: fixed;
   z-index: 2;
-  bottom:0;
-  right:0;
-  background-color:$white;
-  width:100%;
+  bottom: 0;
+  right: 0;
+  background-color: $white;
+  width: 100%;
   justify-content: center;
   box-shadow: 0px -2px 2px 0px rgba(0, 0, 0, 0.25);
-  @include padding(8px,0);
-  @include small{
+  @include padding(8px, 0);
+  @include small {
     position: absolute;
     z-index: auto;
     right: 15px;
     top: -4px;
-    bottom:auto;
-    background-color:transparent;
-    width:auto;
+    bottom: auto;
+    background-color: transparent;
+    width: auto;
     justify-content: flex-start;
-    box-shadow:none;
+    box-shadow: none;
   }
   a,
   button {
@@ -141,43 +142,43 @@
     border-radius: 30px;
   }
   span {
-    width:24px;
-    height:24px;
+    width: 24px;
+    height: 24px;
     background-color: $white;
     color: $main;
     border-radius: 50%;
     margin-left: -2px;
   }
   .btnActive {
-      color: $white;
-      background-color: $main;
-      outline: none; 
-    }
-    .swing{
-        animation: swingAnimation 1s ease-in-out;
-    }
+    color: $white;
+    background-color: $main;
+    outline: none;
+  }
+  .swing {
+    animation: swingAnimation 1s ease-in-out;
+  }
 }
 
 @keyframes swingAnimation {
-    0% {
-      transform: rotate(0deg);
-    }
-    20% {
-      transform: rotate(5deg);
-    }
-    40% {
-      transform: rotate(-5deg);
-    }
-    60% {
-      transform: rotate(5deg);
-    }
-    80% {
-      transform: rotate(-5deg);
-    }
-    100% {
-      transform: rotate(0deg);
-    }
+  0% {
+    transform: rotate(0deg);
   }
+  20% {
+    transform: rotate(5deg);
+  }
+  40% {
+    transform: rotate(-5deg);
+  }
+  60% {
+    transform: rotate(5deg);
+  }
+  80% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
 
 .table-title {
   background-color: $light-text;
@@ -192,33 +193,33 @@
   .item {
     display: block;
     border-top: 1px solid #d9d9d9;
-    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.20);
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2);
     @include padding(0, 10px);
-    padding-top:10px;
-    &:not(:last-child){
-        margin-bottom:10px;
-        @include small{
-            margin-bottom:0px;
-        }
+    padding-top: 10px;
+    &:not(:last-child) {
+      margin-bottom: 10px;
+      @include small {
+        margin-bottom: 0px;
+      }
     }
     @include small {
       border: 1px solid #d9d9d9;
       border-top: none;
       width: 100%;
-      box-shadow:none;
+      box-shadow: none;
     }
     .item-btn {
-        border-top: 1px solid #d9d9d9;
-        @include small {
-          display: flex;
-          align-items: center;
-          font-size: 14px;
-          border: none;
-        }
-        @include xlarge {
-          font-size: 16px;
-        }
+      border-top: 1px solid #d9d9d9;
+      @include small {
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        border: none;
       }
+      @include xlarge {
+        font-size: 16px;
+      }
+    }
     [data-title="編號"],
     [data-title="圖片"],
     [data-title="主設備序號"],
@@ -299,7 +300,7 @@
     width: 100%;
     border: none;
     background-color: transparent;
-    @include padding(8px,0);
+    @include padding(8px, 0);
     &:not(.collapsed) i {
       transform: scaleY(-1);
     }
@@ -310,105 +311,441 @@
       width: 5%;
       text-align: right;
     }
-    i{
-        font-size:14px;
-            @include small{
-                font-size:16px;
-            }
-        }
-    }
-  }
-
-  .ask-btn {
-    border: 1px solid $dark-text;
-    background-color: transparent;
-    border-radius: 60px;
-    font-size: 10px;
-    @include small {
-      font-size: 12px;
-    }
-    @include padding(2px, 6px);
-  }
-  .mb-ask{
-    position:relative;
-    .ask-btn{
-      position:absolute;
-      top:15px;
-      right:15px;;
-    }
-  }
-  .item-content {
-    row-gap: 12px;
-    @include padding(8px, 0px);
-    @include small {
-      // border: 1px solid #d9d9d9;
-      // border-top: none;
-      padding-left: 8px;
-      padding-right: 5%;
-    }
-    & > div {
-      width: 50%;
-      @include small {
-        @include padding(0, 6px);
-      }
-      @include medium {
-        width: 25%;
-      }
-      &:nth-child(odd) {
-        padding-right: 12px;
-        @include small {
-          padding-right: 6px;
-        }
-      }
-    }
-    a {
-      color: $light-text;
-      border-radius: 5px;
-      background-color: rgba(255, 255, 255, 1);
-      border: 1px solid #d9d9d9;
-      height: 100%;
-      position: relative;
-      @include padding(20px, 0px);
-      &::before {
-        content: "";
-        position: absolute;
-        width: 0;
-        height: 0;
-        border: 8px solid;
-        top: -8px;
-        left: -8px;
-        border-color: transparent transparent transparent #000000;
-        transform: rotate(225deg);
-      }
-      &::after {
-        content: "";
-        position: absolute;
-        border-radius: 0 0 5px 5px;
-        width: 100%;
-        height: 4px;
-        background-color: #000000;
-        bottom: 0;
-        left: 0;
-      }
-      &:hover{
-        &::before{
-            border-color: transparent transparent transparent $main;
-            transition:all 0.3s ease-in-out;
-        }
-        &::after{
-            background-color:$main;
-            transition:all 0.3s ease-in-out;
-        }
-    }
-    }
-    h3 {
+    i {
       font-size: 14px;
-      @include large {
+      @include small {
         font-size: 16px;
       }
     }
-    span{
-        font-size:22px;    
+  }
+}
+
+.ask-btn {
+  border: 1px solid $dark-text;
+  background-color: transparent;
+  border-radius: 60px;
+  font-size: 10px;
+  @include small {
+    font-size: 12px;
+  }
+  @include padding(2px, 6px);
+}
+.mb-ask {
+  position: relative;
+  .ask-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+  }
+}
+.item-content {
+  row-gap: 12px;
+  @include padding(8px, 0px);
+  @include small {
+    // border: 1px solid #d9d9d9;
+    // border-top: none;
+    padding-left: 8px;
+    padding-right: 5%;
+  }
+  & > div {
+    width: 50%;
+    @include small {
+      @include padding(0, 6px);
+    }
+    @include medium {
+      width: 25%;
+    }
+    &:nth-child(odd) {
+      padding-right: 12px;
+      @include small {
+        padding-right: 6px;
+      }
     }
   }
+  a {
+    color: $light-text;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 1);
+    border: 1px solid #d9d9d9;
+    height: 100%;
+    position: relative;
+    @include padding(20px, 0px);
+    &::before {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+      border: 8px solid;
+      top: -8px;
+      left: -8px;
+      border-color: transparent transparent transparent #000000;
+      transform: rotate(225deg);
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      border-radius: 0 0 5px 5px;
+      width: 100%;
+      height: 4px;
+      background-color: #000000;
+      bottom: 0;
+      left: 0;
+    }
+    &:hover {
+      &::before {
+        border-color: transparent transparent transparent $main;
+        transition: all 0.3s ease-in-out;
+      }
+      &::after {
+        background-color: $main;
+        transition: all 0.3s ease-in-out;
+      }
+    }
+  }
+  h3 {
+    font-size: 14px;
+    @include large {
+      font-size: 16px;
+    }
+  }
+  span {
+    font-size: 22px;
+  }
+}
 
+#historyModal {
+  .productInfo {
+    border-radius: 5px;
+    border: 1px solid #d9d9d9;
+    @include padding(16px, 8px);
+    p + div {
+      span:first-child {
+        color: #af282f;
+      }
+      span:last-child {
+        color: $white;
+        background-color: #af282f;
+        border-radius: 60px;
+        @include padding(4px, 6px);
+      }
+    }
+  }
+  h5 {
+    color: $dark-text;
+    font-size: 20px;
+    @include medium {
+      font-size: 24px;
+    }
+  }
+  .modal-content {
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border: none;
+  }
+  .modal-header {
+    border-bottom: none;
+  }
+  table {
+    margin: 0;
+    padding: 0;
+    table-layout: fixed;
+    max-height: 500px;
+    overflow-y: scroll;
+    thead {
+      display: none;
+      background-color: $light-text;
+      color: $white;
+      th {
+        @include padding(8px, 4px);
+        font-weight: 500;
+      }
+      th:first-child {
+        padding-left: 8px;
+      }
+      @include large {
+        display: table-header-group;
+      }
+    }
+    tr {
+      display: block;
+      margin-bottom: 1em;
+      border: 1px solid #d9d9d9;
+      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+      @include large {
+        display: table-row;
+        box-shadow: none;
+        border: none;
+      }
+    }
+    tbody {
+      //box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+      // @include small{
+      //     box-shadow:none;
+      // }
+      tr {
+        @include large {
+          border: 1px solid #d9d9d9;
+          //border-bottom: 3px solid #D9D9D9;
+        }
+      }
+      td {
+        @include padding(8px, 4px);
+        display: flex;
+        @include large {
+          display: table-cell;
+        }
+        &::before {
+          content: attr(data-title);
+          display: inline-block;
+          width: 30%;
+          max-width: 30%;
+          padding-left: 4px;
+          word-wrap: break-word;
+          flex-shrink: 0;
+          @include large {
+            display: none;
+          }
+        }
+        &:nth-child(odd) {
+          background-color: #f5f5f5;
+          @include large {
+            background-color: transparent;
+          }
+        }
+        &:first-child {
+          @include large {
+            padding-left: 8px;
+          }
+        }
+      }
+    }
+  }
+}
+
+#materialModal{
+  .productInfo {
+    border-radius: 5px;
+    border: 1px solid #d9d9d9;
+    @include padding(16px, 8px);
+    p + div {
+      span:first-child {
+        color: #af282f;
+      }
+      span:last-child {
+        color: $white;
+        background-color: #af282f;
+        border-radius: 60px;
+        @include padding(4px, 6px);
+      }
+    }
+  }
+  h5 {
+    color: $dark-text;
+    font-size: 20px;
+    @include medium {
+      font-size: 24px;
+    }
+  }
+  .modal-content {
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border: none;
+  }
+  .modal-header {
+    border-bottom: none;
+  }
+  table {
+    margin: 0;
+    padding: 0;
+    table-layout: fixed;
+    max-height: 500px;
+    overflow-y: scroll;
+    thead {
+      display: none;
+      background-color: $light-text;
+      color: $white;
+      th {
+        @include padding(8px, 4px);
+        font-weight: 500;
+      }
+      th:first-child {
+        padding-left: 8px;
+      }
+      @include large {
+        display: table-header-group;
+      }
+    }
+    tr {
+      display: block;
+      margin-bottom: 1em;
+      border: 1px solid #d9d9d9;
+      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+      @include large {
+        display: table-row;
+        box-shadow: none;
+        border: none;
+      }
+    }
+    tbody {
+      //box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+      // @include small{
+      //     box-shadow:none;
+      // }
+      tr {
+        @include large {
+          border: 1px solid #d9d9d9;
+          //border-bottom: 3px solid #D9D9D9;
+        }
+      }
+      td {
+        @include padding(8px, 4px);
+        display: flex;
+        @include large {
+          display: table-cell;
+        }
+        &::before {
+          content: attr(data-title);
+          display: inline-block;
+          width: 30%;
+          max-width: 30%;
+          padding-left: 4px;
+          word-wrap: break-word;
+          flex-shrink: 0;
+          @include large {
+            display: none;
+          }
+        }
+        &:nth-child(odd) {
+          background-color: #f5f5f5;
+          @include large {
+            background-color: transparent;
+          }
+        }
+        &:first-child {
+          @include large {
+            padding-left: 8px;
+          }
+        }
+      }
+    }
+  }
+  .modal-footer{
+    border-top:none;
+    button{
+        background-color:#000000;
+        color:$white;
+        border-radius:0;
+    }
+    
+}
+}
+
+#checkNumberModal{
+  .productInfo {
+    border-radius: 5px;
+    border: 1px solid #d9d9d9;
+    @include padding(16px, 8px);
+    p + div {
+      span:first-child {
+        color: #af282f;
+      }
+      span:last-child {
+        color: $white;
+        background-color: #af282f;
+        border-radius: 60px;
+        @include padding(4px, 6px);
+      }
+    }
+  }
+  h5 {
+    color: $dark-text;
+    font-size: 20px;
+    @include medium {
+      font-size: 24px;
+    }
+  }
+  .modal-content {
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border: none;
+  }
+  .modal-header {
+    border-bottom: none;
+  }
+  table {
+    margin: 0;
+    padding: 0;
+    table-layout: fixed;
+    max-height: 500px;
+    overflow-y: scroll;
+    thead {
+      display: none;
+      background-color: $light-text;
+      color: $white;
+      th {
+        @include padding(8px, 4px);
+        font-weight: 500;
+      }
+      th:first-child {
+        padding-left: 8px;
+      }
+      @include large {
+        display: table-header-group;
+      }
+    }
+    tr {
+      display: block;
+      margin-bottom: 1em;
+      border: 1px solid #d9d9d9;
+      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+      @include large {
+        display: table-row;
+        box-shadow: none;
+        border: none;
+      }
+    }
+    tbody {
+      //box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+      // @include small{
+      //     box-shadow:none;
+      // }
+      tr {
+        @include large {
+          border: 1px solid #d9d9d9;
+          //border-bottom: 3px solid #D9D9D9;
+        }
+      }
+      td {
+        @include padding(8px, 4px);
+        display: flex;
+        @include large {
+          display: table-cell;
+        }
+        &::before {
+          content: attr(data-title);
+          display: inline-block;
+          width: 30%;
+          max-width: 30%;
+          padding-left: 4px;
+          word-wrap: break-word;
+          flex-shrink: 0;
+          @include large {
+            display: none;
+          }
+        }
+        &:nth-child(odd) {
+          background-color: #f5f5f5;
+          @include large {
+            background-color: transparent;
+          }
+        }
+        &:first-child {
+          @include large {
+            padding-left: 8px;
+          }
+        }
+      }
+    }
+  }
+ 
+}

@@ -573,7 +573,8 @@ footer .photonic {
           clip-path: polygon(95% 0, 100% 50%, 95% 100%, 0% 100%, 5% 50%, 0% 0%);
 }
 
-.instrument-container, .all-container {
+.instrument-container,
+.all-container {
   position: relative;
   min-height: calc(100vh - 135px);
   padding-bottom: 80px;
@@ -980,6 +981,341 @@ footer .photonic {
   font-size: 22px;
 }
 
+#historyModal .productInfo {
+  border-radius: 5px;
+  border: 1px solid #d9d9d9;
+  padding: 16px 8px;
+}
+#historyModal .productInfo p + div span:first-child {
+  color: #af282f;
+}
+#historyModal .productInfo p + div span:last-child {
+  color: #ffffff;
+  background-color: #af282f;
+  border-radius: 60px;
+  padding: 4px 6px;
+}
+#historyModal h5 {
+  color: #333333;
+  font-size: 20px;
+}
+@media (min-width: 768px) {
+  #historyModal h5 {
+    font-size: 24px;
+  }
+}
+#historyModal .modal-content {
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border: none;
+}
+#historyModal .modal-header {
+  border-bottom: none;
+}
+#historyModal table {
+  margin: 0;
+  padding: 0;
+  table-layout: fixed;
+  max-height: 500px;
+  overflow-y: scroll;
+}
+#historyModal table thead {
+  display: none;
+  background-color: #626262;
+  color: #ffffff;
+}
+#historyModal table thead th {
+  padding: 8px 4px;
+  font-weight: 500;
+}
+#historyModal table thead th:first-child {
+  padding-left: 8px;
+}
+@media (min-width: 992px) {
+  #historyModal table thead {
+    display: table-header-group;
+  }
+}
+#historyModal table tr {
+  display: block;
+  margin-bottom: 1em;
+  border: 1px solid #d9d9d9;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+@media (min-width: 992px) {
+  #historyModal table tr {
+    display: table-row;
+    box-shadow: none;
+    border: none;
+  }
+}
+@media (min-width: 992px) {
+  #historyModal table tbody tr {
+    border: 1px solid #d9d9d9;
+  }
+}
+#historyModal table tbody td {
+  padding: 8px 4px;
+  display: flex;
+}
+@media (min-width: 992px) {
+  #historyModal table tbody td {
+    display: table-cell;
+  }
+}
+#historyModal table tbody td::before {
+  content: attr(data-title);
+  display: inline-block;
+  width: 30%;
+  max-width: 30%;
+  padding-left: 4px;
+  word-wrap: break-word;
+  flex-shrink: 0;
+}
+@media (min-width: 992px) {
+  #historyModal table tbody td::before {
+    display: none;
+  }
+}
+#historyModal table tbody td:nth-child(odd) {
+  background-color: #f5f5f5;
+}
+@media (min-width: 992px) {
+  #historyModal table tbody td:nth-child(odd) {
+    background-color: transparent;
+  }
+}
+@media (min-width: 992px) {
+  #historyModal table tbody td:first-child {
+    padding-left: 8px;
+  }
+}
+
+#materialModal .productInfo {
+  border-radius: 5px;
+  border: 1px solid #d9d9d9;
+  padding: 16px 8px;
+}
+#materialModal .productInfo p + div span:first-child {
+  color: #af282f;
+}
+#materialModal .productInfo p + div span:last-child {
+  color: #ffffff;
+  background-color: #af282f;
+  border-radius: 60px;
+  padding: 4px 6px;
+}
+#materialModal h5 {
+  color: #333333;
+  font-size: 20px;
+}
+@media (min-width: 768px) {
+  #materialModal h5 {
+    font-size: 24px;
+  }
+}
+#materialModal .modal-content {
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border: none;
+}
+#materialModal .modal-header {
+  border-bottom: none;
+}
+#materialModal table {
+  margin: 0;
+  padding: 0;
+  table-layout: fixed;
+  max-height: 500px;
+  overflow-y: scroll;
+}
+#materialModal table thead {
+  display: none;
+  background-color: #626262;
+  color: #ffffff;
+}
+#materialModal table thead th {
+  padding: 8px 4px;
+  font-weight: 500;
+}
+#materialModal table thead th:first-child {
+  padding-left: 8px;
+}
+@media (min-width: 992px) {
+  #materialModal table thead {
+    display: table-header-group;
+  }
+}
+#materialModal table tr {
+  display: block;
+  margin-bottom: 1em;
+  border: 1px solid #d9d9d9;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+@media (min-width: 992px) {
+  #materialModal table tr {
+    display: table-row;
+    box-shadow: none;
+    border: none;
+  }
+}
+@media (min-width: 992px) {
+  #materialModal table tbody tr {
+    border: 1px solid #d9d9d9;
+  }
+}
+#materialModal table tbody td {
+  padding: 8px 4px;
+  display: flex;
+}
+@media (min-width: 992px) {
+  #materialModal table tbody td {
+    display: table-cell;
+  }
+}
+#materialModal table tbody td::before {
+  content: attr(data-title);
+  display: inline-block;
+  width: 30%;
+  max-width: 30%;
+  padding-left: 4px;
+  word-wrap: break-word;
+  flex-shrink: 0;
+}
+@media (min-width: 992px) {
+  #materialModal table tbody td::before {
+    display: none;
+  }
+}
+#materialModal table tbody td:nth-child(odd) {
+  background-color: #f5f5f5;
+}
+@media (min-width: 992px) {
+  #materialModal table tbody td:nth-child(odd) {
+    background-color: transparent;
+  }
+}
+@media (min-width: 992px) {
+  #materialModal table tbody td:first-child {
+    padding-left: 8px;
+  }
+}
+#materialModal .modal-footer {
+  border-top: none;
+}
+#materialModal .modal-footer button {
+  background-color: #000000;
+  color: #ffffff;
+  border-radius: 0;
+}
+
+#checkNumberModal .productInfo {
+  border-radius: 5px;
+  border: 1px solid #d9d9d9;
+  padding: 16px 8px;
+}
+#checkNumberModal .productInfo p + div span:first-child {
+  color: #af282f;
+}
+#checkNumberModal .productInfo p + div span:last-child {
+  color: #ffffff;
+  background-color: #af282f;
+  border-radius: 60px;
+  padding: 4px 6px;
+}
+#checkNumberModal h5 {
+  color: #333333;
+  font-size: 20px;
+}
+@media (min-width: 768px) {
+  #checkNumberModal h5 {
+    font-size: 24px;
+  }
+}
+#checkNumberModal .modal-content {
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border: none;
+}
+#checkNumberModal .modal-header {
+  border-bottom: none;
+}
+#checkNumberModal table {
+  margin: 0;
+  padding: 0;
+  table-layout: fixed;
+  max-height: 500px;
+  overflow-y: scroll;
+}
+#checkNumberModal table thead {
+  display: none;
+  background-color: #626262;
+  color: #ffffff;
+}
+#checkNumberModal table thead th {
+  padding: 8px 4px;
+  font-weight: 500;
+}
+#checkNumberModal table thead th:first-child {
+  padding-left: 8px;
+}
+@media (min-width: 992px) {
+  #checkNumberModal table thead {
+    display: table-header-group;
+  }
+}
+#checkNumberModal table tr {
+  display: block;
+  margin-bottom: 1em;
+  border: 1px solid #d9d9d9;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+@media (min-width: 992px) {
+  #checkNumberModal table tr {
+    display: table-row;
+    box-shadow: none;
+    border: none;
+  }
+}
+@media (min-width: 992px) {
+  #checkNumberModal table tbody tr {
+    border: 1px solid #d9d9d9;
+  }
+}
+#checkNumberModal table tbody td {
+  padding: 8px 4px;
+  display: flex;
+}
+@media (min-width: 992px) {
+  #checkNumberModal table tbody td {
+    display: table-cell;
+  }
+}
+#checkNumberModal table tbody td::before {
+  content: attr(data-title);
+  display: inline-block;
+  width: 30%;
+  max-width: 30%;
+  padding-left: 4px;
+  word-wrap: break-word;
+  flex-shrink: 0;
+}
+@media (min-width: 992px) {
+  #checkNumberModal table tbody td::before {
+    display: none;
+  }
+}
+#checkNumberModal table tbody td:nth-child(odd) {
+  background-color: #f5f5f5;
+}
+@media (min-width: 992px) {
+  #checkNumberModal table tbody td:nth-child(odd) {
+    background-color: transparent;
+  }
+}
+@media (min-width: 992px) {
+  #checkNumberModal table tbody td:first-child {
+    padding-left: 8px;
+  }
+}
+
 .inquiry-main {
   min-height: calc(100vh - 135px);
 }
@@ -1055,6 +1391,11 @@ footer .photonic {
   padding: 8px 4px;
   display: block;
 }
+@media (min-width: 576px) {
+  .inquiry-main table tbody td {
+    display: table-cell;
+  }
+}
 .inquiry-main table tbody td::before {
   content: attr(data-title);
   display: inline-block;
@@ -1076,8 +1417,8 @@ footer .photonic {
   }
 }
 @media (min-width: 576px) {
-  .inquiry-main table tbody td {
-    display: table-cell;
+  .inquiry-main table tbody td:first-child {
+    padding-left: 8px;
   }
 }
 .inquiry-main table tbody .delete-btn {
@@ -1456,13 +1797,8 @@ button.common-material span {
   border: 1px solid #333333;
   background-color: transparent;
   border-radius: 60px;
-  font-size: 10px;
-  padding: 4px 6px;
-}
-@media (min-width: 576px) {
-  .item-container .ask-btn {
-    font-size: 12px;
-  }
+  font-size: 14px;
+  padding: 4px 8px;
 }
 .item-container .mb-ask {
   position: relative;
@@ -1560,6 +1896,7 @@ button.common-material span {
   max-width: 30%;
   padding-left: 4px;
   word-wrap: break-word;
+  flex-shrink: 0;
 }
 @media (min-width: 576px) {
   #commomMaterialModal table tbody td::before {
@@ -1574,13 +1911,48 @@ button.common-material span {
     background-color: transparent;
   }
 }
-#commomMaterialModal table tbody .delete-btn {
-  font-size: 20px;
+@media (min-width: 576px) {
+  #commomMaterialModal table tbody td:first-child {
+    padding-left: 8px;
+  }
+}
+#commomMaterialModal table tbody td:last-child {
+  justify-content: center;
+}
+#commomMaterialModal table tbody td:last-child::before {
+  width: 0;
+}
+#commomMaterialModal table tbody .ask-btn {
+  border: 1px solid #333333;
   background-color: transparent;
+  border-radius: 60px;
+  font-size: 14px;
+  padding: 4px 8px;
+}
+@media (min-width: 576px) {
+  #commomMaterialModal table tbody .ask-btn {
+    padding: 4px 6px;
+  }
+}
+@media (min-width: 992px) {
+  #commomMaterialModal table tbody .ask-btn {
+    padding: 4px 8px;
+  }
+}
+#commomMaterialModal .modal-content {
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   border: none;
 }
-#commomMaterialModal table tbody .delete-btn:hover {
-  color: #DD0000;
+#commomMaterialModal .modal-header {
+  border-bottom: none;
+}
+#commomMaterialModal .modal-footer {
+  border-top: none;
+}
+#commomMaterialModal .modal-footer button {
+  background-color: #000000;
+  color: #ffffff;
+  border-radius: 0;
 }
 
 .account-container {

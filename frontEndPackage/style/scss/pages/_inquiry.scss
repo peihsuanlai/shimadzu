@@ -68,6 +68,11 @@
                 }
             }
             td {
+                @include padding(8px, 4px);
+                display: block;
+                @include small {
+                    display: table-cell;
+                }
                 &::before {
                     content: attr(data-title);
                     display: inline-block;
@@ -86,12 +91,14 @@
                         background-color: transparent;
                     }
                 }
-                @include padding(8px, 4px);
-                display: block;
-                @include small {
-                    display: table-cell;
+                &:first-child {
+                    @include small{
+                        padding-left: 8px;
+                    }
                 }
+                
             }
+           
             .delete-btn{
                 font-size: 20px;
                 background-color:transparent;

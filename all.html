@@ -131,7 +131,7 @@
 
                 <!-- 通用耗材清單 modal start -->
              <div class="modal fade" id="commomMaterialModal" tabindex="-1" aria-labelledby="commomMaterialModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
+                    <div class="modal-dialog modal-xl">
                       <div class="modal-content">
                         <div class="modal-header">
                           <h5 class="modal-title" id="commomMaterialModalLabel">通用耗材清單</h5>
@@ -140,14 +140,14 @@
                           </button>
                         </div>
                         <div class="modal-body">
-                            <table class="w-100">
+                            <table class="mb-3">
                                 <thead>
                                     <tr>
                                         <th style="width: 5%"><input type="checkbox"></th>
                                         <th style="width: 15%">圖片</th>
                                         <th style="width: 8%">編號</th>
                                         <th style="width: 25%">器材名稱</th>
-                                        <th style="width: 27%">耗材編號 / 耗材名稱</th>
+                                        <th style="width: 27%">耗材編號/耗材名稱</th>
                                         <th style="width: 20%"></th>
                                     </tr>
                                 </thead>
@@ -161,8 +161,8 @@
                                         </td>
                                         <td data-title="編號">01</td>
                                         <td data-title="器材名稱">液相層析質譜儀 LCMS-8060NX</td>
-                                        <td data-title="耗材編號 / 耗材名稱">
-                                            01361 / Simple method creation and batch creation  
+                                        <td data-title="耗材編號/耗材名稱">
+                                            01361/Simple method creation and batch creation  
                                         </td>
                                         <td>
                                             <button type="button" class="ask-btn" data-toggle="modal" data-target="#addToListModal">
@@ -170,11 +170,30 @@
                                             </button>
                                         </td>
                                     </tr>
+                                    <tr>
+                                      <td data-title="選取"><input type="checkbox"></td>
+                                      <td data-title="圖片">
+                                          <a href="./frontEndPackage/images/product-lg.jpg" data-lightbox="pic-1">
+                                              <img src="./frontEndPackage/images/product-sm.jpg" alt="" />
+                                          </a>
+                                      </td>
+                                      <td data-title="編號">01</td>
+                                      <td data-title="器材名稱">液相層析質譜儀 LCMS-8060NX</td>
+                                      <td data-title="耗材編號/耗材名稱">
+                                          01361/Simple method creation and batch creation  
+                                      </td>
+                                      <td>
+                                          <button type="button" class="ask-btn" data-toggle="modal" data-target="#addToListModal">
+                                              加入詢價<i class="bi bi-plus"></i>
+                                          </button>
+                                      </td>
+                                  </tr>
                                 </tbody>
                             </table>
+                            <p class="text-center">若無法於此列表中找到欲詢問之耗材，可另於詢問表單中單獨填寫</p>
                         </div>
                         <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">批次加入清單</button>
+                          <button type="button" class="btn w-100" data-dismiss="modal">批次加入清單</button>
                 
                         </div>
                       </div>

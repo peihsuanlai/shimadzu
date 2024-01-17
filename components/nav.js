@@ -10,7 +10,7 @@ export default{
                 {
                     id:"renew",
                     name:"續約",
-                    path:"###"
+                    path:"/renew.html"
                 },
                 {
                     id:"inquire",

@@ -205,11 +205,8 @@ button.common-material {
         border: 1px solid $dark-text;
         background-color: transparent;
         border-radius: 60px;
-        font-size: 10px;
-        @include small {
-            font-size: 12px;
-        }
-        @include padding(4px, 6px);
+        font-size: 14px;
+        @include padding(4px, 8px);
     }
     .mb-ask {
         position: relative;
@@ -218,19 +215,7 @@ button.common-material {
             top: 15px;
             right: 15px;
         }
-        // a {
-        //   color: $light-text;
-        //   border: 1px solid $dark-text;
-        //   background-color: transparent;
-        //   border-radius: 60px;
-        //   @include padding(4px, 6px);
-        //   position: absolute;
-        //   top: 15px;
-        //   left: 15px;
-        //   span {
-        //     font-size: 10px;
-        //   }
-        // }
+       
     }
 }
 
@@ -268,7 +253,6 @@ button.common-material {
         }
     }
     table {
-        // border-collapse: collapse;
         margin: 0;
         padding: 0;
         table-layout: fixed;
@@ -323,8 +307,7 @@ button.common-material {
                     max-width: 30%;
                     padding-left: 4px;
                     word-wrap:break-word;
-                    //background-color:$light-text;
-                    // font-variant: small-caps;
+                    flex-shrink:0;
                     @include small {
                         display: none;
                     }
@@ -335,16 +318,48 @@ button.common-material {
                         background-color: transparent;
                     }
                 }
-     
-            }
-            .delete-btn{
-                font-size: 20px;
-                background-color:transparent;
-                border:none;
-                &:hover {
-                    color: $main;
+                &:first-child {
+                    @include small{
+                        padding-left: 8px;
+                    }
+                }
+                &:last-child {
+                    justify-content:center;
+                    &::before{
+                        width:0;
+                    }
                 }
             }
+ 
+            .ask-btn {
+                border: 1px solid $dark-text;
+                background-color: transparent;
+                border-radius: 60px;
+                font-size: 14px;
+                @include padding(4px, 8px);
+                @include small{
+                    @include padding(4px, 6px);
+                }
+                @include large{
+                    @include padding(4px, 8px);
+                }
+              }
         }
+    }
+    .modal-content{
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+        border:none;
+    }
+    .modal-header{
+        border-bottom:none
+    }
+    .modal-footer{
+        border-top:none;
+        button{
+            background-color:#000000;
+            color:$white;
+            border-radius:0;
+        }
+        
     }
 }
