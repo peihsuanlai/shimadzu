@@ -78,9 +78,11 @@
             <Navv :login="isLogin"></Navv>
             <section class="container-lg banner-container">
                 <div class="banner-carousel owl-carousel owl-theme">
-                    <a v-for="item in bannerCarousel" class="item" :href="item.path">
+                    <!-- <a v-for="item in bannerCarousel" class="item" :href="item.path">
                         <img :src="item.imgUrl" alt:="item.alt" />
-                    </a>
+                    </a> -->
+                    <a href="###" style="background-image:url('./frontEndPackage/images/home-banner1.png')"></a>
+                    <a href="###" style="background-image:url('./frontEndPackage/images/home-banner2.png')"></a>
                 </div>
             </section>
             <section class="container-lg service-container">
@@ -132,6 +134,7 @@
                                 imgSrc: "./frontEndPackage/images/home-icon2.png",
                                 title: "續約",
                                 alt: "contract",
+                                path: "./renew.html",
                             },
                             {
                                 imgSrc: "./frontEndPackage/images/home-icon3.png",
@@ -143,6 +146,7 @@
                                 imgSrc: "./frontEndPackage/images/home-icon4.png",
                                 title: "我的帳號",
                                 alt: "account",
+                                path: "./account.html",
                             },
                         ],
                         bannerCarousel: [

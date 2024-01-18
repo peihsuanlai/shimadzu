@@ -72,13 +72,6 @@ export default{
             </ul>
         </div>
     </nav>
-    <div class="container d-sm-none mb-brand">
-        <h2 class="fs-12 pb-1 mt-5">
-            <a href="/"
-                >台灣島津科學儀器股份有限公司<br /><span>Analytical and Measuring Instruments</span></a
-            >
-        </h2>
-    </div>
     </section>`,
    
 }

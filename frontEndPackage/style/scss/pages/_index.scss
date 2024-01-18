@@ -26,10 +26,7 @@
     }
     .brand-name {
         h1 {
-            font-size: 1.3rem;
-            @include small {
-                font-size: 2rem;
-            }
+            font-size: 2rem;
         }
         .logo {
             text-indent: 101%;
@@ -38,7 +35,7 @@
             background-repeat: no-repeat;
             background-size: cover;
             //padding-bottom:11%;
-            width: 122%;
+            width: 120%;
         }
     }
 
@@ -46,15 +43,15 @@
         font-size: 1.5rem;
         padding: 0;
     }
-    .mb-brand {
-        background-color: $white;
-        position: fixed;
-        width: 100%;
-        top: 12px;
-        left: 0;
-        box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
-        z-index: 1;
-    }
+    // .mb-brand {
+    //     background-color: $white;
+    //     position: fixed;
+    //     width: 100%;
+    //     top: 12px;
+    //     left: 0;
+    //     box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+    //     z-index: 1;
+    // }
     .navbar-collapse.show {
         height: calc(100vh - 48px);
         background-color: $white;
@@ -81,9 +78,22 @@
     @include small {
         padding-top: 100px;
     }
+    a{
+        background-repeat:no-repeat;
+        background-size:cover;
+        padding-bottom:50%;
+        background-position:center;
+        width:100%;
+        @include small{
+            padding-bottom:30%;
+        }
+    }
+    .owl-carousel{
+        z-index:0;
+    }
     .owl-dots {
         position: relative;
-        z-index: 1;
+        // z-index: 1;
         top: -38px;
         span {
             width: 8px !important;
@@ -133,7 +143,11 @@
             transition: all 0.3s ease-in-out;
         }
         h3 {
-            letter-spacing: 2px;
+            letter-spacing: 1px;
+            @include small{
+                letter-spacing: 2px;
+            }
+            
         }
         &:hover {
             transform: translateY(-8px);
@@ -194,6 +208,7 @@
         text-align: center;
         border-radius: 50%;
         background-color: $main;
+        flex-shrink:0;
         .headset-icon {
             color: $white;
             font-size: 22px;
@@ -202,11 +217,14 @@
     .topicArea {
         position: absolute;
         width: 100%;
-        top: 73px;
+        top: 94px;
         z-index: 1;
         text-align: center;
         @include padding(6px, 0);
         background-color: $white;
+        @media screen and  (min-width: 417px){
+            top: 73px;
+        }
     }
     .cs-message {
         display: flex;

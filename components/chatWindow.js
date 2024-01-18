@@ -118,7 +118,7 @@ export default {
     <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title d-flex align-items-center" id="dialogModalLabel">
+                <h5 class="modal-title d-flex align-items-center mb-0" id="dialogModalLabel">
                     <span class="dialog-icon-container mr-2 mr-sm-3"
                         ><i class="bi bi-headset headset-icon"></i
                     ></span>
@@ -162,17 +162,20 @@ export default {
                 <template v-else-if="modalContent==='B'">
                     <div class="ask-topic">
                         <p>請輸入詢問的主題：</p>
-                        <label for="message-topic">
-                            <input
-                                type="text"
-                                id="message-topic"
-                                v-model.lazy="messageTopic"
-                                @keyup.enter="switchModalContent('D')"
-                            />
-                        </label>
-                        <button type="button" class="send-btn" @click="switchModalContent('D')">
-                            <i class="bi bi-send-fill"></i>
-                        </button>
+                        <div class="d-flex align-items-center">
+                            <label for="message-topic">
+                                <input
+                                    type="text"
+                                    id="message-topic"
+                                    v-model.lazy="messageTopic"
+                                    @keyup.enter="switchModalContent('D')"
+                                />
+                            </label>
+                            <button type="button" class="send-btn" @click="switchModalContent('D')">
+                                <i class="bi bi-send-fill"></i>
+                            </button>
+                        </div>
+                        
                     </div>
                 </template>
                 <template v-else-if="modalContent==='C'">

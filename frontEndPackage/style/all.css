@@ -180,12 +180,7 @@ a:hover {
   color: #000000;
 }
 .nav-container .brand-name h1 {
-  font-size: 1.3rem;
-}
-@media (min-width: 576px) {
-  .nav-container .brand-name h1 {
-    font-size: 2rem;
-  }
+  font-size: 2rem;
 }
 .nav-container .brand-name .logo {
   text-indent: 101%;
@@ -193,20 +188,11 @@ a:hover {
   white-space: nowrap;
   background-repeat: no-repeat;
   background-size: cover;
-  width: 122%;
+  width: 120%;
 }
 .nav-container .navbar-toggler {
   font-size: 1.5rem;
   padding: 0;
-}
-.nav-container .mb-brand {
-  background-color: #ffffff;
-  position: fixed;
-  width: 100%;
-  top: 12px;
-  left: 0;
-  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
-  z-index: 1;
 }
 .nav-container .navbar-collapse.show {
   height: calc(100vh - 48px);
@@ -235,9 +221,23 @@ a:hover {
     padding-top: 100px;
   }
 }
+.banner-container a {
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-bottom: 50%;
+  background-position: center;
+  width: 100%;
+}
+@media (min-width: 576px) {
+  .banner-container a {
+    padding-bottom: 30%;
+  }
+}
+.banner-container .owl-carousel {
+  z-index: 0;
+}
 .banner-container .owl-dots {
   position: relative;
-  z-index: 1;
   top: -38px;
 }
 .banner-container .owl-dots span {
@@ -288,7 +288,12 @@ a:hover {
   transition: all 0.3s ease-in-out;
 }
 .service-container .item h3 {
-  letter-spacing: 2px;
+  letter-spacing: 1px;
+}
+@media (min-width: 576px) {
+  .service-container .item h3 {
+    letter-spacing: 2px;
+  }
 }
 .service-container .item:hover {
   transform: translateY(-8px);
@@ -348,6 +353,7 @@ a:hover {
   text-align: center;
   border-radius: 50%;
   background-color: #DD0000;
+  flex-shrink: 0;
 }
 #dialogModal .dialog-icon-container .headset-icon {
   color: #ffffff;
@@ -356,11 +362,16 @@ a:hover {
 #dialogModal .topicArea {
   position: absolute;
   width: 100%;
-  top: 73px;
+  top: 94px;
   z-index: 1;
   text-align: center;
   padding: 6px 0;
   background-color: #ffffff;
+}
+@media screen and (min-width: 417px) {
+  #dialogModal .topicArea {
+    top: 73px;
+  }
 }
 #dialogModal .cs-message {
   display: flex;
@@ -503,7 +514,7 @@ footer .photonic {
 }
 
 .breadcrumb-container {
-  padding-top: 126px;
+  padding-top: 70px;
 }
 @media (min-width: 576px) {
   .breadcrumb-container {
@@ -589,7 +600,7 @@ footer .photonic {
   }
 }
 .tab-container a {
-  padding: 0.5rem 1.5rem;
+  padding: 0.5rem 0.5rem;
   color: #b8b8b8;
   border: 1px solid #d9d9d9;
   border-bottom: none;
@@ -602,6 +613,7 @@ footer .photonic {
   .tab-container a {
     width: auto;
     text-align: left;
+    padding: 0.5rem 1.5rem;
   }
 }
 .tab-container a.active {
@@ -627,7 +639,7 @@ footer .photonic {
 
 .right-btns {
   position: fixed;
-  z-index: 2;
+  z-index: 1;
   bottom: 0;
   right: 0;
   background-color: #ffffff;
@@ -836,10 +848,10 @@ footer .photonic {
 }
 @media (min-width: 576px) {
   .accordion-container .item [data-title=合約日期] {
-    width: 38%;
+    width: 30%;
   }
 }
-.accordion-container .expire-hint {
+.accordion-container .item [data-title=合約日期] .expire-hint {
   color: #ffffff;
   background-color: #DD0000;
   font-size: 10px;
@@ -847,7 +859,7 @@ footer .photonic {
   padding: 2px 6px;
 }
 @media (min-width: 576px) {
-  .accordion-container .expire-hint {
+  .accordion-container .item [data-title=合約日期] .expire-hint {
     font-size: 12px;
   }
 }
@@ -882,12 +894,14 @@ footer .photonic {
   border: 1px solid #333333;
   background-color: transparent;
   border-radius: 60px;
-  font-size: 10px;
-  padding: 2px 6px;
+  font-size: 14px;
+  white-space: nowrap;
+  padding: 4px 8px;
 }
 @media (min-width: 576px) {
   .ask-btn {
     font-size: 12px;
+    padding: 2px 6px;
   }
 }
 
@@ -1011,12 +1025,19 @@ footer .photonic {
 #historyModal .modal-header {
   border-bottom: none;
 }
+#historyModal .contentDetailBtn {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  color: #626262;
+}
 #historyModal table {
   margin: 0;
   padding: 0;
   table-layout: fixed;
   max-height: 500px;
   overflow-y: scroll;
+  border-collapse: collapse;
 }
 #historyModal table thead {
   display: none;
@@ -1060,6 +1081,7 @@ footer .photonic {
 @media (min-width: 992px) {
   #historyModal table tbody td {
     display: table-cell;
+    border-right: 1px solid #d9d9d9;
   }
 }
 #historyModal table tbody td::before {
@@ -1389,7 +1411,7 @@ footer .photonic {
 }
 .inquiry-main table tbody td {
   padding: 8px 4px;
-  display: block;
+  display: flex;
 }
 @media (min-width: 576px) {
   .inquiry-main table tbody td {
@@ -1809,22 +1831,22 @@ button.common-material span {
   right: 15px;
 }
 
-#addToListModal, #saveSuccessModal {
+#addToListModal, #saveSuccessModal, #sendModal {
   font-size: 16px;
 }
-#addToListModal .modal-content, #saveSuccessModal .modal-content {
+#addToListModal .modal-content, #saveSuccessModal .modal-content, #sendModal .modal-content {
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   border: none;
 }
-#addToListModal .modal-body .add-icon, #saveSuccessModal .modal-body .add-icon {
+#addToListModal .modal-body .add-icon, #saveSuccessModal .modal-body .add-icon, #sendModal .modal-body .add-icon {
   font-size: 48px;
   color: #d9d9d9;
 }
-#addToListModal .modal-footer, #saveSuccessModal .modal-footer {
+#addToListModal .modal-footer, #saveSuccessModal .modal-footer, #sendModal .modal-footer {
   border-top: none;
   justify-content: center;
 }
-#addToListModal .modal-footer button, #saveSuccessModal .modal-footer button {
+#addToListModal .modal-footer button, #saveSuccessModal .modal-footer button, #sendModal .modal-footer button {
   border-radius: 0;
   width: 100%;
   background-color: #000000;

@@ -38,16 +38,20 @@
                     <li>
                         <a href="###" class="active"
                             ><span>全機種/耗材一覽</span>
-                            <select name="" id="" v-model="selectedType" class="form-select form-select-sm">
+                            <!-- <select name="" id="" v-model="selectedType" class="form-select form-select-sm d-none d-sm-inline-block">
                                 <option selected disabled value="">請選擇</option>
                                 <option :value="item" v-for="item in typeData">{{ item }}</option>
-                            </select>
+                            </select> -->
                         </a>
                     </li>
                 </ul>
+                <select name="" id="" v-model="selectedType" class="form-select form-select-sm d-sm-none">
+                    <option selected disabled value="">請選擇</option>
+                    <option :value="item" v-for="item in typeData">{{ item }}</option>
+                </select>
                 <div class="right-btn">
                     <button type="button" :class="{'btnActive':inquiryNum,'swing': isInquiryNumChanging}">
-                        <span class="mr-1" v-if="inquiryNum">{{inquiryNum}}</span>詢價
+                        <span class="mr-2" v-if="inquiryNum">{{inquiryNum}}</span>詢價
                     </button>
                 </div>
                 <div class="table-title d-none d-sm-flex">
@@ -203,7 +207,7 @@
 
             </main>
             <Chat></Chat>
-            <Foooter></Foooter>
+            <Foooter class="pb-5 pb-sm-0"></Foooter>
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>

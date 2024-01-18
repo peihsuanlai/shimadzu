@@ -1,5 +1,5 @@
 .breadcrumb-container {
-  padding-top: 126px;
+  padding-top: 70px;
   @include small {
     padding-top: 100px;
   }
@@ -76,7 +76,7 @@
     }
   }
   a {
-    @include padding(0.5rem, 1.5rem);
+    @include padding(0.5rem, 0.5rem);
     color: #b8b8b8;
     border: 1px solid #d9d9d9;
     border-bottom: none;
@@ -87,6 +87,7 @@
     @include small {
       width: auto;
       text-align: left;
+      @include padding(0.5rem, 1.5rem);
     }
     &.active {
       background-color: transparent;
@@ -113,7 +114,7 @@
 
 .right-btns {
   position: fixed;
-  z-index: 2;
+  z-index: 1;
   bottom: 0;
   right: 0;
   background-color: $white;
@@ -281,21 +282,25 @@
     [data-title="合約日期"] {
       @include small {
         // display:flex;
-        width: 38%;
+        width: 30%;
       }
+      .expire-hint {
+        color: $white;
+        background-color: $main;
+        font-size: 10px;
+        @include small {
+          font-size: 12px;
+        }
+        border-radius: 60px;
+        @include padding(2px, 6px);
+      }
+      // & > div{
+      //   gap:8px;
+      // }
     }
   }
 
-  .expire-hint {
-    color: $white;
-    background-color: $main;
-    font-size: 10px;
-    @include small {
-      font-size: 12px;
-    }
-    border-radius: 60px;
-    @include padding(2px, 6px);
-  }
+
   .accordion-switch {
     width: 100%;
     border: none;
@@ -320,16 +325,27 @@
   }
 }
 
+
 .ask-btn {
   border: 1px solid $dark-text;
   background-color: transparent;
   border-radius: 60px;
-  font-size: 10px;
+  font-size: 14px;
+  white-space:nowrap;
+  @include padding(4px, 8px);
   @include small {
     font-size: 12px;
+    @include padding(2px, 6px);
+    
   }
-  @include padding(2px, 6px);
+  
 }
+
+
+
+
+
+
 .mb-ask {
   position: relative;
   .ask-btn {
@@ -444,12 +460,19 @@
   .modal-header {
     border-bottom: none;
   }
+  .contentDetailBtn{
+    border:none;
+    background-color:transparent;
+    padding:0;
+    color:$light-text;
+  }
   table {
     margin: 0;
     padding: 0;
     table-layout: fixed;
     max-height: 500px;
     overflow-y: scroll;
+    border-collapse: collapse;
     thead {
       display: none;
       background-color: $light-text;
@@ -489,10 +512,12 @@
         }
       }
       td {
+       
         @include padding(8px, 4px);
         display: flex;
         @include large {
           display: table-cell;
+          border-right:1px solid #d9d9d9;
         }
         &::before {
           content: attr(data-title);
