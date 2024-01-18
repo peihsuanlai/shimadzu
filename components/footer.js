@@ -1,5 +1,4 @@
 export default{
-    name:'Foooter',
     template:` <footer>
     <div class="container-lg d-flex justify-content-between flex-wrap fs-14 grey-text py-2">
         <div class="d-flex flex-wrap mr-3 mb-2">

@@ -219,6 +219,14 @@ button.common-material {
     }
 }
 
+.pagination{
+    justify-content:flex-end;
+    button{
+        background-color:transparent;
+        border:none;
+    }
+}
+
 #addToListModal, #saveSuccessModal, #sendModal {
     font-size: 16px;
     .modal-content{

@@ -1831,6 +1831,14 @@ button.common-material span {
   right: 15px;
 }
 
+.pagination {
+  justify-content: flex-end;
+}
+.pagination button {
+  background-color: transparent;
+  border: none;
+}
+
 #addToListModal, #saveSuccessModal, #sendModal {
   font-size: 16px;
 }
