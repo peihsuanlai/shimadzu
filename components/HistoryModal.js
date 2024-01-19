@@ -42,7 +42,7 @@ export default{
     aria-labelledby="historyModalLabel"
     aria-hidden="true"  ref="modal"
 >
-    <div class="modal-dialog modal-xl">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">

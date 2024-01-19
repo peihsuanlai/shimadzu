@@ -207,6 +207,15 @@
             transition: all 0.3s ease-in-out;
         }
     }
+    .options{
+        label{
+            width:48%;
+       
+            @include small{
+                width:23%;
+            }
+        }
+    }
 }
 
 .lightbox {

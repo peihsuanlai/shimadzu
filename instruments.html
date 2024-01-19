@@ -108,9 +108,9 @@
                                 <div class="d-flex flex-wrap item-content">
                                     <div>
                                         <a
-                                            href="#historyModal"
+                                            
                                             class="d-flex align-items-center justify-content-center"
-                                            data-toggle="modal" @click="openHistoryModal(item)"
+                                             @click="openModal(item, '#historyModal')"
                                         >
                                             <span class="material-icons mr-1"> pending_actions </span>
                                             <h3 class="mb-0">歷史維修紀錄</h3>
@@ -118,8 +118,8 @@
                                     </div>
                                     <div>
                                         <a
-                                            href="#materialModal"
-                                            data-toggle="modal" @click="openHistoryModal(item)"
+                                           
+                                           @click="openModal(item, '#materialModal')"
                                             class="d-flex align-items-center justify-content-center"
                                         >
                                             <span class="material-icons mr-1"> receipt_long </span>
@@ -136,8 +136,7 @@
                                     </div>
                                     <div>
                                         <a
-                                            href="#checkNumberModal"
-                                            data-toggle="modal"
+                                        @click="openModal(item, '#checkNumberModal')"
                                             class="d-flex align-items-center justify-content-center"
                                         >
                                             <span class="material-icons mr-1"> list </span>
@@ -189,234 +188,28 @@
                             <div class="text-center">已加入<br />返回耗材繼續查看</div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="addInquiry">
+                            <button type="button" class="btn" data-dismiss="modal" @click="addInquiry">
                                 確認
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
+         
 
             <!-- added modal end -->
 
             <!-- 歷史維修 modal start -->
             <History :product="tempProduct"></History>
-            <!-- <div
-                class="modal fade"
-                id="historyModal"
-                tabindex="-1"
-                aria-labelledby="historyModalLabel"
-                aria-hidden="true"
-            >
-                <div class="modal-dialog modal-xl">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="d-flex align-items-center productInfo mb-3">
-                                <div class="img-container mr-3">
-                                    <img src="./frontEndPackage/images/product-sm.jpg" alt="" />
-                                </div>
-                                <div>
-                                    <h4 class="fs-16 mb-2">紫外/可見光-近紅外光分光光譜儀</h4>
-                                    <p class="fs-14 mb-0">主設備序號：06UPLC L22135800614</p>
-                                    <div class="fs-14">
-                                        合約日期：
-                                        <span>2023/03/16-2023/12/25</span>
-                                        <span class="fs-12 ml-2">合約即將到期</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-end justify-content-between">
-                                <h5 class="modal-title" id="historyModalLabel">歷史維修紀錄</h5>
-                                <div class="text-right fs-14 pagination">
-                                    1-20列 (共5頁)<button type="button"><i class="bi bi-chevron-left ml-4 mr-2"></i></button> <button type="button"></i
-                                        ><i class="bi bi-chevron-right"></i>
-                                    </button></div>
-                            </div>
-
-                            <table class="mb-3">
-                                <thead>
-                                    <tr>
-                                        <th style="width: 10%">儀器序號</th>
-                                        <th style="width: 20%">機型(如LC-2040)</th>
-                                        <th style="width: 8%">日期</th>
-                                        <th style="width: 8%">起</th>
-                                        <th style="width: 8%">迄</th>
-                                        <th style="width: 20%">工作內容</th>
-                                        <th style="width: 10%">執行工程師</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr v-for="(item, index) in histroyRecord" :key="item.id">
-                                        <td data-title="儀器序號">{{item.number}}</td>
-                                        <td data-title="機型">{{item.title}}</td>
-                                        <td data-title="日期">{{item.date}}</td>
-                                        <td data-title="起">{{item.start}}</td>
-                                        <td data-title="迄">{{item.end}}</td>
-                                        <td data-title="工作內容">
-                                            <template v-if="item.content.length>40">
-                                                <button
-                                                    type="button"
-                                                    class="contentDetailBtn text-left"
-                                                    data-toggle="modal"
-                                                    data-target="#contentDetailModal" @click="openNestedModal"
-                                                >
-                                                    {{item.content.slice(0, 40)}}...
-                                                </button>
-                                                <div
-                                                    class="modal fade"
-                                                    id="contentDetailModal"
-                                                    tabindex="-1"
-                                                    aria-labelledby="contentDetailModalLabel"
-                                                    aria-hidden="true"
-                                                    v-show="isNestedModalVisible"
-                                                >
-                                                    <div class="modal-dialog modal-dialog-scrollable">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="contentDetailModalLabel">
-                                                                    維修細節
-                                                                </h5>
-                                                                <button
-                                                                    type="button"
-                                                                    class="close"
-                                                                  data-dismiss="modal"
-                                                                    aria-label="Close"
-                                                                    @click="closeNestedModal"
-                                                                >
-                                                                    <span aria-hidden="true">&times;</span>
-                                                                </button>
-                                                            </div>
-                                                            <div class="modal-body">{{item.content}}</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </template>
-                                            <template v-else>{{item.content}}</template>
-                                        </td>
-                                        <td data-title="執行工程師">{{item.person}}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
             <!-- 歷史維修 modal end -->
-            <!-- 耗材清單 modal end -->
-            <Material :product="tempProduct"></Material>
-            <!-- <div
-                class="modal fade"
-                id="materialModal"
-                tabindex="-1"
-                aria-labelledby="materialModalLabel"
-                aria-hidden="true"
-            >
-                <div class="modal-dialog modal-xl">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="d-flex align-items-center productInfo mb-3">
-                                <div class="img-container mr-3">
-                                    <img src="./frontEndPackage/images/product-sm.jpg" alt="" />
-                                </div>
-                                <div>
-                                    <h4 class="fs-16 mb-2">紫外/可見光-近紅外光分光光譜儀</h4>
-                                    <p class="fs-14 mb-0">主設備序號：06UPLC L22135800614</p>
-                                    <div class="fs-14">
-                                        合約日期：
-                                        <span>2023/03/16-2023/12/25</span>
-                                        <span class="fs-12 ml-2">合約即將到期</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-end justify-content-between">
-                                <h5 class="modal-title" id="materialModalLabel">耗材清單</h5>
-                                <div class="text-right fs-14 pagination">
-                                    1-20列 (共5頁)<button type="button"><i class="bi bi-chevron-left ml-4 mr-2"></i></button> <button type="button"></i
-                                        ><i class="bi bi-chevron-right"></i>
-                                    </button></div>
-                            </div>
 
-                            <table class="mb-3">
-                                <thead>
-                                    <tr>
-                                        <th style="width: 5%"><input type="checkbox" /></th>
-                                        <th style="width: 15%">圖片</th>
-                                        <th style="width: 8%">編號</th>
-                                        <th style="width: 25%">器材名稱</th>
-                                        <th style="width: 27%">耗材編號/耗材名稱</th>
-                                        <th style="width: 20%"></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td data-title="選取"><input type="checkbox" /></td>
-                                        <td data-title="圖片">
-                                            <a href="./frontEndPackage/images/product-lg.jpg" data-lightbox="pic-1">
-                                                <img src="./frontEndPackage/images/product-sm.jpg" alt="" />
-                                            </a>
-                                        </td>
-                                        <td data-title="編號">01</td>
-                                        <td data-title="器材名稱">液相層析質譜儀 LCMS-8060NX</td>
-                                        <td data-title="耗材編號/耗材名稱">
-                                            01361/Simple method creation and batch creation
-                                        </td>
-                                        <td>
-                                            <button
-                                                type="button"
-                                                class="ask-btn"
-                                                data-toggle="modal"
-                                                data-target="#addToListModal"
-                                            >
-                                                加入詢價<i class="bi bi-plus"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td data-title="選取"><input type="checkbox" /></td>
-                                        <td data-title="圖片">
-                                            <a href="./frontEndPackage/images/product-lg.jpg" data-lightbox="pic-1">
-                                                <img src="./frontEndPackage/images/product-sm.jpg" alt="" />
-                                            </a>
-                                        </td>
-                                        <td data-title="編號">01</td>
-                                        <td data-title="器材名稱">液相層析質譜儀 LCMS-8060NX</td>
-                                        <td data-title="耗材編號/耗材名稱">
-                                            01361/Simple method creation and batch creation
-                                        </td>
-                                        <td>
-                                            <button
-                                                type="button"
-                                                class="ask-btn"
-                                                data-toggle="modal"
-                                                data-target="#addToListModal"
-                                            >
-                                                加入詢價<i class="bi bi-plus"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <p class="text-center">若無法於此列表中找到欲詢問之耗材，可另於詢問表單中單獨填寫</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn w-100" data-dismiss="modal">批次加入清單</button>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
             <!-- 耗材清單 modal end -->
+            <Material :product="tempProduct" @emit-num="addInquiry"></Material>
+            <!-- 耗材清單 modal end -->
+
             <!-- 附件序號 modal start -->
-            <div
+            <Check :product="tempProduct"></Check>
+            <!-- <div
                 class="modal fade"
                 id="checkNumberModal"
                 tabindex="-1"
@@ -472,7 +265,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- 附件序號 modal end -->
 
             <Chat></Chat>
@@ -497,8 +290,9 @@
             import Foooter from "./components/footer.js";
             import Navv from "./components/nav.js";
             import Chat from "./components/chatWindow.js";
-            import History from "./components/HistoryModal.js";
-            import Material from "./components/MaterialModal.js";
+            import History from "./components/historyModal.js";
+            import Material from "./components/materialModal.js";
+            import Check from "./components/checkMaterialModal.js";
             const app = new Vue({
                 el: "#app",
                 data() {
@@ -531,7 +325,6 @@
                         ],
                         accordionCollapse: false,
                         isInquiryNumChanging: false,
-                        
                         tempProduct:{}
                     };
                 },
@@ -542,8 +335,9 @@
                     showDetail() {
                         this.accordionCollapse = !this.accordionCollapse;
                     },
-                    openHistoryModal (item) {
+                    openModal (item, modalName) {
                         this.tempProduct = { ...item };
+                        $(modalName).modal('show');
                     },
                    
                 },
@@ -562,7 +356,8 @@
                     Navv,
                     Chat,
                     History,
-                    Material
+                    Material,
+                    Check,
                 },
                 mounted() {},
             });

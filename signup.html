@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+            integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+            crossorigin="anonymous"
+        />
+        <link rel="stylesheet" href="./frontEndPackage/bootstrap-icons/bootstrap-icons.css" />
+
+        <link rel="stylesheet" href="./frontEndPackage/style/all.css" />
+        <title>註冊會員</title>
+    </head>
+    <body>
+        <div id="app">
+            <Navv :login="!isLogin"></Navv>
+            <section class="breadcrumb-container mb-3 mb-sm-5">
+                <ol class="d-flex list-unstyled breadcrumb-list">
+                    <li><a href="/">首頁</a></li>
+                    <li class="active"><a href="###">註冊會員</a></li>
+                </ol>
+            </section>
+            <main class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-8 col-lg-6">
+                        <div class="signup-container">
+                            <ul class="tab d-flex list-unstyled mb-0">
+                                <li><a href="###">登入會員</a></li>
+                                <li><a href="./signup.html" class="active">註冊會員</a></li>
+                            </ul>
+                            <div class="content">
+                                <p class="text-center">使用您的電子郵件和密碼登入：</p>
+                                <form action="" class="needs-validation" novalidate>
+                                    <div class="form-group">
+                                        <label for="email">E-mail*</label>
+                                        <input type="email" id="email" class="form-control" v-model="signupData.email" required />
+                                        <div class="invalid-feedback">請輸入有效電子信箱</div>
+                                    </div>
+                                    <div class="form-row mb-3">
+                                        <div class="col">
+                                            <label for="password">密碼*</label>
+                                            <input type="password" id="password" class="form-control" />
+                                        </div>
+                                        <div class="col">
+                                            <label for="confirm-password">確認密碼*</label>
+                                            <input type="password" id="confirm-password" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="number">儀器序號*</label>
+                                        <input type="text" id="number" class="form-control" v-model="signupData.equpNum" required />
+                                        <div class="invalid-feedback">請輸入您的儀器序號</div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="institute">單位全名*</label>
+                                        <input type="text" id="institute" class="form-control" v-model="signupData.institute" required />
+                                        <div class="invalid-feedback">請輸入您的單位全名</div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="address">單位地址*</label>
+                                        <input type="text" id="address" class="form-control" v-model="signupData.address" required />
+                                        <div class="invalid-feedback">請輸入您的單位地址</div>
+                                    </div>
+                                    <div class="form-row mb-3">
+                                        <div class="col">
+                                            <label for="name">姓名</label>
+                                            <input type="text" id="name" class="form-control" v-model="signupData.name" required />
+                                            <div class="invalid-feedback">請輸入您的姓名</div>
+                                        </div>
+                                        <div class="col">
+                                            <label for="gender">稱謂</label>
+                                            <select class="form-control" id="gender" v-model="signupData.gender" required>
+                                                <option>先生</option>
+                                                <option>小姐</option>
+                                            </select>
+                                            <div class="invalid-feedback">請選擇您的稱謂</div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row mb-4">
+                                        <div class="col">
+                                            <label for="department">部門</label>
+                                            <input type="text" id="department" class="form-control" v-model="signupData.department" required/>
+                                            <div class="invalid-feedback">請輸入您的部門名稱</div>
+                                        </div>
+                                        <div class="col">
+                                            <label for="title">職稱</label>
+                                            <input type="text" id="title" class="form-control" v-model="signupData.title" required/>
+                                            <div class="invalid-feedback">請輸入您的職稱</div>
+                                        </div>
+                                    </div>
+                                    <p class="text-darkBlack mb-1">單位電話/手機號碼擇一必填*</p>
+                                    <div class="form-row mb-3">
+                                        <div class="col">
+                                            <label for="phone">單位電話</label>
+                                            <input type="tel" id="phone" class="form-control" v-model="signupData.phone"/>
+                                        </div>
+                                        <div class="col">
+                                            <label for="extension">分機</label>
+                                            <input type="text" id="extension" class="form-control" v-model="signupData.extension"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label for="cellphone">手機號碼</label>
+                                        <input type="tel" id="cellphone" class="form-control" v-model="signupData.cellphone"/>
+                                    </div>
+
+                                    <div class="form-group mb-4">
+                                        <label for="verification" class="text-darkBlack">島津驗證碼*</label>
+                                        <input type="tel" id="verification" class="form-control" v-model="signupData.verification" required />
+                                        <div class="invalid-feedback">請輸入島津驗證碼</div>
+                                    </div>
+                                    <div class="form-check">
+                                        <input
+                                            class="form-check-input"
+                                            type="checkbox"
+                                            name="policyCheck"
+                                            id="policy"
+                                        />
+                                        <label class="form-check-label fs-14" for="policy">
+                                            本人已閱讀並同意 SHIMADZU ID 相關
+                                            <a href="https://www.shimadzu.com.tw/provision.html">使用規範</a>。
+                                        </label>
+                                    </div>
+                                    <div class="form-check mb-4">
+                                        <input
+                                            class="form-check-input"
+                                            type="checkbox"
+                                            name="privacyCheck"
+                                            id="privacy"
+                                        />
+                                        <label class="form-check-label fs-14" for="privacy">
+                                            本人已閱讀並同意株式會社島津製作所，所制定之<a
+                                                href="https://www.shimadzu.com.tw/privacy/index.html"
+                                                >隱私權政策</a
+                                            >。
+                                        </label>
+                                    </div>
+                                    <div class="form-btns d-flex justify-content-center">
+                                        <!-- <input type="reset" value="清除表單"> -->
+                                        <button type="button">取消</button>
+                                        <button type="submit"  data-toggle="modal" data-target="#submitModal">提交</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+         
+
+            <!-- 提交 modal start -->
+            <div class="modal fade" id="submitModal" tabindex="-1" aria-labelledby="submitModal" aria-hidden="true">
+                <div class="modal-dialog modal-sm modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-body d-flex flex-column justify-content-center align-items-center">
+                            <i class="bi bi-check-circle-fill add-icon"></i>
+                            <div class="text-center">申請成功，帳號驗證中</div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn" data-dismiss="modal">確認</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 提交 modal end -->
+
+            <Foooter></Foooter>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
+            integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
+            crossorigin="anonymous"
+        ></script>
+
+        <!-- <script>
+            $(".needs-validation").each(function (index) {
+                $(this).on("submit", function (e) {
+                    e.preventDefault();
+                    $(this).addClass("was-validated");
+                });
+            });
+        </script> -->
+
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vee-validate@latest/dist/vee-validate.js"></script>
+
+        <script src="./frontEndPackage/js/all.js"></script>
+        <script type="module">
+            import Foooter from "./components/footer.js";
+            import Navv from "./components/nav.js";
+console.log(VeeValidate);
+            const app = new Vue({
+                el: "#app",
+                data() {
+                    return {
+                        isLogin: false,
+                        passwordHide: true,
+                        signupData: {
+                            email: "",
+                            password: "",
+                            equpNum: "",
+                            institute: "",
+                            address: "",
+                            name: "",
+                            selectedGender: "",
+                            department: "",
+                            title: "",
+                            phone: "",
+                            extension: "",
+                            cellphone: "",
+                            verification: "",
+                        },
+                    };
+                },
+                methods: {},
+                components: {
+                    Foooter,
+                    Navv,
+                },
+                mounted() {},
+            });
+        </script>
+    </body>
+</html>

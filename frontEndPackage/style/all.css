@@ -254,7 +254,23 @@ a:hover {
   min-height: calc(100vh - 260px);
 }
 .service-container .row {
-  row-gap: 36px;
+  row-gap: 24px;
+}
+.service-container div[class~=col-6]:nth-child(odd) {
+  padding-right: 7.5px;
+}
+@media (min-width: 768px) {
+  .service-container div[class~=col-6]:nth-child(odd) {
+    padding-right: 15px;
+  }
+}
+.service-container div[class~=col-6]:nth-child(even) {
+  padding-left: 7.5px;
+}
+@media (min-width: 768px) {
+  .service-container div[class~=col-6]:nth-child(even) {
+    padding-left: 15px;
+  }
 }
 .service-container .item {
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
@@ -637,6 +653,22 @@ footer .photonic {
   border-color: #d9d9d9;
 }
 
+.mb-select {
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  padding: 14px 0;
+  border-left: 1px solid #d9d9d9;
+  border-right: 1px solid #d9d9d9;
+}
+.mb-select select {
+  width: 90%;
+  border-radius: 5px;
+  border-color: #d9d9d9;
+  padding: 4px 0;
+  color: #626262;
+}
+
 .right-btns {
   position: fixed;
   z-index: 1;
@@ -692,16 +724,16 @@ footer .photonic {
     transform: rotate(0deg);
   }
   20% {
-    transform: rotate(5deg);
+    transform: rotate(3deg);
   }
   40% {
-    transform: rotate(-5deg);
+    transform: rotate(-3deg);
   }
   60% {
-    transform: rotate(5deg);
+    transform: rotate(3deg);
   }
   80% {
-    transform: rotate(-5deg);
+    transform: rotate(-3deg);
   }
   100% {
     transform: rotate(0deg);
@@ -776,7 +808,7 @@ footer .photonic {
   background-color: #626262;
   min-width: 30%;
   color: #ffffff;
-  padding: 8px 4px;
+  padding: 8px 6px;
 }
 @media (min-width: 576px) {
   .accordion-container .item [data-title=編號]::before,
@@ -796,7 +828,7 @@ footer .photonic {
 .accordion-container .item [data-title=機型] > div,
 .accordion-container .item [data-title=合約日期] > span,
 .accordion-container .item [data-title=合約日期] > div {
-  padding: 8px 4px;
+  padding: 8px 6px;
   background-color: #ffffff;
   word-break: break-all;
   min-width: 70%;
@@ -946,6 +978,7 @@ footer .photonic {
   }
 }
 .item-content a {
+  cursor: pointer;
   color: #626262;
   border-radius: 5px;
   background-color: rgb(255, 255, 255);
@@ -995,347 +1028,139 @@ footer .photonic {
   font-size: 22px;
 }
 
-#historyModal .productInfo {
+.modal .productInfo {
   border-radius: 5px;
   border: 1px solid #d9d9d9;
   padding: 16px 8px;
 }
-#historyModal .productInfo p + div span:first-child {
+.modal .productInfo p + div span:first-child {
   color: #af282f;
 }
-#historyModal .productInfo p + div span:last-child {
+.modal .productInfo p + div span:last-child {
   color: #ffffff;
   background-color: #af282f;
   border-radius: 60px;
   padding: 4px 6px;
 }
-#historyModal h5 {
+.modal h5 {
   color: #333333;
   font-size: 20px;
+  margin-bottom: 4px;
 }
 @media (min-width: 768px) {
-  #historyModal h5 {
+  .modal h5 {
     font-size: 24px;
   }
 }
-#historyModal .modal-content {
+.modal .modal-content {
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   border: none;
 }
-#historyModal .modal-header {
+.modal .modal-header {
   border-bottom: none;
 }
+.modal table {
+  margin: 0;
+  padding: 0;
+  table-layout: fixed;
+  max-height: 500px;
+  overflow-y: scroll;
+}
+.modal table thead {
+  display: none;
+  background-color: #626262;
+  color: #ffffff;
+}
+.modal table thead th {
+  padding: 8px 4px;
+  font-weight: 500;
+}
+.modal table thead th:first-child {
+  padding-left: 8px;
+}
+@media (min-width: 992px) {
+  .modal table thead {
+    display: table-header-group;
+  }
+}
+.modal table tr {
+  display: block;
+  margin-bottom: 1em;
+  border: 1px solid #d9d9d9;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+@media (min-width: 992px) {
+  .modal table tr {
+    display: table-row;
+    box-shadow: none;
+    border: none;
+  }
+}
+@media (min-width: 992px) {
+  .modal table tbody tr {
+    border: 1px solid #d9d9d9;
+  }
+}
+.modal table tbody td {
+  padding: 8px 4px;
+  display: flex;
+}
+@media (min-width: 992px) {
+  .modal table tbody td {
+    display: table-cell;
+  }
+}
+.modal table tbody td::before {
+  content: attr(data-title);
+  display: inline-block;
+  width: 30%;
+  max-width: 30%;
+  padding-left: 4px;
+  word-wrap: break-word;
+  flex-shrink: 0;
+}
+@media (min-width: 992px) {
+  .modal table tbody td::before {
+    display: none;
+  }
+}
+.modal table tbody td:nth-child(odd) {
+  background-color: #f5f5f5;
+}
+@media (min-width: 992px) {
+  .modal table tbody td:nth-child(odd) {
+    background-color: transparent;
+  }
+}
+@media (min-width: 992px) {
+  .modal table tbody td:first-child {
+    padding-left: 8px;
+  }
+}
+.modal .modal-footer {
+  border-top: none;
+}
+.modal .modal-footer button {
+  background-color: #333333;
+  color: #ffffff;
+  border-radius: 5px;
+}
+.modal .modal-footer button:focus {
+  box-shadow: none;
+}
+.modal .modal-footer button:hover {
+  outline: 1px solid #333333;
+  background-color: transparent;
+  color: #333333;
+  transition: all 0.3s ease-in-out;
+}
+
 #historyModal .contentDetailBtn {
   border: none;
   background-color: transparent;
   padding: 0;
   color: #626262;
-}
-#historyModal table {
-  margin: 0;
-  padding: 0;
-  table-layout: fixed;
-  max-height: 500px;
-  overflow-y: scroll;
-  border-collapse: collapse;
-}
-#historyModal table thead {
-  display: none;
-  background-color: #626262;
-  color: #ffffff;
-}
-#historyModal table thead th {
-  padding: 8px 4px;
-  font-weight: 500;
-}
-#historyModal table thead th:first-child {
-  padding-left: 8px;
-}
-@media (min-width: 992px) {
-  #historyModal table thead {
-    display: table-header-group;
-  }
-}
-#historyModal table tr {
-  display: block;
-  margin-bottom: 1em;
-  border: 1px solid #d9d9d9;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-}
-@media (min-width: 992px) {
-  #historyModal table tr {
-    display: table-row;
-    box-shadow: none;
-    border: none;
-  }
-}
-@media (min-width: 992px) {
-  #historyModal table tbody tr {
-    border: 1px solid #d9d9d9;
-  }
-}
-#historyModal table tbody td {
-  padding: 8px 4px;
-  display: flex;
-}
-@media (min-width: 992px) {
-  #historyModal table tbody td {
-    display: table-cell;
-    border-right: 1px solid #d9d9d9;
-  }
-}
-#historyModal table tbody td::before {
-  content: attr(data-title);
-  display: inline-block;
-  width: 30%;
-  max-width: 30%;
-  padding-left: 4px;
-  word-wrap: break-word;
-  flex-shrink: 0;
-}
-@media (min-width: 992px) {
-  #historyModal table tbody td::before {
-    display: none;
-  }
-}
-#historyModal table tbody td:nth-child(odd) {
-  background-color: #f5f5f5;
-}
-@media (min-width: 992px) {
-  #historyModal table tbody td:nth-child(odd) {
-    background-color: transparent;
-  }
-}
-@media (min-width: 992px) {
-  #historyModal table tbody td:first-child {
-    padding-left: 8px;
-  }
-}
-
-#materialModal .productInfo {
-  border-radius: 5px;
-  border: 1px solid #d9d9d9;
-  padding: 16px 8px;
-}
-#materialModal .productInfo p + div span:first-child {
-  color: #af282f;
-}
-#materialModal .productInfo p + div span:last-child {
-  color: #ffffff;
-  background-color: #af282f;
-  border-radius: 60px;
-  padding: 4px 6px;
-}
-#materialModal h5 {
-  color: #333333;
-  font-size: 20px;
-}
-@media (min-width: 768px) {
-  #materialModal h5 {
-    font-size: 24px;
-  }
-}
-#materialModal .modal-content {
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  border: none;
-}
-#materialModal .modal-header {
-  border-bottom: none;
-}
-#materialModal table {
-  margin: 0;
-  padding: 0;
-  table-layout: fixed;
-  max-height: 500px;
-  overflow-y: scroll;
-}
-#materialModal table thead {
-  display: none;
-  background-color: #626262;
-  color: #ffffff;
-}
-#materialModal table thead th {
-  padding: 8px 4px;
-  font-weight: 500;
-}
-#materialModal table thead th:first-child {
-  padding-left: 8px;
-}
-@media (min-width: 992px) {
-  #materialModal table thead {
-    display: table-header-group;
-  }
-}
-#materialModal table tr {
-  display: block;
-  margin-bottom: 1em;
-  border: 1px solid #d9d9d9;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-}
-@media (min-width: 992px) {
-  #materialModal table tr {
-    display: table-row;
-    box-shadow: none;
-    border: none;
-  }
-}
-@media (min-width: 992px) {
-  #materialModal table tbody tr {
-    border: 1px solid #d9d9d9;
-  }
-}
-#materialModal table tbody td {
-  padding: 8px 4px;
-  display: flex;
-}
-@media (min-width: 992px) {
-  #materialModal table tbody td {
-    display: table-cell;
-  }
-}
-#materialModal table tbody td::before {
-  content: attr(data-title);
-  display: inline-block;
-  width: 30%;
-  max-width: 30%;
-  padding-left: 4px;
-  word-wrap: break-word;
-  flex-shrink: 0;
-}
-@media (min-width: 992px) {
-  #materialModal table tbody td::before {
-    display: none;
-  }
-}
-#materialModal table tbody td:nth-child(odd) {
-  background-color: #f5f5f5;
-}
-@media (min-width: 992px) {
-  #materialModal table tbody td:nth-child(odd) {
-    background-color: transparent;
-  }
-}
-@media (min-width: 992px) {
-  #materialModal table tbody td:first-child {
-    padding-left: 8px;
-  }
-}
-#materialModal .modal-footer {
-  border-top: none;
-}
-#materialModal .modal-footer button {
-  background-color: #000000;
-  color: #ffffff;
-  border-radius: 0;
-}
-
-#checkNumberModal .productInfo {
-  border-radius: 5px;
-  border: 1px solid #d9d9d9;
-  padding: 16px 8px;
-}
-#checkNumberModal .productInfo p + div span:first-child {
-  color: #af282f;
-}
-#checkNumberModal .productInfo p + div span:last-child {
-  color: #ffffff;
-  background-color: #af282f;
-  border-radius: 60px;
-  padding: 4px 6px;
-}
-#checkNumberModal h5 {
-  color: #333333;
-  font-size: 20px;
-}
-@media (min-width: 768px) {
-  #checkNumberModal h5 {
-    font-size: 24px;
-  }
-}
-#checkNumberModal .modal-content {
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  border: none;
-}
-#checkNumberModal .modal-header {
-  border-bottom: none;
-}
-#checkNumberModal table {
-  margin: 0;
-  padding: 0;
-  table-layout: fixed;
-  max-height: 500px;
-  overflow-y: scroll;
-}
-#checkNumberModal table thead {
-  display: none;
-  background-color: #626262;
-  color: #ffffff;
-}
-#checkNumberModal table thead th {
-  padding: 8px 4px;
-  font-weight: 500;
-}
-#checkNumberModal table thead th:first-child {
-  padding-left: 8px;
-}
-@media (min-width: 992px) {
-  #checkNumberModal table thead {
-    display: table-header-group;
-  }
-}
-#checkNumberModal table tr {
-  display: block;
-  margin-bottom: 1em;
-  border: 1px solid #d9d9d9;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-}
-@media (min-width: 992px) {
-  #checkNumberModal table tr {
-    display: table-row;
-    box-shadow: none;
-    border: none;
-  }
-}
-@media (min-width: 992px) {
-  #checkNumberModal table tbody tr {
-    border: 1px solid #d9d9d9;
-  }
-}
-#checkNumberModal table tbody td {
-  padding: 8px 4px;
-  display: flex;
-}
-@media (min-width: 992px) {
-  #checkNumberModal table tbody td {
-    display: table-cell;
-  }
-}
-#checkNumberModal table tbody td::before {
-  content: attr(data-title);
-  display: inline-block;
-  width: 30%;
-  max-width: 30%;
-  padding-left: 4px;
-  word-wrap: break-word;
-  flex-shrink: 0;
-}
-@media (min-width: 992px) {
-  #checkNumberModal table tbody td::before {
-    display: none;
-  }
-}
-#checkNumberModal table tbody td:nth-child(odd) {
-  background-color: #f5f5f5;
-}
-@media (min-width: 992px) {
-  #checkNumberModal table tbody td:nth-child(odd) {
-    background-color: transparent;
-  }
-}
-@media (min-width: 992px) {
-  #checkNumberModal table tbody td:first-child {
-    padding-left: 8px;
-  }
+  text-decoration: underline;
 }
 
 .inquiry-main {
@@ -1563,6 +1388,14 @@ footer .photonic {
   background-color: transparent;
   color: #000000;
   transition: all 0.3s ease-in-out;
+}
+.inquiry-main .options label {
+  width: 48%;
+}
+@media (min-width: 576px) {
+  .inquiry-main .options label {
+    width: 23%;
+  }
 }
 
 .lightbox {
@@ -1839,150 +1672,26 @@ button.common-material span {
   border: none;
 }
 
-#addToListModal, #saveSuccessModal, #sendModal {
+#addToListModal, #saveSuccessModal, #sendModal, #submitModal, #sendEmailModal {
   font-size: 16px;
 }
-#addToListModal .modal-content, #saveSuccessModal .modal-content, #sendModal .modal-content {
+#addToListModal .modal-content, #saveSuccessModal .modal-content, #sendModal .modal-content, #submitModal .modal-content, #sendEmailModal .modal-content {
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   border: none;
 }
-#addToListModal .modal-body .add-icon, #saveSuccessModal .modal-body .add-icon, #sendModal .modal-body .add-icon {
+#addToListModal .modal-body .add-icon, #saveSuccessModal .modal-body .add-icon, #sendModal .modal-body .add-icon, #submitModal .modal-body .add-icon, #sendEmailModal .modal-body .add-icon {
   font-size: 48px;
   color: #d9d9d9;
 }
-#addToListModal .modal-footer, #saveSuccessModal .modal-footer, #sendModal .modal-footer {
+#addToListModal .modal-footer, #saveSuccessModal .modal-footer, #sendModal .modal-footer, #submitModal .modal-footer, #sendEmailModal .modal-footer {
   border-top: none;
   justify-content: center;
 }
-#addToListModal .modal-footer button, #saveSuccessModal .modal-footer button, #sendModal .modal-footer button {
-  border-radius: 0;
+#addToListModal .modal-footer button, #saveSuccessModal .modal-footer button, #sendModal .modal-footer button, #submitModal .modal-footer button, #sendEmailModal .modal-footer button {
+  border-radius: 5px;
   width: 100%;
-  background-color: #000000;
+  background-color: #333333;
   color: #ffffff;
-}
-
-#commomMaterialModal h5 {
-  color: #333333;
-  font-size: 20px;
-}
-@media (min-width: 768px) {
-  #commomMaterialModal h5 {
-    font-size: 24px;
-  }
-}
-#commomMaterialModal table {
-  margin: 0;
-  padding: 0;
-  table-layout: fixed;
-}
-#commomMaterialModal table thead {
-  display: none;
-  background-color: #626262;
-  color: #ffffff;
-}
-#commomMaterialModal table thead th {
-  padding: 8px 4px;
-  font-weight: 500;
-}
-#commomMaterialModal table thead th:first-child {
-  padding-left: 8px;
-}
-@media (min-width: 576px) {
-  #commomMaterialModal table thead {
-    display: table-header-group;
-  }
-}
-#commomMaterialModal table tr {
-  display: block;
-  margin-bottom: 1em;
-  border: 1px solid #d9d9d9;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-}
-@media (min-width: 576px) {
-  #commomMaterialModal table tr {
-    display: table-row;
-    box-shadow: none;
-    border: none;
-  }
-}
-@media (min-width: 576px) {
-  #commomMaterialModal table tbody tr {
-    border: 1px solid #d9d9d9;
-  }
-}
-#commomMaterialModal table tbody td {
-  padding: 8px 4px;
-  display: flex;
-}
-@media (min-width: 576px) {
-  #commomMaterialModal table tbody td {
-    display: table-cell;
-  }
-}
-#commomMaterialModal table tbody td::before {
-  content: attr(data-title);
-  display: inline-block;
-  width: 30%;
-  max-width: 30%;
-  padding-left: 4px;
-  word-wrap: break-word;
-  flex-shrink: 0;
-}
-@media (min-width: 576px) {
-  #commomMaterialModal table tbody td::before {
-    display: none;
-  }
-}
-#commomMaterialModal table tbody td:nth-child(odd) {
-  background-color: #f5f5f5;
-}
-@media (min-width: 576px) {
-  #commomMaterialModal table tbody td:nth-child(odd) {
-    background-color: transparent;
-  }
-}
-@media (min-width: 576px) {
-  #commomMaterialModal table tbody td:first-child {
-    padding-left: 8px;
-  }
-}
-#commomMaterialModal table tbody td:last-child {
-  justify-content: center;
-}
-#commomMaterialModal table tbody td:last-child::before {
-  width: 0;
-}
-#commomMaterialModal table tbody .ask-btn {
-  border: 1px solid #333333;
-  background-color: transparent;
-  border-radius: 60px;
-  font-size: 14px;
-  padding: 4px 8px;
-}
-@media (min-width: 576px) {
-  #commomMaterialModal table tbody .ask-btn {
-    padding: 4px 6px;
-  }
-}
-@media (min-width: 992px) {
-  #commomMaterialModal table tbody .ask-btn {
-    padding: 4px 8px;
-  }
-}
-#commomMaterialModal .modal-content {
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  border: none;
-}
-#commomMaterialModal .modal-header {
-  border-bottom: none;
-}
-#commomMaterialModal .modal-footer {
-  border-top: none;
-}
-#commomMaterialModal .modal-footer button {
-  background-color: #000000;
-  color: #ffffff;
-  border-radius: 0;
 }
 
 .account-container {
@@ -1992,11 +1701,11 @@ button.common-material span {
 .account-container .row {
   row-gap: 10px;
 }
-@media (min-width: 576px) {
-  .account-container [class^=col] {
-    padding-left: 5px;
-    padding-right: 5px;
-  }
+.account-container .row [class~=col-6]:first-child {
+  padding-right: 5px;
+}
+.account-container .row [class~=col-6]:last-child {
+  padding-left: 5px;
 }
 .account-container .form-control:focus {
   border-color: rgba(110, 110, 110, 0.5);
@@ -2031,7 +1740,7 @@ button.common-material span {
   padding: 7px 16px;
   transition: all 0.3s ease-in-out;
 }
-.account-container .changePassword-btn:hover, .account-container .changePassword-btn:focus {
+.account-container .changePassword-btn:hover {
   outline: 1px solid #333333;
   background-color: transparent;
   color: #333333;
@@ -2053,35 +1762,35 @@ button.common-material span {
   transition: all 0.3s ease-in-out;
 }
 
-#changePasswordModal {
+#changePasswordModal, #forgetPasswordModal {
   font-size: 16px;
 }
-#changePasswordModal .modal-content {
+#changePasswordModal .modal-content, #forgetPasswordModal .modal-content {
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   border: none;
 }
-#changePasswordModal .modal-header {
+#changePasswordModal .modal-header, #forgetPasswordModal .modal-header {
   justify-content: flex-end;
   border-bottom: none;
 }
-#changePasswordModal .modal-header h5 {
+#changePasswordModal .modal-header h5, #forgetPasswordModal .modal-header h5 {
   margin: auto;
 }
-#changePasswordModal .modal-header .close {
+#changePasswordModal .modal-header .close, #forgetPasswordModal .modal-header .close {
   padding: 0;
   margin: 0;
 }
-#changePasswordModal .modal-body span {
+#changePasswordModal .modal-body span, #forgetPasswordModal .modal-body span {
   color: #af282f;
 }
-#changePasswordModal .form-control:focus {
+#changePasswordModal .form-control:focus, #forgetPasswordModal .form-control:focus {
   border-color: rgba(110, 110, 110, 0.5);
   box-shadow: 0 0 0 0.2rem rgba(110, 110, 110, 0.5);
 }
-#changePasswordModal .passwordInput-1 {
+#changePasswordModal .passwordInput-1, #forgetPasswordModal .passwordInput-1 {
   position: relative;
 }
-#changePasswordModal .passwordInput-1 button {
+#changePasswordModal .passwordInput-1 button, #forgetPasswordModal .passwordInput-1 button {
   position: absolute;
   top: 72%;
   right: 10px;
@@ -2089,14 +1798,14 @@ button.common-material span {
   border: none;
   background-color: transparent;
 }
-#changePasswordModal .passwordInput-1 .eye-icon {
+#changePasswordModal .passwordInput-1 .eye-icon, #forgetPasswordModal .passwordInput-1 .eye-icon {
   color: #d9d9d9;
   font-size: 18px;
 }
-#changePasswordModal .passwordInput-2 {
+#changePasswordModal .passwordInput-2, #forgetPasswordModal .passwordInput-2 {
   position: relative;
 }
-#changePasswordModal .passwordInput-2 button {
+#changePasswordModal .passwordInput-2 button, #forgetPasswordModal .passwordInput-2 button {
   position: absolute;
   top: 72%;
   right: 10px;
@@ -2104,16 +1813,121 @@ button.common-material span {
   border: none;
   background-color: transparent;
 }
-#changePasswordModal .passwordInput-2 .eye-icon {
+#changePasswordModal .passwordInput-2 .eye-icon, #forgetPasswordModal .passwordInput-2 .eye-icon {
   color: #d9d9d9;
   font-size: 18px;
 }
-#changePasswordModal .modal-footer {
+#changePasswordModal .modal-footer, #forgetPasswordModal .modal-footer {
   border-top: none;
   justify-content: center;
 }
-#changePasswordModal .modal-footer button {
-  border-radius: 0;
+#changePasswordModal .modal-footer button, #forgetPasswordModal .modal-footer button {
+  border-radius: 5px;
   width: 100%;
-  background-color: #000000;
+  background-color: #333333;
+}
+#changePasswordModal .modal-footer a, #forgetPasswordModal .modal-footer a {
+  color: #1371b9;
+}
+
+.signup-page {
+  min-height: calc(100vh - 135px);
+}
+
+.signup-container {
+  outline: 1px solid #d9d9d9;
+}
+.signup-container .tab li {
+  width: 50%;
+}
+.signup-container .tab li:first-child a {
+  border-right: 1px solid #d9d9d9;
+  border-bottom: 1px solid #d9d9d9;
+}
+.signup-container .tab li:last-child a {
+  border-left: 1px solid #d9d9d9;
+}
+.signup-container .tab a {
+  padding: 0.5rem 0.5rem;
+  color: #b8b8b8;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #d9d9d9;
+  width: 100%;
+  text-align: center;
+}
+.signup-container .tab a.active {
+  background-color: #ffffff;
+  color: #333333;
+  border: none !important;
+}
+@media (min-width: 576px) {
+  .signup-container .tab a {
+    padding: 0.5rem 1.5rem;
+  }
+}
+.signup-container .content {
+  padding: 20px 10%;
+}
+.signup-container .content a {
+  color: #1371b9;
+  text-decoration: underline;
+}
+.signup-container .content .form-control:focus {
+  border-color: rgba(110, 110, 110, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(110, 110, 110, 0.5);
+}
+.signup-container .form-btns button {
+  width: 50%;
+  border-radius: 5px;
+  padding: 6px 0;
+  border: none;
+  background-color: transparent;
+}
+.signup-container .form-btns button:first-child {
+  color: #b8b8b8;
+  background-color: #f5f5f5;
+  margin-right: 8px;
+}
+.signup-container .form-btns button:last-child {
+  color: #ffffff;
+  background-color: #333333;
+}
+.signup-container .loginBtn {
+  border-radius: 5px;
+  padding: 6px 0;
+  border: none;
+  background-color: #333333;
+  width: 100%;
+  color: #ffffff;
+}
+.signup-container .forgetBtn {
+  border: none;
+  background-color: transparent;
+  color: #1371b9;
+  display: block;
+}
+.signup-container .qrCode {
+  color: #7d7d7d;
+}
+.signup-container .qrCode i {
+  font-size: 32px;
+}
+.signup-container .loginOption {
+  position: relative;
+}
+.signup-container .loginOption::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background-color: #A4A4A4;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+.signup-container .loginOption p {
+  padding: 0 10px;
+  background-color: #ffffff;
+  width: 50%;
 }/*# sourceMappingURL=all.css.map */

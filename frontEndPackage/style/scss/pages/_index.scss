@@ -110,7 +110,19 @@
     @include padding(40px, 15px);
     min-height: calc(100vh - 260px);
     .row {
-        row-gap: 36px;
+        row-gap: 24px;
+    }
+    div[class ~= "col-6"]:nth-child(odd){
+        padding-right:7.5px;
+        @include medium{
+            padding-right:15px
+        }
+    }
+    div[class ~= "col-6"]:nth-child(even){
+        padding-left:7.5px;
+        @include medium{
+            padding-left:15px
+        }
     }
     .item {
         box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);

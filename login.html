@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="./frontEndPackage/bootstrap-icons/bootstrap-icons.css" />
 
         <link rel="stylesheet" href="./frontEndPackage/style/all.css" />
-        <title>登入/註冊</title>
+        <title>登入會員</title>
     </head>
     <body>
         <div id="app">
@@ -21,181 +21,108 @@
             <section class="breadcrumb-container mb-3 mb-sm-5">
                 <ol class="d-flex list-unstyled breadcrumb-list">
                     <li><a href="/">首頁</a></li>
-                    <li class="active"><a href="###">我的帳號</a></li>
+                    <li class="active"><a href="###">登入會員</a></li>
                 </ol>
             </section>
-            <main class="container account-container">
+            <main class="container signup-page">
                 <div class="row justify-content-center">
                     <div class="col-md-8 col-lg-6">
-                        <div class="d-flex justify-content-between align-items-center title pb-2 pb-md-3 mb-3">
-                            <div class="d-flex flex-column flex-sm-row align-items-sm-center">
-                                <h3 class="mb-0 text-darkBlack mr-3">我的帳號</h3>
-                                <span class="fs-14">請確認資料真實性，以維護雙方權利</span>
+                        <div class="signup-container">
+                            <ul class="tab d-flex list-unstyled mb-0">
+                                <li><a href="###" class="active">登入會員</a></li>
+                                <li><a href="###">註冊會員</a></li>
+                            </ul>
+                            <div class="content">
+                                <div class="d-flex align-items-center justify-content-center text-center qrCode">
+                                    <i class="bi bi-qr-code-scan mr-3"></i>
+                                    <p class="mb-0">掃描儀器上的 QRCode 後<br>登入即可帶入儀器資訊</p>
+                                </div>
+                                <div class="grey-text loginOption my-4">
+                                    <p class="mb-0 fs-14 text-center mx-auto">或者<br>直接輸入帳號密碼登入</p>
+                                </div>
+                                <form action="">
+                                    <div class="form-group">
+                                        <label for="email">E-mail*</label>
+                                        <input type="email" id="email" class="form-control" v-modal="signupData.email" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password">密碼*</label>
+                                        <input type="email" id="password" class="form-control" v-modal="signupData.password" required />
+                                    </div>
+                                    <div class="form-check mb-3">
+                                        <input
+                                            class="form-check-input"
+                                            type="checkbox"
+                                            name="keepLogin"
+                                            id="keepLogin"
+                                        />
+                                        <label class="form-check-label fs-14" for="keepLogin">
+                                            讓我保持登入
+                                        </label>
+                                    </div>
+                                   
+                                    <button type="submit" class="loginBtn mb-1">登入</button>
+                                  <button type="button" class="forgetBtn ml-auto fs-14" data-toggle="modal" data-target="#forgetPasswordModal">忘記密碼?</button>
+                                </form>
                             </div>
-                            <span class="pending">此帳號審核中</span>
                         </div>
-                    </div>
-                </div>
-                <div class="row justify-content-center align-items-end mb-3">
-                    <div class="col-sm-10 col-md-8 col-lg-6">
-                        <div class="form-group mb-0">
-                            <label for="institute">單位全名</label>
-                            <input type="text" id="institute" class="form-control" disabled/>
-                        </div>
-                    </div>
-                </div>
-                <div class="row justify-content-center align-items-center">
-                    <div class="col-sm-10 col-md-8 col-lg-6">
-                        <div class="form-group">
-                            <label for="address">單位地址</label>
-                            <input type="text" id="address" class="form-control" />
-                        </div>
-                    </div>
-                </div>
-                <div class="row justify-content-center align-items-center">
-                    <div class="col-sm-5 col-md-4 col-lg-3">
-                        <div class="form-group">
-                            <label for="name">姓名</label>
-                            <input type="text" id="name" class="form-control" />
-                        </div>
-                    </div>
-                    <div class="col-sm-5 col-md-4 col-lg-3">
-                        <div class="form-group">
-                            <label for="gender">稱謂</label>
-                            <select class="form-control" id="gender">
-                                <option>先生</option>
-                                <option>小姐</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="row justify-content-center align-items-center">
-                    <div class="col-sm-5 col-md-4 col-lg-3">
-                        <div class="form-group">
-                            <label for="department">部門</label>
-                            <input type="text" id="department" class="form-control" />
-                        </div>
-                    </div>
-                    <div class="col-sm-5 col-md-4 col-lg-3">
-                        <div class="form-group">
-                            <label for="title">職稱</label>
-                            <input type="text" id="title" class="form-control" />
-                        </div>
-                    </div>
-                </div>
-                <div class="row justify-content-center align-items-center">
-                    <div class="col-sm-5 col-md-4 col-lg-3">
-                        <div class="form-group">
-                            <label for="phone">單位電話</label>
-                            <input type="tel" id="phone" class="form-control" />
-                        </div>
-                    </div>
-                    <div class="col-sm-5 col-md-4 col-lg-3">
-                        <div class="form-group">
-                            <label for="extension">分機</label>
-                            <input type="text" id="extension" class="form-control" />
-                        </div>
-                    </div>
-                </div>
-                <div class="row justify-content-center align-items-center">
-                    <div class="col-sm-10 col-md-8 col-lg-6">
-                        <div class="form-group">
-                            <label for="cellphone">手機號碼</label>
-                            <input type="tel" id="cellphone" class="form-control" />
-                        </div>
-                    </div>
-                </div>
-                <div class="row justify-content-center align-items-center">
-                    <div class="col-sm-10 col-md-8 col-lg-6">
-                        <div class="form-group">
-                            <label for="email">E-mail</label>
-                            <input type="email" id="email" class="form-control" />
-                        </div>
-                    </div>
-                </div>
-                <div class="row justify-content-center align-items-end mb-5">
-                    <div class="col-sm-6 col-md-5 col-lg-4">
-                        <div class="form-group changePassword mb-0">
-                            <label for="institute">變更密碼<span class="fs-14 ml-2">*密碼輸入錯誤</span></label>
-                            <input type="passward" id="institute" class="form-control" />
-                        </div>
-                    </div>
-                    <div class="col-sm-4 col-md-3 col-lg-2 text-sm-right">
-                        <button type="button" class="changePassword-btn" data-toggle="modal" data-target="#changePasswordModal">修改密碼</button>
-                    </div>
-                </div>
-                <div class="row justify-content-center editInfo">
-                    <div class="col-sm-10 col-md-8 col-lg-6 text-center">
-                        <button type="submit" class="mb-2" data-toggle="modal" data-target="#saveSuccessModal">修改基本資料</button>
-                        <span class="fs-14">申請修改的資料審核中，審核完才會更新資料</span>
                     </div>
                 </div>
             </main>
 
-       <!-- changePassword modal start -->
-       <div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-md">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title text-darkBlack" id="changePasswordModalLabel">變更密碼</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              
-                    <div class="form-group passwordInput-1">
-                        <label for="newPassword">輸入新密碼<span>*</span></label>
-                        <input :type="passwordHide ? 'password' : 'text'" id="newPassword" class="form-control" />
-                        <button type="button" @click="passwordHide=!passwordHide"><i class="bi eye-icon" :class="[passwordHide ? 'bi-eye-fill' : 'bi-eye-slash-fill']"></i></button>
-                        
+            <!-- forgetPassword modal start -->
+            <div
+                class="modal fade"
+                id="forgetPasswordModal"
+                tabindex="-1"
+                aria-labelledby="forgetPasswordModalLabel"
+                aria-hidden="true"
+            >
+                <div class="modal-dialog modal-md modal-sm modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-darkBlack" id="forgetPasswordModalLabel">忘記密碼</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group passwordInput-1">
+                                <label for="enterEmail">請輸入您的電子信箱以重設密碼：</label>
+                                <input
+                                    type="email"
+                                    id="enterEmail"
+                                    class="form-control" required
+                                />
+                            </div>
+                            
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn" data-dismiss="modal" data-toggle="modal" data-target="#sendEmailModal">提交</button>
+                            <a href="./login.html" class="mt-1 fs-14 d-block ml-auto">回登入頁面</a>
+                        </div>
                     </div>
-                    <div class="form-group passwordInput-2">
-                        <label for="passwordAgain">再次輸入新密碼<span>*</span></label>
-                        <input :type="passwordHide ? 'password' : 'text'" id="passwordAgain" class="form-control" />
-                        <button type="button" @click="passwordHide=!passwordHide"><i class="bi eye-icon" :class="[passwordHide ? 'bi-eye-fill' : 'bi-eye-slash-fill']"></i></button>
+                </div>
+            </div>
+
+            <!--  changePassword modal end -->
+
+            <!-- 送email modal start -->
+            <div class="modal fade" id="sendEmailModal" tabindex="-1" aria-labelledby="sendEmailModal" aria-hidden="true">
+                <div class="modal-dialog modal-sm modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-body d-flex flex-column justify-content-center align-items-center">
+                            <i class="bi bi-check-circle-fill add-icon"></i>
+                            <div class="text-center">已寄送密碼至 Email</div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn" data-dismiss="modal">確認</button>
+                        </div>
                     </div>
-             
+                </div>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">確認</button>
-            </div>
-          </div>
-        </div>
-      </div>
+            <!-- 送email end -->
 
-   <!--  changePassword modal end -->
-
-
-          <!-- saveSuccess modal start -->
-          <div
-          class="modal fade"
-          id="saveSuccessModal"
-          tabindex="-1"
-          aria-labelledby="saveSuccessLabel"
-          aria-hidden="true"
-      >
-          <div class="modal-dialog modal-sm modal-dialog-centered">
-              <div class="modal-content">
-                  <div class="modal-body d-flex flex-column justify-content-center align-items-center">
-                      <i class="bi bi-check-circle-fill add-icon"></i>
-                      <div class="text-center">儲存成功</div>
-                  </div>
-                  <div class="modal-footer">
-                      <button
-                          type="button"
-                          class="btn"
-                          data-dismiss="modal"
-                      >
-                          確認
-                      </button>
-                  </div>
-              </div>
-          </div>
-      </div>
-
-      <!-- added modal end -->
-            <Chat></Chat>
             <Foooter></Foooter>
         </div>
 
@@ -211,26 +138,49 @@
             crossorigin="anonymous"
         ></script>
 
+        <!-- <script>
+            $(".needs-validation").each(function (index) {
+                $(this).on("submit", function (e) {
+                    e.preventDefault();
+                    $(this).addClass("was-validated");
+                });
+            });
+        </script> -->
+
         <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 
         <script src="./frontEndPackage/js/all.js"></script>
         <script type="module">
             import Foooter from "./components/footer.js";
             import Navv from "./components/nav.js";
-            import Chat from "./components/chatWindow.js";
+
             const app = new Vue({
                 el: "#app",
                 data() {
                     return {
                         isLogin: false,
-                        passwordHide:true,
+                        passwordHide: true,
+                        signupData: {
+                            email: "",
+                            password: "",
+                            equpNum: "",
+                            institute: "",
+                            address: "",
+                            name: "",
+                            selectedGender: "",
+                            department: "",
+                            title: "",
+                            phone: "",
+                            extension: "",
+                            cellphone: "",
+                            verification: "",
+                        },
                     };
                 },
                 methods: {},
                 components: {
                     Foooter,
                     Navv,
-                    Chat,
                 },
                 mounted() {},
             });
