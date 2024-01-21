@@ -797,6 +797,17 @@ footer .photonic {
   border-bottom: 1px solid #d9d9d9;
   border-right: 1px solid #d9d9d9;
 }
+@media (min-width: 576px) {
+  .accordion-container .item [data-title=編號],
+  .accordion-container .item [data-title=圖片],
+  .accordion-container .item [data-title=主設備序號],
+  .accordion-container .item [data-title=機型],
+  .accordion-container .item [data-title=合約日期] {
+    display: table-cell;
+    background-color: transparent;
+    border: none;
+  }
+}
 .accordion-container .item [data-title=編號]::before,
 .accordion-container .item [data-title=圖片]::before,
 .accordion-container .item [data-title=主設備序號]::before,
@@ -808,7 +819,7 @@ footer .photonic {
   background-color: #626262;
   min-width: 30%;
   color: #ffffff;
-  padding: 8px 6px;
+  padding: 8px 10px;
 }
 @media (min-width: 576px) {
   .accordion-container .item [data-title=編號]::before,
@@ -844,17 +855,7 @@ footer .photonic {
   .accordion-container .item [data-title=合約日期] > span,
   .accordion-container .item [data-title=合約日期] > div {
     min-width: auto;
-  }
-}
-@media (min-width: 576px) {
-  .accordion-container .item [data-title=編號],
-  .accordion-container .item [data-title=圖片],
-  .accordion-container .item [data-title=主設備序號],
-  .accordion-container .item [data-title=機型],
-  .accordion-container .item [data-title=合約日期] {
-    display: table-cell;
-    background-color: transparent;
-    border: none;
+    padding: 8px 4px;
   }
 }
 @media (min-width: 576px) {
@@ -1087,12 +1088,10 @@ footer .photonic {
   display: block;
   margin-bottom: 1em;
   border: 1px solid #d9d9d9;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 @media (min-width: 992px) {
   .modal table tr {
     display: table-row;
-    box-shadow: none;
     border: none;
   }
 }
@@ -1102,12 +1101,15 @@ footer .photonic {
   }
 }
 .modal table tbody td {
-  padding: 8px 4px;
   display: flex;
+  background-color: #626262;
+  padding: 0;
 }
 @media (min-width: 992px) {
   .modal table tbody td {
     display: table-cell;
+    background-color: transparent;
+    border: none;
   }
 }
 .modal table tbody td::before {
@@ -1115,7 +1117,9 @@ footer .photonic {
   display: inline-block;
   width: 30%;
   max-width: 30%;
-  padding-left: 4px;
+  background-color: #626262;
+  color: #ffffff;
+  padding: 8px 10px;
   word-wrap: break-word;
   flex-shrink: 0;
 }
@@ -1124,12 +1128,16 @@ footer .photonic {
     display: none;
   }
 }
-.modal table tbody td:nth-child(odd) {
-  background-color: #f5f5f5;
+.modal table tbody td > span {
+  padding: 8px 10px;
+  background-color: #ffffff;
+  word-break: break-all;
+  min-width: 70%;
 }
 @media (min-width: 992px) {
-  .modal table tbody td:nth-child(odd) {
-    background-color: transparent;
+  .modal table tbody td > span {
+    min-width: auto;
+    padding: 8px 4px;
   }
 }
 @media (min-width: 992px) {
@@ -1220,12 +1228,10 @@ footer .photonic {
   display: block;
   margin-bottom: 1em;
   border: 1px solid #d9d9d9;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 @media (min-width: 576px) {
   .inquiry-main table tr {
     display: table-row;
-    box-shadow: none;
     border: none;
   }
 }
@@ -1235,32 +1241,43 @@ footer .photonic {
   }
 }
 .inquiry-main table tbody td {
-  padding: 8px 4px;
   display: flex;
+  background-color: #626262;
+  padding: 0;
 }
 @media (min-width: 576px) {
   .inquiry-main table tbody td {
     display: table-cell;
+    background-color: transparent;
+    border: none;
   }
 }
 .inquiry-main table tbody td::before {
   content: attr(data-title);
   display: inline-block;
-  width: auto;
-  min-width: 30%;
-  padding-left: 4px;
+  width: 30%;
+  max-width: 30%;
+  background-color: #626262;
+  color: #ffffff;
+  word-wrap: break-word;
+  flex-shrink: 0;
+  padding: 8px 10px;
 }
 @media (min-width: 576px) {
   .inquiry-main table tbody td::before {
     display: none;
   }
 }
-.inquiry-main table tbody td:nth-child(odd) {
-  background-color: #f5f5f5;
+.inquiry-main table tbody td > span {
+  padding: 8px 10px;
+  background-color: #ffffff;
+  word-break: break-all;
+  min-width: 70%;
 }
 @media (min-width: 576px) {
-  .inquiry-main table tbody td:nth-child(odd) {
-    background-color: transparent;
+  .inquiry-main table tbody td > span {
+    min-width: auto;
+    padding: 8px 4px;
   }
 }
 @media (min-width: 576px) {
@@ -1268,114 +1285,116 @@ footer .photonic {
     padding-left: 8px;
   }
 }
-.inquiry-main table tbody .delete-btn {
+.inquiry-main table .delete-btn {
   font-size: 20px;
   background-color: transparent;
   border: none;
 }
-.inquiry-main table tbody .delete-btn:hover {
+.inquiry-main table .delete-btn:hover {
   color: #DD0000;
 }
 @media (min-width: 576px) {
-  .inquiry-main table input {
+  .inquiry-main input.number {
     width: 75%;
   }
 }
-.inquiry-main table input:focus-visible {
+.inquiry-main input.number:focus-visible {
   outline-color: #DD0000;
 }
-.inquiry-main .message .message-title {
+
+.message .message-title {
   background-color: #626262;
   color: #ffffff;
   font-weight: 500;
   padding: 8px 8px;
 }
 @media (min-width: 576px) {
-  .inquiry-main .message .message-title {
+  .message .message-title {
     padding: 8px 16px;
   }
 }
-.inquiry-main .message .item {
+.message .item {
   border: 1px solid #d9d9d9;
 }
-.inquiry-main .message .item div {
+.message .item div {
   padding: 8px 8px;
 }
 @media (min-width: 576px) {
-  .inquiry-main .message .item div {
+  .message .item div {
     padding: 8px 16px;
   }
 }
-.inquiry-main .message .item > div:first-child {
+.message .item > div:first-child {
   background-color: #f5f5f5;
 }
 @media (min-width: 576px) {
-  .inquiry-main .message .item > div:first-child {
+  .message .item > div:first-child {
     width: 20%;
   }
 }
-.inquiry-main .message .item textarea {
+.message .item textarea {
   border: 1px solid #d9d9d9;
 }
-.inquiry-main .message .item textarea:focus-visible {
+.message .item textarea:focus-visible {
   outline-color: #DD0000;
 }
-.inquiry-main .message .item .attachment {
+.message .item .attachment {
   width: 100%;
   font-size: 13px;
 }
 @media (min-width: 375px) {
-  .inquiry-main .message .item .attachment {
+  .message .item .attachment {
     font-size: 14px;
   }
 }
 @media (min-width: 576px) {
-  .inquiry-main .message .item .attachment {
+  .message .item .attachment {
     font-size: 16px;
     width: 80%;
   }
 }
 @media (min-width: 768px) {
-  .inquiry-main .message .item .attachment {
+  .message .item .attachment {
     width: 70%;
   }
 }
-.inquiry-main .message .item .attachment label {
+.message .item .attachment label {
   cursor: pointer;
 }
-.inquiry-main .message .item .attachment label .select {
+.message .item .attachment label .select {
   padding: 8px 8px;
   color: #ffffff;
   background-color: #626262;
 }
 @media (min-width: 576px) {
-  .inquiry-main .message .item .attachment label .select {
+  .message .item .attachment label .select {
     padding: 8px 16px;
   }
 }
-.inquiry-main .message .item .attachment .file {
+.message .item .attachment .file {
   border: 1px solid #d9d9d9;
   border-right: none;
   width: 70%;
   padding: 6px 8px;
 }
 @media (min-width: 576px) {
-  .inquiry-main .message .item .attachment .file {
+  .message .item .attachment .file {
     width: 60%;
     padding: 6px 16px;
   }
 }
 @media (min-width: 768px) {
-  .inquiry-main .message .item .attachment .file {
+  .message .item .attachment .file {
     width: 40%;
   }
 }
-.inquiry-main .message .item .attachment button {
+.message .item .attachment button {
   border: 1px solid #d9d9d9;
   border-left: none;
   background-color: transparent;
 }
-.inquiry-main .send-btn {
+
+.send-btn {
   color: #ffffff;
   background-color: #000000;
   border: none;
@@ -1383,19 +1402,71 @@ footer .photonic {
   padding: 8px 0;
   transition: all 0.3s ease-in-out;
 }
-.inquiry-main .send-btn:hover {
+.send-btn:hover {
   outline: 1px solid #000000;
   background-color: transparent;
   color: #000000;
   transition: all 0.3s ease-in-out;
 }
-.inquiry-main .options label {
+
+.options {
+  -moz-column-gap: 4%;
+       column-gap: 4%;
+}
+.options label {
+  cursor: pointer;
   width: 48%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0;
+  position: relative;
+  padding: 10px 8px;
+  border: 1px solid #626262;
+  border-radius: 60px;
 }
 @media (min-width: 576px) {
-  .inquiry-main .options label {
-    width: 23%;
+  .options label {
+    width: 22%;
   }
+}
+.options label input[type=checkbox] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+.options label .checkmark {
+  height: 15px;
+  width: 15px;
+  margin-right: 8px;
+  border: 1px solid #626262;
+  position: relative;
+}
+.options label .checkmark::after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 5px;
+  top: 2px;
+  width: 6px;
+  height: 9px;
+  border: solid #DD0000;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+.options label input:checked + .checkmark {
+  background-color: #ffffff;
+  border: none;
+}
+.options label input:checked + .checkmark:after {
+  display: block;
+}
+.options label.active {
+  background-color: #DD0000;
+  border: none;
+  color: #ffffff;
 }
 
 .lightbox {

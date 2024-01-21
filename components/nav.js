@@ -20,7 +20,7 @@ export default{
                 {
                     id:"other",
                     name:"線上叫修/其他",
-                    path:"###"
+                    path:"/other.html"
                 },
             ],
         }

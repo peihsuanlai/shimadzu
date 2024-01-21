@@ -9,10 +9,8 @@
             integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
             crossorigin="anonymous"
         />
-        <!-- <link rel="stylesheet" href="./frontEndPackage/css/material-icons.css"> -->
         <link rel="stylesheet" href="./frontEndPackage/bootstrap-icons/bootstrap-icons.css" />
         <link rel="stylesheet" href="./frontEndPackage/lightbox/lightbox.min.css" />
-
         <link rel="stylesheet" href="./frontEndPackage/style/all.css" />
         <title>線上叫修/其他</title>
     </head>
@@ -22,55 +20,55 @@
             <section class="breadcrumb-container mb-5">
                 <ol class="d-flex list-unstyled breadcrumb-list">
                     <li><a href="/">首頁</a></li>
-                    <li class="active"><a href="###">續約</a></li>
+                    <li class="active"><a href="###">線上叫修/其他</a></li>
                 </ol>
             </section>
             <main class="container-lg inquiry-main">
                 <div class="d-flex justify-content-between align-items-center title pb-2 pb-md-3 mb-3">
-                    <h3 class="mb-0 text-darkBlack">續約</h3>
+                    <h3 class="mb-0 text-darkBlack">線上叫修/其他</h3>
                     <a href="/instruments.html" class="select-btn">從我的儀器清單選擇</a>
                 </div>
-                <div class="mb-5">
+                <div class="mb-4 mb-sm-5">
                     <table class="w-100">
                         <thead>
                             <tr>
+                                <th style="width: 10%">編號</th>
                                 <th style="width: 15%">圖片</th>
                                 <th style="width: 20%">主設備序號</th>
-                                <th style="width: 25%">機型</th>
-                                <th style="width: 20%">合約日期</th>
-                               
-                                <th style="width: 20%" class="text-center">刪除</th>
+                                <th style="width: 25%">機型</th>  
+                                <th style="width: 30%" class="text-center">刪除</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="item in equipment" :key="item.number">
+                            <tr v-for="item in equipment" :key="item.id">
+                                <td data-title="編號"><span>{{item.id}}</span></td>
                                 <td data-title="圖片">
-                                    <a :href="item.imgUrl.large" data-lightbox="pic-1">
+                                    <span><a :href="item.imgUrl.large" :data-lightbox="'pic'+item.id">
                                         <img :src="item.imgUrl.small" :alt="item.imgUrl.alt" />
-                                    </a>
+                                    </a></span>
                                 </td>
-                                <td data-title="主設備序號">{{item.number}}</td>
-                                <td data-title="機型">{{item.title}}</td>
-                                <td data-title="合約日期">{{item.date}}</td>
+                                <td data-title="主設備序號"><span>{{item.number}}</span></td>
+                                <td data-title="機型"><span>{{item.title}}</span></td>
                                 
                                 <td data-title="刪除" class="text-sm-center">
-                                    <button
+                                    <span><button
                                         type="button"
                                         class="delete-btn"
                                         @click="removeItem('equipment',item.number)"
                                     >
                                         <i class="bi bi-trash trash-icon"></i>
-                                    </button>
+                                    </button></span>
+                                    
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                <div class="d-flex justify-content-center options">
-                    <label for=""><input type="checkbox">線上叫修</label>
-                    <label for=""><input type="checkbox">預約保養</label>
-                    <label for=""><input type="checkbox">技術詢問</label>
-                    <label for=""><input type="checkbox">教育訓練</label>
+                <div class="d-flex flex-wrap justify-content-center options mb-4 mb-sm-5">
+                    <label for="fix" class="mb-3 mb-sm-0 active"><input id="fix" type="checkbox" ><span class="checkmark"></span><span>線上叫修</span></label>
+                    <label for="maintainance" class="mb-3 mb-sm-0"><input id="maintainance" type="checkbox" ><span class="checkmark"></span><span>預約保養</span></label>
+                    <label for="ask"><input id="ask" type="checkbox" ><span class="checkmark"></span><span>技術詢問</span></label>
+                    <label for="training"><input id="training" type="checkbox" ><span class="checkmark"></span><span>教育訓練</span></label>
                 </div>
                 <div class="message mb-4">
                     <div class="message-title">備註</div>
@@ -133,56 +131,29 @@
                 data() {
                     return {
                         isLogin: true,
-                        max: 99,
-                        min: 1,
                         equipment: [
                             {
+                                id:"01",
                                 imgUrl: {
                                     small: "./frontEndPackage/images/product-sm.jpg",
                                     large: "./frontEndPackage/images/product-lg.jpg",
                                     alt: "spectrometer",
                                 },
-                                number: "06UPLC L22135800614-01",
+                                number:"06UPLC L22135800614",
                                 title: "紫外/可見光-近紅外光分光譜儀",
-                                date: "2023/03/16-2023/12/25",
-                                quantity: 1,
                             },
                             {
+                                id:"02",
                                 imgUrl: {
                                     small: "./frontEndPackage/images/product-sm.jpg",
                                     large: "./frontEndPackage/images/product-lg.jpg",
                                     alt: "spectrometer",
                                 },
-                                number: "06UPLC L22135800614-02",
+                                number:"06UPLC L22135800614",
                                 title: "紫外/可見光-近紅外光分光譜儀",
-                                date: "2023/03/16-2023/12/25",
-                                quantity: 1,
                             },
                         ],
-                        materials: [
-                            {
-                                imgUrl: {
-                                    small: "./frontEndPackage/images/product-sm.jpg",
-                                    large: "./frontEndPackage/images/product-lg.jpg",
-                                    alt: "spectrometer",
-                                },
-                                number: "06UPLC L22135800614-03",
-                                title: "紫外/可見光-近紅外光分光譜儀",
-                                date: "2023/03/16-2023/12/25",
-                                quantity: 1,
-                            },
-                            {
-                                imgUrl: {
-                                    small: "./frontEndPackage/images/product-sm.jpg",
-                                    large: "./frontEndPackage/images/product-lg.jpg",
-                                    alt: "spectrometer",
-                                },
-                                number: "06UPLC L22135800614-04",
-                                title: "紫外/可見光-近紅外光分光譜儀",
-                                date: "2023/03/16-2023/12/25",
-                                quantity: 1,
-                            },
-                        ],
+                        
                         selectedFile: null,
                     };
                 },

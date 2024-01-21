@@ -1,284 +1,340 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
-            integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
-            crossorigin="anonymous"
-        />
-        <!-- <link rel="stylesheet" href="./frontEndPackage/css/material-icons.css"> -->
-        <link rel="stylesheet" href="./frontEndPackage/bootstrap-icons/bootstrap-icons.css" />
-        <link rel="stylesheet" href="./frontEndPackage/lightbox/lightbox.min.css" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+      integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+      crossorigin="anonymous"
+    />
+    <!-- <link rel="stylesheet" href="./frontEndPackage/css/material-icons.css"> -->
+    <link
+      rel="stylesheet"
+      href="./frontEndPackage/bootstrap-icons/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="./frontEndPackage/lightbox/lightbox.min.css" />
 
-        <link rel="stylesheet" href="./frontEndPackage/style/all.css" />
-        <title>技術與價格諮詢</title>
-    </head>
-    <body>
-        <div id="app">
-            <Navv :login="isLogin"></Navv>
-            <section class="breadcrumb-container mb-5">
-                <ol class="d-flex list-unstyled breadcrumb-list">
-                    <li><a href="/">首頁</a></li>
-                    <li class="active"><a href="###">技術/價格諮詢</a></li>
-                </ol>
-            </section>
-            <main class="container-lg inquiry-main">
-                <div class="d-flex justify-content-between align-items-center title pb-2 pb-md-3 mb-3">
-                    <h3 class="mb-0 text-darkBlack">技術/價格諮詢</h3>
-                    <a href="/instruments.html" class="select-btn">從我的儀器清單選擇</a>
-                </div>
-                <div class="mb-5">
-                    <h3 class="mb-1 text-lightBlack">整機</h3>
-                    <table class="w-100">
-                        <thead>
-                            <tr>
-                                <th style="width: 15%">圖片</th>
-                                <th style="width: 20%">主設備序號</th>
-                                <th style="width: 25%">機型</th>
-                                <th style="width: 20%">合約日期</th>
-                                <th style="width: 10%">數量</th>
-                                <th style="width: 10%">刪除</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr v-for="item in equipment" :key="item.number">
-                                <td data-title="圖片">
-                                    <a :href="item.imgUrl.large" data-lightbox="pic-1">
-                                        <img :src="item.imgUrl.small" :alt="item.imgUrl.alt" />
-                                    </a>
-                                </td>
-                                <td data-title="主設備序號">{{item.number}}</td>
-                                <td data-title="機型">{{item.title}}</td>
-                                <td data-title="合約日期">{{item.date}}</td>
-                                <td data-title="數量">
-                                    <input type="number" v-model.number="item.quantity" :min="min" :max="max" />
-                                </td>
-                                <td data-title="刪除">
-                                    <button
-                                        type="button"
-                                        class="delete-btn"
-                                        @click="removeItem('equipment',item.number)"
-                                    >
-                                        <i class="bi bi-trash trash-icon"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="mb-5">
-                    <h3 class="mb-1 text-lightBlack">耗材</h3>
-                    <table class="w-100">
-                        <thead>
-                            <tr>
-                                <th style="width: 15%">圖片</th>
-                                <th style="width: 20%">主設備序號</th>
-                                <th style="width: 25%">機型</th>
-                                <th style="width: 20%">合約日期</th>
-                                <th style="width: 10%">數量</th>
-                                <th style="width: 10%">刪除</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr v-for="item in materials" :key="item.number">
-                                <td data-title="圖片">
-                                    <a :href="item.imgUrl.large" data-lightbox="pic-1">
-                                        <img :src="item.imgUrl.small" :alt="item.imgUrl.alt" />
-                                    </a>
-                                </td>
-                                <td data-title="主設備序號">{{item.number}}</td>
-                                <td data-title="機型">{{item.title}}</td>
-                                <td data-title="合約日期">{{item.date}}</td>
-                                <td data-title="數量">
-                                    <input type="number" v-model.number="item.quantity" :min="min" :max="max" />
-                                </td>
-                                <td data-title="刪除">
-                                    <button
-                                        type="button"
-                                        class="delete-btn"
-                                        @click="removeItem('materials',item.number)"
-                                    >
-                                        <i class="bi bi-trash trash-icon"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="message mb-4">
-                    <div class="message-title">備註</div>
-
-                    <div class="d-sm-flex item">
-                        <div>Email</div>
-                        <div>dskdjfhskddsoids@gshdak.com.tw</div>
-                    </div>
-                    <div class="d-sm-flex item">
-                        <div>其他備註</div>
-                        <div>
-                            <textarea name="" id="" cols="30" rows="4" placeholder="請輸入內容" class="p-2"></textarea>
-                        </div>
-                    </div>
-                    <div class="d-sm-flex item">
-                        <div>附件</div>
-                        <div class="attachment d-flex">
-                            <label for="attachment" class="mb-0">
-                                <span class="select">選擇檔案</span>
-                                <input
-                                    type="file"
-                                    id="attachment"
-                                    class="d-none"
-                                    @change="uploadFile"
-                                    ref="imageUpload"
-                                    accept=".jpg, .jpeg, .png"
-                                />
-                            </label>
-                            <span class="file" v-if="!selectedFile">未選擇任何檔案</span>
-                            <span class="file" v-else>{{ selectedFile.name }}</span>
-                            <button type="button" @click="removeFile"><i class="bi bi-trash trash-btn"></i></button>
-                        </div>
-                    </div>
-                </div>
-                <button class="send-btn mb-5" data-toggle="modal" data-target="#sendModal">送出表單</button>
-            </main>
-
-            <!-- 已送出 modal start -->
-            <div
-                class="modal fade"
-                id="sendModal"
-                tabindex="-1"
-                aria-labelledby="sendModalLabel"
-                aria-hidden="true"
-            >
-                <div class="modal-dialog modal-sm modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-body d-flex flex-column justify-content-center align-items-center">
-                            <i class="bi bi-check-circle-fill add-icon"></i>
-                            <div class="text-center">已送出</div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn" data-dismiss="modal">
-                                確認
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 已送出 modal end -->
-            <Chat></Chat>
-            <Foooter></Foooter>
+    <link rel="stylesheet" href="./frontEndPackage/style/all.css" />
+    <title>技術與價格諮詢</title>
+  </head>
+  <body>
+    <div id="app">
+      <Navv :login="isLogin"></Navv>
+      <section class="breadcrumb-container mb-5">
+        <ol class="d-flex list-unstyled breadcrumb-list">
+          <li><a href="/">首頁</a></li>
+          <li class="active"><a href="###">技術/價格諮詢</a></li>
+        </ol>
+      </section>
+      <main class="container-lg inquiry-main">
+        <div
+          class="d-flex justify-content-between align-items-center title pb-2 pb-md-3 mb-3"
+        >
+          <h3 class="mb-0 text-darkBlack">技術/價格諮詢</h3>
+          <a href="/instruments.html" class="select-btn">從我的儀器清單選擇</a>
         </div>
+        <div class="mb-5">
+          <h3 class="mb-1 text-lightBlack">整機</h3>
+          <table class="w-100">
+            <thead>
+              <tr>
+                <th style="width: 7%">編號</th>
+                <th style="width: 15%">圖片</th>
+                <th style="width: 18%">主設備序號</th>
+                <th style="width: 25%">機型</th>
+                <th style="width: 18%">合約日期</th>
+                <th style="width: 9%">數量</th>
+                <th style="width: 8%">刪除</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="item in equipment" :key="item.id">
+                <td data-title="編號"><span>{{item.id}}</span></td>
+                <td data-title="圖片">
+                  <span
+                    ><a :href="item.imgUrl.large" :data-lightbox="'pic'+item.id">
+                      <img
+                        :src="item.imgUrl.small"
+                        :alt="item.imgUrl.alt"
+                      /> </a
+                  ></span>
+                </td>
+                <td data-title="主設備序號"><span>{{item.number}}</span></td>
+                <td data-title="機型">
+                  <span>{{item.title}}</span>
+                </td>
+                <td data-title="合約日期"><span>{{item.date}}</span></td>
+                <td data-title="數量">
+                  <span>
+                    <input class="number"
+                      type="number"
+                      v-model.number="item.quantity"
+                      :min="min"
+                      :max="max"
+                  /></span>
+                </td>
+                <td data-title="刪除">
+                  <span
+                    ><button
+                      type="button"
+                      class="delete-btn"
+                      @click="removeItem('equipment',item.number)"
+                    >
+                      <i class="bi bi-trash trash-icon"></i></button
+                  ></span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="mb-5">
+          <h3 class="mb-1 text-lightBlack">耗材</h3>
+          <table class="w-100">
+            <thead>
+              <tr>
+                <th style="width: 7%">編號</th>
+                <th style="width: 15%">圖片</th>
+                <th style="width: 18%">主設備序號</th>
+                <th style="width: 25%">機型</th>
+                <th style="width: 18%">合約日期</th>
+                <th style="width: 9%">數量</th>
+                <th style="width: 8%">刪除</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr v-for="item in materials" :key="item.id">
+                    <td data-title="編號"><span>{{item.id}}</span></td>
+                    <td data-title="圖片">
+                      <span
+                        ><a :href="item.imgUrl.large" :data-lightbox="'pic'+item.id">
+                          <img
+                            :src="item.imgUrl.small"
+                            :alt="item.imgUrl.alt"
+                          /> </a
+                      ></span>
+                    </td>
+                    <td data-title="主設備序號"><span>{{item.number}}</span></td>
+                    <td data-title="機型">
+                      <span>{{item.title}}</span>
+                    </td>
+                    <td data-title="合約日期"><span>{{item.date}}</span></td>
+                    <td data-title="數量">
+                      <span>
+                        <input
+                          type="number" class="number"
+                          v-model.number="item.quantity"
+                          :min="min"
+                          :max="max"
+                      /></span>
+                    </td>
+                    <td data-title="刪除">
+                      <span
+                        ><button
+                          type="button"
+                          class="delete-btn"
+                          @click="removeItem('equipment',item.number)"
+                        >
+                          <i class="bi bi-trash trash-icon"></i></button
+                      ></span>
+                    </td>
+                  </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="message mb-4">
+          <div class="message-title">備註</div>
 
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
-        <script
-            src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-            crossorigin="anonymous"
-        ></script>
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
-            integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
-            crossorigin="anonymous"
-        ></script>
-        <script src="./frontEndPackage/lightbox/lightbox.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-        <script src="./frontEndPackage/js/all.js"></script>
-        <script type="module">
-            import Foooter from "./components/footer.js";
-            import Navv from "./components/nav.js";
-            import Chat from "./components/chatWindow.js";
-            const app = new Vue({
-                el: "#app",
-                data() {
-                    return {
-                        isLogin: true,
-                        max: 99,
-                        min: 1,
-                        equipment: [
-                            {
-                                imgUrl: {
-                                    small: "./frontEndPackage/images/product-sm.jpg",
-                                    large: "./frontEndPackage/images/product-lg.jpg",
-                                    alt: "spectrometer",
-                                },
-                                number: "06UPLC L22135800614-01",
-                                title: "紫外/可見光-近紅外光分光譜儀",
-                                date: "2023/03/16-2023/12/25",
-                                quantity: 1,
-                            },
-                            {
-                                imgUrl: {
-                                    small: "./frontEndPackage/images/product-sm.jpg",
-                                    large: "./frontEndPackage/images/product-lg.jpg",
-                                    alt: "spectrometer",
-                                },
-                                number: "06UPLC L22135800614-02",
-                                title: "紫外/可見光-近紅外光分光譜儀",
-                                date: "2023/03/16-2023/12/25",
-                                quantity: 1,
-                            },
-                        ],
-                        materials: [
-                            {
-                                imgUrl: {
-                                    small: "./frontEndPackage/images/product-sm.jpg",
-                                    large: "./frontEndPackage/images/product-lg.jpg",
-                                    alt: "spectrometer",
-                                },
-                                number: "06UPLC L22135800614-03",
-                                title: "紫外/可見光-近紅外光分光譜儀",
-                                date: "2023/03/16-2023/12/25",
-                                quantity: 1,
-                            },
-                            {
-                                imgUrl: {
-                                    small: "./frontEndPackage/images/product-sm.jpg",
-                                    large: "./frontEndPackage/images/product-lg.jpg",
-                                    alt: "spectrometer",
-                                },
-                                number: "06UPLC L22135800614-04",
-                                title: "紫外/可見光-近紅外光分光譜儀",
-                                date: "2023/03/16-2023/12/25",
-                                quantity: 1,
-                            },
-                        ],
-                        selectedFile: null,
-                    };
+          <div class="d-sm-flex item">
+            <div>Email</div>
+            <div>dskdjfhskddsoids@gshdak.com.tw</div>
+          </div>
+          <div class="d-sm-flex item">
+            <div>其他備註</div>
+            <div>
+              <textarea
+                name=""
+                id=""
+                cols="30"
+                rows="4"
+                placeholder="請輸入內容"
+                class="p-2"
+              ></textarea>
+            </div>
+          </div>
+          <div class="d-sm-flex item">
+            <div>附件</div>
+            <div class="attachment d-flex">
+              <label for="attachment" class="mb-0">
+                <span class="select">選擇檔案</span>
+                <input
+                  type="file"
+                  id="attachment"
+                  class="d-none"
+                  @change="uploadFile"
+                  ref="imageUpload"
+                  accept=".jpg, .jpeg, .png"
+                />
+              </label>
+              <span class="file" v-if="!selectedFile">未選擇任何檔案</span>
+              <span class="file" v-else>{{ selectedFile.name }}</span>
+              <button type="button" @click="removeFile">
+                <i class="bi bi-trash trash-btn"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <button
+          class="send-btn mb-5"
+          data-toggle="modal"
+          data-target="#sendModal"
+        >
+          送出表單
+        </button>
+      </main>
+
+      <!-- 已送出 modal start -->
+      <div
+        class="modal fade"
+        id="sendModal"
+        tabindex="-1"
+        aria-labelledby="sendModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-sm modal-dialog-centered">
+          <div class="modal-content">
+            <div
+              class="modal-body d-flex flex-column justify-content-center align-items-center"
+            >
+              <i class="bi bi-check-circle-fill add-icon"></i>
+              <div class="text-center">已送出</div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn" data-dismiss="modal">
+                確認
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 已送出 modal end -->
+      <Chat></Chat>
+      <Foooter></Foooter>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
+      integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./frontEndPackage/lightbox/lightbox.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="./frontEndPackage/js/all.js"></script>
+    <script type="module">
+      import Foooter from "./components/footer.js";
+      import Navv from "./components/nav.js";
+      import Chat from "./components/chatWindow.js";
+      const app = new Vue({
+        el: "#app",
+        data() {
+          return {
+            isLogin: true,
+            max: 99,
+            min: 1,
+            equipment: [
+              {
+                id: "01",
+                imgUrl: {
+                  small: "./frontEndPackage/images/product-sm.jpg",
+                  large: "./frontEndPackage/images/product-lg.jpg",
+                  alt: "spectrometer",
                 },
-                methods: {
-                    removeItem(tableName, id) {
-                        let index = 0;
-                        let targetArray;
-                        if (tableName === "equipment") {
-                            targetArray = this.equipment;
-                        } else if (tableName === "materials") {
-                            targetArray = this.materials;
-                        }
-                        targetArray.forEach((item, i) => {
-                            if (item.number == id) {
-                                index = i;
-                            }
-                        });
-                        targetArray.splice(index, 1);
-                    },
-                    uploadFile() {
-                        const input = this.$refs.imageUpload;
-                        this.selectedFile = input.files.length > 0 ? input.files[0] : null;
-                    },
-                    removeFile() {
-                        this.selectedFile = null;
-                    },
+                number: "06UPLC L22135800614-01",
+                title: "紫外/可見光-近紅外光分光譜儀",
+                date: "2023/03/16-2023/12/25",
+                quantity: 1,
+              },
+              {
+                id: "02",
+                imgUrl: {
+                  small: "./frontEndPackage/images/product-sm.jpg",
+                  large: "./frontEndPackage/images/product-lg.jpg",
+                  alt: "spectrometer",
                 },
-                components: {
-                    Foooter,
-                    Navv,
-                    Chat,
+                number: "06UPLC L22135800614-02",
+                title: "紫外/可見光-近紅外光分光譜儀",
+                date: "2023/03/16-2023/12/25",
+                quantity: 1,
+              },
+            ],
+            materials: [
+              {
+                id: "01",
+                imgUrl: {
+                  small: "./frontEndPackage/images/product-sm.jpg",
+                  large: "./frontEndPackage/images/product-lg.jpg",
+                  alt: "spectrometer",
                 },
-                mounted() {},
+                number: "06UPLC L22135800614-03",
+                title: "紫外/可見光-近紅外光分光譜儀",
+                date: "2023/03/16-2023/12/25",
+                quantity: 1,
+              },
+              {
+                id: "02",
+                imgUrl: {
+                  small: "./frontEndPackage/images/product-sm.jpg",
+                  large: "./frontEndPackage/images/product-lg.jpg",
+                  alt: "spectrometer",
+                },
+                number: "06UPLC L22135800614-04",
+                title: "紫外/可見光-近紅外光分光譜儀",
+                date: "2023/03/16-2023/12/25",
+                quantity: 1,
+              },
+            ],
+            selectedFile: null,
+          };
+        },
+        methods: {
+          removeItem(tableName, id) {
+            let index = 0;
+            let targetArray;
+            if (tableName === "equipment") {
+              targetArray = this.equipment;
+            } else if (tableName === "materials") {
+              targetArray = this.materials;
+            }
+            targetArray.forEach((item, i) => {
+              if (item.number == id) {
+                index = i;
+              }
             });
-        </script>
-    </body>
+            targetArray.splice(index, 1);
+          },
+          uploadFile() {
+            const input = this.$refs.imageUpload;
+            this.selectedFile = input.files.length > 0 ? input.files[0] : null;
+          },
+          removeFile() {
+            this.selectedFile = null;
+          },
+        },
+        components: {
+          Foooter,
+          Navv,
+          Chat,
+        },
+        mounted() {},
+      });
+    </script>
+  </body>
 </html>
