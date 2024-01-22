@@ -117,18 +117,18 @@
                     aria-labelledby="addToListModalLabel"
                     aria-hidden="true"
                 >
-                    <div class="modal-dialog modal-sm">
+                    <div class="modal-dialog modal-sm modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-body d-flex flex-column justify-content-center align-items-center">
                                 <i class="bi bi-check-circle-fill add-icon"></i>
-                                <div class="text-center">已加入<br />返回耗材繼續查看</div>
+                                <div class="text-center">已加入</div>
                             </div>
                             <div class="modal-footer">
                                 <button
                                     type="button"
                                     class="btn"
                                     data-dismiss="modal"
-                                    @click="addInquiry"
+                                    @click="addInquiry()"
                                 >
                                     確認
                                 </button>
@@ -140,10 +140,10 @@
                 <!-- added modal end -->
 
                 <!-- 通用耗材清單 modal start -->
-                <Common @emit-num="addInquiry"></Common>
+                <Common @emit-num="addInquiry" @emit-all="addInquiry"></Common>
                 <!-- 通用耗材清單 modal end -->
                 <!-- 耗材清單 modal start-->
-                <Material :product="tempProduct" @emit-num="addInquiry"></Material>
+                <Material :product="tempProduct" @emit-num="addInquiry" @emit-all="addInquiry"></Material>
                 <!-- 耗材清單 modal end -->
             </main>
             <Chat></Chat>
@@ -207,8 +207,8 @@
                     };
                 },
                 methods: {
-                    addInquiry() {
-                        this.inquiryNum++;
+                    addInquiry(num=1) {
+                        this.inquiryNum+=num;
                     },
                     openModal (item, modalName) {
                         this.tempProduct = { ...item };

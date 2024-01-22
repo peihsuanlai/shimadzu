@@ -1,32 +1,35 @@
-export default{
-    data(){
-        return{
+export default {
+    data() {
+        return {
             materialList: [
                 {
+                    id: "01",
                     imgUrl: {
                         small: "./frontEndPackage/images/product-sm.jpg",
                         large: "./frontEndPackage/images/product-lg.jpg",
                         alt: "spectrometer",
                     },
-                    id: "01",
+                    isChecked: false,
                     eqip: "液相層析質譜儀 LCMS-8060NX",
-                    material:"01361/Simple method creation and batch creation"
+                    material: "01361/Simple method creation and batch creation",
                 },
                 {
+                    id: "02",
                     imgUrl: {
                         small: "./frontEndPackage/images/product-sm.jpg",
                         large: "./frontEndPackage/images/product-lg.jpg",
                         alt: "spectrometer",
                     },
-                    id: "02",
+                    isChecked: false,
                     eqip: "液相層析質譜儀 LCMS-8060NX",
-                    material:"01361/Simple method creation and batch creation"
+                    material: "01361/Simple method creation and batch creation",
                 },
             ],
             selectAll: false,
-        }
+            checkedCount: 0,
+        };
     },
-    template:`     <div class="modal fade" id="commomMaterialModal" tabindex="-1" aria-labelledby="commomMaterialModalLabel" aria-hidden="true">
+    template: `     <div class="modal fade" id="commomMaterialModal" tabindex="-1" aria-labelledby="commomMaterialModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header">
@@ -49,8 +52,8 @@ export default{
                 </thead>
                 <tbody>
                     <tr v-for="item in materialList">
-                        <td data-title="選取"><span><input type="checkbox" v-model="item.isCheck"></span></td>
-                        <td data-title="編號"><span>{{item.number}}</span></td>
+                        <td data-title="選取"><span><input type="checkbox" v-model="item.isChecked"></span></td>
+                        <td data-title="編號"><span>{{item.id}}</span></td>
                         <td data-title="圖片">
                         <span><a :href="item.imgUrl.large" data-lightbox="'pic'+item.id">
                         <img :src="item.imgUrl.small" :alt="item.imgUrl.alt" />
@@ -72,20 +75,28 @@ export default{
             <p class="text-center">若無法於此列表中找到欲詢問之耗材，可另於詢問表單中單獨填寫</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn w-100" data-dismiss="modal">批次加入清單</button>
+          <button type="button" class="btn w-100" @click="addTogether">批次加入清單</button>
         </div>
       </div>
     </div>
   </div> `,
-  methods:{
-    addToList(){
-        alert("確定加入詢價？");
-        this.$emit("emit-num");
+    methods: {
+        addToList() {
+            if(confirm("確定加入詢價？")){
+                this.$emit("emit-num");
+            }
+        },
+        toggleAll() {
+            this.materialList.forEach((item) => {
+                item.isChecked = this.selectAll;
+            });
+        },
+        addTogether() {
+            this.checkedCount = this.materialList.filter((item) => item.isChecked).length;
+            if (confirm(`確定將此 ${this.checkedCount} 項同時加入詢價？`)) {
+                $('#commomMaterialModal').modal('hide');
+                this.$emit("emit-all", this.checkedCount);
+            }
+        },
     },
-    toggleAll() {
-        this.materialList.forEach(item => {
-          item.isCheck = this.selectAll;
-        });
-      }
-  }
-}
+};

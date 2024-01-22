@@ -54,7 +54,7 @@
                                     <span><button
                                         type="button"
                                         class="delete-btn"
-                                        @click="removeItem('equipment',item.number)"
+                                        @click="removeItem('equipment',item.id)"
                                     >
                                         <i class="bi bi-trash trash-icon"></i>
                                     </button></span>
@@ -102,8 +102,52 @@
                         </div>
                     </div>
                 </div>
-                <button class="send-btn mb-5">送出表單</button>
+                <button class="message-send-btn mb-5" data-toggle="modal" data-target="#sendModal">送出表單</button>
             </main>
+            <!-- removeItem modal start -->
+            <div
+            class="modal fade"
+            id="removeItemModal"
+            tabindex="-1"
+            aria-labelledby="removeItemModalLabel"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog modal-sm modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                    <div class="modal-body d-flex flex-column justify-content-center align-items-center">
+                        <i class="bi bi-x-circle-fill remove-icon"></i>
+                        <div class="text-center">確定刪除該項目嗎？</div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn" @click="confirmRemoveItem">
+                            確認
+                        </button>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <!-- removeItem modal end -->
+            <!-- 已送出 modal start -->
+            <div class="modal fade" id="sendModal" tabindex="-1" aria-labelledby="sendModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-sm modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-body d-flex flex-column justify-content-center align-items-center">
+                            <i class="bi bi-check-circle-fill add-icon"></i>
+                            <div class="text-center">已送出</div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn" data-dismiss="modal">確認</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 已送出 modal end -->
             <Chat></Chat>
             <Foooter></Foooter>
         </div>
@@ -133,7 +177,7 @@
                         isLogin: true,
                         equipment: [
                             {
-                                id:"01",
+                                id:"1",
                                 imgUrl: {
                                     small: "./frontEndPackage/images/product-sm.jpg",
                                     large: "./frontEndPackage/images/product-lg.jpg",
@@ -143,35 +187,40 @@
                                 title: "紫外/可見光-近紅外光分光譜儀",
                             },
                             {
-                                id:"02",
+                                id:"2",
                                 imgUrl: {
                                     small: "./frontEndPackage/images/product-sm.jpg",
                                     large: "./frontEndPackage/images/product-lg.jpg",
                                     alt: "spectrometer",
                                 },
                                 number:"06UPLC L22135800614",
-                                title: "紫外/可見光-近紅外光分光譜儀",
+                                title: "2紫外/可見光-近紅外光分光譜儀",
                             },
                         ],
                         
                         selectedFile: null,
+                        selectedItem: null,
                     };
                 },
                 methods: {
-                    removeItem(tableName, id) {
+                    removeItem(id) {
+                        this.selectedItem = { id };
+                        $("#removeItemModal").modal("show");
+                    },
+                    confirmRemoveItem() {
                         let index = 0;
-                        let targetArray;
-                        if (tableName === "equipment") {
-                            targetArray = this.equipment;
-                        } else if (tableName === "materials") {
-                            targetArray = this.materials;
+                        if (this.selectedItem) {
+                            const { id } = this.selectedItem;
+                            this.equipment.forEach((item, i) => {
+                                if (item.id == id) {
+                                    index = i;
+                                }
+                            });
+                            this.equipment.splice(index, 1);
                         }
-                        targetArray.forEach((item, i) => {
-                            if (item.number == id) {
-                                index = i;
-                            }
-                        });
-                        targetArray.splice(index, 1);
+                        this.selectedItem = null;
+                        $("#removeItemModal").modal("hide");
+                        this.rearrangeNumbers(this.equipment);
                     },
                     uploadFile() {
                         const input = this.$refs.imageUpload;
@@ -179,6 +228,11 @@
                     },
                     removeFile() {
                         this.selectedFile = null;
+                    },
+                    rearrangeNumbers(array) {
+                        for (let i = 0; i < array.length; i++) {
+                            array[i].id = i + 1;
+                        }
                     },
                 },
                 components: {

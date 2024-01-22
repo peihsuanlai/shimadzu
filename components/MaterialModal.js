@@ -10,7 +10,7 @@ export default{
             materialList: [
                 {
                     id:"01",
-                    isCheck:false,
+                    isChecked:false,
                     imgUrl: {
                         small: "./frontEndPackage/images/product-sm.jpg",
                         large: "./frontEndPackage/images/product-lg.jpg",
@@ -21,7 +21,7 @@ export default{
                 },
                 {   
                     id:"02",
-                    isCheck:false,
+                    isChecked:false,
                     imgUrl: {
                         small: "./frontEndPackage/images/product-sm.jpg",
                         large: "./frontEndPackage/images/product-lg.jpg",
@@ -32,7 +32,7 @@ export default{
                 },
             ],
             selectAll: false,
-
+            checkedCount: 0,
         }
     },
     template:`<div
@@ -85,50 +85,53 @@ export default{
                     </thead>
                     <tbody>
                         <tr v-for="item in materialList" :key="item.id">
-                            <td data-title="選取"><span><input type="checkbox" v-model="item.isCheck"/></span></td>
+                            <td data-title="選取"><span><input type="checkbox" v-model="item.isChecked"/></span></td>
                             <td data-title="編號"><span>{{item.id}}</span></td>
                             <td data-title="圖片">
-                            <span><a :href="item.imgUrl.large" data-lightbox="'pic'+item.id">
-                            <img :src="item.imgUrl.small" :alt="item.imgUrl.alt" />
-                        </a></span>
-                                
+                                <span><a :href="item.imgUrl.large" data-lightbox="'pic'+item.id">
+                                <img :src="item.imgUrl.small" :alt="item.imgUrl.alt" />
+                                </a></span>    
                             </td>
-
                             <td data-title="器材名稱"><span>{{item.eqip}}</span></td>
                             <td data-title="耗材編號/耗材名稱">
                             <span>{{item.material}}</span>
                             </td>
                             <td class="text-center">
-                            <span><button
-                            type="button"
-                            class="ask-btn"
-                            @click="addToList"
-                        >
-                            加入詢價<i class="bi bi-plus"></i>
-                        </button></span>
-                                
+                                <span><button
+                                type="button"
+                                class="ask-btn"
+                                @click="addToList">
+                                加入詢價<i class="bi bi-plus"></i>
+                                </button></span>    
                             </td>
                         </tr>
-                        
                     </tbody>
                 </table>
                 <p class="text-center">若無法於此列表中找到欲詢問之耗材，可另於詢問表單中單獨填寫</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn w-100" data-dismiss="modal">批次加入清單</button>
+                <button type="button" class="btn w-100" data-dismiss="modal" @click="addTogether">批次加入清單</button>
             </div>
         </div>
     </div>
 </div>`,
 methods:{
     addToList(){
-        alert("確定加入詢價？");
-        this.$emit("emit-num");
+        if(confirm("確定加入詢價？")){
+            this.$emit("emit-num");
+        }
     },
     toggleAll() {
         this.materialList.forEach(item => {
-          item.isCheck = this.selectAll;
+          item.isChecked = this.selectAll;
         });
-      }
+    },
+    addTogether() {
+        this.checkedCount = this.materialList.filter((item) => item.isChecked).length;
+        if(confirm(`確定將此 ${this.checkedCount} 項同時加入詢價？`)){
+            $('#materialModal').modal('hide');
+            this.$emit("emit-all",this.checkedCount);
+        }  
+      },
 }
 }

@@ -28,42 +28,63 @@
                 <div class="row justify-content-center">
                     <div class="col-md-8 col-lg-6">
                         <div class="signup-container">
-                            <ul class="tab d-flex list-unstyled mb-0">
+                            <ul class="tab d-flex list-unstyled mb-3">
                                 <li><a href="###" class="active">登入會員</a></li>
-                                <li><a href="###">註冊會員</a></li>
+                                <li><a href="./signup.html">註冊會員</a></li>
                             </ul>
                             <div class="content">
                                 <div class="d-flex align-items-center justify-content-center text-center qrCode">
                                     <i class="bi bi-qr-code-scan mr-3"></i>
-                                    <p class="mb-0">掃描儀器上的 QRCode 後<br>登入即可帶入儀器資訊</p>
+                                    <p class="mb-0">掃描儀器上的 QRCode 後<br />登入即可帶入儀器資訊</p>
                                 </div>
                                 <div class="grey-text loginOption my-4">
-                                    <p class="mb-0 fs-14 text-center mx-auto">或者<br>直接輸入帳號密碼登入</p>
+                                    <p class="mb-0 fs-14 text-center mx-auto">或者<br />直接輸入帳號密碼登入</p>
                                 </div>
-                                <form action="">
-                                    <div class="form-group">
-                                        <label for="email">E-mail*</label>
-                                        <input type="email" id="email" class="form-control" v-modal="signupData.email" required />
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="password">密碼*</label>
-                                        <input type="email" id="password" class="form-control" v-modal="signupData.password" required />
-                                    </div>
-                                    <div class="form-check mb-3">
-                                        <input
-                                            class="form-check-input"
-                                            type="checkbox"
-                                            name="keepLogin"
-                                            id="keepLogin"
-                                        />
-                                        <label class="form-check-label fs-14" for="keepLogin">
-                                            讓我保持登入
-                                        </label>
-                                    </div>
-                                   
-                                    <button type="submit" class="loginBtn mb-1">登入</button>
-                                  <button type="button" class="forgetBtn ml-auto fs-14" data-toggle="modal" data-target="#forgetPasswordModal">忘記密碼?</button>
-                                </form>
+                                <validation-observer v-slot="{ handleSubmit }">
+                                    <form @submit.prevent="handleSubmit(onSubmit)" novalidate>
+                                        <div class="form-group">
+                                            <label for="email">E-mail*</label>
+                                            <validation-provider rules="required|email" v-slot="{ errors }">
+                                                <input
+                                                    type="email"
+                                                    id="email"
+                                                    class="form-control"
+                                                    v-model="user.email"
+                                                /><span class="invalid-feedback">{{ errors[0] }}</span>
+                                            </validation-provider>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="password">密碼*</label>
+                                            <validation-provider rules="required" v-slot="{ errors }">
+                                                <input
+                                                    type="password"
+                                                    id="password"
+                                                    class="form-control"
+                                                    v-model="user.password"
+                                                /><span class="invalid-feedback">{{ errors[0] }}</span>
+                                            </validation-provider>
+                                        </div>
+                                        <div class="form-check mb-3">
+                                            <input
+                                                class="form-check-input"
+                                                type="checkbox"
+                                                name="keepLogin"
+                                                id="keepLogin"
+                                            />
+                                            <label class="form-check-label fs-14" for="keepLogin">讓我保持登入</label>
+                                        </div>
+
+                                        <button type="submit" class="loginBtn mb-1">登入</button>
+                                        <button
+                                            type="button"
+                                            class="forgetBtn ml-auto fs-14"
+                                            data-toggle="modal"
+                                            data-target="#forgetPasswordModal"
+                                        >
+                                            忘記密碼?
+                                        </button>
+                                    </form>
+                                </validation-observer>
                             </div>
                         </div>
                     </div>
@@ -80,27 +101,33 @@
             >
                 <div class="modal-dialog modal-md modal-sm modal-dialog-centered">
                     <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title text-darkBlack" id="forgetPasswordModalLabel">忘記密碼</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="form-group passwordInput-1">
-                                <label for="enterEmail">請輸入您的電子信箱以重設密碼：</label>
-                                <input
-                                    type="email"
-                                    id="enterEmail"
-                                    class="form-control" required
-                                />
-                            </div>
-                            
-                        </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn" data-dismiss="modal" data-toggle="modal" data-target="#sendEmailModal">提交</button>
-                            <a href="./login.html" class="mt-1 fs-14 d-block ml-auto">回登入頁面</a>
-                        </div>
+                        <validation-observer v-slot="{ handleSubmit }">
+                            <form @submit.prevent="handleSubmit(sendEmail)" novalidate>
+                                <div class="modal-header">
+                                    <h5 class="modal-title text-darkBlack" id="forgetPasswordModalLabel">忘記密碼</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group passwordInput-1">
+                                        <label for="forget-email">請輸入您的電子信箱以重設密碼：</label>
+                                        <validation-provider rules="required|email" v-slot="{ errors }">
+                                            <input
+                                                type="email"
+                                                id="forget-email"
+                                                class="form-control"
+                                                v-model="emailForForget"
+                                            /><span class="invalid-feedback">{{ errors[0] }}</span>
+                                        </validation-provider>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn">提交</button>
+                                    <a href="./login.html" class="mt-1 fs-14 d-block ml-auto">回登入頁面</a>
+                                </div>
+                            </form>
+                        </validation-observer>
                     </div>
                 </div>
             </div>
@@ -108,7 +135,13 @@
             <!--  changePassword modal end -->
 
             <!-- 送email modal start -->
-            <div class="modal fade" id="sendEmailModal" tabindex="-1" aria-labelledby="sendEmailModal" aria-hidden="true">
+            <div
+                class="modal fade"
+                id="sendEmailModal"
+                tabindex="-1"
+                aria-labelledby="sendEmailModal"
+                aria-hidden="true"
+            >
                 <div class="modal-dialog modal-sm modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-body d-flex flex-column justify-content-center align-items-center">
@@ -138,9 +171,14 @@
             crossorigin="anonymous"
         ></script>
 
-
-
         <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/vee-validate/3.4.15/vee-validate.min.js"
+            integrity="sha512-uxMKQ5Q7fvV9HWYbdlhDq0Y9UvoGmQeyqzaGqr4EpKCBTiRGb4dbH5ai2FRv8AdQdkFpq9f/uM22iJLH+LWo0g=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        ></script>
 
         <script src="./frontEndPackage/js/all.js"></script>
         <script type="module">
@@ -153,29 +191,49 @@
                     return {
                         isLogin: false,
                         passwordHide: true,
-                        signupData: {
+                        user: {
                             email: "",
                             password: "",
-                            equpNum: "",
-                            institute: "",
-                            address: "",
-                            name: "",
-                            selectedGender: "",
-                            department: "",
-                            title: "",
-                            phone: "",
-                            extension: "",
-                            cellphone: "",
-                            verification: "",
                         },
+                        emailForForget:"",
                     };
                 },
-                methods: {},
+                methods: {
+                    onSubmit() {
+                        alert("已成功登入！");
+                        window.location.href = "/index.html";
+                    },
+                    sendEmail() {
+                        $("#forgetPasswordModal").modal("hide");
+                        $("#sendEmailModal").modal("show");
+                        
+                    },
+                },
                 components: {
                     Foooter,
                     Navv,
+                    ValidationProvider: VeeValidate.ValidationProvider,
+                    ValidationObserver: VeeValidate.ValidationObserver,
                 },
-                mounted() {},
+                mounted() {
+                    VeeValidate.extend("required", {
+                        validate(value) {
+                            return {
+                                required: true,
+                                valid: ["", null, undefined].indexOf(value) === -1,
+                            };
+                        },
+                        computesRequired: true,
+                        message: "此欄為必填！",
+                    });
+
+                    VeeValidate.extend("email", {
+                        validate: (value) => {
+                            return /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/.test(value);
+                        },
+                        message: "請輸入有效的電子郵件地址",
+                    });
+                },
             });
         </script>
     </body>

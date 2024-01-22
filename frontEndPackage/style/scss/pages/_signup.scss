@@ -3,7 +3,6 @@
 }
 .signup-container {
     outline: 1px solid #d9d9d9;
-
     .tab {
         li {
             width: 50%;
@@ -32,8 +31,12 @@
             }
         }
     }
+
     .content {
         @include padding(20px, 10%);
+        & > span{
+            display:block;
+        }
         a {
             color: #1371b9;
             text-decoration: underline;
@@ -41,6 +44,14 @@
         .form-control:focus {
             border-color: rgba(110, 110, 110, 0.5);
             box-shadow: 0 0 0 0.2rem rgba(110, 110, 110, 0.5);
+        }
+        form{
+            span{
+                display:block;
+            }
+            .invalid-feedback{
+                display:block;
+            }
         }
     }
     .form-btns {
@@ -100,4 +111,9 @@
             width: 50%;
         }
     }
+   
+}
+
+#forgetPasswordModal span{
+    display:block;
 }

@@ -28,7 +28,7 @@
             <main class="container-lg inquiry-main">
                 <div class="d-flex justify-content-between align-items-center title pb-2 pb-md-3 mb-3">
                     <h3 class="mb-0 text-darkBlack">續約</h3>
-                    <a href="/instruments.html" class="select-btn">從我的儀器清單選擇</a>
+                    <a href="./instruments.html" class="select-btn">從我的儀器清單選擇</a>
                 </div>
                 <div class="mb-5">
                     <h3 class="mb-1 text-lightBlack">整機</h3>
@@ -47,22 +47,24 @@
                             <tr v-for="item in equipment" :key="item.id">
                                 <td data-title="編號"><span>{{item.id}}</span></td>
                                 <td data-title="圖片">
-                                    <span><a :href="item.imgUrl.large" :data-lightbox="'pic'+item.id">
-                                        <img :src="item.imgUrl.small" :alt="item.imgUrl.alt" />
-                                    </a></span>
+                                    <span
+                                        ><a :href="item.imgUrl.large" :data-lightbox="'pic'+item.id">
+                                            <img :src="item.imgUrl.small" :alt="item.imgUrl.alt" /> </a
+                                    ></span>
                                 </td>
                                 <td data-title="主設備序號"><span>{{item.number}}</span></td>
                                 <td data-title="機型"><span>{{item.title}}</span></td>
                                 <td data-title="合約日期"><span>{{item.date}}</span></td>
-                                
+
                                 <td data-title="刪除" class="text-sm-center">
-                                    <span><button
-                                        type="button"
-                                        class="delete-btn"
-                                        @click="removeItem('equipment',item.number)"
-                                    >
-                                        <i class="bi bi-trash trash-icon"></i>
-                                    </button></span>
+                                    <span
+                                        ><button
+                                            type="button"
+                                            class="delete-btn"
+                                            @click="removeItem('equipment',item.id)"
+                                        >
+                                            <i class="bi bi-trash trash-icon"></i></button
+                                    ></span>
                                 </td>
                             </tr>
                         </tbody>
@@ -85,24 +87,27 @@
                             <tr v-for="item in materials" :key="item.id">
                                 <td data-title="編號"><span>{{item.id}}</span></td>
                                 <td data-title="圖片">
-                                    <span><a :href="item.imgUrl.large" :data-lightbox="'pic'+item.id">
-                                        <img :src="item.imgUrl.small" :alt="item.imgUrl.alt" />
-                                    </a></span>
+                                    <span
+                                        ><a :href="item.imgUrl.large" :data-lightbox="'pic'+item.id">
+                                            <img :src="item.imgUrl.small" :alt="item.imgUrl.alt" /> </a
+                                    ></span>
                                 </td>
                                 <td data-title="主設備序號"><span>{{item.number}}</span></td>
                                 <td data-title="機型"><span>{{item.title}}</span></td>
                                 <td data-title="合約日期"><span>{{item.date}}</span></td>
-                                
+
                                 <td data-title="刪除" class="text-sm-center">
-                                    <span><button
-                                        type="button"
-                                        class="delete-btn"
-                                        @click="removeItem('equipment',item.number)"
-                                    >
-                                        <i class="bi bi-trash trash-icon"></i>
-                                    </button></span>
+                                    <span
+                                        ><button
+                                            type="button"
+                                            class="delete-btn"
+                                            @click="removeItem('materials',item.id)"
+                                        >
+                                            <i class="bi bi-trash trash-icon"></i></button
+                                    ></span>
                                 </td>
                             </tr>
+                        </tbody>
                     </table>
                 </div>
                 <div class="message mb-4">
@@ -137,8 +142,50 @@
                         </div>
                     </div>
                 </div>
-                <button class="send-btn mb-5">送出表單</button>
+                <button class="message-send-btn mb-5" data-toggle="modal" data-target="#sendModal">送出表單</button>
             </main>
+            <!-- removeItem modal start -->
+            <div
+                class="modal fade"
+                id="removeItemModal"
+                tabindex="-1"
+                aria-labelledby="removeItemModalLabel"
+                aria-hidden="true"
+            >
+                <div class="modal-dialog modal-sm modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body d-flex flex-column justify-content-center align-items-center">
+                            <i class="bi bi-x-circle-fill remove-icon"></i>
+                            <div class="text-center">確定刪除該項目嗎？</div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn" @click="confirmRemoveItem">確認</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- removeItem modal end -->
+            <!-- 已送出 modal start -->
+            <div class="modal fade" id="sendModal" tabindex="-1" aria-labelledby="sendModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-sm modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-body d-flex flex-column justify-content-center align-items-center">
+                            <i class="bi bi-check-circle-fill add-icon"></i>
+                            <div class="text-center">已送出</div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn" data-dismiss="modal">確認</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 已送出 modal end -->
             <Chat></Chat>
             <Foooter></Foooter>
         </div>
@@ -160,7 +207,7 @@
         <script type="module">
             import Foooter from "./components/footer.js";
             import Navv from "./components/nav.js";
-            import Chat from "./components/chatWindow.js"
+            import Chat from "./components/chatWindow.js";
             const app = new Vue({
                 el: "#app",
                 data() {
@@ -170,87 +217,104 @@
                         min: 1,
                         equipment: [
                             {
-                                id:"01",
+                                id: "1",
                                 imgUrl: {
                                     small: "./frontEndPackage/images/product-sm.jpg",
                                     large: "./frontEndPackage/images/product-lg.jpg",
                                     alt: "spectrometer",
                                 },
-                                number: "06UPLC L22135800614-01",
+                                number: "06UPLC L22135800614",
                                 title: "紫外/可見光-近紅外光分光譜儀",
                                 date: "2023/03/16-2023/12/25",
                                 quantity: 1,
                             },
                             {
-                                id:"02",
+                                id: "2",
                                 imgUrl: {
                                     small: "./frontEndPackage/images/product-sm.jpg",
                                     large: "./frontEndPackage/images/product-lg.jpg",
                                     alt: "spectrometer",
                                 },
-                                number: "06UPLC L22135800614-02",
-                                title: "紫外/可見光-近紅外光分光譜儀",
+                                number: "06UPLC L22135800614",
+                                title: "2紫外/可見光-近紅外光分光譜儀",
                                 date: "2023/03/16-2023/12/25",
                                 quantity: 1,
                             },
                         ],
                         materials: [
-                            { 
-                                id:"01",
+                            {
+                                id: "1",
                                 imgUrl: {
                                     small: "./frontEndPackage/images/product-sm.jpg",
                                     large: "./frontEndPackage/images/product-lg.jpg",
                                     alt: "spectrometer",
                                 },
-                                number: "06UPLC L22135800614-03",
+                                number: "06UPLC L22135800614",
                                 title: "紫外/可見光-近紅外光分光譜儀",
                                 date: "2023/03/16-2023/12/25",
                                 quantity: 1,
                             },
                             {
-                                id:"02",
+                                id: "2",
                                 imgUrl: {
                                     small: "./frontEndPackage/images/product-sm.jpg",
                                     large: "./frontEndPackage/images/product-lg.jpg",
                                     alt: "spectrometer",
                                 },
-                                number: "06UPLC L22135800614-04",
-                                title: "紫外/可見光-近紅外光分光譜儀",
+                                number: "06UPLC L22135800614",
+                                title: "2紫外/可見光-近紅外光分光譜儀",
                                 date: "2023/03/16-2023/12/25",
                                 quantity: 1,
                             },
                         ],
                         selectedFile: null,
+                        selectedItem: null,
                     };
                 },
                 methods: {
                     removeItem(tableName, id) {
+                        this.selectedItem = { tableName, id };
+                        $("#removeItemModal").modal("show");
+                    },
+                    confirmRemoveItem() {
                         let index = 0;
                         let targetArray;
-                        if (tableName === "equipment") {
-                            targetArray = this.equipment;
-                        } else if (tableName === "materials") {
-                            targetArray = this.materials;
-                        }
-                        targetArray.forEach((item, i) => {
-                            if (item.number == id) {
-                                index = i;
+                        if (this.selectedItem) {
+                            const { tableName, id } = this.selectedItem;
+
+                            if (tableName === "equipment") {
+                                targetArray = this.equipment;
+                            } else if (tableName === "materials") {
+                                targetArray = this.materials;
                             }
-                        });
-                        targetArray.splice(index, 1);
+                            targetArray.forEach((item, i) => {
+                                if (item.id == id) {
+                                    index = i;
+                                }
+                            });
+                            targetArray.splice(index, 1);
+                        }
+                        this.selectedItem = null;
+                        $("#removeItemModal").modal("hide");
+                        this.rearrangeNumbers(targetArray);
                     },
                     uploadFile() {
                         const input = this.$refs.imageUpload;
                         this.selectedFile = input.files.length > 0 ? input.files[0] : null;
                     },
-                    removeFile(){
-                        this.selectedFile=null;
-                    }
+                    removeFile() {
+                        this.selectedFile = null;
+                    },
+                    rearrangeNumbers(array) {
+                        for (let i = 0; i < array.length; i++) {
+                            array[i].id = i + 1;
+                        }
+                    },
                 },
                 components: {
                     Foooter,
                     Navv,
-                    Chat
+                    Chat,
                 },
                 mounted() {},
             });

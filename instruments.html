@@ -185,18 +185,16 @@
                     <div class="modal-content">
                         <div class="modal-body d-flex flex-column justify-content-center align-items-center">
                             <i class="bi bi-check-circle-fill add-icon"></i>
-                            <div class="text-center">已加入<br />返回耗材繼續查看</div>
+                            <div class="text-center">已加入</div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn" data-dismiss="modal" @click="addInquiry">
+                            <button type="button" class="btn" data-dismiss="modal" @click="addInquiry()">
                                 確認
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
-         
-
             <!-- added modal end -->
 
             <!-- 歷史維修 modal start -->
@@ -204,7 +202,7 @@
             <!-- 歷史維修 modal end -->
 
             <!-- 耗材清單 modal end -->
-            <Material :product="tempProduct" @emit-num="addInquiry"></Material>
+            <Material :product="tempProduct" @emit-num="addInquiry" @emit-all="addInquiry"></Material>
             <!-- 耗材清單 modal end -->
 
             <!-- 附件序號 modal start -->
@@ -325,12 +323,12 @@
                         ],
                         accordionCollapse: false,
                         isInquiryNumChanging: false,
-                        tempProduct:{}
+                        tempProduct:{},
                     };
                 },
                 methods: {
-                    addInquiry() {
-                        this.inquiryNum++;
+                    addInquiry(num=1) {
+                        this.inquiryNum+=num;
                     },
                     showDetail() {
                         this.accordionCollapse = !this.accordionCollapse;

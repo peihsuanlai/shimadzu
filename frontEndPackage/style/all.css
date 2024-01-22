@@ -1032,7 +1032,7 @@ footer .photonic {
 .modal .productInfo {
   border-radius: 5px;
   border: 1px solid #d9d9d9;
-  padding: 16px 8px;
+  padding: 10px 8px;
 }
 .modal .productInfo p + div span:first-child {
   color: #af282f;
@@ -1104,6 +1104,7 @@ footer .photonic {
   display: flex;
   background-color: #626262;
   padding: 0;
+  border-bottom: 1px solid #d9d9d9;
 }
 @media (min-width: 992px) {
   .modal table tbody td {
@@ -1144,6 +1145,9 @@ footer .photonic {
   .modal table tbody td:first-child {
     padding-left: 8px;
   }
+}
+.modal table tbody td:last-child {
+  border: none;
 }
 .modal .modal-footer {
   border-top: none;
@@ -1244,6 +1248,7 @@ footer .photonic {
   display: flex;
   background-color: #626262;
   padding: 0;
+  border-bottom: 1px solid #d9d9d9;
 }
 @media (min-width: 576px) {
   .inquiry-main table tbody td {
@@ -1284,6 +1289,9 @@ footer .photonic {
   .inquiry-main table tbody td:first-child {
     padding-left: 8px;
   }
+}
+.inquiry-main table tbody td:last-child {
+  border: none;
 }
 .inquiry-main table .delete-btn {
   font-size: 20px;
@@ -1394,18 +1402,18 @@ footer .photonic {
   background-color: transparent;
 }
 
-.send-btn {
+.message-send-btn {
   color: #ffffff;
-  background-color: #000000;
+  background-color: #333333;
   border: none;
   width: 100%;
   padding: 8px 0;
   transition: all 0.3s ease-in-out;
 }
-.send-btn:hover {
-  outline: 1px solid #000000;
+.message-send-btn:hover {
+  outline: 1px solid #333333;
   background-color: transparent;
-  color: #000000;
+  color: #333333;
   transition: all 0.3s ease-in-out;
 }
 
@@ -1743,26 +1751,34 @@ button.common-material span {
   border: none;
 }
 
-#addToListModal, #saveSuccessModal, #sendModal, #submitModal, #sendEmailModal {
+#addToListModal, #saveSuccessModal, #sendModal, #submitModal, #sendEmailModal, #removeItemModal {
   font-size: 16px;
 }
-#addToListModal .modal-content, #saveSuccessModal .modal-content, #sendModal .modal-content, #submitModal .modal-content, #sendEmailModal .modal-content {
+#addToListModal .modal-content, #saveSuccessModal .modal-content, #sendModal .modal-content, #submitModal .modal-content, #sendEmailModal .modal-content, #removeItemModal .modal-content {
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   border: none;
 }
-#addToListModal .modal-body .add-icon, #saveSuccessModal .modal-body .add-icon, #sendModal .modal-body .add-icon, #submitModal .modal-body .add-icon, #sendEmailModal .modal-body .add-icon {
+#addToListModal .modal-body .add-icon, #addToListModal .modal-body .remove-icon, #saveSuccessModal .modal-body .add-icon, #saveSuccessModal .modal-body .remove-icon, #sendModal .modal-body .add-icon, #sendModal .modal-body .remove-icon, #submitModal .modal-body .add-icon, #submitModal .modal-body .remove-icon, #sendEmailModal .modal-body .add-icon, #sendEmailModal .modal-body .remove-icon, #removeItemModal .modal-body .add-icon, #removeItemModal .modal-body .remove-icon {
   font-size: 48px;
   color: #d9d9d9;
 }
-#addToListModal .modal-footer, #saveSuccessModal .modal-footer, #sendModal .modal-footer, #submitModal .modal-footer, #sendEmailModal .modal-footer {
+#addToListModal .modal-footer, #saveSuccessModal .modal-footer, #sendModal .modal-footer, #submitModal .modal-footer, #sendEmailModal .modal-footer, #removeItemModal .modal-footer {
   border-top: none;
   justify-content: center;
 }
-#addToListModal .modal-footer button, #saveSuccessModal .modal-footer button, #sendModal .modal-footer button, #submitModal .modal-footer button, #sendEmailModal .modal-footer button {
+#addToListModal .modal-footer button, #saveSuccessModal .modal-footer button, #sendModal .modal-footer button, #submitModal .modal-footer button, #sendEmailModal .modal-footer button, #removeItemModal .modal-footer button {
   border-radius: 5px;
   width: 100%;
   background-color: #333333;
   color: #ffffff;
+}
+
+#removeItemModal .modal-header {
+  padding-bottom: 0;
+}
+#removeItemModal .modal-body {
+  padding-top: 0;
+  margin-top: -10px;
 }
 
 .account-container {
@@ -1896,6 +1912,7 @@ button.common-material span {
   border-radius: 5px;
   width: 100%;
   background-color: #333333;
+  color: #ffffff;
 }
 #changePasswordModal .modal-footer a, #forgetPasswordModal .modal-footer a {
   color: #1371b9;
@@ -1939,6 +1956,9 @@ button.common-material span {
 .signup-container .content {
   padding: 20px 10%;
 }
+.signup-container .content > span {
+  display: block;
+}
 .signup-container .content a {
   color: #1371b9;
   text-decoration: underline;
@@ -1946,6 +1966,12 @@ button.common-material span {
 .signup-container .content .form-control:focus {
   border-color: rgba(110, 110, 110, 0.5);
   box-shadow: 0 0 0 0.2rem rgba(110, 110, 110, 0.5);
+}
+.signup-container .content form span {
+  display: block;
+}
+.signup-container .content form .invalid-feedback {
+  display: block;
 }
 .signup-container .form-btns button {
   width: 50%;
@@ -2001,4 +2027,73 @@ button.common-material span {
   padding: 0 10px;
   background-color: #ffffff;
   width: 50%;
+}
+
+#forgetPasswordModal span {
+  display: block;
+}
+
+.breadcrumb-list.selectedPage li:first-child, .breadcrumb-list.selectedPage li:nth-child(2) {
+  -webkit-clip-path: polygon(0% 0%, 95% 0%, 100% 50%, 95% 100%, 0% 100%);
+          clip-path: polygon(0% 0%, 95% 0%, 100% 50%, 95% 100%, 0% 100%);
+}
+.breadcrumb-list.selectedPage li:first-child::before, .breadcrumb-list.selectedPage li:nth-child(2)::before {
+  -webkit-clip-path: polygon(0% 0%, 95% 0%, 100% 50%, 95% 100%, 0% 100%);
+          clip-path: polygon(0% 0%, 95% 0%, 100% 50%, 95% 100%, 0% 100%);
+}
+.breadcrumb-list.selectedPage li:nth-child(3) {
+  -webkit-clip-path: polygon(95% 0, 100% 50%, 95% 100%, 0% 100%, 5% 50%, 0% 0%);
+          clip-path: polygon(95% 0, 100% 50%, 95% 100%, 0% 100%, 5% 50%, 0% 0%);
+}
+.breadcrumb-list.selectedPage li:nth-child(3)::before {
+  -webkit-clip-path: polygon(95% 0, 100% 50%, 95% 100%, 0% 100%, 5% 50%, 0% 0%);
+          clip-path: polygon(95% 0, 100% 50%, 95% 100%, 0% 100%, 5% 50%, 0% 0%);
+}
+
+.selectedItem-container {
+  min-height: calc(100vh - 135px);
+  padding: 40px 15px;
+}
+.selectedItem-container .productInfo {
+  border-radius: 5px;
+  border: 1px solid #d9d9d9;
+  padding: 10px 8px;
+}
+@media (min-width: 576px) {
+  .selectedItem-container .productInfo {
+    border-radius: 0px;
+    border: none;
+    border-bottom: 1px solid #DD0000;
+    padding: 0px 0px;
+    padding-bottom: 16px;
+  }
+}
+.selectedItem-container .productInfo p + div span:first-child {
+  color: #af282f;
+}
+.selectedItem-container .productInfo p + div span:last-child {
+  color: #ffffff;
+  background-color: #af282f;
+  border-radius: 60px;
+  padding: 4px 6px;
+}
+@media (min-width: 576px) {
+  .selectedItem-container .productInfo .img-container {
+    width: 20%;
+  }
+}
+.selectedItem-container .productInfo h3 {
+  font-size: 20px;
+}
+@media (min-width: 768px) {
+  .selectedItem-container .productInfo h3 {
+    font-size: 24px;
+  }
+}
+.selectedItem-container .item-content {
+  padding-left: 0;
+  padding-right: 0;
+}
+.selectedItem-container .item-content span {
+  font-size: 36px;
 }/*# sourceMappingURL=all.css.map */

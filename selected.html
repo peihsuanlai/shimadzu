@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="./frontEndPackage/owlcarousel/owl.carousel.min.css" />
+        <link rel="stylesheet" href="./frontEndPackage/owlcarousel/owl.theme.default.min.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+            integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+            crossorigin="anonymous"
+        />
+        <link rel="stylesheet" href="./frontEndPackage/css/material-icons.css" />
+        <link rel="stylesheet" href="./frontEndPackage/bootstrap-icons/bootstrap-icons.css" />
+
+        <link rel="stylesheet" href="./frontEndPackage/style/all.css" />
+        <title>Brevis™ GC-2050 氣相層析儀 Brevis™ GC-2050</title>
+    </head>
+    <body>
+        <div id="app">
+           
+            <Navv :login="isLogin"></Navv>
+            <section class="breadcrumb-container mb-3 mb-sm-5">
+                <ol class="d-flex list-unstyled breadcrumb-list selectedPage">
+                    <li><a href="/">首頁</a></li>
+                    <li class="active"><a href="###">登入會員</a></li>
+                    <li class="active"><a href="###">登入會員</a></li>
+                </ol>
+            </section>
+            <main class="container-lg selectedItem-container">
+                <div class="d-flex flex-column flex-sm-row align-items-center productInfo mb-3">
+                    <div class="img-container mr-sm-3 mb-3 mb-sm-0">
+                        <img src="./frontEndPackage/images/product-lg.jpg" alt=""/>
+                    </div>
+                    <div>
+                        <h3 class="mb-2">Brevis™ GC-2050 氣相層析儀 Brevis™ GC-2050</h3>
+                        <p class="mb-0">主設備序號：dhsjkfhjksdhfjks</p>
+                        <div>
+                            合約日期：
+                            <span> 2023/03/16-2023/12/25</span>
+                            <span class="fs-12 ml-2">合約即將到期</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex flex-wrap item-content">
+                    <div>
+                        <a
+                            
+                            class="d-flex flex-column align-items-center justify-content-center"
+                             @click="openModal(item, '#historyModal')"
+                        >
+                            <span class="material-icons mb-1"> pending_actions </span>
+                            <h3 class="mb-0">歷史維修紀錄</h3>
+                        </a>
+                    </div>
+                    <div>
+                        <a
+                           
+                           @click="openModal(item, '#materialModal')"
+                            class="d-flex flex-column align-items-center justify-content-center"
+                        >
+                            <span class="material-icons mb-1"> receipt_long </span>
+                            <h3 class="mb-0">耗材清單</h3>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="###" class="d-flex flex-column align-items-center justify-content-center">
+                            <span class="material-icons-outlined mr-1">
+                                drive_file_rename_outline
+                            </span>
+                            <h3 class="mb-0">我要簽新合約</h3>
+                        </a>
+                    </div>
+                    <div>
+                        <a
+                        @click="openModal(item, '#checkNumberModal')"
+                            class="d-flex flex-column align-items-center justify-content-center"
+                        >
+                            <span class="material-icons mb-1"> list </span>
+                            <h3 class="mb-0">查看附件序號</h3>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="###" class="d-flex flex-column align-items-center justify-content-center">
+                            <span class="material-icons mb-1"> construction </span>
+                            <h3 class="mb-0">線上叫修</h3>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="###" class="d-flex flex-column align-items-center justify-content-center">
+                            <span class="material-icons mb-1"> engineering </span>
+                            <h3 class="mb-0">預約保養</h3>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="###" class="d-flex flex-column align-items-center justify-content-center">
+                            <span class="material-icons mb-1"> help </span>
+                            <h3 class="mb-0">技術詢問</h3>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="###" class="d-flex flex-column align-items-center justify-content-center">
+                            <span class="material-icons mb-1"> psychology </span>
+                            <h3 class="mb-0">教育訓練</h3>
+                        </a>
+                    </div>
+                </div>
+
+            </main>
+             <!-- 歷史維修 modal start -->
+             <History :product="tempProduct"></History>
+             <!-- 歷史維修 modal end -->
+ 
+             <!-- 耗材清單 modal end -->
+             <Material :product="tempProduct" @emit-num="addInquiry" @emit-all="addInquiry"></Material>
+             <!-- 耗材清單 modal end -->
+ 
+             <!-- 附件序號 modal start -->
+             <Check :product="tempProduct"></Check>
+             <!-- 附件序號 modal end -->
+
+            <Chat></Chat>
+            <Foooter></Foooter>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
+            integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
+            crossorigin="anonymous"
+        ></script>
+        <script src="./frontEndPackage/owlcarousel/owl.carousel.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+        <script src="./frontEndPackage/js/all.js"></script>
+        <script type="module">
+            import Foooter from "./components/footer.js";
+            import Navv from "./components/nav.js";
+            import Chat from "./components/chatWindow.js";
+            import History from "./components/historyModal.js";
+            import Material from "./components/materialModal.js";
+            import Check from "./components/checkMaterialModal.js";
+            const app = new Vue({
+                el: "#app",
+                data() {
+                    return {
+                        isLogin: true,
+                    };
+                },
+                methods: {},
+                components: {
+                    Foooter,
+                    Navv,
+                    Chat,
+                    History,
+                    Material,
+                    Check,
+                },
+            });
+        </script>
+    </body>
+</html>

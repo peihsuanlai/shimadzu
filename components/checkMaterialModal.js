@@ -39,14 +39,14 @@ export default{
             <div class="modal-body">
                 <div class="d-flex align-items-center productInfo mb-3">
                     <div class="img-container mr-3">
-                        <img src="./frontEndPackage/images/product-sm.jpg" alt="" />
+                        <img :src="product?.imgUrl?.small" :alt="product?.imgUrl?.alt" />
                     </div>
                     <div>
-                        <h4 class="fs-16 mb-2">紫外/可見光-近紅外光分光光譜儀</h4>
-                        <p class="fs-14 mb-0">主設備序號：06UPLC L22135800614</p>
+                        <h4 class="fs-16 mb-2">{{product.title}}</h4>
+                        <p class="fs-14 mb-0">主設備序號：{{product.number}}</p>
                         <div class="fs-14">
                             合約日期：
-                            <span>2023/03/16-2023/12/25</span>
+                            <span>{{product.date}}</span>
                             <span class="fs-12 ml-2">合約即將到期</span>
                         </div>
                     </div>
@@ -69,9 +69,9 @@ export default{
                     </thead>
                     <tbody>
                         <tr v-for="(item,index) in numberList" :key="'number'+index">
-                            <td data-title="附件序號">{{item.number}}</td>
-                            <td data-title="中級">{{item.level}}</td>
-                            <td data-title="機型">{{item.title}}</td>
+                            <td data-title="附件序號"><span>{{item.number}}</span></td>
+                            <td data-title="中級"><span>{{item.level}}</span></td>
+                            <td data-title="機型"><span>{{item.title}}</span></td>
                         </tr>
                     </tbody>
                 </table>

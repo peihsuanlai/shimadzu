@@ -31,6 +31,17 @@ export default{
                         "1. 拆卸 ionSORCE及Iens清潔 2. ion SOURCE",
                     person: "林坤星",
                 },
+                {
+                    id: 3,
+                    number: "附件序號 021755700254",
+                    title: "GCMS-TQ8040 NX",
+                    date: "2023-07-06",
+                    start: "13:00",
+                    end: "17:30",
+                    content:
+                        "1. 拆卸 ionSORCE及Iens清潔 2. ion SOURCE ion SOURCEion SOURCEion SOURCEion SOURCEion SOURCEion SOURCEion SOURCEion SOURCE ",
+                    person: "林坤星",
+                },
             ],
 
         }
@@ -75,52 +86,51 @@ export default{
                 <table class="mb-3">
                     <thead>
                         <tr>
-                            <th style="width: 10%">儀器序號</th>
-                            <th style="width: 20%">機型(如LC-2040)</th>
-                            <th style="width: 8%">日期</th>
-                            <th style="width: 8%">起</th>
-                            <th style="width: 8%">迄</th>
+                            <th style="width: 16%">儀器序號</th>
+                            <th style="width: 14%">機型(如LC-2040)</th>
+                            <th style="width: 10%">日期</th>
+                            <th style="width: 7%">起</th>
+                            <th style="width: 7%">迄</th>
                             <th style="width: 20%">工作內容</th>
                             <th style="width: 10%">執行工程師</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(item, index) in histroyRecord" :key="item.id">
-                            <td data-title="儀器序號">{{item.number}}</td>
-                            <td data-title="機型">{{item.title}}</td>
-                            <td data-title="日期">{{item.date}}</td>
-                            <td data-title="起">{{item.start}}</td>
-                            <td data-title="迄">{{item.end}}</td>
+                        <tr v-for="item in histroyRecord" :key="item.id">
+                            <td data-title="儀器序號"><span>{{item.number}}</span></td>
+                            <td data-title="機型"><span>{{item.title}}</span></td>
+                            <td data-title="日期"><span>{{item.date}}</span></td>
+                            <td data-title="起"><span>{{item.start}}</span></td>
+                            <td data-title="迄"><span>{{item.end}}</span></td>
                             <td data-title="工作內容">
                                 <template v-if="item.content.length>40">
-                                    <button
-                                        type="button"
-                                        class="contentDetailBtn text-left"
-                                        data-toggle="modal"
-                                        data-target="#contentDetailModal"
-                                    >
-                                        {{item.content.slice(0, 40)}}...
-                                    </button>
+                                    <span><button
+                                    type="button"
+                                    class="contentDetailBtn text-left"
+                                    data-toggle="modal"
+                                    :data-target="'#contentDetailModal'+item.id"
+                                >
+                                    {{item.content.slice(0,50)}}...
+                                </button></span>
                                     <div
-                                        class="modal fade"
-                                        id="contentDetailModal"
+                                        class="modal fade contentDetailModal"
+                                        :id="'contentDetailModal'+item.id"
                                         tabindex="-1"
-                                        aria-labelledby="contentDetailModalLabel"
+                                        :aria-labelledby="'contentDetailModalLabel'+item.id"
                                         aria-hidden="true"
                                         
                                     >
-                                        <div class="modal-dialog modal-dialog-scrollable">
+                                        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="contentDetailModalLabel">
+                                                    <h5 class="modal-title" :id="'contentDetailModalLabel'+item.id">
                                                         維修細節
                                                     </h5>
                                                     <button
                                                         type="button"
                                                         class="close"
-                                                      data-dismiss="modal"
                                                         aria-label="Close"
-                                                       
+                                                       @click="closeModal"
                                                     >
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
@@ -130,9 +140,9 @@ export default{
                                         </div>
                                     </div>
                                 </template>
-                                <template v-else>{{item.content}}</template>
+                                <template v-else><span>{{item.content}}</span></template>
                             </td>
-                            <td data-title="執行工程師">{{item.person}}</td>
+                            <td data-title="執行工程師"><span>{{item.person}}</span></td>
                         </tr>
                     </tbody>
                 </table>
@@ -141,5 +151,9 @@ export default{
     </div>
 </div>`,
 
-
+methods:{
+    closeModal(){
+        $('.contentDetailModal').modal('hide');
+    }
+}
 }

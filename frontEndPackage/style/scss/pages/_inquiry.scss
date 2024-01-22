@@ -63,6 +63,7 @@
         display: flex;
         background-color: $light-text;
         padding: 0;
+        border-bottom: 1px solid #d9d9d9;
         @include small {
           display: table-cell;
           background-color: transparent;
@@ -98,6 +99,9 @@
           @include small {
             padding-left: 8px;
           }
+        }
+        &:last-child{
+            border:none;
         }
       }
     }
@@ -195,21 +199,24 @@
       }
     }
   }
+  
 }
-.send-btn {
+
+.message-send-btn {
   color: $white;
-  background-color: #000000;
+  background-color: $dark-text;
   border: none;
   width: 100%;
   @include padding(8px);
   transition: all 0.3s ease-in-out;
   &:hover {
-    outline: 1px solid #000000;
+    outline: 1px solid $dark-text;
     background-color: transparent;
-    color: #000000;
+    color: $dark-text;;
     transition: all 0.3s ease-in-out;
   }
 }
+
 .options {
   column-gap: 4%;
   label {
