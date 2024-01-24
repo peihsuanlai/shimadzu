@@ -17,7 +17,7 @@
     </head>
     <body>
         <div id="app">
-            <Navv :login="!isLogin"></Navv>
+            <vue-nav :login="!isLogin"></vue-nav>
             <section class="breadcrumb-container mb-3 mb-sm-5">
                 <ol class="d-flex list-unstyled breadcrumb-list">
                     <li><a href="/">首頁</a></li>
@@ -53,7 +53,11 @@
                                         <div class="form-row mb-3">
                                             <div class="col">
                                                 <label for="password">密碼*</label>
-                                                <validation-provider rules="required" v-slot="{ errors }">
+                                                <validation-provider
+                                                    rules="required"
+                                                    v-slot="{ errors }"
+                                                    name="targetpassword"
+                                                >
                                                     <input
                                                         type="password"
                                                         id="password"
@@ -65,15 +69,16 @@
                                             </div>
                                             <div class="col">
                                                 <label for="confirm-password">確認密碼*</label>
+
                                                 <validation-provider
-                                                    rules="required|isSamePassword"
+                                                    rules="required|confirm:@targetpassword"
                                                     v-slot="{ errors }"
                                                 >
                                                     <input
                                                         type="password"
                                                         id="confirm-password"
                                                         class="form-control"
-                                                        v-model="signupData.password_confirmation"
+                                                        v-model="signupData.confirmation"
                                                     />
                                                     <span class="invalid-feedback">{{ errors[0] }}</span>
                                                 </validation-provider>
@@ -132,7 +137,7 @@
                                                     <select
                                                         class="form-control"
                                                         id="gender"
-                                                        v-model="signupData.gender"
+                                                        v-model="signupData.selectedGender"
                                                     >
                                                         <option>先生</option>
                                                         <option>小姐</option>
@@ -170,15 +175,15 @@
                                             <div class="col">
                                                 <label for="phone">單位電話</label>
                                                 <validation-provider
-                                                    rules="required_without:cellphone"
+                                                    rules="eitherOrRequired:@cellphone"
                                                     v-slot="{ errors }"
+                                                    name="phone"
                                                 >
                                                     <input
                                                         type="tel"
                                                         id="phone"
                                                         class="form-control"
                                                         v-model="signupData.phone"
-                                                        name="phone"
                                                     /><span class="invalid-feedback">{{ errors[0] }}</span>
                                                 </validation-provider>
                                             </div>
@@ -194,13 +199,16 @@
                                         </div>
                                         <div class="form-group mb-4">
                                             <label for="cellphone">手機號碼</label>
-                                            <validation-provider rules="required_without:phone" v-slot="{ errors }">
+                                            <validation-provider
+                                                rules="eitherOrRequired:@phone"
+                                                v-slot="{ errors }"
+                                                name="cellphone"
+                                            >
                                                 <input
                                                     type="tel"
                                                     id="cellphone"
                                                     class="form-control"
                                                     v-model="signupData.cellphone"
-                                                    name="cellphone"
                                                 /><span class="invalid-feedback">{{ errors[0] }}</span>
                                             </validation-provider>
                                         </div>
@@ -244,7 +252,7 @@
                                         </div>
                                         <div class="form-btns d-flex justify-content-center">
                                             <!-- <input type="reset" value="清除表單"> -->
-                                            <button type="reset">取消</button>
+                                            <button type="reset" @click="clearForm">取消</button>
                                             <button type="submit">提交</button>
                                         </div>
                                     </form>
@@ -272,7 +280,7 @@
 
             <!-- 提交 modal end -->
 
-            <Foooter></Foooter>
+            <vue-footer></vue-footer>
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
@@ -294,18 +302,12 @@
             crossorigin="anonymous"
             referrerpolicy="no-referrer"
         ></script>
-        <script src="
-    https://cdn.jsdelivr.net/npm/@vee-validate/rules@4.12.4/dist/vee-validate-rules.min.js
-    "></script>
-        <script src="https://cdn.jsdelivr.net/npm/@vee-validate/i18n@4.12.4/dist/vee-validate-i18n.min.js"></script>
-        <!-- <script src="https://cdn.jsdelivr.net/npm/vee-validate@latest/dist/vee-validate.js"></script> -->
+
         <script src="./frontEndPackage/js/all.js"></script>
         <script type="module">
-            import Foooter from "./components/footer.js";
-            import Navv from "./components/nav.js";
+            import VueFooter from "./components/footer.js";
+            import VueNav from "./components/nav.js";
 
-            console.log(VeeValidate);
-            console.log(VeeValidateRules);
             const app = new Vue({
                 el: "#app",
                 data() {
@@ -315,7 +317,7 @@
                         signupData: {
                             email: "",
                             password: "",
-                            password_confirmation: "",
+                            confirm: "",
                             equpNum: "",
                             institute: "",
                             address: "",
@@ -332,12 +334,17 @@
                 },
                 methods: {
                     onSubmit() {
-                        alert("Form has been submitted!");
+                        $("#submitModal").modal('show');
+                    },
+                    clearForm() {
+                        Object.keys(this.signupData).forEach((key) => {
+                            this.signupData[key] = "";
+                        });
                     },
                 },
                 components: {
-                    Foooter,
-                    Navv,
+                    VueFooter,
+                    VueNav,
                     ValidationProvider: VeeValidate.ValidationProvider,
                     ValidationObserver: VeeValidate.ValidationObserver,
                 },
@@ -359,10 +366,20 @@
                         },
                         message: "請輸入有效的電子郵件地址",
                     });
-                    VeeValidate.extend("isSamePassword", {
-                        validate: (value, { password }) => value === password,
-                        params: ["value"],
-                        message: "您輸入的密碼與設定密碼不一致",
+
+                    VeeValidate.extend("confirm", {
+                        params: ["target"],
+                        validate(value, [target]) {
+                            return value === target;
+                        },
+                        message: "兩次密碼輸入不同，請再次確認",
+                    });
+                    VeeValidate.extend("eitherOrRequired", {
+                        params: ["otherField"],
+                        validate(value, { otherField }) {
+                            return value !== "" || otherField !== "";
+                        },
+                        message: "至少填寫其中一個欄位",
                     });
                 },
             });

@@ -1,44 +1,55 @@
-.breadcrumb-list.selectedPage{
-    li:first-child,li:nth-child(2) {
+.breadcrumb-list.selectedPage {
+    li {
+        a {
+            padding: 5px 0 0 0;
+        }
+    }
+    li:first-child {
         clip-path: polygon(0% 0%, 95% 0%, 100% 50%, 95% 100%, 0% 100%);
         &::before {
             clip-path: polygon(0% 0%, 95% 0%, 100% 50%, 95% 100%, 0% 100%);
         }
     }
+    li:nth-child(2),
     li:nth-child(3) {
         clip-path: polygon(95% 0, 100% 50%, 95% 100%, 0% 100%, 5% 50%, 0% 0%);
         &::before {
             clip-path: polygon(95% 0, 100% 50%, 95% 100%, 0% 100%, 5% 50%, 0% 0%);
         }
     }
+    li:nth-child(3) a {
+        width: 80%;
+    }
 }
-
-
 
 .selectedItem-container {
     min-height: calc(100vh - 135px);
-    @include padding(40px,15px);
+    padding-bottom: 80px;
     .productInfo {
         border-radius: 5px;
         border: 1px solid #d9d9d9;
         @include padding(10px, 8px);
-        @include small{
+        @include small {
             border-radius: 0px;
-            border:none;
+            border: none;
             border-bottom: 1px solid $main;
             @include padding(0px, 0px);
-            padding-bottom:16px;
-
+            padding-bottom: 16px;
         }
-        p + div {
-            span:first-child {
-                color: #af282f;
+        .date {
+            & > span {
+                flex-shrink: 0;
             }
-            span:last-child {
-                color: $white;
-                background-color: #af282f;
-                border-radius: 60px;
-                @include padding(4px, 6px);
+            div {
+                span:first-child {
+                    color: $main;
+                }
+                span:last-child {
+                    color: $white;
+                    background-color:$main;
+                    border-radius: 60px;
+                    @include padding(2px, 6px);
+                }
             }
         }
         .img-container {
@@ -53,9 +64,27 @@
             }
         }
     }
-    .item-content{
-        padding-left:0;
-        padding-right:0;
+    .item-content {
+        column-gap:12px;
+        padding-left: 0;
+        padding-right: 0;
+        & > div {
+            width: calc( (100% - 12px) / 2);
+            padding-right:0 !important;
+            @include small {
+               padding:0;
+            }
+            @include medium {
+                width: calc( (100% - 36px) / 4);
+            }
+            &:nth-child(odd) {
+                padding:0;
+                @include small {
+                    padding:0;
+                }
+            }
+           
+        }
         span {
             font-size: 36px;
         }

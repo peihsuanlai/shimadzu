@@ -37,27 +37,29 @@ export default{
                 </button>
             </div>
             <div class="modal-body">
-                <div class="d-flex align-items-center productInfo mb-3">
-                    <div class="img-container mr-3">
-                        <img :src="product?.imgUrl?.small" :alt="product?.imgUrl?.alt" />
+                <div class="productInfo mb-3">
+                    <div class="img-container mb-3 mb-sm-0">
+                        <img :src="product?.imgUrl?.large" :alt="product?.imgUrl?.alt" />
                     </div>
                     <div>
                         <h4 class="fs-16 mb-2">{{product.title}}</h4>
                         <p class="fs-14 mb-0">主設備序號：{{product.number}}</p>
-                        <div class="fs-14">
-                            合約日期：
-                            <span>{{product.date}}</span>
-                            <span class="fs-12 ml-2">合約即將到期</span>
+                        <div class="d-flex date fs-14">
+                            <span>合約日期：</span>
+                            <div>
+                                <span>{{product.date}}</span>
+                                <span class="fs-12 ml-2">合約即將到期</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="d-flex align-items-end justify-content-between">
-                    <h5 class="modal-title" id="checkNumberModalLabel">查看附件序號</h5>
-                    <div class="text-right fs-14 pagination">
-                        1-20列 (共5頁)<button type="button"><i class="bi bi-chevron-left ml-4 mr-2"></i></button> <button type="button"></i
-                            ><i class="bi bi-chevron-right"></i>
-                        </button></div>
-                </div>
+             
+
+                <div class="d-flex align-items-end main-title">
+                <div class="d-flex align-items-center">
+                    <h5 class="modal-title mr-3" id="checkNumberModalLabel">查看附件序號</h5>
+                </div>   
+            </div>
 
                 <table class="mb-3 w-100">
                     <thead>
@@ -75,6 +77,10 @@ export default{
                         </tr>
                     </tbody>
                 </table>
+                <div class="text-right fs-14 pagination">
+                        1-20列 (共5頁)<button type="button"><i class="bi bi-chevron-left ml-4 mr-2"></i></button> <button type="button"></i
+                            ><i class="bi bi-chevron-right"></i>
+                        </button></div>
             </div>
         </div>
     </div>

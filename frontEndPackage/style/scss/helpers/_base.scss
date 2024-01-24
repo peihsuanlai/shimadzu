@@ -9,6 +9,11 @@ body{
     }
 }
 
+button, a, select{
+    -webkit-appearance: none;
+    appearance: none;
+}
+
 img {
     object-fit: cover;
     max-width: 100%;
@@ -26,4 +31,10 @@ a:hover {
     text-decoration: none;
 }
 
+@supports (-webkit-overflow-scrolling: touch) {
+    button, a, select{
+        -webkit-appearance: none;
+        appearance: none;
+    }
+  }
 

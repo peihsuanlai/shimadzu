@@ -33,12 +33,19 @@ export default {
     <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="commomMaterialModalLabel">通用耗材清單</h5>
+         
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
+            <h5 class="modal-title mr-3" id="commomMaterialModalLabel">通用耗材清單</h5>
+            <ul class="list-unstyled mb-0 tab-carousel owl-carousel owl-theme">
+                <li><a href="###" class="active">分類1</a></li>
+                <li><a href="###">分類1</a></li>
+                <li><a href="###">分類1</a></li>
+                <li><a href="###">分類1</a></li>
+            </ul>
             <table class="mb-3">
                 <thead>
                     <tr>
@@ -72,6 +79,10 @@ export default {
                     </tr>
                 </tbody>
             </table>
+            <div class="text-right fs-14 pagination">
+                        1-20列 (共5頁)<button type="button"><i class="bi bi-chevron-left ml-4 mr-2"></i></button> <button type="button"></i
+                            ><i class="bi bi-chevron-right"></i>
+                        </button></div>
             <p class="text-center">若無法於此列表中找到欲詢問之耗材，可另於詢問表單中單獨填寫</p>
         </div>
         <div class="modal-footer">
@@ -99,4 +110,35 @@ export default {
             }
         },
     },
+    mounted(){
+        $(function () {
+            //modal頁籤輪播
+            $(".tab-carousel").owlCarousel({
+                loop: false,
+                autoplay: false,
+                dots: false,
+                nav: true,
+                navText: ["", "<i class='bi bi-chevron-right'></i>"],
+                margin: 15,
+                autoWidth: true,
+                responsive: {
+                    0: {
+                        items: 3,
+                    },
+                    375:{
+                        items: 4,
+                    },
+                    576:{
+                        items: 5,
+                    },
+                    768: {
+                        items: 6,
+                    },
+                    992: {
+                        items: 8,
+                    },
+                },
+            });
+        });
+    }
 };

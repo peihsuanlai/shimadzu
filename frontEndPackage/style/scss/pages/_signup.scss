@@ -60,16 +60,26 @@
             border-radius: 5px;
             @include padding(6px, 0);
             border: none;
-            background-color: transparent;
+            //background-color: transparent;
         }
         button:first-child {
             color: #b8b8b8;
             background-color: #f5f5f5;
             margin-right: 8px;
+            &:hover{
+                outline:1px solid $grey-text;
+                transition:all 0.3s ease-in-out;
+            }
         }
         button:last-child {
             color: $white;
             background-color: $dark-text;
+            &:hover{
+                outline:1px solid $grey-text;
+                color:$light-text;
+                background-color:transparent;
+                transition:all 0.3s ease-in-out;
+            }
         }
     }
     .loginBtn {

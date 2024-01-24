@@ -24,7 +24,7 @@
             font-size: 14px;
             color: $white;
             background-color: #af282f;
-            @include padding(7px, 16px);
+            @include padding(7px, 8px);
             border-radius: 5px;
         }
     }
@@ -90,36 +90,18 @@
             margin: 0;
         }
     }
-    .modal-body {
-        span {
-            color: #af282f;
-        }
+    .form-group span{
+        display:block;
     }
-
     .form-control:focus {
         border-color: rgba(110, 110, 110, 0.5);
         box-shadow: 0 0 0 0.2rem rgba(110, 110, 110, 0.5);
     }
-    .passwordInput-1 {
+    .passwordInput{
         position: relative;
         button {
             position: absolute;
-            top: 72%;
-            right: 10px;
-            transform: translateY(-50%);
-            border: none;
-            background-color: transparent;
-        }
-        .eye-icon {
-            color: #d9d9d9;
-            font-size: 18px;
-        }
-    }
-    .passwordInput-2 {
-        position: relative;
-        button {
-            position: absolute;
-            top: 72%;
+            top: 50%;
             right: 10px;
             transform: translateY(-50%);
             border: none;

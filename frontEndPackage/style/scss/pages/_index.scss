@@ -74,10 +74,7 @@
 }
 
 .banner-container {
-    padding-top: 126px;
-    @include small {
-        padding-top: 100px;
-    }
+    padding-top: 70px;
     a{
         background-repeat:no-repeat;
         background-size:cover;

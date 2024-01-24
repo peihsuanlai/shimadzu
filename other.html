@@ -16,7 +16,7 @@
     </head>
     <body>
         <div id="app">
-            <Navv :login="isLogin"></Navv>
+            <vue-nav :login="isLogin"></vue-nav>
             <section class="breadcrumb-container mb-5">
                 <ol class="d-flex list-unstyled breadcrumb-list">
                     <li><a href="/">首頁</a></li>
@@ -35,7 +35,7 @@
                                 <th style="width: 10%">編號</th>
                                 <th style="width: 15%">圖片</th>
                                 <th style="width: 20%">主設備序號</th>
-                                <th style="width: 25%">機型</th>  
+                                <th style="width: 25%">機型</th>
                                 <th style="width: 30%" class="text-center">刪除</th>
                             </tr>
                         </thead>
@@ -43,32 +43,57 @@
                             <tr v-for="item in equipment" :key="item.id">
                                 <td data-title="編號"><span>{{item.id}}</span></td>
                                 <td data-title="圖片">
-                                    <span><a :href="item.imgUrl.large" :data-lightbox="'pic'+item.id">
-                                        <img :src="item.imgUrl.small" :alt="item.imgUrl.alt" />
-                                    </a></span>
+                                    <span
+                                        ><a :href="item.imgUrl.large" :data-lightbox="'pic'+item.id">
+                                            <img :src="item.imgUrl.small" :alt="item.imgUrl.alt" /> </a
+                                    ></span>
                                 </td>
                                 <td data-title="主設備序號"><span>{{item.number}}</span></td>
                                 <td data-title="機型"><span>{{item.title}}</span></td>
-                                
+
                                 <td data-title="刪除" class="text-sm-center">
-                                    <span><button
-                                        type="button"
-                                        class="delete-btn"
-                                        @click="removeItem('equipment',item.id)"
-                                    >
-                                        <i class="bi bi-trash trash-icon"></i>
-                                    </button></span>
-                                    
+                                    <span
+                                        ><button
+                                            type="button"
+                                            class="delete-btn"
+                                            @click="removeItem('equipment',item.id)"
+                                        >
+                                            <i class="bi bi-trash trash-icon"></i></button
+                                    ></span>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
                 <div class="d-flex flex-wrap justify-content-center options mb-4 mb-sm-5">
-                    <label for="fix" class="mb-3 mb-sm-0 active"><input id="fix" type="checkbox" ><span class="checkmark"></span><span>線上叫修</span></label>
-                    <label for="maintainance" class="mb-3 mb-sm-0"><input id="maintainance" type="checkbox" ><span class="checkmark"></span><span>預約保養</span></label>
-                    <label for="ask"><input id="ask" type="checkbox" ><span class="checkmark"></span><span>技術詢問</span></label>
-                    <label for="training"><input id="training" type="checkbox" ><span class="checkmark"></span><span>教育訓練</span></label>
+                    <div class="item" v-for="item in serviceList" :key="item.id">
+                        <input :id="item.id" type="radio" :value="item.title" v-model="selectedService" />
+                        <label :for="item.id" class="mb-3 mb-sm-0">
+                            <span class="checkmark"></span>
+                            <span>{{item.title}}</span>
+                        </label>
+                    </div>
+                    <!-- <div class="item">
+                        <input id="maintainance" type="checkbox" />
+                        <label for="maintainance" class="mb-3 mb-sm-0">
+                            <span class="checkmark"></span>
+                            <span>預約保養</span>
+                        </label>
+                    </div>
+                    <div class="item">
+                        <input id="ask" type="checkbox" />
+                        <label for="ask">
+                            <span class="checkmark"></span>
+                            <span>技術詢問</span>
+                        </label>
+                    </div>
+                    <div class="item">
+                        <input id="training" type="checkbox" />
+                        <label for="training">
+                            <span class="checkmark"></span>
+                            <span>教育訓練</span>
+                        </label>
+                    </div> -->
                 </div>
                 <div class="message mb-4">
                     <div class="message-title">備註</div>
@@ -106,30 +131,28 @@
             </main>
             <!-- removeItem modal start -->
             <div
-            class="modal fade"
-            id="removeItemModal"
-            tabindex="-1"
-            aria-labelledby="removeItemModalLabel"
-            aria-hidden="true"
-        >
-            <div class="modal-dialog modal-sm modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                    <div class="modal-body d-flex flex-column justify-content-center align-items-center">
-                        <i class="bi bi-x-circle-fill remove-icon"></i>
-                        <div class="text-center">確定刪除該項目嗎？</div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn" @click="confirmRemoveItem">
-                            確認
-                        </button>
+                class="modal fade"
+                id="removeItemModal"
+                tabindex="-1"
+                aria-labelledby="removeItemModalLabel"
+                aria-hidden="true"
+            >
+                <div class="modal-dialog modal-sm modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body d-flex flex-column justify-content-center align-items-center">
+                            <i class="bi bi-x-circle-fill remove-icon"></i>
+                            <div class="text-center">確定刪除該項目嗎？</div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn" @click="confirmRemoveItem">確認</button>
+                        </div>
                     </div>
                 </div>
-            </div>
             </div>
             <!-- removeItem modal end -->
             <!-- 已送出 modal start -->
@@ -148,8 +171,8 @@
             </div>
 
             <!-- 已送出 modal end -->
-            <Chat></Chat>
-            <Foooter></Foooter>
+            <chat></chat>
+            <vue-footer></vue-footer>
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
@@ -167,9 +190,11 @@
         <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
         <script src="./frontEndPackage/js/all.js"></script>
         <script type="module">
-            import Foooter from "./components/footer.js";
-            import Navv from "./components/nav.js";
+            import VueFooter from "./components/footer.js";
+            import VueNav from "./components/nav.js";
             import Chat from "./components/chatWindow.js";
+            const urlParams = new URLSearchParams(window.location.search);
+  const selectedService = urlParams.get('selectedService');
             const app = new Vue({
                 el: "#app",
                 data() {
@@ -177,29 +202,47 @@
                         isLogin: true,
                         equipment: [
                             {
-                                id:"1",
+                                id: "1",
                                 imgUrl: {
                                     small: "./frontEndPackage/images/product-sm.jpg",
                                     large: "./frontEndPackage/images/product-lg.jpg",
                                     alt: "spectrometer",
                                 },
-                                number:"06UPLC L22135800614",
+                                number: "06UPLC L22135800614",
                                 title: "紫外/可見光-近紅外光分光譜儀",
                             },
                             {
-                                id:"2",
+                                id: "2",
                                 imgUrl: {
                                     small: "./frontEndPackage/images/product-sm.jpg",
                                     large: "./frontEndPackage/images/product-lg.jpg",
                                     alt: "spectrometer",
                                 },
-                                number:"06UPLC L22135800614",
+                                number: "06UPLC L22135800614",
                                 title: "2紫外/可見光-近紅外光分光譜儀",
                             },
                         ],
-                        
                         selectedFile: null,
                         selectedItem: null,
+                        selectedService: "",
+                        serviceList: [
+                            {
+                                id: "fix",
+                                title: "線上叫修",
+                            },
+                            {
+                                id: "maintainance",
+                                title: "預約保養",
+                            },
+                            {
+                                id: "ask",
+                                title: "技術詢問",
+                            },
+                            {
+                                id: "training",
+                                title: "教育訓練",
+                            },
+                        ],
                     };
                 },
                 methods: {
@@ -236,11 +279,15 @@
                     },
                 },
                 components: {
-                    Foooter,
-                    Navv,
+                    VueFooter,
+                    VueNav,
                     Chat,
                 },
-                mounted() {},
+                mounted() {
+                    if (this.selectedService) {
+                        document.getElementById(this.selectedService).checked = true;
+                    }
+                },
             });
         </script>
     </body>

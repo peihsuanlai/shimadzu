@@ -17,7 +17,7 @@
     </head>
     <body>
         <div id="app">
-            <Navv :login="!isLogin"></Navv>
+            <vue-nav :login="!isLogin"></vue-nav>
             <section class="breadcrumb-container mb-3 mb-sm-5">
                 <ol class="d-flex list-unstyled breadcrumb-list">
                     <li><a href="/">首頁</a></li>
@@ -28,7 +28,7 @@
                 <div class="row justify-content-center">
                     <div class="col-sm-10 col-md-8 col-lg-6">
                         <div class="d-flex justify-content-between align-items-center title pb-2 pb-md-3 mb-3">
-                            <div class="d-flex flex-column flex-md-row align-items-md-center">
+                            <div class="d-flex flex-column flex-lg-row align-items-lg-center">
                                 <h3 class="mb-0 text-darkBlack mr-3">我的帳號</h3>
                                 <span class="fs-14">請確認資料真實性，以維護雙方權利</span>
                             </div>
@@ -40,7 +40,13 @@
                     <div class="col-sm-10 col-md-8 col-lg-6">
                         <div class="form-group mb-0">
                             <label for="institute">單位全名</label>
-                            <input type="text" id="institute" class="form-control" disabled/>
+                            <input
+                                type="text"
+                                id="institute"
+                                class="form-control"
+                                v-model.lazy="userData.institute"
+                                disabled
+                            />
                         </div>
                     </div>
                 </div>
@@ -48,7 +54,7 @@
                     <div class="col-sm-10 col-md-8 col-lg-6">
                         <div class="form-group">
                             <label for="address">單位地址</label>
-                            <input type="text" id="address" class="form-control" />
+                            <input type="text" id="address" class="form-control" v-model.lazy="userData.address" />
                         </div>
                     </div>
                 </div>
@@ -56,13 +62,13 @@
                     <div class="col-6 col-sm-5 col-md-4 col-lg-3">
                         <div class="form-group">
                             <label for="name">姓名</label>
-                            <input type="text" id="name" class="form-control" />
+                            <input type="text" id="name" class="form-control" v-model.lazy="userData.name" />
                         </div>
                     </div>
                     <div class="col-6 col-sm-5 col-md-4 col-lg-3">
                         <div class="form-group">
                             <label for="gender">稱謂</label>
-                            <select class="form-control" id="gender">
+                            <select class="form-control" id="gender" v-model.lazy="userData.selectedGender">
                                 <option>先生</option>
                                 <option>小姐</option>
                             </select>
@@ -73,13 +79,13 @@
                     <div class="col-6 col-sm-5 col-md-4 col-lg-3">
                         <div class="form-group">
                             <label for="department">部門</label>
-                            <input type="text" id="department" class="form-control" />
+                            <input type="text" id="department" class="form-control" v-model.lazy="userData.department" />
                         </div>
                     </div>
                     <div class="col-6 col-sm-5 col-md-4 col-lg-3">
                         <div class="form-group">
                             <label for="title">職稱</label>
-                            <input type="text" id="title" class="form-control" />
+                            <input type="text" id="title" class="form-control" v-model.lazy="userData.title" />
                         </div>
                     </div>
                 </div>
@@ -87,13 +93,13 @@
                     <div class="col-6 col-sm-5 col-md-4 col-lg-3">
                         <div class="form-group">
                             <label for="phone">單位電話</label>
-                            <input type="tel" id="phone" class="form-control" />
+                            <input type="tel" id="phone" class="form-control" v-model.lazy="userData.phone" />
                         </div>
                     </div>
                     <div class="col-6 col-sm-5 col-md-4 col-lg-3">
                         <div class="form-group">
                             <label for="extension">分機</label>
-                            <input type="text" id="extension" class="form-control" />
+                            <input type="text" id="extension" class="form-control" v-model.lazy="userData.extension" />
                         </div>
                     </div>
                 </div>
@@ -101,7 +107,7 @@
                     <div class="col-sm-10 col-md-8 col-lg-6">
                         <div class="form-group">
                             <label for="cellphone">手機號碼</label>
-                            <input type="tel" id="cellphone" class="form-control" />
+                            <input type="tel" id="cellphone" class="form-control" v-model.lazy="userData.cellphone" />
                         </div>
                     </div>
                 </div>
@@ -109,93 +115,133 @@
                     <div class="col-sm-10 col-md-8 col-lg-6">
                         <div class="form-group">
                             <label for="email">E-mail</label>
-                            <input type="email" id="email" class="form-control" />
+                            <input type="email" id="email" class="form-control" v-model.lazy="userData.email" />
                         </div>
                     </div>
                 </div>
                 <div class="row justify-content-center align-items-end mb-5">
                     <div class="col-sm-6 col-md-5 col-lg-4">
                         <div class="form-group changePassword mb-0">
-                            <label for="institute">變更密碼<span class="fs-14 ml-2">*密碼輸入錯誤</span></label>
-                            <input type="passward" id="institute" class="form-control" />
+                            <label for="institute">變更密碼<span class="fs-14 ml-2" v-if="userData.oldPassword && userData.oldPassword != userData.password">*密碼輸入錯誤</span></label>
+                            <input type="password" id="institute" class="form-control" placeholder="請先輸入舊密碼" v-model.lazy="userData.oldPassword"/>
                         </div>
                     </div>
                     <div class="col-sm-4 col-md-3 col-lg-2 text-sm-right">
-                        <button type="button" class="changePassword-btn" data-toggle="modal" data-target="#changePasswordModal">修改密碼</button>
+                        <button
+                            type="button"
+                            class="changePassword-btn"
+                            data-toggle="modal"
+                            data-target="#changePasswordModal"
+                        >
+                            修改密碼
+                        </button>
                     </div>
                 </div>
                 <div class="row justify-content-center editInfo">
                     <div class="col-sm-10 col-md-8 col-lg-6 text-center">
-                        <button type="submit" class="mb-2" data-toggle="modal" data-target="#saveSuccessModal">修改基本資料</button>
+                        <button type="submit" class="mb-2" data-toggle="modal" data-target="#saveSuccessModal">
+                            修改基本資料
+                        </button>
                         <span class="fs-14">申請修改的資料審核中，審核完才會更新資料</span>
                     </div>
                 </div>
             </main>
-       <!-- changePassword modal start -->
-       <div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-sm modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title text-darkBlack" id="changePasswordModalLabel">變更密碼</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              
-                    <div class="form-group passwordInput-1">
-                        <label for="newPassword">輸入新密碼<span>*</span></label>
-                        <input :type="passwordHide ? 'password' : 'text'" id="newPassword" class="form-control" />
-                        <button type="button" @click="passwordHide=!passwordHide"><i class="bi eye-icon" :class="[passwordHide ? 'bi-eye-fill' : 'bi-eye-slash-fill']"></i></button>
-                        
+            <!-- changePassword modal start -->
+            <div
+                class="modal fade"
+                id="changePasswordModal"
+                tabindex="-1"
+                aria-labelledby="changePasswordModalLabel"
+                aria-hidden="true"
+            >
+                <div class="modal-dialog modal-sm modal-dialog-centered">
+                    <div class="modal-content">
+                        <validation-observer v-slot="{ handleSubmit }">
+                            <form @submit.prevent="handleSubmit(checkPassword)" novalidate>
+                                <div class="modal-header">
+                                    <h5 class="modal-title text-darkBlack" id="changePasswordModalLabel">變更密碼</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <validation-provider rules="required" v-slot="{ errors }" name="password">
+                                            <label for="newPassword">輸入新密碼*</label>
+                                            <div class="passwordInput">
+                                                <input
+                                                    :type="passwordHide ? 'password' : 'text'"
+                                                    id="newPassword"
+                                                    class="form-control"
+                                                    v-model.lazy="userData.newPassword"
+                                                /><button type="button" @click="passwordHide=!passwordHide">
+                                                    <i
+                                                        class="bi eye-icon"
+                                                        :class="[passwordHide ? 'bi-eye-fill' : 'bi-eye-slash-fill']"
+                                                    ></i>
+                                                </button>
+                                            </div>
+                                            <span class="invalid-feedback">{{ errors[0] }}</span>
+                                        </validation-provider>
+                                    </div>
+                                    <div class="form-group passwordInput">
+                                        <validation-provider
+                                            rules="required|confirmPassword:@password"
+                                            v-slot="{ errors }"
+                                        >
+                                            <label for="passwordAgain">再次輸入新密碼*</label>
+                                            <div class="passwordInput">
+                                                <input
+                                                    :type="passwordHide ? 'password' : 'text'"
+                                                    id="passwordAgain"
+                                                    class="form-control"
+                                                    v-model.lazy="userData.confirmNewPassword"
+                                                /><button type="button" @click="passwordHide=!passwordHide">
+                                                    <i
+                                                        class="bi eye-icon"
+                                                        :class="[passwordHide ? 'bi-eye-fill' : 'bi-eye-slash-fill']"
+                                                    ></i>
+                                                </button>
+                                            </div>
+                                            <span class="invalid-feedback">{{ errors[0] }}</span>
+                                        </validation-provider>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-secondary">確認</button>
+                                </div>
+                            </form>
+                        </validation-observer>
                     </div>
-                    <div class="form-group passwordInput-2">
-                        <label for="passwordAgain">再次輸入新密碼<span>*</span></label>
-                        <input :type="passwordHide ? 'password' : 'text'" id="passwordAgain" class="form-control" />
-                        <button type="button" @click="passwordHide=!passwordHide"><i class="bi eye-icon" :class="[passwordHide ? 'bi-eye-fill' : 'bi-eye-slash-fill']"></i></button>
+                </div>
+            </div>
+
+            <!--  changePassword modal end -->
+
+            <!-- saveSuccess modal start -->
+            <div
+                class="modal fade"
+                id="saveSuccessModal"
+                tabindex="-1"
+                aria-labelledby="saveSuccessLabel"
+                aria-hidden="true"
+            >
+                <div class="modal-dialog modal-sm modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-body d-flex flex-column justify-content-center align-items-center">
+                            <i class="bi bi-check-circle-fill add-icon"></i>
+                            <div class="text-center">儲存成功</div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn" data-dismiss="modal">確認</button>
+                        </div>
                     </div>
-             
+                </div>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">確認</button>
-            </div>
-          </div>
-        </div>
-      </div>
 
-   <!--  changePassword modal end -->
-
-
-          <!-- saveSuccess modal start -->
-          <div
-          class="modal fade"
-          id="saveSuccessModal"
-          tabindex="-1"
-          aria-labelledby="saveSuccessLabel"
-          aria-hidden="true"
-      >
-          <div class="modal-dialog modal-sm modal-dialog-centered">
-              <div class="modal-content">
-                  <div class="modal-body d-flex flex-column justify-content-center align-items-center">
-                      <i class="bi bi-check-circle-fill add-icon"></i>
-                      <div class="text-center">儲存成功</div>
-                  </div>
-                  <div class="modal-footer">
-                      <button
-                          type="button"
-                          class="btn"
-                          data-dismiss="modal"
-                      >
-                          確認
-                      </button>
-                  </div>
-              </div>
-          </div>
-      </div>
-
-      <!-- added modal end -->
-            <Chat></Chat>
-            <Foooter></Foooter>
+            <!-- added modal end -->
+            <chat></chat>
+            <vue-footer></vue-footer>
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
@@ -211,28 +257,76 @@
         ></script>
 
         <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/vee-validate/3.4.15/vee-validate.min.js"
+            integrity="sha512-uxMKQ5Q7fvV9HWYbdlhDq0Y9UvoGmQeyqzaGqr4EpKCBTiRGb4dbH5ai2FRv8AdQdkFpq9f/uM22iJLH+LWo0g=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        ></script>
 
         <script src="./frontEndPackage/js/all.js"></script>
         <script type="module">
-            import Foooter from "./components/footer.js";
-            import Navv from "./components/nav.js";
+            import VueFooter from "./components/footer.js";
+            import VueNav from "./components/nav.js";
             import Chat from "./components/chatWindow.js";
             const app = new Vue({
                 el: "#app",
                 data() {
                     return {
                         isLogin: false,
-                        passwordHide:true,
+                        passwordHide: true,
+                        userData: {
+                            email: "dshfksdfjskh@ggau.cijiso.ud",
+                            password: "test2",
+                            confirm: "",
+                            institute: "國立台灣大學",
+                            address: "台北市中山區中羅斯福路一段87號1之8樓",
+                            name: "張大頭",
+                            selectedGender: "",
+                            department: "設備部",
+                            title: " 組長",
+                            phone: "02-87681880",
+                            extension: "700",
+                            cellphone: "0912-345678",
+                            oldPassword: "",
+                            newPassword: "",
+                            confirmNewPassword: "",
+                        },
                     };
                 },
-                methods: {},
-                components: {
-                    Foooter,
-                    Navv,
-                    Chat,
+                methods: {
+                    checkPassword() {
+                        $("#changePasswordModal").modal("hide");
+                    },
                 },
-                mounted() {},
+                components: {
+                    VueFooter,
+                    VueNav,
+                    Chat,
+                    ValidationProvider: VeeValidate.ValidationProvider,
+                    ValidationObserver: VeeValidate.ValidationObserver,
+                },
+                mounted() {
+                    VeeValidate.extend("required", {
+                        validate(value) {
+                            return {
+                                required: true,
+                                valid: ["", null, undefined].indexOf(value) === -1,
+                            };
+                        },
+                        computesRequired: true,
+                        message: "此欄為必填！",
+                    });
+                    VeeValidate.extend("confirmPassword", {
+                        params: ["password"],
+                        validate(value, [password]) {
+                            return value === password;
+                        },
+                        message: "兩次密碼輸入不同，請再次確認",
+                    });
+                },
             });
+            Vue.use(VeeValidate);
         </script>
     </body>
 </html>

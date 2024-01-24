@@ -19,7 +19,7 @@
     </head>
     <body>
         <div id="app">
-            <Navv :login="isLogin"></Navv>
+            <vue-nav :login="isLogin"></vue-nav>
             <section class="breadcrumb-container mb-3 mb-sm-5">
                 <ol class="d-flex list-unstyled breadcrumb-list">
                     <li><a href="/">首頁</a></li>
@@ -53,16 +53,16 @@
                 </div>
                 
                 <div class="right-btn">
-                    <button type="button" :class="{'btnActive':inquiryNum,'swing': isInquiryNumChanging}">
+                    <a href="./inquiry.html" :class="{'btnActive':inquiryNum,'swing': isInquiryNumChanging}">
                         <span class="mr-2" v-if="inquiryNum">{{inquiryNum}}</span>詢價
-                    </button>
+                    </a>
                 </div>
                 <div class="table-title d-none d-sm-flex">
                     <span style="width: 8%">編號</span>
                     <span style="width: 12%">圖片</span>
                     <span style="width: 25%">機型</span>
                 </div>
-                <div class="item-container">
+                <div class="item-container mb-3">
                     <div class="item d-none d-sm-flex justify-content-sm-center">
                         <button type="button" class="common-material" @click="openModal(item, '#commomMaterialModal')"><span class="material-icons-outlined mr-1">
                             settings_suggest
@@ -104,11 +104,12 @@
                             加入詢價<i class="bi bi-plus"></i>
                         </button>
                     </div>
-                    <div class="text-right fs-14 pagination">
-                        1-20列 (共5頁)<button type="button"><i class="bi bi-chevron-left ml-4 mr-2"></i></button> <button type="button"></i
-                            ><i class="bi bi-chevron-right"></i>
-                        </button></div>
+                    
                 </div>
+                <div class="text-right fs-14 pagination">
+                    1-20列 (共5頁)<button type="button"><i class="bi bi-chevron-left ml-4 mr-2"></i></button> <button type="button"></i
+                        ><i class="bi bi-chevron-right"></i>
+                    </button></div>
                 <!-- added modal start -->
                 <div
                     class="modal fade"
@@ -140,14 +141,14 @@
                 <!-- added modal end -->
 
                 <!-- 通用耗材清單 modal start -->
-                <Common @emit-num="addInquiry" @emit-all="addInquiry"></Common>
+                <common @emit-num="addInquiry" @emit-all="addInquiry"></common>
                 <!-- 通用耗材清單 modal end -->
                 <!-- 耗材清單 modal start-->
-                <Material :product="tempProduct" @emit-num="addInquiry" @emit-all="addInquiry"></Material>
+                <material :product="tempProduct" @emit-num="addInquiry" @emit-all="addInquiry"></material>
                 <!-- 耗材清單 modal end -->
             </main>
-            <Chat></Chat>
-            <Foooter class="pb-5 pb-sm-0"></Foooter>
+            <chat></chat>
+            <vue-footer class="pb-5 pb-sm-0"></vue-footer>
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
@@ -161,12 +162,13 @@
             integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
             crossorigin="anonymous"
         ></script>
+        <script src="./frontEndPackage/owlcarousel/owl.carousel.min.js"></script>
         <script src="./frontEndPackage/lightbox/lightbox.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
         <script src="./frontEndPackage/js/all.js"></script>
         <script type="module">
-            import Foooter from "./components/footer.js";
-            import Navv from "./components/nav.js";
+            import VueFooter from "./components/footer.js";
+            import VueNav from "./components/nav.js";
             import Chat from "./components/chatWindow.js";
             import Common from "./components/commonMaterialModal.js";
             import Material from "./components/materialModal.js";
@@ -226,8 +228,8 @@
                     },
                 },
                 components: {
-                    Foooter,
-                    Navv,
+                    VueFooter,
+                    VueNav,
                     Chat,
                     Common,
                     Material

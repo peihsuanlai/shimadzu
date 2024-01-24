@@ -19,7 +19,7 @@
     </head>
     <body>
         <div id="app">
-            <Navv :login="isLogin"></Navv>
+            <vue-nav :login="isLogin"></vue-nav>
             <section class="breadcrumb-container mb-5">
                 <ol class="d-flex list-unstyled breadcrumb-list mb-0">
                     <li><a href="/">首頁</a></li>
@@ -32,7 +32,7 @@
                     <li><a href="/all.html">全機種/耗材一覽</a></li>
                 </ul>
                 <div class="d-flex right-btns">
-                    <a href="###" class="mr-2">續約</a>
+                    <a href="./renew.html" class="mr-2">續約</a>
                     <button type="button" :class="{'btnActive':inquiryNum, 'swing': isInquiryNumChanging}">
                         <span class="mr-2" v-if="inquiryNum">{{inquiryNum}}</span>詢價
                     </button>
@@ -47,20 +47,20 @@
                 </div>
                 <div class="accordion-container">
                     <div class="accordion" id="accordionExample">
-                        <div class="item" v-for="(item,index) in equipmentData" :key="item.id">
+                        <div class="item" v-for="item in equipmentData" :key="item.id">
                             <div class="d-sm-none mb-ask">
-                                <img :src="item.imgUrl.large" alt="item.imgUrl.alt" class="w-100" />
+                                <img :src="item.imgUrl.large" :alt="item.imgUrl.alt" class="w-100" />
                                 <button type="button" class="ask-btn" data-toggle="modal" data-target="#addToListModal">
                                     加入詢價<i class="bi bi-plus"></i>
                                 </button>
                             </div>
-                            <div class="item-btn" :id="'heading'+index">
+                            <div class="item-btn" :id="'heading'+item.id">
                                 <div data-title="編號"><span>{{item.id}}</span></div>
                                 <a
                                     data-title="圖片"
                                     class="d-none d-sm-table-cell"
                                     :href="item.imgUrl.large"
-                                    :data-lightbox="'pic'+index"
+                                    :data-lightbox="'pic'+item.id"
                                 >
                                     <img :src="item.imgUrl.small" :alt="item.imgUrl.alt" />
                                 </a>
@@ -89,9 +89,9 @@
                                     class="accordion-switch"
                                     type="button"
                                     data-toggle="collapse"
-                                    :data-target="'#collapse'+index"
+                                    :data-target="'#collapse'+item.id"
                                     aria-expanded="true"
-                                    :aria-controls="'collapse'+index"
+                                    :aria-controls="'collapse'+item.id"
                                     @click="showDetail"
                                 >
                                     <span class="mr-1 d-sm-none fs-14" v-if="!accordionCollapse">收起</span>
@@ -100,17 +100,16 @@
                                 </button>
                             </div>
                             <div
-                                :id="'collapse'+index"
+                                :id="'collapse'+item.id"
                                 class="collapse show"
-                                :aria-labelledby="'heading'+index"
+                                :aria-labelledby="'heading'+item.id"
                                 data-parent="#accordionExample"
                             >
                                 <div class="d-flex flex-wrap item-content">
                                     <div>
                                         <a
-                                            
                                             class="d-flex align-items-center justify-content-center"
-                                             @click="openModal(item, '#historyModal')"
+                                            @click="openModal(item, '#historyModal')"
                                         >
                                             <span class="material-icons mr-1"> pending_actions </span>
                                             <h3 class="mb-0">歷史維修紀錄</h3>
@@ -118,8 +117,7 @@
                                     </div>
                                     <div>
                                         <a
-                                           
-                                           @click="openModal(item, '#materialModal')"
+                                            @click="openModal(item, '#materialModal')"
                                             class="d-flex align-items-center justify-content-center"
                                         >
                                             <span class="material-icons mr-1"> receipt_long </span>
@@ -127,7 +125,7 @@
                                         </a>
                                     </div>
                                     <div>
-                                        <a href="###" class="d-flex align-items-center justify-content-center">
+                                        <a href="./renew.html" class="d-flex align-items-center justify-content-center">
                                             <span class="material-icons-outlined mr-1">
                                                 drive_file_rename_outline
                                             </span>
@@ -136,7 +134,7 @@
                                     </div>
                                     <div>
                                         <a
-                                        @click="openModal(item, '#checkNumberModal')"
+                                            @click="openModal(item, '#checkNumberModal')"
                                             class="d-flex align-items-center justify-content-center"
                                         >
                                             <span class="material-icons mr-1"> list </span>
@@ -144,25 +142,25 @@
                                         </a>
                                     </div>
                                     <div>
-                                        <a href="###" class="d-flex align-items-center justify-content-center">
+                                        <a href="others.html?selectedService=線上叫修" class="d-flex align-items-center justify-content-center">
                                             <span class="material-icons mr-1"> construction </span>
                                             <h3 class="mb-0">線上叫修</h3>
                                         </a>
                                     </div>
                                     <div>
-                                        <a href="###" class="d-flex align-items-center justify-content-center">
+                                        <a href="others.html?selectedService=預約保養" class="d-flex align-items-center justify-content-center">
                                             <span class="material-icons mr-1"> engineering </span>
                                             <h3 class="mb-0">預約保養</h3>
                                         </a>
                                     </div>
                                     <div>
-                                        <a href="###" class="d-flex align-items-center justify-content-center">
+                                        <a href="others.html?selectedService=技術詢問" class="d-flex align-items-center justify-content-center">
                                             <span class="material-icons mr-1"> help </span>
                                             <h3 class="mb-0">技術詢問</h3>
                                         </a>
                                     </div>
                                     <div>
-                                        <a href="###" class="d-flex align-items-center justify-content-center">
+                                        <a href="others.html?selectedService=教育訓練" class="d-flex align-items-center justify-content-center">
                                             <span class="material-icons mr-1"> psychology </span>
                                             <h3 class="mb-0">教育訓練</h3>
                                         </a>
@@ -188,9 +186,7 @@
                             <div class="text-center">已加入</div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn" data-dismiss="modal" @click="addInquiry()">
-                                確認
-                            </button>
+                            <button type="button" class="btn" data-dismiss="modal" @click="addInquiry()">確認</button>
                         </div>
                     </div>
                 </div>
@@ -198,15 +194,15 @@
             <!-- added modal end -->
 
             <!-- 歷史維修 modal start -->
-            <History :product="tempProduct"></History>
+            <history :product="tempProduct"></history>
             <!-- 歷史維修 modal end -->
 
             <!-- 耗材清單 modal end -->
-            <Material :product="tempProduct" @emit-num="addInquiry" @emit-all="addInquiry"></Material>
+            <material :product="tempProduct" @emit-num="addInquiry" @emit-all="addInquiry"></material>
             <!-- 耗材清單 modal end -->
 
             <!-- 附件序號 modal start -->
-            <Check :product="tempProduct"></Check>
+            <check :product="tempProduct"></check>
             <!-- <div
                 class="modal fade"
                 id="checkNumberModal"
@@ -266,8 +262,8 @@
             </div> -->
             <!-- 附件序號 modal end -->
 
-            <Chat></Chat>
-            <Foooter class="pb-5 pb-sm-0"></Foooter>
+            <chat></chat>
+            <vue-footer class="pb-5 pb-sm-0"></vue-footer>
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
@@ -281,12 +277,13 @@
             integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
             crossorigin="anonymous"
         ></script>
+        <script src="./frontEndPackage/owlcarousel/owl.carousel.min.js"></script>
         <script src="./frontEndPackage/lightbox/lightbox.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
         <script src="./frontEndPackage/js/all.js"></script>
         <script type="module">
-            import Foooter from "./components/footer.js";
-            import Navv from "./components/nav.js";
+            import VueFooter from "./components/footer.js";
+            import VueNav from "./components/nav.js";
             import Chat from "./components/chatWindow.js";
             import History from "./components/historyModal.js";
             import Material from "./components/materialModal.js";
@@ -299,7 +296,7 @@
                         inquiryNum: 0,
                         equipmentData: [
                             {
-                                id: "01",
+                                id: "1",
                                 imgUrl: {
                                     small: "./frontEndPackage/images/product-sm.jpg",
                                     large: "./frontEndPackage/images/product-lg.jpg",
@@ -310,7 +307,7 @@
                                 date: "2023/03/16-2023/12/25",
                             },
                             {
-                                id: "02",
+                                id: "2",
                                 imgUrl: {
                                     small: "./frontEndPackage/images/product-sm.jpg",
                                     large: "./frontEndPackage/images/product-lg.jpg",
@@ -323,21 +320,20 @@
                         ],
                         accordionCollapse: false,
                         isInquiryNumChanging: false,
-                        tempProduct:{},
+                        tempProduct: {},
                     };
                 },
                 methods: {
-                    addInquiry(num=1) {
-                        this.inquiryNum+=num;
+                    addInquiry(num = 1) {
+                        this.inquiryNum += num;
                     },
                     showDetail() {
                         this.accordionCollapse = !this.accordionCollapse;
                     },
-                    openModal (item, modalName) {
+                    openModal(item, modalName) {
                         this.tempProduct = { ...item };
-                        $(modalName).modal('show');
+                        $(modalName).modal("show");
                     },
-                   
                 },
                 watch: {
                     inquiryNum(newValue, oldValue) {
@@ -350,14 +346,16 @@
                     },
                 },
                 components: {
-                    Foooter,
-                    Navv,
+                    VueFooter,
+                    VueNav,
                     Chat,
                     History,
                     Material,
                     Check,
                 },
-                mounted() {},
+                mounted() {
+                    
+                },
             });
         </script>
     </body>

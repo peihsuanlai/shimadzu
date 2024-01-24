@@ -19,13 +19,12 @@
     </head>
     <body>
         <div id="app">
-           
-            <Navv :login="isLogin"></Navv>
+            <vue-nav :login="isLogin"></vue-nav>
             <section class="breadcrumb-container mb-3 mb-sm-5">
-                <ol class="d-flex list-unstyled breadcrumb-list selectedPage">
+                <ol class="d-flex list-unstyled breadcrumb-list selectedPage mb-0">
                     <li><a href="/">首頁</a></li>
-                    <li class="active"><a href="###">登入會員</a></li>
-                    <li class="active"><a href="###">登入會員</a></li>
+                    <li><a href="./instruments.html">我的儀器</a></li>
+                    <li class="active"><a href="###" class="text-truncate">Brevis™ GC-2050 氣相層析儀 Brevis™ GC-2050</a></li>
                 </ol>
             </section>
             <main class="container-lg selectedItem-container">
@@ -36,10 +35,12 @@
                     <div>
                         <h3 class="mb-2">Brevis™ GC-2050 氣相層析儀 Brevis™ GC-2050</h3>
                         <p class="mb-0">主設備序號：dhsjkfhjksdhfjks</p>
-                        <div>
-                            合約日期：
-                            <span> 2023/03/16-2023/12/25</span>
-                            <span class="fs-12 ml-2">合約即將到期</span>
+                        <div class="d-flex date">
+                            <span>合約日期：</span>
+                            <div>
+                                <span> 2023/03/16-2023/12/25</span>
+                                <span class="fs-12 ml-2">合約即將到期</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -109,19 +110,19 @@
 
             </main>
              <!-- 歷史維修 modal start -->
-             <History :product="tempProduct"></History>
+             <history :product="tempProduct"></history>
              <!-- 歷史維修 modal end -->
  
              <!-- 耗材清單 modal end -->
-             <Material :product="tempProduct" @emit-num="addInquiry" @emit-all="addInquiry"></Material>
+             <material :product="tempProduct" @emit-num="addInquiry" @emit-all="addInquiry"></material>
              <!-- 耗材清單 modal end -->
  
              <!-- 附件序號 modal start -->
-             <Check :product="tempProduct"></Check>
+             <check :product="tempProduct"></check>
              <!-- 附件序號 modal end -->
 
-            <Chat></Chat>
-            <Foooter></Foooter>
+            <chat></chat>
+            <vue-footer></vue-footer>
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
@@ -140,8 +141,8 @@
 
         <script src="./frontEndPackage/js/all.js"></script>
         <script type="module">
-            import Foooter from "./components/footer.js";
-            import Navv from "./components/nav.js";
+            import VueFooter from "./components/footer.js";
+            import VueNav from "./components/nav.js";
             import Chat from "./components/chatWindow.js";
             import History from "./components/historyModal.js";
             import Material from "./components/materialModal.js";
@@ -155,8 +156,8 @@
                 },
                 methods: {},
                 components: {
-                    Foooter,
-                    Navv,
+                    VueFooter,
+                    VueNav,
                     Chat,
                     History,
                     Material,

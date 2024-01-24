@@ -75,7 +75,7 @@
                     </h2>
                 </div>
             </section> -->
-            <Navv :login="isLogin"></Navv>
+            <vue-nav :login="isLogin"></vue-nav>
             <section class="container-lg banner-container">
                 <div class="banner-carousel owl-carousel owl-theme">
                     <!-- <a v-for="item in bannerCarousel" class="item" :href="item.path">
@@ -95,8 +95,8 @@
                     </div>
                 </div>
             </main>
-            <Chat></Chat>
-            <Foooter></Foooter>
+            <chat></chat>
+            <vue-footer></vue-footer>
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
@@ -112,11 +112,10 @@
         ></script>
         <script src="./frontEndPackage/owlcarousel/owl.carousel.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-        <script src="https://unpkg.com/vue-router@3"></script>
         <script src="./frontEndPackage/js/all.js"></script>
         <script type="module">
-            import Foooter from "./components/footer.js";
-            import Navv from "./components/nav.js";
+            import VueFooter from "./components/footer.js";
+            import VueNav from "./components/nav.js";
             import Chat from "./components/chatWindow.js";
             const app = new Vue({
                 el: "#app",
@@ -167,21 +166,20 @@
                 },
                 methods: {},
                 components: {
-                    Foooter,
-                    Navv,
+                    VueFooter,
+                    VueNav,
                     Chat,
                 },
                 mounted() {
-                    this.$nextTick(() => {
-                        $(".banner-carousel").owlCarousel({
+                    $(".banner-carousel").owlCarousel({
                             loop: true,
                             autoplay: true,
                             items: 1,
-                            autoplayTimeout: 2000,
+                            autoplayTimeout: 3500,
+                            autoplaySpeed: 1000,
                             autoplayHoverPause: true,
                             dots: true,
                             nav: false,
-                        });
                     });
                 },
             });

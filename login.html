@@ -17,7 +17,7 @@
     </head>
     <body>
         <div id="app">
-            <Navv :login="!isLogin"></Navv>
+            <vue-nav :login="!isLogin"></vue-nav>
             <section class="breadcrumb-container mb-3 mb-sm-5">
                 <ol class="d-flex list-unstyled breadcrumb-list">
                     <li><a href="/">首頁</a></li>
@@ -156,7 +156,7 @@
             </div>
             <!-- 送email end -->
 
-            <Foooter></Foooter>
+            <vue-footer></vue-footer>
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
@@ -182,8 +182,8 @@
 
         <script src="./frontEndPackage/js/all.js"></script>
         <script type="module">
-            import Foooter from "./components/footer.js";
-            import Navv from "./components/nav.js";
+            import VueFooter from "./components/footer.js";
+            import VueNav from "./components/nav.js";
 
             const app = new Vue({
                 el: "#app",
@@ -210,8 +210,8 @@
                     },
                 },
                 components: {
-                    Foooter,
-                    Navv,
+                    VueFooter,
+                    VueNav,
                     ValidationProvider: VeeValidate.ValidationProvider,
                     ValidationObserver: VeeValidate.ValidationObserver,
                 },
@@ -235,6 +235,7 @@
                     });
                 },
             });
+            Vue.use(VeeValidate);
         </script>
     </body>
 </html>

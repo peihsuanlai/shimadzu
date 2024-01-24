@@ -219,26 +219,46 @@
 
 .options {
   column-gap: 4%;
-  label {
-    cursor: pointer;
-    width: 48%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 0;
+ 
+  .item{
     position: relative;
-    @include padding(10px, 8px);
-    border: 1px solid $light-text;
-    border-radius: 60px;
+  
+    width: 48%;
+    
+
     @include small {
       width: 22%;
     }
-    input[type="checkbox"] {
+    input[type="radio"] {
       position: absolute;
       opacity: 0;
       cursor: pointer;
       height: 0;
       width: 0;
+      &:checked + label {
+        background-color: $main;
+        border: none;
+        color: $white;
+      }
+      &:checked + label .checkmark {
+        background-color: $white;
+        border: none;
+      }
+      &:checked + label .checkmark:after {
+        display: block;
+      }
+    }
+    label {
+      // width:100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 0;
+      @include padding(10px, 8px);
+      border: 1px solid $light-text;
+      border-radius: 60px;
+      cursor: pointer;
+     
     }
     .checkmark {
       height: 15px;
@@ -246,6 +266,7 @@
       margin-right: 8px;
       border: 1px solid $light-text;
       position: relative;
+
       &::after {
         content: "";
         position: absolute;
@@ -258,18 +279,6 @@
         border-width: 0 3px 3px 0;
         transform: rotate(45deg);
       }
-    }
-    & input:checked + .checkmark {
-      background-color: $white;
-      border: none;
-    }
-    & input:checked + .checkmark:after {
-      display: block;
-    }
-    &.active {
-      background-color: $main;
-      border: none;
-      color: $white;
     }
   }
 }
