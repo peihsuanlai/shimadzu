@@ -200,9 +200,11 @@
 .table-title {
     background-color: $light-text;
     color: $white;
-    @include padding(8px, 4px);
-    span:first-child {
-        padding-left: 8px;
+    span{
+        @include padding(8px, 4px);
+        &:first-child {
+            padding-left: 8px;
+        }
     }
 }
 
@@ -311,9 +313,6 @@
                 border-radius: 60px;
                 @include padding(2px, 6px);
             }
-            // & > div{
-            //   gap:8px;
-            // }
         }
     }
 

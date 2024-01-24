@@ -750,6 +750,8 @@ footer .photonic {
 .table-title {
   background-color: #626262;
   color: #ffffff;
+}
+.table-title span {
   padding: 8px 4px;
 }
 .table-title span:first-child {
