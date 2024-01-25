@@ -195,3 +195,55 @@
 
 data-toggle="modal"
                         data-target="#submitModal"
+
+
+
+
+
+<div v-if="attatchedFile" class="user-message">
+    <div class="d-flex flex-column">
+        <img :src="imagePreview" width="150"/> 
+        <span class="grey-text fs-12">{{ getTimeStamp() }}</span>
+    </div>
+</div>
+
+
+sendMessage() {
+    const input = this.$refs.fileUpload;
+    this.attatchedFile = input.files.length > 0 ? input.files[0] : null;
+    console.log(this.attatchedFile);
+    if (this.newMessage.trim() !== "" || input.files.length > 0) {
+      const newMessageObj = {
+        id: this.messages.length + 1,
+        text: this.newMessage,
+        file: this.attatchedFile,
+        isUser: true,
+        timestamp: this.getTimeStamp(),
+      };
+      if (input.files.length > 0) {
+        this.imagePreview = window.URL.createObjectURL(this.attatchedFile);
+      }
+      this.messages.push(newMessageObj);
+      this.newMessage = "";
+      this.attatchedFile = "";
+    }
+  }, sendMessage() {
+      const input = this.$refs.fileUpload;
+      this.attatchedFile = input.files.length > 0 ? input.files[0] : null;
+      console.log(this.attatchedFile);
+      if (this.newMessage.trim() !== "" || input.files.length > 0) {
+        const newMessageObj = {
+          id: this.messages.length + 1,
+          text: this.newMessage,
+          file: this.attatchedFile,
+          isUser: true,
+          timestamp: this.getTimeStamp(),
+        };
+        if (input.files.length > 0) {
+          this.imagePreview = window.URL.createObjectURL(this.attatchedFile);
+        }
+        this.messages.push(newMessageObj);
+        this.newMessage = "";
+        this.attatchedFile = "";
+      }
+    },

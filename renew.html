@@ -136,9 +136,13 @@
                                     ref="imageUpload"
                                 />
                             </label>
-                            <span class="file" v-if="!selectedFile">未選擇任何檔案</span>
-                            <span class="file" v-else>{{ selectedFile.name }}</span>
-                            <button type="button" @click="removeFile"><i class="bi bi-trash trash-btn"></i></button>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span v-if="!selectedFile">未選擇任何檔案</span>
+                                <span v-else>{{ selectedFile.name }}</span>
+                                <button type="button" @click="removeFile">
+                                    <i class="bi bi-trash trash-btn"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>

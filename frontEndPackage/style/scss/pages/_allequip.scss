@@ -207,6 +207,7 @@ button.common-material {
         background-color: transparent;
         border-radius: 60px;
         font-size: 14px;
+        color:$light-text !important;
         @include padding(4px, 8px);
     }
     .mb-ask {
@@ -225,13 +226,14 @@ button.common-material {
     button{
         background-color:transparent;
         border:none;
+        color:$light-text !important;
     }
 }
 
 #addToListModal, #saveSuccessModal, #sendModal, #submitModal, #sendEmailModal, #removeItemModal {
     font-size: 16px;
     .modal-content{
-        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+        box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.25);
         border:none;
     }
     .modal-body {

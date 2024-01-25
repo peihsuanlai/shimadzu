@@ -201,7 +201,7 @@ a:hover {
   white-space: nowrap;
   background-repeat: no-repeat;
   background-size: cover;
-  width: 120%;
+  width: 121%;
 }
 .nav-container .navbar-toggler {
   font-size: 1.5rem;
@@ -267,7 +267,7 @@ a:hover {
   min-height: calc(100vh - 388px);
 }
 .service-container .row {
-  row-gap: 24px;
+  row-gap: 15px;
 }
 .service-container div[class~=col-6]:nth-child(odd) {
   padding-right: 7.5px;
@@ -286,11 +286,12 @@ a:hover {
   }
 }
 .service-container .item {
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
   background-color: rgb(255, 255, 255);
   position: relative;
   transition: all 0.3s ease-in-out;
+  color: #626262 !important;
   padding: 40px 0;
 }
 .service-container .item::before {
@@ -997,6 +998,7 @@ footer .photonic {
   width: 100%;
   border: none;
   background-color: transparent;
+  color: #626262 !important;
   padding: 8px 0;
 }
 .accordion-container .accordion-switch:not(.collapsed) i {
@@ -1230,7 +1232,7 @@ footer .photonic {
   outline: none;
 }
 .modal .modal-content {
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.25);
   border: none;
 }
 .modal .modal-header {
@@ -1352,6 +1354,9 @@ footer .photonic {
   text-decoration: underline;
 }
 
+.contentDetailModal .modal-header {
+  border-bottom: 1px solid #d9d9d9;
+}
 .contentDetailModal .modal-content {
   box-shadow: none;
   border: 1px solid #d9d9d9;
@@ -1480,6 +1485,7 @@ footer .photonic {
   font-size: 20px;
   background-color: transparent;
   border: none;
+  color: #626262 !important;
 }
 .inquiry-main table .delete-btn:hover {
   color: #DD0000;
@@ -1551,38 +1557,40 @@ footer .photonic {
 }
 .message .item .attachment label {
   cursor: pointer;
-}
-.message .item .attachment label .select {
-  padding: 8px 8px;
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6px 0px;
   color: #ffffff;
   background-color: #626262;
 }
 @media (min-width: 576px) {
-  .message .item .attachment label .select {
-    padding: 8px 16px;
-  }
-}
-.message .item .attachment .file {
-  border: 1px solid #d9d9d9;
-  border-right: none;
-  width: 70%;
-  padding: 6px 8px;
-}
-@media (min-width: 576px) {
-  .message .item .attachment .file {
-    width: 60%;
+  .message .item .attachment label {
     padding: 6px 16px;
   }
 }
 @media (min-width: 768px) {
-  .message .item .attachment .file {
-    width: 40%;
+  .message .item .attachment label {
+    width: 20%;
+  }
+}
+.message .item .attachment label .select {
+  flex-shrink: 0;
+}
+.message .item .attachment > div {
+  border: 1px solid #d9d9d9;
+  width: 75%;
+}
+@media (min-width: 768px) {
+  .message .item .attachment > div {
+    width: 80%;
   }
 }
 .message .item .attachment button {
-  border: 1px solid #d9d9d9;
-  border-left: none;
+  border: none;
   background-color: transparent;
+  color: #626262 !important;
 }
 
 .message-send-btn {
@@ -1922,6 +1930,7 @@ button.common-material span {
   background-color: transparent;
   border-radius: 60px;
   font-size: 14px;
+  color: #626262 !important;
   padding: 4px 8px;
 }
 .item-container .mb-ask {
@@ -1939,13 +1948,14 @@ button.common-material span {
 .pagination button {
   background-color: transparent;
   border: none;
+  color: #626262 !important;
 }
 
 #addToListModal, #saveSuccessModal, #sendModal, #submitModal, #sendEmailModal, #removeItemModal {
   font-size: 16px;
 }
 #addToListModal .modal-content, #saveSuccessModal .modal-content, #sendModal .modal-content, #submitModal .modal-content, #sendEmailModal .modal-content, #removeItemModal .modal-content {
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.25);
   border: none;
 }
 #addToListModal .modal-body .add-icon, #addToListModal .modal-body .remove-icon, #saveSuccessModal .modal-body .add-icon, #saveSuccessModal .modal-body .remove-icon, #sendModal .modal-body .add-icon, #sendModal .modal-body .remove-icon, #submitModal .modal-body .add-icon, #submitModal .modal-body .remove-icon, #sendEmailModal .modal-body .add-icon, #sendEmailModal .modal-body .remove-icon, #removeItemModal .modal-body .add-icon, #removeItemModal .modal-body .remove-icon {
@@ -2050,7 +2060,7 @@ button.common-material span {
   font-size: 16px;
 }
 #changePasswordModal .modal-content, #forgetPasswordModal .modal-content {
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.25);
   border: none;
 }
 #changePasswordModal .modal-header, #forgetPasswordModal .modal-header {

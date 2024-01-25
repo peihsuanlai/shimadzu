@@ -29,6 +29,10 @@ export default{
         isActive(path) {
              return window.location.pathname === path;
           },
+        logout(){
+            alert("已成功登出！");
+            location.href="./index.html";
+        },
     },
     template:` <section class="nav-container">
     <nav class="container-lg navbar p-0 p-lg-3 navbar-expand-lg justify-content-lg-between">
@@ -66,9 +70,15 @@ export default{
                 <li v-if="!login" class="nav-item mr-lg-2 position-relative mb-1 mb-lg-0">
                     <a class="nav-link text-nav text-center" id="nav-member" href="./login.html">註冊/登入</a>
                 </li>
-                <li v-else class="nav-item mr-lg-2 position-relative mb-1 mb-lg-0">
-                    <a class="nav-link text-nav text-center" href="/account.html" :class="{ 'active': isActive('/account.html') }"><i class="bi bi-person-circle fs-22"></i></a>
+                <template v-else>
+                <li class="nav-item mr-lg-2 position-relative mb-1 mb-lg-0">
+                    <a class="nav-link text-nav text-center" href="/account.html" :class="{ 'active': isActive('/account.html') }">我的帳號</a>
                 </li>
+                <li class="nav-item mr-lg-2 position-relative mb-1 mb-lg-0">
+                    <a class="nav-link text-nav text-center" @click="logout">登出</a>
+                </li>
+                </template>
+                
             </ul>
         </div>
     </nav>

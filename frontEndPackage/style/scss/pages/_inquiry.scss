@@ -111,6 +111,7 @@
       font-size: 20px;
       background-color: transparent;
       border: none;
+      color:$light-text !important;
       &:hover {
         color: $main;
       }
@@ -171,32 +172,35 @@
       }
       label {
         cursor: pointer;
-        .select {
-          @include padding(8px, 8px);
-          @include small {
-            @include padding(8px, 16px);
-          }
-          color: $white;
-          background-color: $light-text;
-        }
-      }
-      .file {
-        border: 1px solid #d9d9d9;
-        border-right: none;
-        width: 70%;
-        @include padding(6px, 8px);
+        width:25%;
+        display:flex;
+        justify-content: center;
+        align-items:center;
+        @include padding(6px, 0px);
+        color: $white;
+         background-color: $light-text;
         @include small {
-          width: 60%;
           @include padding(6px, 16px);
         }
-        @include medium {
-          width: 40%;
+        @include medium{
+          width:20%;
+        }
+        .select {
+         flex-shrink: 0; 
         }
       }
-      button {
+      > div{
         border: 1px solid #d9d9d9;
-        border-left: none;
+        width: 75%;
+        @include medium{
+          width:80%;
+        }
+      }
+
+      button {
+        border: none;
         background-color: transparent;
+        color:$light-text !important;
       }
     }
   }
