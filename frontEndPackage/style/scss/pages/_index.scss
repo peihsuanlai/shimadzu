@@ -75,6 +75,9 @@
 
 .banner-container {
     padding-top: 70px;
+    @include small {
+        padding-top: 82px;
+    }
     a{
         background-repeat:no-repeat;
         background-size:cover;
@@ -105,7 +108,7 @@
 
 .service-container {
     @include padding(40px, 15px);
-    min-height: calc(100vh - 260px);
+    min-height: calc(100vh - 388px);
     .row {
         row-gap: 24px;
     }
@@ -345,9 +348,13 @@
         }
         .send-btn {
             transform: rotate(45deg);
+            &:focus-visible,&:hover{
+                outline:none;
+            }
             i{
                 font-size: 20px;
                 color:$dark-text;
+               
             }
         }
         textarea {

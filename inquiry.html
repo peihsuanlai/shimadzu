@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="./frontEndPackage/bootstrap-icons/bootstrap-icons.css" />
         <link rel="stylesheet" href="./frontEndPackage/lightbox/lightbox.min.css" />
 
-        <link rel="stylesheet" href="./frontEndPackage/style/all.css" />
+        <link rel="stylesheet" href="./frontEndPackage/style/all.css?123" />
         <title>技術與價格諮詢</title>
     </head>
     <body>
@@ -30,7 +30,7 @@
                     <h3 class="mb-0 text-darkBlack">技術/價格諮詢</h3>
                     <a href="./instruments.html" class="select-btn">從我的儀器清單選擇</a>
                 </div>
-                <div class="mb-5">
+                <div class="mb-4 mb-sm-5">
                     <h3 class="mb-1 text-lightBlack">整機</h3>
                     <table class="w-100">
                         <thead>
@@ -82,7 +82,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="mb-5">
+                <div class="mb-4 mb-sm-5">
                     <h3 class="mb-1 text-lightBlack">耗材</h3>
                     <table class="w-100">
                         <thead>
@@ -334,9 +334,12 @@
                     uploadFile() {
                         const input = this.$refs.imageUpload;
                         this.selectedFile = input.files.length > 0 ? input.files[0] : null;
+                        const formData = new FormData();
+                        formData.append("key", this.selectedFile); //key為後端api格式?
                     },
                     removeFile() {
                         this.selectedFile = null;
+                        this.$refs.imageUpload.value = "";
                     },
                     rearrangeNumbers(array) {
                         for (let i = 0; i < array.length; i++) {

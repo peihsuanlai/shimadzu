@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="./frontEndPackage/css/material-icons.css" />
         <link rel="stylesheet" href="./frontEndPackage/bootstrap-icons/bootstrap-icons.css" />
 
-        <link rel="stylesheet" href="./frontEndPackage/style/all.css" />
+        <link rel="stylesheet" href="./frontEndPackage/style/all.css?123" />
         <title>Brevis™ GC-2050 氣相層析儀 Brevis™ GC-2050</title>
     </head>
     <body>
@@ -47,9 +47,9 @@
                 <div class="d-flex flex-wrap item-content">
                     <div>
                         <a
-                            
+                            href="./instruments.html"
                             class="d-flex flex-column align-items-center justify-content-center"
-                             @click="openModal(item, '#historyModal')"
+                             
                         >
                             <span class="material-icons mb-1"> pending_actions </span>
                             <h3 class="mb-0">歷史維修紀錄</h3>
@@ -57,8 +57,7 @@
                     </div>
                     <div>
                         <a
-                           
-                           @click="openModal(item, '#materialModal')"
+                            href="./instruments.html"
                             class="d-flex flex-column align-items-center justify-content-center"
                         >
                             <span class="material-icons mb-1"> receipt_long </span>
@@ -66,7 +65,7 @@
                         </a>
                     </div>
                     <div>
-                        <a href="###" class="d-flex flex-column align-items-center justify-content-center">
+                        <a href="./instruments.html" class="d-flex flex-column align-items-center justify-content-center">
                             <span class="material-icons-outlined mr-1">
                                 drive_file_rename_outline
                             </span>
@@ -75,7 +74,7 @@
                     </div>
                     <div>
                         <a
-                        @click="openModal(item, '#checkNumberModal')"
+                        href="./instruments.html"
                             class="d-flex flex-column align-items-center justify-content-center"
                         >
                             <span class="material-icons mb-1"> list </span>
@@ -83,25 +82,25 @@
                         </a>
                     </div>
                     <div>
-                        <a href="###" class="d-flex flex-column align-items-center justify-content-center">
+                        <a href="./instruments.html" class="d-flex flex-column align-items-center justify-content-center">
                             <span class="material-icons mb-1"> construction </span>
                             <h3 class="mb-0">線上叫修</h3>
                         </a>
                     </div>
                     <div>
-                        <a href="###" class="d-flex flex-column align-items-center justify-content-center">
+                        <a href="./instruments.html" class="d-flex flex-column align-items-center justify-content-center">
                             <span class="material-icons mb-1"> engineering </span>
                             <h3 class="mb-0">預約保養</h3>
                         </a>
                     </div>
                     <div>
-                        <a href="###" class="d-flex flex-column align-items-center justify-content-center">
+                        <a href="./instruments.html" class="d-flex flex-column align-items-center justify-content-center">
                             <span class="material-icons mb-1"> help </span>
                             <h3 class="mb-0">技術詢問</h3>
                         </a>
                     </div>
                     <div>
-                        <a href="###" class="d-flex flex-column align-items-center justify-content-center">
+                        <a href="./instruments.html" class="d-flex flex-column align-items-center justify-content-center">
                             <span class="material-icons mb-1"> psychology </span>
                             <h3 class="mb-0">教育訓練</h3>
                         </a>
@@ -109,17 +108,6 @@
                 </div>
 
             </main>
-             <!-- 歷史維修 modal start -->
-             <history :product="tempProduct"></history>
-             <!-- 歷史維修 modal end -->
- 
-             <!-- 耗材清單 modal end -->
-             <material :product="tempProduct" @emit-num="addInquiry" @emit-all="addInquiry"></material>
-             <!-- 耗材清單 modal end -->
- 
-             <!-- 附件序號 modal start -->
-             <check :product="tempProduct"></check>
-             <!-- 附件序號 modal end -->
 
             <chat></chat>
             <vue-footer></vue-footer>
@@ -144,9 +132,6 @@
             import VueFooter from "./components/footer.js";
             import VueNav from "./components/nav.js";
             import Chat from "./components/chatWindow.js";
-            import History from "./components/historyModal.js";
-            import Material from "./components/materialModal.js";
-            import Check from "./components/checkMaterialModal.js";
             const app = new Vue({
                 el: "#app",
                 data() {
@@ -159,9 +144,6 @@
                     VueFooter,
                     VueNav,
                     Chat,
-                    History,
-                    Material,
-                    Check,
                 },
             });
         </script>

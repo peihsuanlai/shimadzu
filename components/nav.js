@@ -64,7 +64,7 @@ export default{
                     <a class="nav-link text-nav text-center" :id="item.id" :href="item.path" :class="{ 'active': isActive(item.path) }">{{item.name}}</a>
                 </li>
                 <li v-if="!login" class="nav-item mr-lg-2 position-relative mb-1 mb-lg-0">
-                    <a class="nav-link text-nav text-center" id="nav-member" href="###">註冊/登入</a>
+                    <a class="nav-link text-nav text-center" id="nav-member" href="./login.html">註冊/登入</a>
                 </li>
                 <li v-else class="nav-item mr-lg-2 position-relative mb-1 mb-lg-0">
                     <a class="nav-link text-nav text-center" href="/account.html" :class="{ 'active': isActive('/account.html') }"><i class="bi bi-person-circle fs-22"></i></a>

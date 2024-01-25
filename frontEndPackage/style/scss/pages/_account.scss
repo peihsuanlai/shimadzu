@@ -120,6 +120,13 @@
             width: 100%;
             background-color: $dark-text;
             color:$white;
+            transition: all 0.3s ease-in-out;
+            &:hover {
+                outline: 1px solid $dark-text;
+                background-color: transparent;
+                color: $dark-text;
+                transition: all 0.3s ease-in-out;
+            }
         }
         a{
             color: #1371b9;

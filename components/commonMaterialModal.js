@@ -27,6 +27,25 @@ export default {
             ],
             selectAll: false,
             checkedCount: 0,
+            tabs: [
+                {
+                    id:"1",
+                    title:"分類一"
+                },
+                {
+                    id:"2",
+                    title:"分類二"
+                },
+                {
+                    id:"3",
+                    title:"分類三"
+                },
+                {
+                    id:"4",
+                    title:"分類四"
+                }
+            ],
+            selectedTab: null,
         };
     },
     template: `     <div class="modal fade" id="commomMaterialModal" tabindex="-1" aria-labelledby="commomMaterialModalLabel" aria-hidden="true">
@@ -41,10 +60,10 @@ export default {
         <div class="modal-body">
             <h5 class="modal-title mr-3" id="commomMaterialModalLabel">通用耗材清單</h5>
             <ul class="list-unstyled mb-0 tab-carousel owl-carousel owl-theme">
-                <li><a href="###" class="active">分類1</a></li>
-                <li><a href="###">分類1</a></li>
-                <li><a href="###">分類1</a></li>
-                <li><a href="###">分類1</a></li>
+                <li v-for="item in tabs" :key="item.id">
+                    <a href="###" :class="{ 'active': item.id === selectedTab }" @click="selectTab(item.id)">{{item.title}}
+                    </a>
+                </li>
             </ul>
             <table class="mb-3">
                 <thead>
@@ -108,6 +127,9 @@ export default {
                 $('#commomMaterialModal').modal('hide');
                 this.$emit("emit-all", this.checkedCount);
             }
+        },
+        selectTab(index) {
+            this.selectedTab = index;
         },
     },
     mounted(){

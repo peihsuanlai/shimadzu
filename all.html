@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="./frontEndPackage/css/material-icons.css" />
         <link rel="stylesheet" href="./frontEndPackage/bootstrap-icons/bootstrap-icons.css" />
         <link rel="stylesheet" href="./frontEndPackage/lightbox/lightbox.min.css" />
-        <link rel="stylesheet" href="./frontEndPackage/style/all.css" />
+        <link rel="stylesheet" href="./frontEndPackage/style/all.css?123" />
         <title>我的儀器</title>
     </head>
     <body>
@@ -36,19 +36,21 @@
                 <ul class="tab-container d-flex list-unstyled mb-0">
                     <li><a href="/instruments.html" class="h-100">我的儀器清單</a></li>
                     <li>
-                        <a href="###" class="active"
+                        <a href="###" class="active d-sm-flex align-items-center"
                             ><span>全機種/耗材一覽</span>
-                            <select name="" id="" v-model="selectedType" class="form-select form-select-sm d-none d-sm-inline-block">
-                                <option selected disabled value="">請選擇</option>
-                                <option :value="item" v-for="item in typeData">{{ item }}</option>
-                            </select>
+                            <div class="my-select ml-2 d-none d-sm-block" ref="desktopSelect">
+                                <select name="" id="" v-model="selectedType">  
+                                    <option selected value="">請選擇</option>
+                                    <option :value="item" v-for="item in typeData" :key="item">{{ item }}</option>
+                                </select>
+                            </div>
                         </a>
                     </li>
                 </ul>
-                <div class="mb-select d-sm-none">
-                    <select name="" id="" v-model="selectedType" class="form-select form-select-sm">
-                        <option selected disabled value="">請選擇</option>
-                        <option :value="item" v-for="item in typeData">{{ item }}</option>
+                <div class="d-sm-none my-select" ref="mobileSelect">
+                    <select name="" id="" v-model="selectedType">  
+                        <option selected value="">請選擇</option>
+                        <option :value="item" v-for="item in typeData" :key="item">{{ item }}</option>
                     </select>
                 </div>
                 
@@ -140,13 +142,14 @@
 
                 <!-- added modal end -->
 
-                <!-- 通用耗材清單 modal start -->
-                <common @emit-num="addInquiry" @emit-all="addInquiry"></common>
-                <!-- 通用耗材清單 modal end -->
-                <!-- 耗材清單 modal start-->
-                <material :product="tempProduct" @emit-num="addInquiry" @emit-all="addInquiry"></material>
-                <!-- 耗材清單 modal end -->
+                
             </main>
+            <!-- 通用耗材清單 modal start -->
+            <common @emit-num="addInquiry" @emit-all="addInquiry"></common>
+            <!-- 通用耗材清單 modal end -->
+            <!-- 耗材清單 modal start-->
+            <material :product="tempProduct" @emit-num="addInquiry" @emit-all="addInquiry"></material>
+            <!-- 耗材清單 modal end -->
             <chat></chat>
             <vue-footer class="pb-5 pb-sm-0"></vue-footer>
         </div>
@@ -203,7 +206,7 @@
                                 date: "2023/03/16-2023/12/25",
                             },
                         ],
-                        typeData: ["A", "B", "C", "D", "H", "I", "K", "L", "M", "O", "Q", "U", "通用層析耗材"],
+                        typeData: ["A", "B", "C", "D", "H", "I", "K", "L", "M", "O", "Q", "U", "通用層析耗材通用層析耗材"],
                         selectedType: "",
                         tempProduct:{},
                     };
@@ -216,6 +219,75 @@
                         this.tempProduct = { ...item };
                         $(modalName).modal('show');
                     },
+                    initCustomSelect(refName) {
+                        const x = this.$refs[refName];
+                        const selElmnt = x.querySelector("select");
+                        console.log(x);
+                        const ll = selElmnt.length;
+                        const a = document.createElement("DIV");
+                        a.setAttribute("class", "select-selected");
+                        a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+                        x.appendChild(a);
+
+                        const b = document.createElement("DIV");
+                        b.setAttribute("class", "select-items select-hide");
+                        for (let j = 1; j < ll; j++) {
+                            const c = document.createElement("DIV");
+                            c.innerHTML = selElmnt.options[j].innerHTML;
+                            c.addEventListener("click", (e) => {
+                            this.handleOptionClick(e);
+                            });
+                            b.appendChild(c);
+                        }
+                        x.appendChild(b);
+
+                        a.addEventListener("click", (e) => {
+                            e.stopPropagation();
+                            this.closeAllSelect(a);
+                            a.nextSibling.classList.toggle("select-hide");
+                            a.classList.toggle("select-arrow-active");
+                        });
+
+                        document.addEventListener("click", () => {
+                            this.closeAllSelect();
+                        });
+                    },
+                    handleOptionClick(e) {
+                    const selectedOption = e.target.innerHTML;
+                    const parent = e.target.parentNode.parentNode.querySelector("select");
+                    const selectedDiv = e.target.parentNode.previousSibling;
+
+                    for (let i = 0; i < parent.length; i++) {
+                        if (parent.options[i].innerHTML === selectedOption) {
+                        this.selectedType = parent.options[i].value; // 将值写回 selectedType
+                        parent.selectedIndex = i;
+                        selectedDiv.innerHTML = selectedOption;
+                        const sameAsSelected = e.target.parentNode.getElementsByClassName("same-as-selected");
+                        for (let k = 0; k < sameAsSelected.length; k++) {
+                            sameAsSelected[k].removeAttribute("class");
+                        }
+                        e.target.setAttribute("class", "same-as-selected");
+                        break;
+                        }
+                    }
+                    selectedDiv.click();
+                    },
+                    closeAllSelect(exclude) {
+                    const x = document.getElementsByClassName("select-items");
+                    const y = document.getElementsByClassName("select-selected");
+
+                    for (let i = 0; i < y.length; i++) {
+                        if (exclude !== y[i]) {
+                        y[i].classList.remove("select-arrow-active");
+                        }
+                    }
+
+                    for (let i = 0; i < x.length; i++) {
+                        if (!exclude || exclude !== x[i]) {
+                        x[i].classList.add("select-hide");
+                        }
+                    }
+                },
                 },
                 watch: {
                     inquiryNum(newValue, oldValue) {
@@ -235,7 +307,10 @@
                     Material
 
                 },
-                mounted() {},
+                mounted() {
+                    this.initCustomSelect("desktopSelect");
+                    this.initCustomSelect("mobileSelect");
+                },
             });
         </script>
     </body>

@@ -1,302 +1,248 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
-      integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="./frontEndPackage/bootstrap-icons/bootstrap-icons.css"
-    />
-    <link rel="stylesheet" href="./frontEndPackage/lightbox/lightbox.min.css" />
-    <link rel="stylesheet" href="./frontEndPackage/style/all.css" />
-    <title>線上叫修/其他</title>
-  </head>
-  <body>
-    <div id="app">
-      <vue-nav :login="isLogin"></vue-nav>
-      <section class="breadcrumb-container mb-5">
-        <ol class="d-flex list-unstyled breadcrumb-list">
-          <li><a href="/">首頁</a></li>
-          <li class="active"><a href="###">線上叫修/其他</a></li>
-        </ol>
-      </section>
-      <main class="container-lg inquiry-main">
-        <div
-          class="d-flex justify-content-between align-items-center title pb-2 pb-md-3 mb-3"
-        >
-          <h3 class="mb-0 text-darkBlack">線上叫修/其他</h3>
-          <a href="/instruments.html" class="select-btn">從我的儀器清單選擇</a>
-        </div>
-        <div class="mb-4 mb-sm-5">
-          <table class="w-100">
-            <thead>
-              <tr>
-                <th style="width: 10%">編號</th>
-                <th style="width: 15%">圖片</th>
-                <th style="width: 20%">主設備序號</th>
-                <th style="width: 25%">機型</th>
-                <th style="width: 30%" class="text-center">刪除</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-if="equipment.id!=''">
-                <td data-title="編號"><span>{{equipment.id}}</span></td>
-                <td data-title="圖片">
-                  <span
-                    ><a
-                      :href="equipment.imgUrl.large"
-                      :data-lightbox="'pic'+equipment.id"
-                    >
-                      <img
-                        :src="equipment.imgUrl.small"
-                        :alt="equipment.imgUrl.alt"
-                      /> </a
-                  ></span>
-                </td>
-                <td data-title="主設備序號"><span>{{equipment.number}}</span></td>
-                <td data-title="機型"><span>{{equipment.title}}</span></td>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+            integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+            crossorigin="anonymous"
+        />
+        <link rel="stylesheet" href="./frontEndPackage/bootstrap-icons/bootstrap-icons.css" />
+        <link rel="stylesheet" href="./frontEndPackage/lightbox/lightbox.min.css" />
+        <link rel="stylesheet" href="./frontEndPackage/style/all.css?123" />
+        <title>線上叫修/其他</title>
+    </head>
+    <body>
+        <div id="app">
+            <vue-nav :login="isLogin"></vue-nav>
+            <section class="breadcrumb-container mb-5">
+                <ol class="d-flex list-unstyled breadcrumb-list">
+                    <li><a href="/">首頁</a></li>
+                    <li class="active"><a href="###">線上叫修/其他</a></li>
+                </ol>
+            </section>
+            <main class="container-lg inquiry-main">
+                <div class="d-flex justify-content-between align-items-center title pb-2 pb-md-3 mb-3">
+                    <h3 class="mb-0 text-darkBlack">線上叫修/其他</h3>
+                    <a href="/instruments.html" class="select-btn">從我的儀器清單選擇</a>
+                </div>
+                <div class="mb-4 mb-sm-5">
+                    <table class="w-100">
+                        <thead>
+                            <tr>
+                                <th style="width: 10%">編號</th>
+                                <th style="width: 15%">圖片</th>
+                                <th style="width: 20%">主設備序號</th>
+                                <th style="width: 25%">機型</th>
+                                <th style="width: 30%" class="text-center">刪除</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-if="equipment.id!=''">
+                                <td data-title="編號"><span>{{equipment.id}}</span></td>
+                                <td data-title="圖片">
+                                    <span
+                                        ><a :href="equipment.imgUrl.large" :data-lightbox="'pic'+equipment.id">
+                                            <img :src="equipment.imgUrl.small" :alt="equipment.imgUrl.alt" /> </a
+                                    ></span>
+                                </td>
+                                <td data-title="主設備序號"><span>{{equipment.number}}</span></td>
+                                <td data-title="機型"><span>{{equipment.title}}</span></td>
 
-                <td data-title="刪除" class="text-sm-center">
-                  <span
-                    ><button
-                      type="button"
-                      class="delete-btn"
-                      @click="removeItem"
-                    >
-                      <i class="bi bi-trash trash-icon"></i></button
-                  ></span>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div
-          class="d-flex flex-wrap justify-content-center options mb-4 mb-sm-5"
-        >
-          <div class="item" v-for="item in serviceList" :key="item.id">
-            <input
-              :id="item.title"
-              type="radio"
-              :value="item.title"
-              v-model="selectedService"
-            />
-            <label :for="item.title" class="mb-3 mb-sm-0">
-              <span class="checkmark"></span>
-              <span>{{item.title}}</span>
-            </label>
-          </div>
-          
-        </div>
-        <div class="message mb-4">
-          <div class="message-title">備註</div>
+                                <td data-title="刪除" class="text-sm-center">
+                                    <span
+                                        ><button type="button" class="delete-btn" @click="removeItem">
+                                            <i class="bi bi-trash trash-icon"></i></button
+                                    ></span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="d-flex flex-wrap justify-content-center options mb-4 mb-sm-5">
+                    <div class="item" v-for="item in serviceList" :key="item.id">
+                        <input :id="item.title" type="radio" :value="item.title" v-model="selectedService" />
+                        <label :for="item.title" class="mb-3 mb-sm-0">
+                            <span class="checkmark"></span>
+                            <span>{{item.title}}</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="message mb-4">
+                    <div class="message-title">備註</div>
 
-          <div class="d-sm-flex item">
-            <div>Email</div>
-            <div>dskdjfhskddsoids@gshdak.com.tw</div>
-          </div>
-          <div class="d-sm-flex item">
-            <div>其他備註</div>
-            <div>
-              <textarea
-                name=""
-                id=""
-                cols="30"
-                rows="4"
-                placeholder="請輸入內容"
-                class="p-2"
-              ></textarea>
-            </div>
-          </div>
-          <div class="d-sm-flex item">
-            <div>附件</div>
-            <div class="attachment d-flex">
-              <label for="attachment" class="mb-0">
-                <span class="select">選擇檔案</span>
-                <input
-                  type="file"
-                  id="attachment"
-                  class="d-none"
-                  @change="uploadFile"
-                  ref="imageUpload"
-                />
-              </label>
-              <span class="file" v-if="!selectedFile">未選擇任何檔案</span>
-              <span class="file" v-else>{{ selectedFile.name }}</span>
-              <button type="button" @click="removeFile">
-                <i class="bi bi-trash trash-btn"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-        <button
-          class="message-send-btn mb-5"
-          data-toggle="modal"
-          data-target="#sendModal"
-        >
-          送出表單
-        </button>
-      </main>
-      <!-- removeItem modal start -->
-      <div
-        class="modal fade"
-        id="removeItemModal"
-        tabindex="-1"
-        aria-labelledby="removeItemModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog modal-sm modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button
-                type="button"
-                class="close"
-                data-dismiss="modal"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
+                    <div class="d-sm-flex item">
+                        <div>Email</div>
+                        <div>dskdjfhskddsoids@gshdak.com.tw</div>
+                    </div>
+                    <div class="d-sm-flex item">
+                        <div>其他備註</div>
+                        <div>
+                            <textarea name="" id="" cols="30" rows="4" placeholder="請輸入內容" class="p-2"></textarea>
+                        </div>
+                    </div>
+                    <div class="d-sm-flex item">
+                        <div>附件</div>
+                        <div class="attachment d-flex">
+                            <label for="attachment" class="mb-0">
+                                <span class="select">選擇檔案</span>
+                                <input
+                                    type="file"
+                                    id="attachment"
+                                    class="d-none"
+                                    @change="uploadFile"
+                                    ref="imageUpload"
+                                />
+                            </label>
+                            <span class="file" v-if="!selectedFile">未選擇任何檔案</span>
+                            <span class="file" v-else>{{ selectedFile.name }}</span>
+                            <button type="button" @click="removeFile">
+                                <i class="bi bi-trash trash-btn"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <button class="message-send-btn mb-5" data-toggle="modal" data-target="#sendModal">送出表單</button>
+            </main>
+            <!-- removeItem modal start -->
             <div
-              class="modal-body d-flex flex-column justify-content-center align-items-center"
+                class="modal fade"
+                id="removeItemModal"
+                tabindex="-1"
+                aria-labelledby="removeItemModalLabel"
+                aria-hidden="true"
             >
-              <i class="bi bi-x-circle-fill remove-icon"></i>
-              <div class="text-center">確定刪除該項目嗎？</div>
+                <div class="modal-dialog modal-sm modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body d-flex flex-column justify-content-center align-items-center">
+                            <i class="bi bi-x-circle-fill remove-icon"></i>
+                            <div class="text-center">確定刪除該項目嗎？</div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn" @click="confirmRemoveItem">確認</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn" @click="confirmRemoveItem">
-                確認
-              </button>
+            <!-- removeItem modal end -->
+            <!-- 已送出 modal start -->
+            <div class="modal fade" id="sendModal" tabindex="-1" aria-labelledby="sendModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-sm modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-body d-flex flex-column justify-content-center align-items-center">
+                            <i class="bi bi-check-circle-fill add-icon"></i>
+                            <div class="text-center">已送出</div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn" data-dismiss="modal">確認</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
-      <!-- removeItem modal end -->
-      <!-- 已送出 modal start -->
-      <div
-        class="modal fade"
-        id="sendModal"
-        tabindex="-1"
-        aria-labelledby="sendModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog modal-sm modal-dialog-centered">
-          <div class="modal-content">
-            <div
-              class="modal-body d-flex flex-column justify-content-center align-items-center"
-            >
-              <i class="bi bi-check-circle-fill add-icon"></i>
-              <div class="text-center">已送出</div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn" data-dismiss="modal">
-                確認
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <!-- 已送出 modal end -->
-      <chat></chat>
-      <vue-footer></vue-footer>
-    </div>
+            <!-- 已送出 modal end -->
+            <chat></chat>
+            <vue-footer></vue-footer>
+        </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
-      integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
-      crossorigin="anonymous"
-    ></script>
-    <script src="./frontEndPackage/lightbox/lightbox.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <script src="./frontEndPackage/js/all.js"></script>
-    <script type="module">
-      import VueFooter from "./components/footer.js";
-      import VueNav from "./components/nav.js";
-      import Chat from "./components/chatWindow.js";
-      const urlParams = new URLSearchParams(window.location.search);
-      const selectedService = urlParams.get("selectedService");
-      const app = new Vue({
-        el: "#app",
-        data() {
-          return {
-            isLogin: true,
-            equipment: 
-              {
-                id:"1",
-                imgUrl: {
-                  small: "./frontEndPackage/images/product-sm.jpg",
-                  large: "./frontEndPackage/images/product-lg.jpg",
-                  alt: "spectrometer",
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
+            integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
+            crossorigin="anonymous"
+        ></script>
+        <script src="./frontEndPackage/lightbox/lightbox.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+        <script src="./frontEndPackage/js/all.js"></script>
+        <script type="module">
+            import VueFooter from "./components/footer.js";
+            import VueNav from "./components/nav.js";
+            import Chat from "./components/chatWindow.js";
+            const urlParams = new URLSearchParams(window.location.search);
+            const selectedService = urlParams.get("selectedService");
+            const app = new Vue({
+                el: "#app",
+                data() {
+                    return {
+                        isLogin: true,
+                        equipment: {
+                            id: "1",
+                            imgUrl: {
+                                small: "./frontEndPackage/images/product-sm.jpg",
+                                large: "./frontEndPackage/images/product-lg.jpg",
+                                alt: "spectrometer",
+                            },
+                            number: "06UPLC L22135800614",
+                            title: "紫外/可見光-近紅外光分光譜儀",
+                        },
+
+                        selectedFile: null,
+                        selectedService: null,
+                        serviceList: [
+                            {
+                                id: "fix",
+                                title: "線上叫修",
+                            },
+                            {
+                                id: "maintainance",
+                                title: "預約保養",
+                            },
+                            {
+                                id: "ask",
+                                title: "技術詢問",
+                            },
+                            {
+                                id: "training",
+                                title: "教育訓練",
+                            },
+                        ],
+                    };
                 },
-                number: "06UPLC L22135800614",
-                title: "紫外/可見光-近紅外光分光譜儀",
-              },
-
-            selectedFile: null,
-            selectedService: null,
-            serviceList: [
-              {
-                id: "fix",
-                title: "線上叫修",
-              },
-              {
-                id: "maintainance",
-                title: "預約保養",
-              },
-              {
-                id: "ask",
-                title: "技術詢問",
-              },
-              {
-                id: "training",
-                title: "教育訓練",
-              },
-            ],
-          };
-        },
-        methods: {
-          removeItem() {
-            $("#removeItemModal").modal("show");
-          },
-          confirmRemoveItem() {
-            Object.keys(this.equipment).forEach((key) => {
+                methods: {
+                    removeItem() {
+                        $("#removeItemModal").modal("show");
+                    },
+                    confirmRemoveItem() {
+                        Object.keys(this.equipment).forEach((key) => {
                             this.equipment[key] = "";
                         });
-             $("#removeItemModal").modal("hide");
-      
-          },
-          uploadFile() {
-            const input = this.$refs.imageUpload;
-            this.selectedFile = input.files.length > 0 ? input.files[0] : null;
-          },
-          removeFile() {
-            this.selectedFile = null;
-          },
-        },
-        components: {
-          VueFooter,
-          VueNav,
-          Chat,
-        },
-        mounted() {
-        this.selectedService=selectedService;
-          if (this.selectedService) {
-            document.getElementById(this.selectedService).checked = true;
-          }
-        },
-      });
-    </script>
-  </body>
+                        $("#removeItemModal").modal("hide");
+                    },
+                    uploadFile() {
+                        const input = this.$refs.imageUpload;
+                        this.selectedFile = input.files.length > 0 ? input.files[0] : null;
+                        const formData = new FormData();
+                        formData.append("key", this.selectedFile); //key為後端api格式?
+                    },
+                    removeFile() {
+                        this.selectedFile = null;
+                        this.$refs.imageUpload.value = "";
+                    },
+                },
+                components: {
+                    VueFooter,
+                    VueNav,
+                    Chat,
+                },
+                mounted() {
+                    this.selectedService = selectedService;
+                    if (this.selectedService) {
+                        document.getElementById(this.selectedService).checked = true;
+                    }
+                },
+            });
+        </script>
+    </body>
 </html>

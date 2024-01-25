@@ -1,5 +1,6 @@
 .signup-page {
     min-height: calc(100vh - 135px);
+    padding-bottom:48px;
 }
 .signup-container {
     outline: 1px solid #d9d9d9;
@@ -60,7 +61,7 @@
             border-radius: 5px;
             @include padding(6px, 0);
             border: none;
-            //background-color: transparent;
+            transition:all 0.3s ease-in-out;
         }
         button:first-child {
             color: #b8b8b8;
@@ -89,6 +90,13 @@
         background-color: $dark-text;
         width: 100%;
         color: $white;
+        transition:all 0.3s ease-in-out;
+        &:hover{
+            outline:1px solid $dark-text;
+            color:$light-text;
+            background-color:transparent;
+            transition:all 0.3s ease-in-out;
+        }
     }
     .forgetBtn {
         border: none;
