@@ -1,122 +1,113 @@
 export default {
-  data() {
-    return {
-      isModalActive: false,
-      chatService: [
-        {
-          id: 1,
-          title: "儀器叫修",
-          imgUrl: "./frontEndPackage/images/dialog-icon1.png",
-          alt: "fix",
-          path: "###",
-        },
-        {
-          id: 2,
-          title: "現有儀器操作實驗問題",
-          imgUrl: "./frontEndPackage/images/dialog-icon2.png",
-          alt: "clipboard",
-          path: "###",
-        },
-        {
-          id: 3,
-          title: "產品/分析技術諮詢",
-          imgUrl: "./frontEndPackage/images/dialog-icon3.png",
-          alt: "clipboard",
-          path: "###",
-        },
-        {
-          id: 4,
-          title: "其他需求",
-          imgUrl: "./frontEndPackage/images/dialog-icon4.png",
-          alt: "clipboard",
-          path: "###",
-          detail: "營業時間為週一到週五(9:00am-5:30pm)",
-        },
-      ],
-      isBusinessHours: null,
-      modalContent: "A",
-      messageTopic: "",
-      messages: [],
-      newMessage: "",
-      attatchedFile: null,
-      imagePreview: [],
-    };
-  },
-  methods: {
-    startChat() {
-      const currentDate = new Date();
-      const currentHour = currentDate.getHours();
-      const currentMinutes = currentDate.getMinutes();
-
-      // 定義營業時間的開始和結束時間
-      const businessHoursStart = 9;
-      const businessHoursEnd = 17;
-      const businessMinutesEnd = 30;
-
-      // 判斷是否在早上9:00 到下午5:30 之間
-      const isBusinessHours =
-        (currentHour > businessHoursStart && currentHour < businessHoursEnd) ||
-        (currentHour === businessHoursStart && currentMinutes >= 0) ||
-        (currentHour === businessHoursEnd &&
-          currentMinutes <= businessMinutesEnd);
-      if (isBusinessHours) {
-        this.modalContent = "B";
-      } else {
-        this.modalContent = "C";
-      }
-    },
-    switchModalContent(type) {
-      this.modalContent = type;
-    },
-    getTimeStamp() {
-      const now = new Date();
-      const year = now.getFullYear();
-      const month = (now.getMonth() + 1).toString().padStart(2, "0");
-      const day = now.getDate().toString().padStart(2, "0");
-      const hours = now.getHours().toString().padStart(2, "0");
-      const minutes = now.getMinutes().toString().padStart(2, "0");
-      return `${year}/${month}/${day} ${hours}:${minutes}`;
-    },
-    sendMessage() {
-      let newMessageObj;
-
-      console.log(this.attatchedFile);
-      if (this.newMessage.trim() !== "") {
-        newMessageObj = {
-          id: this.messages.length + 1,
-          text: this.newMessage,
-          //file: this.attatchedFile,
-          isUser: true,
-          timestamp: this.getTimeStamp(),
+    data() {
+        return {
+            isModalActive: false,
+            chatService: [
+                {
+                    id: 1,
+                    title: "儀器叫修",
+                    imgUrl: "./frontEndPackage/images/dialog-icon1.png",
+                    alt: "fix",
+                    path: "./other.html?selectedService=線上叫修",
+                },
+                {
+                    id: 2,
+                    title: "現有儀器操作實驗問題",
+                    imgUrl: "./frontEndPackage/images/dialog-icon2.png",
+                    alt: "clipboard",
+                    path: "./instruments.html",
+                },
+                {
+                    id: 3,
+                    title: "產品/分析技術諮詢",
+                    imgUrl: "./frontEndPackage/images/dialog-icon3.png",
+                    alt: "clipboard",
+                    path: "./other.html?selectedService=技術詢問",
+                },
+                {
+                    id: 4,
+                    title: "其他需求",
+                    imgUrl: "./frontEndPackage/images/dialog-icon4.png",
+                    alt: "clipboard",
+                    path: "###",
+                    detail: "營業時間為週一到週五(9:00am-5:30pm)",
+                },
+            ],
+            isBusinessHours: null,
+            modalContent: "A",
+            messageTopic: "",
+            messages: [],
+            newMessage: "",
+            attatchedFile: null,
+            imagePreview: [],
         };
-      } else if (this.$refs.fileUpload.files.length > 0) {
-        const lastImg = this.$refs.fileUpload.files.length - 1;
-        //this.attatchedFile = this.$refs.fileUpload.files[lastImg];
-        newMessageObj = {
-          id: this.messages.length + 1,
-          file: this.$refs.fileUpload.files[lastImg],
-          isUser: true,
-          timestamp: this.getTimeStamp(),
-        };
-
-        this.imagePreview.push(window.URL.createObjectURL(
-            this.$refs.fileUpload.files[lastImg]
-          ));  
-      }
-      this.messages.push(newMessageObj);
-      this.newMessage = "";
-      this.attatchedFile = NULL;
     },
+    methods: {
+        startChat() {
+            const currentDate = new Date();
+            const currentHour = currentDate.getHours();
+            const currentMinutes = currentDate.getMinutes();
 
-    // attatchFile() {
-    //   const input = this.$refs.fileUpload;
-    //   this.attatchedFile = input.files.length > 0 ? input.files[0] : null;
-    //   if (input.files.length > 0) {
-    //     this.imagePreview = window.URL.createObjectURL(input.files[0]);
-    //   }
-    // },
-  },
-  template: `<div>
+            // 定義營業時間的開始和結束時間
+            const businessHoursStart = 9;
+            const businessHoursEnd = 17;
+            const businessMinutesEnd = 30;
+
+            // 判斷是否在早上9:00 到下午5:30 之間
+            const isBusinessHours =
+                (currentHour > businessHoursStart && currentHour < businessHoursEnd) ||
+                (currentHour === businessHoursStart && currentMinutes >= 0) ||
+                (currentHour === businessHoursEnd && currentMinutes <= businessMinutesEnd);
+            this.isBusinessHours = isBusinessHours;
+            if (this.isBusinessHours) {
+                this.modalContent = "B";
+            } else {
+                this.modalContent = "C";
+            }
+        },
+        switchModalContent(type) {
+            this.modalContent = type;
+        },
+        getTimeStamp() {
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = (now.getMonth() + 1).toString().padStart(2, "0");
+            const day = now.getDate().toString().padStart(2, "0");
+            const hours = now.getHours().toString().padStart(2, "0");
+            const minutes = now.getMinutes().toString().padStart(2, "0");
+            return `${year}/${month}/${day} ${hours}:${minutes}`;
+        },
+        sendMessage() {
+            let newMessageObj;
+            const input = this.$refs.fileUpload;
+            if (this.newMessage.trim() !== "") {
+                newMessageObj = {
+                    id: this.messages.length + 1,
+                    text: this.newMessage,
+                    isUser: true,
+                    timestamp: this.getTimeStamp(),
+                };
+            } else if (input.files.length > 0) {
+                const lastImgIndex = input.files.length - 1;
+                this.attatchedFile = this.$refs.fileUpload.files[lastImgIndex];
+                newMessageObj = {
+                    id: this.messages.length + 1,
+                    file: this.attatchedFile,
+                    isUser: true,
+                    image: window.URL.createObjectURL(this.attatchedFile),
+                    timestamp: this.getTimeStamp(),
+                };
+
+                console.dir(this.$refs.fileUpload);
+            }
+            this.messages.push(newMessageObj);
+            this.newMessage = "";
+            this.attatchedFile = null;
+            input.value = "";
+        },
+
+    },
+    template: `<div>
     <button
     type="button"
     class="dialog-btn"
@@ -165,7 +156,6 @@ export default {
                             </a>
                             <a
                                 v-else
-                                :href="item.path"
                                 class="text-black d-flex align-items-center"
                                 @click="startChat"
                             >
@@ -182,7 +172,7 @@ export default {
                     <div class="ask-topic">
                         <p>請輸入詢問的主題：</p>
                         <div class="d-flex align-items-center">
-                            <label for="message-topic">
+                            <label for="message-topic" class="mb-0">
                                 <input
                                     type="text"
                                     id="message-topic"
@@ -190,7 +180,7 @@ export default {
                                     @keyup.enter="switchModalContent('D')"
                                 />
                             </label>
-                            <button type="button" class="send-btn" @click="switchModalContent('D')">
+                            <button type="button" class="send-btn" :disabled="!this.messageTopic.trim()" @click="switchModalContent('D')">
                                 <i class="bi bi-send-fill"></i>
                             </button>
                         </div>
@@ -211,6 +201,11 @@ export default {
                 </template>
                 <template v-else-if="modalContent==='D'">
                     <div>
+                        <div class="warning" v-if="!isBusinessHours">
+                            <p class="font-weight-bold mb-0">現在非客服時間，專人將在營業時間內回覆</p>
+                            <p class="mb-0">客服營業時間：週一到週五(9:00am-5:30pm)</p>
+                        </div>
+
                         <div class="d-flex align-items-center cs-message first">
                             <div class="mr-2">
                                 <img src="./frontEndPackage/images/avatar.png" alt="" />
@@ -233,7 +228,7 @@ export default {
                             </div>
                             <div class="d-flex flex-column">
                                 <template v-if="message.file">
-                                    <img :src="imagePreview[this.imagePreview.length-1]" width="150"/> 
+                                    <img :src="message.image" width="150"/> 
                                 </template>
                                <template v-if="message.text">
                                     <span class="text-darkBlack content">{{ message.text }}</span>
@@ -270,7 +265,7 @@ export default {
                         v-model="newMessage"
                         @keyup.enter="sendMessage"
                     ></textarea>
-                    <button type="button" class="send-btn" @click="sendMessage">
+                    <button type="button" :disabled="!this.newMessage.trim()" class="send-btn" @click="sendMessage">
                         <i class="bi bi-send-fill"></i>
                     </button>
                 </div>
@@ -284,16 +279,16 @@ export default {
     
     </div>   `,
 
-  mounted() {
-    $("#dialogModal").on("show.bs.modal", () => {
-      this.isModalActive = true;
-    });
+    mounted() {
+        $("#dialogModal").on("show.bs.modal", () => {
+            this.isModalActive = true;
+        });
 
-    $("#dialogModal").on("hide.bs.modal", () => {
-      this.isModalActive = false;
-      this.modalContent = "A";
-      this.messageTopic = "";
-      this.messages = [];
-    });
-  },
+        $("#dialogModal").on("hide.bs.modal", () => {
+            this.isModalActive = false;
+            this.modalContent = "A";
+            this.messageTopic = "";
+            this.messages = [];
+        });
+    },
 };

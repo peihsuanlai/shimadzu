@@ -46,6 +46,20 @@ a:hover {
          appearance: none;
   }
 }
+input:-internal-autofill-selected {
+  background-color: #ffffff !important;
+  box-shadow: 0 0 1000px #ffffff inset !important;
+}
+
+[class=error] {
+  font-size: 14px;
+  color: #e74c3c;
+}
+
+.form-control {
+  color: #626262 !important;
+}
+
 .bg-main {
   background-color: #DD0000;
 }
@@ -364,7 +378,7 @@ a:hover {
 }
 
 #dialogModal .modal-dialog {
-  max-height: 600px;
+  max-height: 500px;
   position: absolute;
   bottom: 0;
 }
@@ -375,6 +389,7 @@ a:hover {
 }
 #dialogModal .modal-header {
   align-items: center;
+  border-bottom: 1px solid #d9d9d9;
 }
 #dialogModal .dialog-icon-container {
   width: 40px;
@@ -392,7 +407,7 @@ a:hover {
 #dialogModal .topicArea {
   position: absolute;
   width: 100%;
-  top: 94px;
+  top: 94.19px;
   z-index: 1;
   text-align: center;
   padding: 6px 0;
@@ -400,7 +415,7 @@ a:hover {
 }
 @media screen and (min-width: 417px) {
   #dialogModal .topicArea {
-    top: 73px;
+    top: 73.19px;
   }
 }
 #dialogModal .cs-message {
@@ -436,6 +451,14 @@ a:hover {
   border-radius: 20px;
   background-color: #ffffff;
   padding: 8px 12px;
+}
+#dialogModal .warning {
+  border-radius: 5px;
+  background-color: #DD0000;
+  color: #ffffff;
+  padding: 20px 10px;
+  margin-top: 40px;
+  text-align: center;
 }
 #dialogModal .modal-body {
   background-color: #f5f5f5;
@@ -487,6 +510,7 @@ a:hover {
   background-color: #ffffff;
   border: 1px solid #d9d9d9;
   border-radius: 10px;
+  cursor: pointer;
 }
 #dialogModal ul li a:hover {
   color: #000000;
@@ -503,7 +527,7 @@ a:hover {
   cursor: pointer;
 }
 #dialogModal .modal-footer .attatch-btn i {
-  font-size: 20px;
+  font-size: 24px;
   color: #333333;
 }
 #dialogModal .modal-footer .send-btn {
@@ -517,7 +541,7 @@ a:hover {
   color: #333333;
 }
 #dialogModal .modal-footer textarea {
-  width: 70%;
+  width: 68%;
   padding: 6px 10px;
   border-radius: 50px;
   outline: 1px solid #d9d9d9;
@@ -525,6 +549,11 @@ a:hover {
 }
 #dialogModal .modal-footer textarea:focus-visible {
   outline-color: #DD0000;
+}
+@media (min-width: 375px) {
+  #dialogModal .modal-footer textarea {
+    width: 74%;
+  }
 }
 
 .modal-backdrop {
@@ -1044,6 +1073,7 @@ footer .photonic {
   position: absolute;
   top: 15px;
   right: 15px;
+  color: #626262 !important;
 }
 
 .item-content {
@@ -1529,8 +1559,14 @@ footer .photonic {
     width: 20%;
   }
 }
+@media (min-width: 576px) {
+  .message .item .textarea-container {
+    width: 80%;
+  }
+}
 .message .item textarea {
   border: 1px solid #d9d9d9;
+  width: 100%;
 }
 .message .item textarea:focus-visible {
   outline-color: #DD0000;
@@ -1548,11 +1584,6 @@ footer .photonic {
   .message .item .attachment {
     font-size: 16px;
     width: 80%;
-  }
-}
-@media (min-width: 768px) {
-  .message .item .attachment {
-    width: 70%;
   }
 }
 .message .item .attachment label {
@@ -1951,29 +1982,29 @@ button.common-material span {
   color: #626262 !important;
 }
 
-#addToListModal, #saveSuccessModal, #sendModal, #submitModal, #sendEmailModal, #removeItemModal {
+#addToListModal, #saveSuccessModal, #sendModal, #submitModal, #sendEmailModal, #removeItemModal, #fileLimitModal {
   font-size: 16px;
 }
-#addToListModal .modal-content, #saveSuccessModal .modal-content, #sendModal .modal-content, #submitModal .modal-content, #sendEmailModal .modal-content, #removeItemModal .modal-content {
+#addToListModal .modal-content, #saveSuccessModal .modal-content, #sendModal .modal-content, #submitModal .modal-content, #sendEmailModal .modal-content, #removeItemModal .modal-content, #fileLimitModal .modal-content {
   box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.25);
   border: none;
 }
-#addToListModal .modal-body .add-icon, #addToListModal .modal-body .remove-icon, #saveSuccessModal .modal-body .add-icon, #saveSuccessModal .modal-body .remove-icon, #sendModal .modal-body .add-icon, #sendModal .modal-body .remove-icon, #submitModal .modal-body .add-icon, #submitModal .modal-body .remove-icon, #sendEmailModal .modal-body .add-icon, #sendEmailModal .modal-body .remove-icon, #removeItemModal .modal-body .add-icon, #removeItemModal .modal-body .remove-icon {
+#addToListModal .modal-body .add-icon, #addToListModal .modal-body .remove-icon, #saveSuccessModal .modal-body .add-icon, #saveSuccessModal .modal-body .remove-icon, #sendModal .modal-body .add-icon, #sendModal .modal-body .remove-icon, #submitModal .modal-body .add-icon, #submitModal .modal-body .remove-icon, #sendEmailModal .modal-body .add-icon, #sendEmailModal .modal-body .remove-icon, #removeItemModal .modal-body .add-icon, #removeItemModal .modal-body .remove-icon, #fileLimitModal .modal-body .add-icon, #fileLimitModal .modal-body .remove-icon {
   font-size: 48px;
   color: #d9d9d9;
 }
-#addToListModal .modal-footer, #saveSuccessModal .modal-footer, #sendModal .modal-footer, #submitModal .modal-footer, #sendEmailModal .modal-footer, #removeItemModal .modal-footer {
+#addToListModal .modal-footer, #saveSuccessModal .modal-footer, #sendModal .modal-footer, #submitModal .modal-footer, #sendEmailModal .modal-footer, #removeItemModal .modal-footer, #fileLimitModal .modal-footer {
   border-top: none;
   justify-content: center;
 }
-#addToListModal .modal-footer button, #saveSuccessModal .modal-footer button, #sendModal .modal-footer button, #submitModal .modal-footer button, #sendEmailModal .modal-footer button, #removeItemModal .modal-footer button {
+#addToListModal .modal-footer button, #saveSuccessModal .modal-footer button, #sendModal .modal-footer button, #submitModal .modal-footer button, #sendEmailModal .modal-footer button, #removeItemModal .modal-footer button, #fileLimitModal .modal-footer button {
   border-radius: 5px;
   width: 100%;
   background-color: #333333;
   color: #ffffff;
   transition: all 0.3s ease-in-out;
 }
-#addToListModal .modal-footer button:hover, #addToListModal .modal-footer button:focus, #saveSuccessModal .modal-footer button:hover, #saveSuccessModal .modal-footer button:focus, #sendModal .modal-footer button:hover, #sendModal .modal-footer button:focus, #submitModal .modal-footer button:hover, #submitModal .modal-footer button:focus, #sendEmailModal .modal-footer button:hover, #sendEmailModal .modal-footer button:focus, #removeItemModal .modal-footer button:hover, #removeItemModal .modal-footer button:focus {
+#addToListModal .modal-footer button:hover, #addToListModal .modal-footer button:focus, #saveSuccessModal .modal-footer button:hover, #saveSuccessModal .modal-footer button:focus, #sendModal .modal-footer button:hover, #sendModal .modal-footer button:focus, #submitModal .modal-footer button:hover, #submitModal .modal-footer button:focus, #sendEmailModal .modal-footer button:hover, #sendEmailModal .modal-footer button:focus, #removeItemModal .modal-footer button:hover, #removeItemModal .modal-footer button:focus, #fileLimitModal .modal-footer button:hover, #fileLimitModal .modal-footer button:focus {
   outline: 1px solid #333333;
   background-color: transparent;
   color: #333333;

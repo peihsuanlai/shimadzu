@@ -269,6 +269,7 @@
             import VueFooter from "./components/footer.js";
             import VueNav from "./components/nav.js";
             import Chat from "./components/chatWindow.js";
+            Vue.use(VeeValidate);
             const app = new Vue({
                 el: "#app",
                 data() {
@@ -326,7 +327,6 @@
                     });
                 },
             });
-            Vue.use(VeeValidate);
         </script>
     </body>
 </html>

@@ -38,3 +38,16 @@ a:hover {
     }
   }
 
+  input:-internal-autofill-selected{
+    background-color:$white !important;
+    box-shadow: 0 0 1000px $white inset !important;
+  }
+
+[class="error"]{
+    font-size:14px;
+    color:#e74c3c;
+}
+
+.form-control{
+    color:$light-text !important;
+}

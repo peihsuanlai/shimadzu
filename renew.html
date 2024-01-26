@@ -115,12 +115,12 @@
 
                     <div class="d-sm-flex item">
                         <div>Email</div>
-                        <div>dskdjfhskddsoids@gshdak.com.tw</div>
+                        <div style="word-break: break-all; padding-left:20px;">dskdjfhskddsoids@gshdak.com.tw</div>
                     </div>
                     <div class="d-sm-flex item">
                         <div>其他備註</div>
-                        <div>
-                            <textarea name="" id="" cols="30" rows="4" placeholder="請輸入內容" class="p-2"></textarea>
+                        <div class="textarea-container">
+                            <textarea name="message" id="message" placeholder="請輸入內容" class="p-2"></textarea>
                         </div>
                     </div>
                     <div class="d-sm-flex item">
@@ -174,6 +174,30 @@
                 </div>
             </div>
             <!-- removeItem modal end -->
+
+            <!-- 檔案上傳限制 modal start -->
+            <div
+            class="modal fade"
+            id="fileLimitModal"
+            tabindex="-1"
+            aria-labelledby="fileLimitLabel"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog modal-sm modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body d-flex flex-column justify-content-center align-items-center">
+                        <i class="bi bi-x-circle-fill remove-icon"></i>
+                        <div class="text-center">檔案太大無法上傳</div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn" data-dismiss="modal">確認</button>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+            <!--檔案上傳限制 modal end -->
+
             <!-- 已送出 modal start -->
             <div class="modal fade" id="sendModal" tabindex="-1" aria-labelledby="sendModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-sm modal-dialog-centered">
@@ -304,7 +328,18 @@
                     },
                     uploadFile() {
                         const input = this.$refs.imageUpload;
-                        this.selectedFile = input.files.length > 0 ? input.files[0] : null;
+                        if(input.files.length > 0 ){
+                            const fileSize= input.files[0].size;
+                            //檔案上傳限制先預設4mb
+                            if(fileSize > 4 * 1024* 1024 ){
+                                $("#fileLimitModal").modal("show");
+                                this.selectedFile = null;
+                                this.$refs.imageUpload.value = "";
+                            }else{
+                                this.selectedFile = input.files[0]
+                            }
+                        }
+                        //給後端
                         const formData = new FormData();
                         formData.append("key", this.selectedFile); //key為後端api格式?
                     },

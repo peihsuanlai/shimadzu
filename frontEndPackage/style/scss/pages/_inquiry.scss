@@ -1,304 +1,303 @@
 .inquiry-main {
-  min-height: calc(100vh - 118px);
-  padding-bottom:40px;
-  .title {
-    border-bottom: 1px solid $main;
-  }
-  h3 {
-    font-size: 20px;
-    @include medium {
-      font-size: 24px;
+    min-height: calc(100vh - 118px);
+    padding-bottom: 40px;
+    .title {
+        border-bottom: 1px solid $main;
     }
-  }
-  .select-btn {
-    color: $white;
-    background-color: $main;
-    border-radius: 40px;
-    font-size: 14px;
-    @include padding(6px, 12px);
-    &:hover {
-      outline: 1px solid $main;
-      background-color: transparent;
-      color: $main;
-    }
-    @include medium {
-      font-size: 16px;
-    }
-  }
-  table {
-    // border-collapse: collapse;
-    margin: 0;
-    padding: 0;
-    table-layout: fixed;
-    thead {
-      display: none;
-      background-color: $light-text;
-      color: $white;
-      th {
-        @include padding(8px, 4px);
-        font-weight: 500;
-      }
-      th:first-child {
-        padding-left: 8px;
-      }
-      @include small {
-        display: table-header-group;
-      }
-    }
-    tr {
-      display: block;
-      margin-bottom: 1em;
-      border: 1px solid #d9d9d9;
-      @include small {
-        display: table-row;
-        border: none;
-      }
-    }
-    tbody {
-      tr {
-        @include small {
-          border: 1px solid #d9d9d9;
+    h3 {
+        font-size: 20px;
+        @include medium {
+            font-size: 24px;
         }
-      }
-      td {
-        display: flex;
-        background-color: $light-text;
+    }
+    .select-btn {
+        color: $white;
+        background-color: $main;
+        border-radius: 40px;
+        font-size: 14px;
+        @include padding(6px, 12px);
+        &:hover {
+            outline: 1px solid $main;
+            background-color: transparent;
+            color: $main;
+        }
+        @include medium {
+            font-size: 16px;
+        }
+    }
+    table {
+        // border-collapse: collapse;
+        margin: 0;
         padding: 0;
-        border-bottom: 1px solid #d9d9d9;
-        @include small {
-          display: table-cell;
-          background-color: transparent;
-          border: none;
-        }
-        &::before {
-          content: attr(data-title);
-          display: inline-block;
-          //   width: auto;
-          //   min-width: 30%;
-          width: 30%;
-          max-width: 30%;
-          background-color: $light-text;
-          color: $white;
-          word-wrap: break-word;
-          flex-shrink: 0;
-          @include padding(8px, 10px);
-          @include small {
+        table-layout: fixed;
+        thead {
             display: none;
-          }
+            background-color: $light-text;
+            color: $white;
+            th {
+                @include padding(8px, 4px);
+                font-weight: 500;
+            }
+            th:first-child {
+                padding-left: 8px;
+            }
+            @include small {
+                display: table-header-group;
+            }
         }
-        & > span {
-          @include padding(8px, 10px);
-          background-color: $white;
-          word-break: break-all;
-          min-width: 70%;
-          @include small {
-            min-width: auto;
-            @include padding(8px, 4px);
-          }
+        tr {
+            display: block;
+            margin-bottom: 1em;
+            border: 1px solid #d9d9d9;
+            @include small {
+                display: table-row;
+                border: none;
+            }
         }
-        &:first-child {
-          @include small {
-            padding-left: 8px;
-          }
+        tbody {
+            tr {
+                @include small {
+                    border: 1px solid #d9d9d9;
+                }
+            }
+            td {
+                display: flex;
+                background-color: $light-text;
+                padding: 0;
+                border-bottom: 1px solid #d9d9d9;
+                @include small {
+                    display: table-cell;
+                    background-color: transparent;
+                    border: none;
+                }
+                &::before {
+                    content: attr(data-title);
+                    display: inline-block;
+                    //   width: auto;
+                    //   min-width: 30%;
+                    width: 30%;
+                    max-width: 30%;
+                    background-color: $light-text;
+                    color: $white;
+                    word-wrap: break-word;
+                    flex-shrink: 0;
+                    @include padding(8px, 10px);
+                    @include small {
+                        display: none;
+                    }
+                }
+                & > span {
+                    @include padding(8px, 10px);
+                    background-color: $white;
+                    word-break: break-all;
+                    min-width: 70%;
+                    @include small {
+                        min-width: auto;
+                        @include padding(8px, 4px);
+                    }
+                }
+                &:first-child {
+                    @include small {
+                        padding-left: 8px;
+                    }
+                }
+                &:last-child {
+                    border: none;
+                }
+            }
         }
-        &:last-child{
-            border:none;
-        }
-      }
-    }
 
-    .delete-btn {
-      font-size: 20px;
-      background-color: transparent;
-      border: none;
-      color:$light-text !important;
-      &:hover {
-        color: $main;
-      }
+        .delete-btn {
+            font-size: 20px;
+            background-color: transparent;
+            border: none;
+            color: $light-text !important;
+            &:hover {
+                color: $main;
+            }
+        }
     }
-  }
-  input.number {
-    @include small {
-      width: 75%;
+    input.number {
+        @include small {
+            width: 75%;
+        }
+        &:focus-visible {
+            outline-color: $main;
+        }
     }
-    &:focus-visible {
-      outline-color: $main;
-    }
-  }
 }
 .message {
-  .message-title {
-    background-color: $light-text;
-    color: $white;
-    font-weight: 500;
-    @include padding(8px, 8px);
-    @include small {
-      @include padding(8px, 16px);
-    }
-  }
-  .item {
-    border: 1px solid #d9d9d9;
-    div {
-      @include padding(8px, 8px);
-      @include small {
-        @include padding(8px, 16px);
-      }
-    }
-    & > div:first-child {
-      background-color: #f5f5f5;
-      @include small {
-        width: 20%;
-      }
-    }
-
-    textarea {
-      border: 1px solid #d9d9d9;
-      &:focus-visible {
-        outline-color: $main;
-      }
-    }
-    .attachment {
-      width: 100%;
-      font-size: 13px;
-      @include xsmall {
-        font-size: 14px;
-      }
-      @include small {
-        font-size: 16px;
-        width: 80%;
-      }
-      @include medium {
-        width: 70%;
-      }
-      label {
-        cursor: pointer;
-        width:25%;
-        display:flex;
-        justify-content: center;
-        align-items:center;
-        @include padding(6px, 0px);
+    .message-title {
+        background-color: $light-text;
         color: $white;
-         background-color: $light-text;
+        font-weight: 500;
+        @include padding(8px, 8px);
         @include small {
-          @include padding(6px, 16px);
+            @include padding(8px, 16px);
         }
-        @include medium{
-          width:20%;
-        }
-        .select {
-         flex-shrink: 0; 
-        }
-      }
-      > div{
-        border: 1px solid #d9d9d9;
-        width: 75%;
-        @include medium{
-          width:80%;
-        }
-      }
-
-      button {
-        border: none;
-        background-color: transparent;
-        color:$light-text !important;
-      }
     }
-  }
-  
+    .item {
+        border: 1px solid #d9d9d9;
+        div {
+            @include padding(8px, 8px);
+            @include small {
+                @include padding(8px, 16px);
+            }
+        }
+        & > div:first-child {
+            background-color: #f5f5f5;
+            @include small {
+                width: 20%;
+            }
+        }
+        .textarea-container {
+            @include small {
+                width: 80%;
+            }
+        }
+        textarea {
+            border: 1px solid #d9d9d9;
+            width: 100%;
+            &:focus-visible {
+                outline-color: $main;
+            }
+        }
+        .attachment {
+            width: 100%;
+            font-size: 13px;
+            @include xsmall {
+                font-size: 14px;
+            }
+            @include small {
+                font-size: 16px;
+                width: 80%;
+            }
+            label {
+                cursor: pointer;
+                width: 25%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                @include padding(6px, 0px);
+                color: $white;
+                background-color: $light-text;
+                @include small {
+                    @include padding(6px, 16px);
+                }
+                @include medium {
+                    width: 20%;
+                }
+                .select {
+                    flex-shrink: 0;
+                }
+            }
+            > div {
+                border: 1px solid #d9d9d9;
+                width: 75%;
+                @include medium {
+                    width: 80%;
+                }
+            }
+
+            button {
+                border: none;
+                background-color: transparent;
+                color: $light-text !important;
+            }
+        }
+    }
 }
 
 .message-send-btn {
-  color: $white;
-  background-color: $dark-text;
-  border: none;
-  width: 100%;
-  border-radius:5px;
-  transition: all 0.3s ease-in-out;
-  @include padding(8px);
-  transition: all 0.3s ease-in-out;
-  &:hover {
-    outline: 1px solid $dark-text;
-    background-color: transparent;
-    color: $dark-text;;
+    color: $white;
+    background-color: $dark-text;
+    border: none;
+    width: 100%;
+    border-radius: 5px;
     transition: all 0.3s ease-in-out;
-  }
+    @include padding(8px);
+    transition: all 0.3s ease-in-out;
+    &:hover {
+        outline: 1px solid $dark-text;
+        background-color: transparent;
+        color: $dark-text;
+        transition: all 0.3s ease-in-out;
+    }
 }
 
 .options {
-  column-gap: 4%;
- 
-  .item{
-    position: relative;
-  
-    width: 48%;
-    
+    column-gap: 4%;
 
-    @include small {
-      width: 22%;
-    }
-    input[type="radio"] {
-      position: absolute;
-      opacity: 0;
-      cursor: pointer;
-      height: 0;
-      width: 0;
-      &:checked + label {
-        background-color: $main;
-        border: none;
-        color: $white;
-      }
-      &:checked + label .checkmark {
-        background-color: $white;
-        border: none;
-      }
-      &:checked + label .checkmark:after {
-        display: block;
-      }
-    }
-    label {
-      // width:100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 0;
-      @include padding(10px, 8px);
-      border: 1px solid $light-text;
-      border-radius: 60px;
-      cursor: pointer;
-     
-    }
-    .checkmark {
-      height: 15px;
-      width: 15px;
-      margin-right: 8px;
-      border: 1px solid $light-text;
-      position: relative;
+    .item {
+        position: relative;
 
-      &::after {
-        content: "";
-        position: absolute;
-        display: none;
-        left: 5px;
-        top: 2px;
-        width: 6px;
-        height: 9px;
-        border: solid $main;
-        border-width: 0 3px 3px 0;
-        transform: rotate(45deg);
-      }
+        width: 48%;
+
+        @include small {
+            width: 22%;
+        }
+        input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+            &:checked + label {
+                background-color: $main;
+                border: none;
+                color: $white;
+            }
+            &:checked + label .checkmark {
+                background-color: $white;
+                border: none;
+            }
+            &:checked + label .checkmark:after {
+                display: block;
+            }
+        }
+        label {
+            // width:100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 0;
+            @include padding(10px, 8px);
+            border: 1px solid $light-text;
+            border-radius: 60px;
+            cursor: pointer;
+        }
+        .checkmark {
+            height: 15px;
+            width: 15px;
+            margin-right: 8px;
+            border: 1px solid $light-text;
+            position: relative;
+
+            &::after {
+                content: "";
+                position: absolute;
+                display: none;
+                left: 5px;
+                top: 2px;
+                width: 6px;
+                height: 9px;
+                border: solid $main;
+                border-width: 0 3px 3px 0;
+                transform: rotate(45deg);
+            }
+        }
     }
-  }
 }
 
 .lightbox {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .lb-dataContainer {
-  order: 1;
-  margin-bottom: 8px;
+    order: 1;
+    margin-bottom: 8px;
 }
 .lb-outerContainer {
-  order: 2;
+    order: 2;
 }
