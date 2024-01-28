@@ -3,7 +3,7 @@ export default {
         return {
             materialList: [
                 {
-                    id: "01",
+                    id: "1",
                     imgUrl: {
                         small: "./frontEndPackage/images/product-sm.jpg",
                         large: "./frontEndPackage/images/product-lg.jpg",
@@ -14,7 +14,7 @@ export default {
                     material: "01361/Simple method creation and batch creation",
                 },
                 {
-                    id: "02",
+                    id: "2",
                     imgUrl: {
                         small: "./frontEndPackage/images/product-sm.jpg",
                         large: "./frontEndPackage/images/product-lg.jpg",

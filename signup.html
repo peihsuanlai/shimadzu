@@ -43,7 +43,7 @@
                                             id="email"
                                             name="email"
                                             class="form-control"
-                                            v-model="signupData.email"
+                                            v-model.lazy="signupData.email"
                                             autocomplete
                                         />
                                     </div>
@@ -56,7 +56,7 @@
                                                 id="password"
                                                 class="form-control"
                                                 name="password"
-                                                v-model="signupData.password"
+                                                v-model.lazy="signupData.password"
                                             />
                                         </div>
                                         <div class="col">
@@ -66,7 +66,7 @@
                                                 type="password"
                                                 id="confirm-password"
                                                 class="form-control"
-                                                v-model="signupData.confirmation"
+                                                v-model.lazy="signupData.confirmation"
                                                 name="confirmPassword"
                                             />
                                         </div>
@@ -78,7 +78,7 @@
                                             id="equpNum"
                                             name="equpNum"
                                             class="form-control"
-                                            v-model="signupData.equpNum"
+                                            v-model.lazy="signupData.equpNum"
                                         />
                                     </div>
                                     <div class="form-group">
@@ -87,7 +87,7 @@
                                             type="text"
                                             id="institute"
                                             class="form-control"
-                                            v-model="signupData.institute"
+                                            v-model.lazy="signupData.institute"
                                             name="institute"
                                         />
                                     </div>
@@ -97,7 +97,7 @@
                                             type="text"
                                             id="address"
                                             class="form-control"
-                                            v-model="signupData.address"
+                                            v-model.lazy="signupData.address"
                                             name="address"
                                         />
                                     </div>
@@ -110,7 +110,7 @@
                                                 id="name"
                                                 name="name"
                                                 class="form-control"
-                                                v-model="signupData.name"
+                                                v-model.lazy="signupData.name"
                                                 autocomplete
                                             />
                                         </div>
@@ -121,7 +121,7 @@
                                                 class="form-control"
                                                 id="gender"
                                                 name="gender"
-                                                v-model="signupData.selectedGender"
+                                                v-model.lazy="signupData.selectedGender"
                                             >
                                                 <option>先生</option>
                                                 <option>小姐</option>
@@ -135,7 +135,7 @@
                                                 type="text"
                                                 id="department"
                                                 class="form-control"
-                                                v-model="signupData.department"
+                                                v-model.lazy="signupData.department"
                                                 name="department"
                                             />
                                         </div>
@@ -145,7 +145,7 @@
                                                 type="text"
                                                 id="title"
                                                 class="form-control"
-                                                v-model="signupData.title"
+                                                v-model.lazy="signupData.title"
                                                 name="title"
                                             />
                                         </div>
@@ -158,7 +158,7 @@
                                                 type="tel"
                                                 id="phone"
                                                 class="form-control"
-                                                v-model="signupData.phone"
+                                                v-model.lazy="signupData.phone"
                                                 name="phone"
                                             />
                                         </div>
@@ -168,7 +168,7 @@
                                                 type="text"
                                                 id="extension"
                                                 class="form-control"
-                                                v-model="signupData.extension"
+                                                v-model.lazy="signupData.extension"
                                             />
                                         </div>
                                     </div>
@@ -178,7 +178,7 @@
                                             type="tel"
                                             id="cellphone"
                                             class="form-control"
-                                            v-model="signupData.cellphone"
+                                            v-model.lazy="signupData.cellphone"
                                             name="cellphone"
                                         />
                                     </div>
@@ -190,7 +190,7 @@
                                             type="tel"
                                             id="verification"
                                             class="form-control"
-                                            v-model="signupData.verification"
+                                            v-model.lazy="signupData.verification"
                                             name="verification"
                                         />
                                     </div>
@@ -252,9 +252,9 @@
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/additional-methods.js"></script>
-        <script src="./frontEndPackage/js/messages_zh_TW.min.js"></script>
+        <script src="./frontEndPackage/jquery-validation/jquery.validate.js"></script>
+        <script src="./frontEndPackage/jquery-validation/additional-methods.js"></script>
+        <script src="./frontEndPackage/jquery-validation/messages_zh_TW.min.js"></script>
 
         <script
             src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
