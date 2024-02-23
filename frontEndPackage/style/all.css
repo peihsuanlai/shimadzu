@@ -60,6 +60,10 @@ input:-internal-autofill-selected {
   color: #626262 !important;
 }
 
+[v-cloak] {
+  display: none;
+}
+
 .bg-main {
   background-color: #DD0000;
 }
@@ -177,28 +181,13 @@ input:-internal-autofill-selected {
   margin: 0 auto;
 }
 
-@media (min-width: 992px) {
-  .nav-container {
-    background-color: #ffffff;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 2;
-  }
-}
-.nav-container nav {
+.nav-container {
   background-color: #ffffff;
   position: fixed;
   width: 100%;
   top: 0;
-  left: 0%;
+  left: 0;
   z-index: 2;
-}
-@media (min-width: 992px) {
-  .nav-container nav {
-    position: static;
-  }
 }
 .nav-container h2 a {
   color: #af282f;
@@ -238,6 +227,10 @@ input:-internal-autofill-selected {
 .nav-container .mobile-menu .active {
   color: #DD0000;
   transition: all ease-in-out 0.3s;
+}
+
+.scroll-border {
+  border-bottom: 1px solid #d9d9d9;
 }
 
 .banner-container {
@@ -1069,6 +1062,7 @@ footer .photonic {
   border-radius: 60px;
   font-size: 14px;
   white-space: nowrap;
+  color: #626262 !important;
   padding: 4px 8px;
 }
 @media (min-width: 576px) {
@@ -1424,7 +1418,7 @@ footer .photonic {
   background-color: #DD0000;
   border-radius: 40px;
   font-size: 14px;
-  padding: 6px 12px;
+  padding: 4px 8px;
 }
 .inquiry-main .select-btn:hover {
   outline: 1px solid #DD0000;
@@ -1434,6 +1428,7 @@ footer .photonic {
 @media (min-width: 768px) {
   .inquiry-main .select-btn {
     font-size: 16px;
+    padding: 6px 12px;
   }
 }
 .inquiry-main table {

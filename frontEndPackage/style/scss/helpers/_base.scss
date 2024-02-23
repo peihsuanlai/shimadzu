@@ -51,3 +51,7 @@ a:hover {
 .form-control{
     color:$light-text !important;
 }
+
+[v-cloak]{
+    display: none;
+}

@@ -23,6 +23,7 @@ export default{
                     path:"/other.html"
                 },
             ],
+            isScrolled: false,
         }
     },
     methods:{
@@ -33,8 +34,17 @@ export default{
             alert("已成功登出！");
             location.href="./index.html";
         },
+        handleScroll() {
+           let scrollTop = window.scrollY;
+            if (scrollTop > 20) {
+                console.log(scrollTop);
+              this.isScrolled = true;
+            } else {
+              this.isScrolled = false;
+            }
+        },
     },
-    template:` <section class="nav-container">
+    template:` <section class="nav-container" :class="{ 'scroll-border': isScrolled }">
     <nav class="container-lg navbar p-0 p-lg-3 navbar-expand-lg justify-content-lg-between">
         <div class="brand-name d-flex align-items-center pt-3 pb-2 pl-3 p-lg-0">
             <h1 class="mb-0">
@@ -83,5 +93,12 @@ export default{
         </div>
     </nav>
     </section>`,
+    mounted() {
+        console.log("test");
+        window.addEventListener("scroll", this.handleScroll);
+    },
+    // beforeDestroy() {
+    //     window.removeEventListener("scroll", this.handleScroll);
+    // },
    
 }

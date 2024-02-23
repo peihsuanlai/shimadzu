@@ -14,11 +14,13 @@
         <link rel="stylesheet" href="./frontEndPackage/css/material-icons.css" />
         <link rel="stylesheet" href="./frontEndPackage/bootstrap-icons/bootstrap-icons.css" />
         <link rel="stylesheet" href="./frontEndPackage/lightbox/lightbox.min.css" />
+        <link rel="stylesheet" href="./frontEndPackage/vueloading/vue-loading.css">
         <link rel="stylesheet" href="./frontEndPackage/style/all.css?123" />
         <title>我的儀器</title>
     </head>
     <body>
         <div id="app">
+            <loading :active="isLoading"></loading>
             <vue-nav :login="isLogin"></vue-nav>
             <section class="breadcrumb-container mb-5">
                 <ol class="d-flex list-unstyled breadcrumb-list mb-0">
@@ -223,6 +225,7 @@
         ></script>
         <script src="./frontEndPackage/owlcarousel/owl.carousel.min.js"></script>
         <script src="./frontEndPackage/lightbox/lightbox.min.js"></script>
+        <script src="./frontEndPackage/vueloading/vue-loading.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
         <script src="./frontEndPackage/js/all.js"></script>
         <script type="module">
@@ -237,6 +240,7 @@
                 data() {
                     return {
                         isLogin: true,
+                        isLoading: true,
                         inquiryNum: 0,
                         equipmentData: [
                             {
@@ -296,9 +300,12 @@
                     History,
                     Material,
                     Check,
+                    Loading: VueLoading,
                 },
                 mounted() {
-                    
+                    setTimeout(()=>{
+                        this.isLoading=false;
+                    },1500)
                 },
             });
         </script>

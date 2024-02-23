@@ -424,6 +424,7 @@
     border-radius: 60px;
     font-size: 14px;
     white-space: nowrap;
+    color:$light-text !important;
     @include padding(4px, 8px);
     @include small {
         font-size: 12px;

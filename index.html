@@ -21,14 +21,12 @@
       rel="stylesheet"
       href="./frontEndPackage/bootstrap-icons/bootstrap-icons.css"
     />
-    <!-- <link rel="stylesheet" href="./frontEndPackage/vueloading/vue-loading.css"> -->
     <link rel="stylesheet" href="./frontEndPackage/style/all.css?123" />
     <title>Shimadzu</title>
   </head>
   <body>
-    <div id="app">
+    <div id="app" v-cloak>
       <vue-nav :login="isLogin"></vue-nav>
-      <!-- <loading :active="isLoading"></loading> -->
       <section class="container-lg banner-container">
         <div class="banner-carousel owl-carousel owl-theme">
           <!-- <a v-for="item in bannerCarousel" class="item" :href="item.path">
@@ -76,7 +74,6 @@
       integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
       crossorigin="anonymous"
     ></script>
-    <!-- <script src="./frontEndPackage/vueloading/vue-loading.min.js"></script> -->
     
     <script src="./frontEndPackage/owlcarousel/owl.carousel.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
@@ -85,13 +82,11 @@
       import VueFooter from "./components/footer.js";
       import VueNav from "./components/nav.js";
       import Chat from "./components/chatWindow.js";
-      //console.log(VueLoading);
       const app = new Vue({
         el: "#app",
         data() {
           return {
             isLogin: false,
-            // isLoading: true,
             service: [
               {
                 imgSrc: "./frontEndPackage/images/home-icon1.png",
@@ -139,7 +134,6 @@
           VueFooter,
           VueNav,
           Chat,
-        //   Loading: VueLoading,
         },
         mounted() {
           $(".banner-carousel").owlCarousel({
@@ -152,12 +146,6 @@
             dots: true,
             nav: false,
           });
-          
-          
-        //   setTimeout(()=>{
-        //     this.isLoading=false;
-        //   },2000)
-          
         },
       });
     </script>
